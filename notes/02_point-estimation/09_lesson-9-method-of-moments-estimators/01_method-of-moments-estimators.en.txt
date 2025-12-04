@@ -1,0 +1,168 @@
+The time has come to estimate and to stop
+making crazy guesses. It totally makes sense if
+you're trying to estimate the mean or average out there
+in the entire population. That you should use
+the sample mean or sample average of the
+values in the sample, but what about parameters with not such an obvious
+interpretation? For example, suppose we
+have a random sample from the gamma distribution with
+parameters alpha and beta? We want to estimate alpha. The mean of this distribution
+is alpha over beta. We do know that X bar would be an unbiased estimator of
+the mean alpha over beta, but how do we get at alpha? We can't just multiply by beta and return the
+estimator for alpha, that is beta times
+the sample mean, because beta is unknown
+and you don't want to be giving out estimators
+involving unknown quantities. Instead, here we're
+going to use what is known as method of
+moments estimation. Recall that our moments
+for distributions are defined to be the
+expected value of X, the expected value of X squared, X cubed, X to the fourth, the expected value
+of X to the fifth. You get the idea. These are population or a
+distribution moments. These are theoretical
+quantities as opposed to averages that we take of
+numbers in our dataset. Mu, the letter we're using for the population mean is always how we denote the
+expected value of X, and this is a
+probability-weighted average. X-bar is what we've been using
+to denote our sample mean, which is the actual
+average of the values in the population so it was natural to think about using X-bar as an estimator for mu, but now, we're going to
+look at other moments. The expected value of
+X squared is actually a probability-weighted average of the squares of all of the
+values in the population. We can estimate this
+using an actual average, a one over N times the sum of all N of our values squared. As a definition,
+the kth population or distribution moment, we're going to
+denote it by a mu_k, and we're going to
+define it to be the expected value of X to the k. Now if you've ever
+seen moments before, these are non-central moments. I just wanted to throw that out there for people wondering, but if you weren't
+wondering, ignore that. The kth population moments are computed from the distribution, their theoretical quantities. We have counterparts
+from our sample. The kth sample moment is
+going to be the average of the values in our sample after each has been taken
+to the kth power. This is the kind sample analog of the kth population or
+distribution moments. The idea behind method of
+moments estimators is to equate the two and solve
+for the unknown parameter. As an example, let's go back to our exponential distribution. The first population
+or distribution moment mu one is the
+expected value of X. We know for this distribution, this is one over lambda. The first sample moment
+is the sample mean. This is always true
+no matter what distribution we're talking
+about, and that's X bar. I'm going to set these equal, and that is a horrible
+thing to write down. It really makes my skin crawl. The thing on the
+right over here at the sample mean is
+a random variable. The thing on the left is a fixed constant number
+that we don't know. Lambda is a constant. It's not random. This makes no sense at all, but it's an intermediate
+step for cleaner algebra. In fact, what we
+should be saying is 1 over estimator or Lambda hat of Lambda is equal to X-bar within the hats following
+everywhere, make things a mess. It's an intermediate step, but it doesn't make sense. We've equated the
+sample moment and the population moment and we solve for the
+unknown parameter. Then this is still an
+egregious statement with a constant on the left and a
+random variable on the right. But now that we're done with all the work and the algebra, we'll put a hat on it. The method of moments estimator
+for Lambda is Lambda hat, which is a random variable. This is 1 over X-bar. Again, don't let anyone
+catch you halfway through this computation equating
+constants to random variables. Something you might be
+wondering right now is if this estimator is an unbiased
+estimator of Lambda. That is, if we take the
+expected value of Lambda hat, which is the expected value of 1 over the sample mean
+because that was our Lambda hat and
+we could write the 1 over the sample mean as n
+over the sum of the X's. Are we going to get Lambda? How do you do this expectation? One thing to note is that the expected value
+of 1 over X-bar is not equal to 1 over the
+expected value of X-bar. This isn't even true for a
+single random variable X, and the reason is because
+the expected value of 1 over X or 1 over X-bar or whatever
+you're talking about, is the integral of 1
+over X times a PDF, and that is not one over the
+integral of X times the PDF. Integrals just don't
+work that way. I still have the question as to whether or not our Lambda hat, which we defined to
+be 1 over X-bar, is an unbiased
+estimator for Lambda. Again, I rewrote it as
+n over the sum of the X's and I can call the sum of the x's a
+new random variable Y, Y being the sum of NIID
+exponentials with rate Lambda, we already know has
+a Gamma distribution with parameters n and Lambda. This is now a
+one-dimensional thing and we need to find the
+expected value of one over a Gamma random variable. If we write that out,
+that's going to be, using the law of the
+unconscious statistician, 1 over y times the PDF for
+this gamma distribution. I can take this y over here and suck it in and combine it with the
+y to the n minus 1, leaving me with a y_n minus 2. Then if I look at the y part of this
+ignoring the constants, this appears to look
+like another Gamma PDF. It appears if you go back and compare it to the
+original Gamma PDF, which had an x_Alpha
+minus 1, e_Beta x. We have y's instead of x's, and appears that Alpha is
+actually already n minus 1, so that n minus 2
+is Alpha minus 1. In other words, this
+appears to be the PDF for a Gamma distribution with parameters n minus 1 and Lambda, but it's not quite right because of the
+constants out front. Let's put in and take out what we need and balance and compensate. Now, I've written it as some
+stuff out front times an integral of a Gamma PDF and
+we know this integral is one, so we have that the
+expected value of our estimator Lambda
+hat turns out to be n times Lambda
+times Gamma of n minus 1 over Gamma of n. Our
+expectation of our estimator is n times Lambda times Gamma
+of n minus 1 divided by Gamma of n. Recall that for an integer n
+in the Gamma function, we can rewrite gamma of n as n minus 1 times
+Gamma of n minus 1, and we can cancel the
+Gammas of n minus 1 now and we're left with
+n over n minus 1 Lambda, which unfortunately
+is not Lambda. Our first method of moments estimator is not
+actually unbiased. It did turn out to
+be a common sense estimator because this was the exponential distribution
+with rate Lambda, and the mean of that
+distribution is one over Lambda. Maybe the estimator should be one over the
+mean of the sample. This is a nice
+common sense thing, and now we have a
+certain amount of rigor around that to justify it, a method of moments estimator. My question now is, can we find an estimator
+for Lambda based on the sample mean in the exponential distribution that actually is unbiased for Lambda? I think we can. Our
+expectation of 1 over X bar turned out to be n
+over n minus 1 times Lambda. If I take this equation
+over here and multiply both sides by n minus 1 over n and pull it in the expectation, then I'm going to cancel
+the n stuff out of the right-hand side of the
+equation and we'll get Lambda, and that's what we wanted to see. In here, we have an unbiased
+estimator for lambda, which can be manipulated, simplified to look like n minus 1 over the sum of the X's. We found an unbiased estimator for the exponential distribution, and we did it by using our first formal method,
+method of moments. It wasn't unbiased, but we manipulated it and got
+something that was unbiased. Let's now do a two
+parameter example. Suppose we have X_1 through X n, a random sample from
+the gamma distribution with parameters Alpha and Beta. The first distribution or population moment Mu 1 is
+the expected value of X, which you'll recall
+is Alpha over Beta. The first sample moment, which we call M_1 is always
+the sample mean X bar. I'm going to equate these and
+cringe again because I've got constants on the left and
+random stuff on the right, but this isn't an
+intermediate step. We don't want to drag all those
+hats through the algebra, but I do have a problem here. I want to solve for Alpha and
+if I try to solve for it, I'll get Beta X bar, but Beta is unknown so this
+isn't a good estimator. In general, when you have
+multiple parameters, you're going to need
+multiple moments equated. Let's look at the second moment. The second moment Mu 2 for the gamma distribution
+is defined to be the expected
+value of X squared. You could find this by integrating X squared in
+front of the gamma PDF. Or you could look at maybe your tabulated [inaudible] of
+distributional things, and unravel the
+definition of variance, which is the expected
+value of X squared minus the expected
+value of X all squared. Unravel that to figure out
+the expected value of X squared using a mean and
+variance that you could look up. I'm going to equate this to
+the second sample moment, which is the average of the
+squared values in my sample. I have another equation. Overall, we have two equations and we want to solve
+for Alpha and Beta. I'm going to rewrite
+this term here. I'm going to pull out a 1 over
+Beta from the first term, and then I have an Alpha over Beta and Alpha over Beta squared. Since that's equal to X bar,
+I'm going to plug them in. Equating this to be the
+second sample moment, 1 over n times the sum
+of the X i squared, we can now solve for Beta
+and throw a hat on it before anyone sees
+us running around with a constant equated
+to a random variable. We have an estimator for Beta, and I'm going to go back up
+to this top equation here and plug that in and
+solve for Alpha, and we have an estimator
+for Alpha as well. This concludes Module 1. Congratulations for
+making it this far. In Module 2, we're going
+to spend the entire time talking about maximum
+likelihood estimators, which are the
+workhorse estimators of statistical estimation. They have better
+properties than method of moments estimators and they're going to be very useful to us. Then we'll compute a few
+maximum likelihood estimators of parameters of distributions
+that we've sampled from, and also compute method
+of moments estimators to compare the two types of
+estimators. I'll see you there.

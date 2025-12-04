@@ -1,0 +1,198 @@
+Welcome back, in this video we're going
+to talk about confidence intervals for ratios of variances. So you may recall,
+I hope you do that not so long ago we talked about making
+a confidence interval for differences between two means
+of two different populations. And one of the confidence intervals or small samples was based
+on the T distribution and on using something called a pooled
+variance which is an estimator for a common variants if both
+populations had the same variance. So how might you justify that? Well, you could use this video and
+its techniques to make a confidence interval for
+the ratio of the two variances and that confidence interval being
+an interval of plausible values. If it contains one then it is plausible or reasonable to think that one
+variance is equal to the other. If the ratio is one it's plausible
+that they're actually equal. And then we can go ahead and
+do that whole t test that we did earlier. So in order to make this new
+kind of confidence interval, we're going to need a new distribution. And it's defined like this,
+suppose that X1 and X2 are independent high squared
+random variables with N1 and N2 degrees of freedom, respectively. I'm going to define a new variable F, which is going to be defined to be
+X1 over N1 divided by X2 over N2. The reason I'm calling this random
+variable F is because its distribution is something that's known
+as an F distribution and it has two parameters N1 and N2. And because of the role of those
+parameters here, we sometimes call N1 and N2 the numerator and
+denominator degrees of freedom. The F distribution is
+not in your table and I don't think you will ever
+need to know it's pdf. This is not one that people
+generally work with, it's another one of
+those tabulated values, numerically integrated kinds of things,
+but it can take on a lot of shapes. So the chi squared are both non-negative,
+so that ratio is non-negative. And here are some histograms for
+the F distribution. So over here it kind of looks
+like an exponential distribution, whereas over here it's more
+extreme towards zero with a really fast drop and
+a long tail or a fat tail. It should be vanishing and
+it is but not like this one. And then in the two bottom graphs,
+I have a different kind of shape, kind of like the gamma distribution and I have something with a light tail and
+something with a heavy tail. Okay, so here's the pdf and
+it's kind of messy. And you'll see this thing out front
+this one over this B(n1/2, n 2/2). This B is something known as
+a beta function which is defined as an integral much like
+the gamma function. We're not going to go into
+it in this video because you really don't need to know
+what the beta function is, but it's the constant that makes
+the whole pdf integrate to one. You'll never be using the F distribution
+directly or directly integrating it. You're always going to be going
+to a table or software, so this is just the constant that
+makes it integrate to one. And the mean of this distribution
+is n2 over n2 -2 and this is valid if n2 is greater than 2. By the way, if that so called
+denominator degrees of freedom is not greater than 2 but is equal to 2 or equal
+to 1 then the expectation is infinite. And this is sort of what we were
+seeing in those pictures that had the really fat tails on the end. All pdfs go down to zero eventually
+because they have to integrate to one, but some of them take a really long time
+to go down and the expectation which is the integral with an X in front
+of it can actually be infinite. And yet you still have a valid pdf. So the variance expression
+is a lot uglier and this is valid if n2 is greater than 4 and
+so how are we going to use this? So I said that you won't
+have to be integrating or really dealing with the f pdf directly. So just like we've done with the normal
+distribution, the T distribution, the chi square distribution,
+we have these functions in our qf and pf. For when we want to get a critical value
+or a probability, so in this picture down here, I've roughly sketched an F
+distribution with 5 and 1° of freedom. And if I want to find a number
+down here that cuts off area 0.95 to the right and
+0.05 in the upper tail, which is how we usually
+label these critical values. We label them with the upper tail area. I would type qf 0.95,5,1 and this will give you in R 6.608. On the other hand, if you want to
+convert this, you would type pf 6.608,5,1 and you'll see that
+we almost get the 95% back. Let's take a look at the mean or
+expected value of the F distribution, the expected value of our statistic F. Now we define this to be a ratio of a chi
+squared over its degrees of freedom, divided by another chi squared
+over its degrees of freedom. This n1 andn2 can be pulled out front and
+if you keep track of where everything Is, it ends up flipping over. So if an end to over N1 in the front,
+now I've got the expected value of a ratio of X1 and X2 and because
+they're independent we can factor this. Now you'll notice I didn't divide, I didn't say the expected value of this
+ratio is the expected value of X1 divided by the expected value of X2
+because that's just not true. But we have seen given independence
+that you can factor X1 and X2 or any function of X1 and X2, so I can pull the X
+one out and I'm stuck with the 1 over X2. And the expected value of X1 will X1 is
+a chi squared with n 1% of freedom and that has mean and one. And so we're down to n2 times
+the expected value of 1 over X2, where X2 is chi squared
+with n2 degrees of freedom. To compute this, I am going to put
+one over X in front of the pdf for this chi squared random variable and
+I'm going to write it out. The chi squared pdf is
+just a gamma pdf and then we've done things like this before. Specifically when we were talking
+about the gamma distribution, you can pull this one over X inside and
+combine it with this X here so that you have an exponent
+of N 2/2 minus 2. So looking at just the exparte
+ignoring the constance, this part kind of looks like a gamma pdf
+with parameters n2 over 2 -1 and 1/2. But the constants in front are not right,
+pause the video, take a moment to write
+out the gamma pdf and see if you can figure out what
+constance need to be there. Okay, we're back. These are the constants we need
+in front of the integrand and then all this stuff out front is what
+I pulled out what I didn't need and what I put in to compensate for things
+that I also put In in the in to ground. So for example I put a one over gamma
+of n2 over 2 -1 in the in to grand. So I put a gamma of n2 over 2
+-1 in the numerator out front. And so now I do have the pdf
+of a gamma distribution and this integrates to one,
+leaving us with this big mess out front. So we're not necessarily talking about
+integer values in the gamma function here. The n1 and n2 are into your valued, but
+if they're odd and you divide them by 2, then these things inside the gamma
+function may not be into your valued. So you won't evaluate the gamma
+distribution as a factorial but instead use the fact that we showed
+that gamma of a real positive number, alpha can be written as alpha
+-1 times gamma of alpha -1. I'm going to do that with the denominator
+here, write it like this and then we get some cancellation and
+we get what we want n2 over n2 -1. The variance is a lot of work but
+you could do the variance as well. It's just going to take a lot of time and
+a lot of slides so we're going to skip it. Okay, so what's the point? Suppose I have a random sample of size n1
+from a normal distribution with mean μ one and variant signal, one square. And suppose I have an independent
+random sample of size n2 from a normal distribution with mean,
+mu 2 and sigma 2 square. And suppose that what I want is a 100
+times 1 minus alpha percent confidence in the rule for sigma 1squared over
+sigma 2 squared or the other way around. So the ratio of the true
+population variances. So how do we start every
+confidence interval? We start by looking at an estimator of the
+thing we're trying to get and I'm going to start even smaller with an estimator
+of these two individual variances. And that is I'm going to use the sample
+variances, S1 squared and S2 squares. I'm using the unbiased version of the
+sample variance where we've got an N -1 in the denominator. And the reason I'm doing that is because
+I know something about not exactly the distribution of S1 squared and
+S2 squared. But if they're adjusted a little
+bit we do know that n1 minus 1 times S1 squared over single one squared. Because we started with a normal
+distribution is chi squared with degrees of freedom and 1 -1 and and
+2 -1 times the second sample variance over the second true variants is chi
+squared with 10 to minus 2° of Freedom. I also know that these two statistics
+are independent because they came from independent samples. We're going to define an F statistic and I'm going to ask you to ignore
+this part for the moment. The f statistic comes from a ratio of
+chi squares divided by their degrees of freedom. We just talked about to chi squares
+that we're working With, one is here and one is here and if you divide these
+by their degrees of freedom and then put them in this big ratio, a lot of
+stuff will cancel leaving you with this. And so up high Square divided
+by its degrees of freedom. All divided by an independent chi square
+divided by its degrees of freedom is how we define an F
+distribution in particular. This statistic has an F distribution
+with degrees of freedom And 1 -1 in the numerator and
+end to -1 in the denominator. So there's our new distribution and I think we're ready to put
+it to work with an example. 5th grade students from two neighboring
+counties took a placement exam And Group one from county
+a consisted of 18 students. The sample mean score for
+these students with 77.2 and group two from county be
+consisted of only 15 students and they had a Sample mean score of 75.3. So from previous years data,
+it is believed that the true distribution of scores in the different counties
+are normally distributed and also the variants seems to stay
+very steady from year to year. So we're going to assume that
+we know those variances based on past information and
+They're going to be 15.3 and 19.7. Ultimately, we wish to create
+a confidence interval for mu one minus mu to the difference between the means and
+one of our confidence intervals. The one that was the pooled T test
+was based on the populations having the same variances. So rather than make this
+confidence interval in this video, I want to make one for
+the ratio of the variances. So to see if we think that it's plausible
+that they're equal a confidence interval for the ratio sigma one
+squared over sigma two squared is again an interval of plausible values and
+if it contains the number one, then that's saying it is entirely
+plausible at least based on this sample, that signal one squared is equal to sigma
+two squared and that that ratio is one. And so if we can conclude that then
+we can go back to do our test about the difference between the means
+of the two populations. So, in order to draw this conclusion, I
+want to make a 99% confidence interval for the ratio sigma one square
+over sigma to square. Okay, so here are numbers. We had two samples, we had some sample
+means which are actually not needed. We have to sample sizes. We have two variances. These are sample variances and
+not true variances. That's why they're called
+ss instead of sigma's and they are observed rather than random. Which is why we're using
+lower case letters. I'm going to form our new F statistic,
+which is sigma two squared over signal one squared times the first sample
+variance Divided by the 2nd. And we get this and now I'm going to put this statistic
+between two appropriate critical values. So if you imagine an f distribution and
+capturing .99 area in the middle, Then we want to put area .01
+half of that in each tail. Which means we want .005 in the upper
+tail and .005 in the lower tail. So in our to get these critical values, the number that captures
+area .005 in the upper tail. We would take a critical value
+based on 17 and 14° of Freedom. That's the N 1 -1 in the end to -1. And we have the functions for
+our on the previous slide and we get these two cutoffs for
+this confidence interval. So I'm going to put our f statistic
+between these numbers and I'm going to move things around and
+solve down for sigma one squared over sigma
+to square in the middle. So that's the thing I wanted. The confidence interval for not sigma
+two squared over segment one square. So there's a little flipping involved. And when you solve you might end
+up flipping your inequalities. And we end up with a 99 confidence
+that are well given by .192.77 approx. This would be another good
+place to pause the video and make sure you can get down to that
+interval from these numbers because there's lots of things you can mess up
+by flipping and moving things around. So this interval does
+not include the # one. So it is an interval of
+plausible values for the ratio signal one squared
+over sigma two squared. And we're saying we don't think
+one is part of this interval. We're saying we don't think
+they're equal and in particular, it looks like our σ two squared
+is larger than sigma one square because all the values in this
+interval are less than one. Okay, so now, if we wanted to go on and
+actually compute the confidence interval for the difference between
+the two means of the two populations. I would not use the ruled two sample
+T test because it doesn't seem that the variances are equal. And these numbers, you might be tempted to
+change the level the confidence level for the interval to try to make
+this contain the number one, remember we call that data snooping,
+which is a bad idea, unethical. And let's not do it. Okay, next up the unleash every
+confidence interval we've computed so far can be looked up in a book or
+on the internet, but let's change that. Let's make ourselves masters of
+our own confidence in the roles. Let's create them from scratch,
+we don't need a formula in a box. So hopefully I will see
+you there In the next one.

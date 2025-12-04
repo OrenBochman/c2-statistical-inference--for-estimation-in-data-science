@@ -1,0 +1,251 @@
+Welcome back. In this video, we're going to talk
+about what is known as the invariance
+property of MLEs. This is going to be
+really useful to you if what you're estimating is
+not a parameter like Theta, but a function of
+the parameter like sine of Theta or Theta squared. You might be asking
+yourself if I want to estimate sine of Theta
+or Theta squared, can I just estimate
+Theta and plug it in to either of
+those functions? The answer is yes, you can, you always can. In fact, we have no
+definition for an estimator. If you want to estimate the
+true mean of a population and just want to jump
+up and down yelling 17 without looking at the data, then you have an estimator, but it's a horrible one. Unless the mean is 17. Suppose you have a random
+sample of size n from a distribution with a mean Mu and a variance Sigma squared. Suppose that we want to
+estimate Mu squared. We already know that an unbiased estimator of Mu is given by the
+sample mean x-bar. The question is, if we
+want to estimate not Mu, but Mu squared, should
+we square our estimator? The answer is maybe, depending on what you want. Now, you shouldn't
+do this if what you want is an unbiased estimator. Because expectations
+just don't play nice with non-linear functions. For example, in this case, the expected value of
+x-bar we can compute and we'll get Mu squared
+plus another term. By the way, to compute the expected value
+of anything squared, I'd like to take advantage
+of the fact that the variance of a
+random variable is the expected value of
+the variable squared minus the expected value of
+the variable all squared, and unravel this definition. We want a Mu squared and we
+got Mu squared plus Sigma squared over n, not Mu squared. But for a large sample, this term is disappearing, and we can say that
+this estimator actually is
+asymptotically unbiased. This is going to come up later in this module as a nice
+property of MLEs. But this is not
+necessarily the MLE here. It totally depends on the distribution which was
+never given for this problem. In this video, we're
+going to talk about the invariance property of MLEs. Let's do it by example. Suppose I have a random
+sample of size n from the exponential
+distribution with rate Lambda. Suppose that I want to find the maximum likelihood estimator, not of Lambda but
+of Lambda squared. This is a function of Lambda. You might recall that
+our generic notation for a function of the parameter
+is going to be a Tau. We were talking
+about Tau of Theta, now a Tau of Lambda. I'm going to let Tau of
+Lambda be Lambda squared. I'm suppressing the notation of that this Tau is a
+function of Lambda, and I'm going to
+reparameterize the PDF, and so it's a new function when reparameterized
+in terms of Tau. Tau is Lambda squared, which means Lambda is
+the square root of Tau. Now, this could have been
+problematic if Lambda could be negative because you'd get a
+plus or minus kind of thing. But in our parameter space
+for the exponential, Lambda has to be positive, so it's only a positive
+square root of Tau. We rewrote the PDF. We can use this PDF and
+find the MLE for Tau. If you go through
+the standard moves, making the joint PDF, multiplying a bunch
+of these together, dropping constants, taking logs. Maybe taking derivatives
+setting equal to 0, you will see that the MLE for Tau is 1 over x-bar squared. Now Tau is Lambda squared, and it's actually no coincidence that we're seeing our original
+MLE for Lambda squared. This is what is known as the
+invariance property of MLEs, and it means that if you want to estimate a function of
+a parameter using MLEs, you can find the MLE of the parameter and plug
+it into function. How cool is that? Let's look at this a little more
+closely and try to figure out why it's true. Here I've got the exponential PDF and I multiplied stuff
+out to get the joint PDF. Then this part right in here is going to be our likelihood. Let's call this
+capital L of Lambda. Now, I want to look at Tau, which is a Tau of Lambda, which is Lambda squared, and rewrite this likelihood
+in terms of the Taus. What is this function
+on the right-hand side? Is it L of Tau? No, L of Tau is this function
+with Tau plugged in. There is other function
+over here where the square roots involved
+is a different function. It's a new likelihood, we're going to call it L tilde. It's actually known as an
+induced likelihood function. But these guys are equal. The likelihood as a
+function of Lambda is equal to the induced likelihood
+as a function of Tau. Let's go about maximizing these. We're going to prove
+this invariance property in the case when Tau is invertible and the likelihood
+has a unique maximum. Actually a little more than that, the likelihood has
+unique critical value, a unique place where
+the derivative is zero because you could have multiple places if there
+is a max and say a min. Most of the nice known
+name distributions, normal-exponential,
+gamma, Poisson. All the things in
+the table I gave you actually have one and
+only one turning point, that is a maximum
+and not a minimum. I'm not saying this
+result is not true, if these conditions don't hold. But if they don't hold, the proof is a little
+more complicated than I want to go into in this video. Because we're assuming
+Tau is invertible, and that means that its
+derivative is either strictly positive or
+strictly negative. Let's take the derivative of this likelihood with
+respect to Theta. That's going to be
+the derivative of the L tilde of Tau of Theta
+with respect to Theta. Using a little chain rule
+action, we get this. Let's take out the
+middleman there. This is what we have
+and the derivative here is never zero because of our assumption that
+Tau is invertible. This's going to be strictly positive or strictly negative. We're interested in the value of Theta that makes the
+left-hand side zero, and the value of Tau of Theta that makes the
+right-hand side zero. I'm going to completely
+ignore that derivative, and note that the
+left-hand side is zero when we plug in Theta hat. The MLE for Theta, when we plug that in for Theta. That means that the
+right hand side also will have to be zero if
+we plug in Beta hat. On the other hand, if the derivative of the induced likelihood
+of Tau of Theta is zero, that is how we define
+the MLE for Tau. We get that the derivative of the induced likelihood is zero at both Tau of Theta hat and
+Tau of theta all [inaudible]. By our assumption if there was only one critical value here
+and that was a maximum, the thing we're plugging in, it has to be the same thing. In other words, we
+have the Tau of Theta hat is the same
+thing as Tau hat of Theta. There's second one here, which sometimes you might write
+with it just a giant hat. This is notation for the MLE for the entire
+function Tau of Theta, and on the left side we have the function Tau with
+the MLE plugged in. We have proven in a simplified setting the invariance
+property of MLEs. Let's look at an example. Suppose I have a random
+sample of size n from the Poisson distribution
+with parameter Lambda. Suppose I want to estimate the probability that any
+particular value in the sample, or future sample values
+is greater than zero. That is, I want to estimate a probability that I'm
+going to call little p, which is the probability
+that any one of these x_i are greater than 0. The common sense way to do this, which is actually
+a great way to do this one is to look in the sample and see the proportion of times we saw values
+greater than zero. That seems like a
+great estimator, and I'm going to call
+it a p hat sub one, it's our first of two estimators. For the next one we're
+going to look at the MLE. I want to do this more
+formally using MLE, and I want to use this
+invariance property. In fact, the thing
+we're trying to estimate is a function of Lambda. Although it didn't look
+like it from the beginning, but this is our Tau of Lambda. Starting with the
+Poisson distribution, writing down the PDF
+and the joint PDF, and then taking the likelihood, which we can drop constants
+of proportionality. I'm going to drop
+both, the indicators and this product of factorials because they don't
+involve Theta. That's nice. No one wants a product
+of factorials, and this is the first
+time we've actually dropped something
+rather significant. A likelihood, not V likelihood, because maybe you
+didn't drop these, or maybe you dropped
+one, and not the other. But A likelihood here is E _
+minus N Lambda times Lambda, raised to the sum of the X's. I know that doesn't really look that much like an exponent. That is a problem
+with my current font, that I'm going to improve. But yes, that is in the exponent. Here's the log-likelihood, and
+if we take the derivative, and set it equal to zero, we get the MLE for
+lambda, which is X bar. By the invariance
+property of MLEs, the MLE for our
+function of Lambda, are Tau of Lambda, which is 1 minus E _minus lambda, Is supposed to be Tau
+with the MLE plugged in. This is in fact the MLE
+for the probability, that any particular
+X is greater than 0. It looks a whole lot
+more complicated than the original estimator, which was just a
+proportion of times, we saw values greater than zero. But I'm going to call it P2
+hat for a second estimator, and now I want to ask
+which one is better? We may not be able
+to answer this, but we're going to try. For our first estimator if
+we take the expected value, we'll actually first of all, let me try to write the number of the
+values in the sample, greater than zero a
+little more formally. I am going to take a
+bunch of indicators. First indicator, a second
+indicator, a third indicator, and those are going to
+take the value one, If the first value
+in the sample is greater than zero,
+and zero otherwise. One if the second value in the sample is greater than zero, and zero otherwise, et cetera. I can write this number of values in the sample
+that's greater than zero, as a sum of indicators, and here I am dividing by N. Let's take the expected
+value of this estimator, and use the linear property of estimators to run
+the sum through, and pull the one over N out, and also use the fact that these X's are identically distributed, so all of these
+expectations are the same. I'm just going to
+look at one of them. Then I've got N of them here, but I have a one
+over N out front, so in total I have the expected
+value of one indicator. How do we take the expected
+value of an indicator? Regardless of the distribution, whether it's discrete
+or continuous, an indicator is always a nice simple discrete
+random variable, taking on just two
+values, zero and one. If I want the expected
+value of an indicator, I want zero times
+the probability, the indicator is 0 plus 1
+times the probability is 1.This zero part disappears because it was
+multiplied by zero, and we're left with the probability that
+the indicator is one. Now, this indicator
+random variable takes on the value one if, and only if the event
+being indicated, In this case, XI being
+greater than zero happens. It's equivalent, so this is the probability that XI
+is greater than zero, which is the thing we're
+trying to estimate. In fact, our first estimator are common sense
+estimator is in fact, an unbiased estimator of P. Now let's look
+at the second one. If we want to take the
+expected value of P2 hat, that is the expected value of 1 minus E to the negative X bar, and using the linear operator
+property of expectations, I can pull the expectation
+through like this, and now we have a difficult
+expectation to compute. I'm about to go through
+several methods of doing this, and none of them
+are very much fun. The answer in the end
+is going to be ugly. It's hard to follow a multi-step problem
+when it comes up, over a series of many slides. I don't think it's important. I think the important
+part here is to be able to follow the steps, to not be so concerned about the bigger
+picture for one time. My first method of this is to say that X bar is a function, of X1 through XN, so I should take the N-dimensional sum of this
+function of N variables, against the joint PDF
+for all of the X's. No, thank you. Here's
+a second method. I can use the fact that X
+bar is a sum of X's over N. We can use the fact that the sum of Poisson's
+is another Poisson, which we showed before using
+moment-generating functions. Really I wanted to find
+the expected value of e raised to the negative
+one over n times y. Now I have a single one
+dimensional random variable, which is a Poisson, and so I can put this
+nice simple function with a lowercase y in front of that
+Poisson, PMF and sum. This is also not pleasant. No, no thanks. Here's a third method
+of estimation. In Method 3, we're going to find the distribution of X bar. I'm going to let W be X bar. Then the probability
+that W equals W. Now W is still a
+discrete random variable, but it doesn't take on
+integer values anymore. This is the probability
+that one over n times the sum Y
+is equal to this little w. This is the
+probability that Y is equal to n times w. I
+do know the PDF for Y, the sum of the Poissons. I'm going to plug
+nw in to that PDF. The expected value here
+would be the sum of e to a negative w times the
+probability that W equals w. The biggest
+problem here, I see a couple of problems, but the biggest problem here
+is what are we summing over? We're summing over a strange set, 0,1 over n, 2 over n, 3 over n. Still discrete, but not something I want to do. Method Four. In this method, I'm going to consider
+the sum of the x's. I'm going to again call it Y. We know, again, that this is a Poisson random variable with
+parameters n times lambda. We know it's
+moment-generating function. Now, this expected value
+happens to be an e to a power, which almost looks like a moment-generating
+function itself. In fact, it is the moment-generating function
+of Y evaluated at negative 1 over n. Because I have a closed form expression for this moment-generating
+function, I can plug in -1 over
+n, and we get this. The expected value of
+our second estimator, our maximum likelihood
+estimator of p is this horrible thing. It's not one minus e
+to the minus lambda. We can see that it's
+kind of close if we use Taylor series expansions on these e's and expand some things out. We'll see that it's actually 1 minus e to the minus
+lambda multiplied by something that is less than 1 and decreasing as the
+sample size increases. But rather than do all that, that's really problem-specific
+and not going to help your overall statistical skills here. Let's look at a graph. Okay, so here, I have graphed our expectation as a
+function of lambda. I did it for a fixed
+sample of size five, and it is, this curve here, and then I graphed the true value that we
+want this curve to be. We wanted the
+expected value to be 1 minus e to the minus lambda
+and I graphed that here. You can see that there are
+close but not quite the same. Now if I up the sample
+size a little bit to 20, they're closer still, you almost can't tell
+them apart at this scale, and 20 is not huge
+for our sample size. In fact, if we keep
+increasing the sample size, then our estimator will
+be unbiased in the limit. We call that an asymptotically
+unbiased estimator. To sum it up, we
+have two estimators of P. One was biased
+and one was unbiased. Which one do we prefer? Don't be so quick to say
+you want the unbiased one. Remember this picture from
+earlier on in the last module. These are representing
+distributions like the shape of histograms for estimators for something that is trying
+to estimate a theta. The blue curve represents an
+estimator that is unbiased, and the red curve represents an estimator that has
+a little bit of bias. It doesn't sit quite on theta. But maybe it's better. The question is, do we want small variance versus unbiasness? Or maybe we don't care
+about the variance as much as how far off this estimator
+is from the true value. We're going to compute
+something called the mean squared error, which will give us a
+measure of this distance. We're going to do that
+in the next video, and at that time we'll also
+formalize our notion of bias. I will see you there.

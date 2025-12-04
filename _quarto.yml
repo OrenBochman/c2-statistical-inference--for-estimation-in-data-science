@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "c2-statistical-inference-for-estimation-in-data-science"
+  author: "Norah Jones"
+  date: "12/4/2025"
+  chapters:
+    - index.qmd
+    - notes/intro.qmd
+    - notes/summary.qmd
+    - notes/references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+

@@ -1,0 +1,217 @@
+In this video, we're
+going to be talking about some useful computational
+simplifications that you can use
+when computing that nasty Fisher information in
+the Cramer-Rao lower bound. Let's get started right away. Here is the Fisher information. The first computational
+simplification is not exactly one that
+you're going to want to use, it's something we're
+going to need to prove the other ones that
+you will want to use. That first simplification is that this expectation
+of the expression that looks like the
+Fisher information, but without the square is zero. Incidentally, this thing
+inside the brackets is known in statistics
+as a score function. Let's compute this expectation. The expected value
+of a derivative of a log of the joint pdf
+is going to be the integral of that
+expression against the joint pdf and integrated
+over all of the xs. This is again an
+N-dimensional integral, just not written with
+an integral signs so, the vector should
+tip you off to that. I'm just going to
+repeat that here. This is what we have and I
+can take that derivative. The derivative of the
+log of something is the derivative of the thing
+over the thing itself, where we get this, and then I get some cancellation of these
+two pdfs and we get this. If we pull that derivative
+outside the integral, which was something
+we assumed we could do when computing
+Cramer-Rao lower bounds, remember we had some requirements before we could apply
+this to a distribution. So assuming we can pull
+this derivative out, then I am taking the N-dimensional integral
+over the entire space, over all of the xs
+of the joint pdf, and that integrates to one. The derivative is zero
+and we have proven our first computational
+simplification, or the Cramer-Rao lower bound. Next up, computational
+simplification number 2 is that, instead of squaring
+this expression in here and taking
+the expectation, you can actually not square it, use a second derivative and
+put a negative out front. Often a second derivative
+makes a problem easier, but sometimes it makes
+a problem harder. So it all depends
+on your problem, whether or not you
+want to use this. I'm going to start
+with our property 1. This is the expected value of
+the score function is zero, written out in terms
+of an integral, and I'm going to
+take the derivative with respect to
+Theta on both sides. Now on the left side, if I take the derivative, it will come inside
+that integral and I got a product of a derivative
+of a log and a pdf. So I'm going to do a
+product rule which gives me the original
+derivative of the log, times the derivative
+of the joint pdf, plus the second
+derivative of the log, times the original joint pdf. I've run the expectations across and so check
+out this term up here. This derivative of f could be cleverly rewritten
+as the derivative of the log of f times f. Because the derivative of the log of f is the derivative of f over f, so by multiplying by
+this additional f, we can get back to
+the derivative of f. That makes this
+entire first integral, once you put that derivative
+of that login there, you've got another one out front. You've got that derivative
+of that log squared times a pdf n-integrated and that is how you compute the expected value of that derivative of
+that log squared. Now, this other term
+is already nice and in front of a joint pdf. This integral already represents
+an expectation without any trickery and it is the expected value of
+the second derivative. Over here we have the
+Fisher information. If we move this term to the
+right side of this equation, we have what we wanted to show. That is that the Fisher
+information is the negative of the expected value of the second derivative of
+the log of the joint pdf. Computational
+simplification number 3, I think you're really
+going to like, and that is that, if
+you have iid data, which is our assumption
+throughout most of this course, then you can compute the one-dimensional
+Fisher information. I haven't yet talked
+about this information, but the notation I_n of Theta
+is telling you two things, it's a function of
+Theta and it depends on n. N is our sample size. I'm saying that you could
+work with a sample of size 1 and then you won't
+have vectors anywhere. The expectations
+will be much easier. If things are iid, you can find the one-dimensional Fisher information
+and multiply by n to get the n-dimensional
+Fisher information. Let's prove it. First our expression for
+the Fisher information, and I am going to write the joint PDF as the product
+of the individual PDFs. Then note that the log of a
+product is the sum of logs. Now, I'm going to take
+the derivative inside the sum and I want
+to square this. I'm going to write
+out this sum twice. One with an i index and
+one with a j index. Note that we can
+pull that one with the j index into the i sum. When we do, we get a double sum. Now I can pull these two sums out of
+the expectation because expectation is a linear operator and it moves across sums, even lots of sums, and we get this. Now we need to find the
+expected value of this term. I've got two cases to consider, one is when i is not equal to j, then X_i is independent of X_j. This function of X_i is independent of this
+function of X_j. That means we get to distribute the expectation across and each one of them alone has expectation zero by property 1. In this double sum, that
+is a whole lot of zeros. You can imagine
+storing the indices in a matrix with row names
+and column names, and each entry of the matrix
+is one term in the sum. We have shown that every
+entry off the diagonal is zero and that leaves us with n entries
+along the diagonal. What's left is a single
+sum as i goes from one to n of the term
+where j is equal to i, so I get this guy squared. Then because the Xs are iid, all of these expectations
+are the same. The expected value
+of the square of the derivative of the log
+of f with X_1 plugged in is the same as all of
+that with X_2 plugged in is the same as all of
+that with X_3 plugged in. All of these, we
+have n of them in total that we're summing, so the result here is n times
+the single expectation, which is in fact what
+we wanted to show. This is n times the one-dimensional
+Fisher information. Let's look at an example. I'm going to do this
+the long way and both other ways
+actually. Let's go. Suppose I have X_1 through X_n iid exponential with
+rate Lambda and I want the Cramer-Rao
+lower bound for the variance of all unbiased
+estimators of Lambda. I'm going to look at the
+original Fisher information. By the way, our target Lambda, the thing we're trying to
+estimate is Lambda itself, which makes the numerator of
+the Cramer-Rao lower bound one and we need to find the Fisher information
+for the denominator. I'm going to write
+down the PDF where the exponential and then the
+joint PDF that I get by multiplying the individual PDFs and we're going to be taking
+logs and derivatives. We have all ready talked
+about how you don't take logs and derivatives
+of indicators. If anything, just keep
+the indicators there as they are and take
+logs and derivatives, they're defining a
+piecewise-defined function for you. We saw that in the statement and proof of the Cramer-Rao
+lower bound, that we are not
+allowed to apply it to any functions where the
+parameters are in the indicators. This will violate
+the property that we used to pull derivatives inside
+and outside of integrals. That's really the only
+time when you want to keep track of those indicators if they have more information
+about Theta. I'm just going to drop them. The log of the joint
+PDF looks like this. The product turned into a sum and the exponents came down. The first derivative with respect to Lambda
+looks like this. Without using any
+computational simplifications, I would want to put the
+random variables in, that is capital Xs, square the whole thing
+and take the expectation. I rewrote it like this. I just re-ordered things. The sum of the Xs is a new random variable
+that we can call Y. We know that the sum of n exponentials independent
+and identically distributed with great lambda has a gamma distribution with
+parameters n and lambda, and we know the mean of
+a gamma distribution. It's first parameter over
+its second parameter. What is sitting
+right here is really the expected value of a Gamma random variable minus
+its mean squared, which is the variance, and you can look up or recall
+the variance of a Gamma. But we're done but we have computed the
+Fisher information. The Cramer-Rao lower bound is equal to the derivative of tau, which was just lambda. The derivative with respect
+to lambda gives you one, and then the Fisher information, and so we get lambda squared
+over n. Alternatively, if you want to use one of our computational
+simplifications. Let's look at the
+second derivative. From the work we've already done, we know the first derivative
+of the log of the joint pdf, so if I take a second derivative with respect to
+lambda, we get this, and now the Fisher information is supposed to equal the negative
+of the expected value of the second
+derivative but there's no x's in there,
+and that's awesome. That means we're taking
+an expected value of something non-random
+or constant, and so the expectation is just the n over lambda
+squared itself, and we have that
+negative out front. We didn't have to do any
+expectations in this problem, and that's because
+taking the second derivative actually got rid of all the randomness and really simplified
+our expressions. In some cases it's going to
+make your expression worse, but in a lot of cases, it's going to make
+it a lot better. The Fisher information has the negative of the expected value of the second derivative
+of the log of the joint PDF is again
+n over lambda squared, and that makes the Cramer-Rao
+lower bound one over n over lambda squared or lambda
+squared over n. Now, either of these
+methods could have been done with a single x, not a whole vector, and I'm going to
+leave that to you. We've actually already
+done the hard work, and in this case you
+would work directly with the exponential distribution and never have to bump
+up to the gamma. But while we're here, I want to ask you
+one more question, and that is with this random
+sample from the exponential, What is the Cramer Rao lower
+bound of the variance of all unbiased estimators of
+each of the negative lambda? This is a function
+of lambda that we want the Cramer-Rao
+lower bound for. Our tau of lambda is e
+to the negative lambda. But in the Cramer-Rao
+lower bound, this only comes in,
+in the numerator. The denominator is
+already computed, so we are pretty much done if we can take the derivative
+of e to the minus lambda, plug it in, square it, and this is our resulting
+Cramer-Rao lower bound where the variance of all
+unbiased estimators of e to the minus lambda. Why might we care about
+e to the minus lambda? The CDF of the exponential
+with rate lambda is one minus e to the
+minus lambda x. The CDF evaluated at one is one minus e
+to the minus lambda, and if you take one minus that, you get e to the
+minus lambda and so, this represents the
+probability that any particular x is
+greater than one. We haven't done it, but
+we've already estimated a probability for a
+Poisson distribution, and if we were to do
+the same thing for this probability for the
+exponential distribution, we now have some handle on the lowest the variance
+can possibly be. One of the best reasons
+to use MLEs is because they have great, large
+sample properties. We already saw one of these and that was back
+when we were finding MLEs for a function of
+lambda in the Poisson case. We found the MLE and we
+saw that it was biased. But we graphed its expectation as a function of lambda against
+the true expectation, what we should get
+if it was unbiased, and we saw that it was
+getting closer to what it should be as the sample
+size gets large, and there's actually
+math behind that. Though we say that it's
+asymptotically unbiased and under some very mild conditions
+that apply to almost all of the nice known
+named distributions, the usual suspects, we will have that all MLEs are
+asymptotically unbiased. We will also have other
+properties of MLEs. One of them is going to involve the Cramer-Rao
+lower bound, which is the entire
+point of this video. But you're going to have
+to wait for the next one, so I will see you there.

@@ -1,0 +1,279 @@
+Welcome back. In
+our last video we talked about what it means
+or one thing it could possibly mean when you
+say that a sequence of random variables is converging to another random variable. We talked about the concept of convergence in probability. In this video,
+we're going to talk about a different type of convergence known as
+convergence in distribution. We're also going to review
+a bunch of properties of everyone's favorite bell
+curve distribution, the normal distribution. We're going to define
+what it means for a random variable to be
+"Asymptotically" normal. First up, I want to remind you of something we talked about back in module 1 when we were talking about
+moment-generating functions. I said that you couldn't use moment-generating
+functions to show that any linear combination of normal random variables
+is again normal. In fact, these random variables don't have to be independent, and they don't have to be
+identically distributed. But what's up with that? I just said they were all normal. Well, if you have
+two random variables that are normally distributed, but they have different means, or maybe different variances, then they're not
+identically distributed even though they both have
+a normal distribution. Any linear combination
+of normals is normal. We can also show, using
+moment-generating functions, that a simple linear
+transformation of a single normal random
+variable is again normal. In particular, if we take a random variable
+X that is normally distributed with mean mu
+and variance sigma squared, we can multiply, add, divide, subtract by any constant we want, and it's still normal. I define a new random variable z to be x minus mu over sigma. It's easy to take the
+expectation of this, run it through, pull
+the constants through, and see that z has
+mean 0 and variance 1, z has a normal distribution
+with mean 0 and variance 1. We call this the standard
+normal distribution, and we call z a standard
+normal random variable. We can go the other way, starting with a standard
+normal random variable, we can multiply by a
+standard deviation sigma, and add a mean mu to produce a normal random variable with that mean and standard deviation. Just to recap, on the top here, I have the generic
+normal distribution PDF, and on the bottom, I have the standard
+normal distribution PDF. Unfortunately for both of these, they're not easy to
+integrate in closed-form, and we cannot figure out a closed-form expression for the cumulative
+distribution function. We're going to be talking
+about how to find probabilities for standard
+normal random variables. Then we're going to use
+transformations to use that skill to find probabilities for normal random variables
+that are not standard normal. The standard normal
+random variable, its cdf is so important in statistics that it
+gets its own name. It's not usually called capital
+F like every other cdf, but instead capital phi. This can be integrated
+numerically. Now historically, people have slaved away
+at these integrals, and then they've
+tabulated the answers. Statisticians for
+100 years have been looking up the tabulated
+values in books. But now we can do
+it with software. If you go into R, and you want to find
+the probability, say that a standard normal
+is less than or equal to 2, you would type pnorm(2). Here's another example
+of using pnorm. I don't know if you can quite see the numbers on this picture, but down on the horizontal axis, I have put the number 1.23, and to the left, I am claiming that this has an area of approximately 0.891. In fact, if you go into R
+and type pnorm of 1.23, it will give you
+the number 0.891. Let's now talk about
+finding probabilities for normal random variables that
+are not standard normal. The game we're going to
+play is to standardize them so that we can use
+standard normal tables, or software like art,
+you find probabilities. In this case, I'm looking at
+a random variable X that's normally distributed with
+mean 1 and variance 4. I'd like to find the
+probability that X is less than or equal to 2. I'm going to subtract the mean and divide by
+the standard deviation. In this expression, on the left side I did
+it symbolically, while on the right
+side I did it with the actual numbers for the mean and the
+standard deviation. This random variable on the left is standard normal
+and we can call it z, and on the right, that 2 minus 1 over the square
+root of 4 is 1.5, so we get down to this. Then looking at a
+table, or say in R, typing pnorm of 0.5, we will get approximately 0.6915. In my second example, I'd like to talk about
+finding probabilities for sample means from
+normal random samples. The reason this is
+so important is because we're going
+to see in this video. Well, first of all, a sample mean of normal random variables is normal because it's a linear
+combination of normals. But we're going to see
+in this video that a lot of sample means are approximately normal if the
+sample size is large enough, regardless of what distribution you started with for
+the individual Xs. Let's look at the
+probability that X bar is less than
+or equal to two. When we take a random
+sample of size three from the normal distribution with mean one and variance
+sigma squared. I'm going to subtract the mean, so we already know that X bar
+has a normal distribution, we know that its mean is the mean for one of
+them, which is one. We know that its variance is the variance for
+one of them over n, which in this case
+is four over three. If I want to find
+this probability, I'm going to subtract
+the mean and divide by the standard deviation. Again, symbolically
+on the left side and numerically on
+the right side. Now the thing on the left side is a standard normal random
+variable that I can call Z, and on the right side we get the square root of
+three over two. If I go into our n-type
+p-norm open parenthesis, square root of three over
+two close parentheses, I get that this probability
+is approximately 0.8068. Now after that brief review of some very simple
+normal computations, we're ready to talk about the idea of convergence
+in distribution. Suppose you have a sequence
+of random variables, X_1, X_2, X_3, et cetera, and they each have their own CDF, capital F_1, capital F_2, capital F_3, et cetera. Suppose we have another
+random variable, X with its own CDF
+capital F. We say that the sequence converges in distribution to this
+random variable X, if the CDFs are converging to the CDF for the
+random variable X. I put it in this line about all points
+of continuity of F, I put it there for the record, but I don't want you to worry
+about it in this course. Sometimes CDFs have weird
+discontinuities and jumps, and that line is to
+take care of that, but I don't think we'll
+be seeing much of that. This is a really weak
+form of convergence. The random variables
+are not getting close in really any sense. It's their distributions
+that are getting close. In the case of conversions
+in distribution of X_n to X, we write X_n, right arrow X, with a letter d on the arrow. I tend to use a lowercase d, so as not to confuse it with the letter P when
+I'm writing fast. Again, the distributions
+are getting close. As an example, if
+I have a sequence of independent or not
+random variables, X_1, X_2, X_3, with differing normal
+distributions in this way, so they're all going to
+have the same variance, but the means are going
+to be going down. The mean of the first
+one is going to be one, the mean of the second
+one is going to be half, the mean of the third
+one is going to be a third, et cetera. Then, even though we haven't
+shown this formerly, it's not hard to believe that
+these X_n are converging in distribution to a standard normal because 1/n
+is going to zero. But imagine those curves, mention those normal curves
+that are moving towards zero. In each case we're looking at a random variable that comes
+from that distribution, from the histogram related
+to each bell-curve. Those can be all over the place. The normal distribution
+has infinite support, even if you're talking about a standard normal random
+variable with mean zero, technically it's
+possible to produce values that are really
+high and really low, and nowhere near zero. Again, this is the idea that
+the random variables and even the values that
+are produced are not getting close in any sense. It's their distributions
+that are getting close. That's why this is
+called a weak form of convergence and it's also called that because we
+have certain implications. One is that if we
+have a sequence of random variables converges in probability to another
+random variable, then we can show that they
+must converge in distribution, but not the other way around. Because convergence
+in distribution is weaker and not enough to imply the stronger form of
+convergence in probability. Just for the record, when we talked about
+convergence in probability, we talked about
+something known as the Weak Law of Large
+Numbers and that might seem weirdly named at this point
+because I just said that convergence in probability is a stronger type of convergence, but the name Weak Law of Large Numbers comes from the
+fact that convergence in probability is in
+fact weaker than another form of convergence that we're not talking
+about in this course. I would like to look
+at some sample means. Imagine I have a
+random sample of size n from the exponential
+distribution with rate lambda. The mean of this distribution
+is one over lambda. If I take a sample of size n and compute the sample mean
+X-bar and if I got a new sample and do it again
+and a new sample and did it again and I collected all of those sample means
+and made a histogram, it's going to have
+a certain shape. In this picture, I took
+a sample of size 1, which means my sample
+means are averages of one number and
+those come directly from the exponential
+distribution with rate lambda. Basically when I make a
+histogram of sample means here, I'm really making a
+histogram of a list of numbers from the exponential
+rate lambda distribution. I did this 10,000 times and I got a nice exponential
+looking picture. Now let's take 10,000
+samples of size 2 from this exponential
+distribution and average them. We'll do that again and
+again and we'll collect 10,000 sample means
+and make a histogram. Those look like this. You can see that
+original bar is starting to drop down and we're
+getting a hump shape now. It's not quite clear yet
+from what we're seeing here, but things are changing. Let's look at 10,000 sample
+means of samples of size 3. We're seeing that the
+shape evolve even more, size 4, size 5. Let's jump ahead a
+little bit, size 10, size 100, size 1,000, samples of size 10,000. This is starting to look
+like a bell curve and there's theory behind that and that's what we're
+going to talk about next. The Central Limit Theorem is really famous theorem
+that is really central to so many
+statistical computations. This says that if
+you have a sequence of usually IID random variables, although there's
+different versions of the Central Limit Theorem, you have a sequence of
+IID random variables with a common mean mu and a common finite
+variance Sigma squared. By the way, I've
+written this sample mean a little differently
+on this slide. Usually it's just X-bar. In this case, I've written
+X-bar_n and the reason is there's an n hidden in there and we're going
+to start taking limits. I want to really stress
+the dependence on n, but this is the same
+old sample mean. We've just added an n subscript. The Central Limit Theorem
+says with this setup, we can show that X-bar
+minus its mean divided its standard deviation
+is converging in distribution to the standard
+normal distribution. Why is this useful to us, because we can start with almost any distribution like the exponential and if we are
+trying to estimate the mean, and we use the sample mean, if we have a large enough sample, that sample mean is going to behave like a normal
+random variable. We can use some of the
+vast theory that we are establishing for normal
+random variables to say things about that
+exponential sample mean. By the way a large sample is typically considered
+n greater than 30, or some textbooks
+greater than 40. Frankly I think these are both miserable
+approximations for infinity, but in this course we're going to go with n greater than 30. Now to be honest with you, the rate of convergence, the amount of time it takes for your sampling distribution for X-bar to turn into that bell, it's really
+distributions specific. I can't give you general
+advice at this time. Here is another
+definition for you. We say that a random
+variable X_n, which is a member of a
+sequence indexed by n, is asymptotically normal if there exists sequences of real
+numbers a_n's and b_n's, such that if you standardize this random
+variable X_n in this way, it will converge in
+distribution to a normal 0, 1. Another way to write down this
+fact is to say that X_n is asymptotically normal
+with asymptotic mean a_n, and asymptotic variance b_n
+and we usually write it with a little squiggly line and write the abbreviation for asymptotic
+over that squiggly line. Now, this is not the
+same thing as saying convergence in distribution
+to that normal. The normal with mean
+a_n and variance b_n. That wouldn't make any sense because you would have n's on the right-hand side of your limits and n is supposed to have
+gone off to infinity. You really need
+the a_n and b_n on the left side in order to talk about the limit going
+to something normal. With this new definition
+and notation, the Central Limit Theorem
+is telling us if we have an IID samples from some distribution with mean Mu and finite variance
+sigma squared, that the sample mean
+is asymptotically normal and it's
+asymptotic mean is Mu and its asymptotic
+variance is sigma squared over n.
+Let's do an example. Suppose that x-bar is the sample mean for a sample of size 100 from the Gamma distribution with parameter Alpha equals
+three and Beta equals two. I want to find the
+approximate probability that x-bar is greater than 1.49. You could approach this
+exactly and I would say then that x bar is 1 over 100 times
+the sum of 100 of the x's. I would move that 1 over 100 to the other side of the probability and look at the probability that the sum of 100 x's
+is greater than 149. Then that sum has a nice Gamma distribution
+with an integer alpha, which means we could
+integrate by parts 100 times. But that seems like
+an awful lot of work and I've only asked
+for an approximation. The sample size is large by most people's standards
+so let's standardize it, turn it into a standard normal and compute a
+probability that way. Now, we already know that the
+mean for the sample mean, the expected value for
+the sample mean is the same as the mean for any one
+of the random variables. For the Gamma distribution, that's given by alpha over beta, which are 3 and 2 respectively
+and the variance for x-bar is the variance for anyone divided by
+n, the sample size. The variance for a
+Gamma distribution random variable is alpha
+over beta squared. In the end we get the variance
+for x bar is 3 over 400. By the central limit theorem, x-bar is approximately
+normally distributed and we know its exact mean
+and its exact variance. We're going to standardize this to compute
+the probability we want and that is the probability that x-bar
+is greater than 1.4. I think I asked for 1.49
+but let us roll with it. We're going for 1.4. As usual, on the left side, I standardized symbolically
+and on the right side, I standardize with the actual
+numbers, three halves, which is 1.5, and the square
+root of the variance. The thing on the
+left, we usually now call z a standard normal. But because our sample
+size is not infinite, we're not exactly seeing
+that limiting result. I'm going to say this is
+approximately the probability that z is greater than the
+number on the right side, which comes out to negative 1.15. If you look this up
+or check this out in R you'll see that it's 0.87. How did I get this? The p-norm command in R gives us probabilities
+for a less than or equal to and here we
+want the probability that z is greater
+than negative 1.15. Turn it around and look at
+the complement of its event. This is one minus the probability that Z
+is less than or equal to negative 1.15 and
+that is the CDF. That part is the CDF
+evaluated at negative 1.15. Now you can put that into the p-norm function and we
+get approximately 0.8749, which I rounded off in the
+previous slide to 0.87. I have been subtracting
+the mean for x-bar and dividing by the
+standard deviation for x-bar. But most of the time
+you're not going to see something that
+looks like this, but rather something
+that looks like this. That is using the mean
+and standard deviation of the original distribution, translating the mean
+and variance for x bar into their expressions involving the original
+mean and variance. Very often you're going
+to see something like this when someone
+is standardizing a sample mean of a normal distribution or something that's at
+least close to normal. We're finally ready
+to get back to maximum likelihood estimation and we took a rather long detour, but I think it's
+going to be worth it. Let me know what you
+think in the next one.

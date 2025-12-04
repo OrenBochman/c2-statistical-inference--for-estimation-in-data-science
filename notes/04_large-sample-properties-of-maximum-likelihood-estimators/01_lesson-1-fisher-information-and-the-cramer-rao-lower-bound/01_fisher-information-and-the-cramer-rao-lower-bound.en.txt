@@ -1,0 +1,272 @@
+Welcome back. In this module, well we're going to be
+discussing the concepts of the Cramer-Rao Lower Bound
+and the Fisher information. These are useful things
+for us to evaluate the quality of an estimator
+and in particular, the large sample properties of maximum likelihood estimators. This video is going to
+be a little more intense than the others and a little
+mathematically hairy, but hang in there,
+because in the end, it's going to be just fine. The Cramer-Rao Lower Bound, which is usually
+abbreviated by CRLB, says that if you have a
+random sample X_1 through Xn from some distribution which depends on a
+parameter theta, and you want to estimate
+some function tau of theta that you can come
+up with an estimator, I can come with an estimator and this guy over
+here can come up with an estimator and they
+could all be unbiased. Who wins? Who has
+the lowest variance? We can compare our variances, but I can tell you or Cramer
+and Rao can tell you that the variance cannot go
+any lower than this. This thing on the
+right here is known as the Cramer-Rao lower bound. I will define the denominator, but it is the lower
+bound on the variance of all unbiased estimators of
+a function tau of theta. It's not necessarily
+a sharp bound, but most of the time
+it's pretty decent. For example, I could define my own lower-bound and
+throw my name on it, and that's going to be zero. Zero is not a useful lower bound. Of course all variances are greater than
+or equal to zero, that doesn't mean I can find an estimator with variance zero, and the same thing is true for the Cramer-Rao lower bound, but it's a lot better than zero. The denominator here, I've
+denoted by an I sub n of theta is known as the
+Fisher information. Now, information theory is a huge subject that could
+have its own course, or two or three. But the short story is, it is the part of this
+Cramer-Rao Lower Bound that contains all of the information
+from the random sample. If you're trying to
+estimate a function of theta and you compute a
+Cramer- Rao Lower Bound, your work is going to go
+into this denominator. Now if you want to estimate a different function of theta, you don't have to
+recompute the denominator, that different tau of theta will only change the numerator. Our estimator of tau of theta is a random variable and
+it's a statistic. It's something computed from
+data and random variables as they're usually denoted
+by capital roman letters. I'm going to use a
+T because it's like a tau to denote our estimator, which is some
+function of the data. With this notation,
+we can rewrite the Cramer-Rao Lower Bound
+in terms of the variance for T. The proof that the Cramer-Rao Lower Bound is in fact a lower bound
+for the variance of all possible unbiased estimators is almost a direct result of a very famous inequality in mathematics known as the
+Cauchy-Schwarz inequality. I have written it
+here in terms of integrals of two functions f and h. This has
+nothing to do with probability and
+these are not PDFs. There is a some version, so a discrete version of the
+Cauchy-Schwarz inequality, and we're going to see
+that there's actually a probabilistic version
+in terms of expectations. How do we prove this inequality? Consider if you will, the integral of this
+weird integrand. Now, note that it is
+something squared, so it is non-negative, which means the double
+integral here is non-negative. I'm going to turn this
+around with the zero over here and then expand
+this integrant out. I'm going to do that by squaring the left-hand side and running
+the integrals through. Here are the three
+terms we get from squaring that integrand and
+collecting the cross terms. There's two of those. The first thing you
+want to note is that the first and third integrals
+are exactly the same. These x's and y's, these are dummy variables. They could be u's and v's. Similarly, the x's could
+be turned into y's, if the y's were turned into x's. It doesn't matter, these
+are the same integral. Let's put them together. Here's what we have now, this quantity is
+greater than zero. Consider the bottom integral. I'm going to look at this
+one a little more closely. I'm integrating with respect to x first, that's not important. You could have done this dy dx. But let's go with
+my integral here. Integrating with
+respect to X first, I can pull the Y stuff
+out of the X integral. When I do, I see that I just have an integral involving X contained in the
+integral involving Y, which I can pull all
+the way out front. Then we're left with two of
+the same exact integrals. Again, thinking dummy variables, let these be U's, or, V's or let the Y's be X's. These are exactly the same
+and this is one-term squared. Where are we now in our proof? We have written
+this term up here, like this. Let's keep going. Here's what we have
+now. Moving this term to the left-hand side of the inequality and
+canceling the 2s, we have this, and then I can write out this double integral as a
+product of integrals. I can do that in
+exactly the same way I did on the previous slide. I can pull the Y stuff
+out of the X integral, and then just isolate
+the Y integral, and then pull that all the
+way outside the X integral. This is what we wanted to show. You'll see in this last line, I wrote it with
+the same variable, again, just a variable
+of integration, but this left side
+less than or equal to this right side is the
+Cauchy-Schwarz inequality. Now, as I mentioned before, this holds with sums, there is the discrete
+version of this, and this holds for expectations. That can be shown by just
+basically doing the same proof, but replacing the d_x
+with an F of X d_x. If you keep an F of
+X coming along for the ride and stuck
+with the differential, then these are going
+to be expectations. As a reminder, our Cramer-Rao Lower Bound
+looks like this, it's a lower bound
+on the variance of all possible unbiased
+estimators of Tau of Theta. We'll be done with proving
+that this is true if we can show that the derivative of Tau can be factored like this. Why is that true? Well, I've two things here, that's four, two things. I need to prove to you
+that this line is true. Then if it's true, here's why this will prove
+the Cramer-Rao Lower Bound. If I take the expectation
+of both sides of this, and then note that on the left I don't have
+any random variables, it's a constant, so the
+expectation can be dropped. Now if I square both sides, then I can use the Cauchy-Schwarz
+inequality to say that the derivative of Tau
+with respect to Theta squared is less than or equal to this product of expectations. This first expectation is
+the variance of T. Why? Because we did say that T is an unbiased estimator of Tau. So Tau is the mean for T, a random variable, and that's
+how you write the variance. This other term over here
+is the Fisher information. You can get the Cramer-Rao
+Lower Bound on the variance by dividing the Fisher information over to the left-hand side. You have to be
+careful about that. Now if the Fisher information
+is zero or infinite, then you can't do that division. There's going to be
+some restrictions on PDFs or distributions that the Cramer-Rao Lower
+Bound applies to. We'll see them as we prove
+our original statement, and that is, that the derivative of Tau
+is this expression. Let's look at the
+derivative of Tau. It's a derivative with
+respect to Theta, and Tau is the expected value
+of the random variable T, because T was assumed to be an unbiased estimator
+of Tau of Theta. Now this expectation is an integral of the function t of the little x's against the joint
+PDF of the little x's. This vector over my d_x is saying to you that this is actually
+an n dimensional integral. Really I should have n
+integral symbols in a row, but that's contained
+in this notation. Now, looking at what
+I wanted to see, I would like to see up here, I get T minus Tau. I'm going to write this
+integral like this. This looks a little bizarre
+but over here I have the integral of a joint PDF
+over all of the x's, this is another n dimensional
+integral and that is one, and the derivative of one with
+respect to Theta is zero. Over here I've just
+subtracted zero times Tau, so I have the same thing
+that I had in a line above, but I can pull these together
+into a single integral. Here it is again, and we want to see
+this expectation. Then we can apply the
+Cauchy-Schwarz inequality and we will have proven the
+Cramer-Rao Lower Bound. What do I need to
+have an expectation? I need to have some function multiplied by the PDF,
+and integrate it. I don't see that
+here because I do not have the PDF at the
+end of this integral, I have the derivative of the PDF. However, note that
+the derivative of this PDF can be written as the derivative of
+the log of the PDF, times the PDF itself. Usually, the other way is
+the way we think about this, the derivative of the
+log of a function is the derivative of the function
+over the function itself. That relationship has been unraveled and written
+in a different way. This actually brings up another restriction for our
+Cramer-Rao lower-bound. That is, that the derivative
+of this log must exist. I'm going to take this, and plug it into this, and that gets us this. Go ahead, pause the video, take a moment to
+write that out and convince yourself that we have actually shown that Tau prime of Theta is equal to
+this expectation. Now we needed some things
+to make our steps valid. We already talked about the Fisher information
+that's down here, being between 0 and infinity
+so that we can divide by, and not get something
+undefined or otherwise weird. We needed the derivative
+of a log to exist, and several times in this proof, I interchanged the
+derivative with respect to Theta
+with this integral. Now I haven't been writing
+the limits of integration, but they are supposed to be
+because their expectations, those integrals are supposed
+to go over the entire phase. If you have a phase where the parameter defines the support of the distribution, for example, the uniform distribution
+on 0 to Theta, then this integral is going
+to go from 0 to Theta, and I can't bring the dd
+Theta past that integral, if itself involves the Theta. This requirement does not hold whenever the perimeter is in the support or indicator
+for the distribution. One example is the uniform, and this one is a pretty big deal in terms
+of limiting its use, the others not so much. I gave you these restrictions
+just for the record, I don't want you to
+worry about them, and in this course I'm not
+going to be asking you to find a Cramer-Rao lower-bound
+when it does not apply. Let's do an example.
+Suppose I have X1 through Xn IID from the Bernoulli
+distribution with parameter p, and suppose I want to find
+the Cramer-Rao lower bound, on the variance of all unbiased estimators of
+p. Now that's a mouthful, so often people say find the
+Cramer-Rao lower bound for p. But you must keep in mind that you're not
+actually bounding p, you're bounding the variance
+of all unbiased estimators. Saying you want the Cramer-Rao lower bound for p
+is just a shortcut, but it's not literally correct. Here my Theta is p, and the function that we want to estimate of p is p itself, so Tau of p is p, and that means that
+the derivative for our numerator is going
+to be one squared, and so most of the work is in the information in
+the denominator. Let's go for the denominator. Let's go for the
+Fisher information. First thing I'm going
+to write down is the PDF for the
+Bernoulli distribution, and then the joint PDF for any of them by multiplying
+them together. We're going to take
+logs and derivatives, and the indicators are
+just placeholders. As we've seen in previous videos, it's like a piecewise-defined
+function where you have x squared when x
+is between 0 and 1, and x plus 1 when x
+is greater than 1. If you take the log, you
+get the log of x squared, or the log of x plus 1, but you don't take the
+log of those conditions. I'm going to just sort of ignore these indicators because
+really the only time they're relevant is when they contain the
+unknown parameter. We've already said
+that in that case the Cramer-Rao lower bound
+is not apply anyway, so I'm going to ignore
+the Indicators. Here is the log of the joint PDF, and here is the derivative
+with respect to p. This looks very close to the sequence of
+steps we took when we were finding maximum
+likelihood estimators. We took the likelihood, we took the log of
+the likelihood, we took the derivative, and we set it equal to 0. But here, we're not trying to find a maximum
+likelihood estimator, so I'm not going to
+set this equal to 0, I'm going to keep pushing towards that expression in the
+Fisher information. Before I square this and
+put capital letters in, so randomness is in there
+and take the expectation, I want to simplify
+this as much as I can, so I got a common denominator
+and it turned into this, and now we're going to put
+the random variables in. We're going to put
+the capital Xs in. We're going to
+square it and we're going to take its expectation. Note that if we start
+with Bernoulli's, the sum of n Bernoulli's has the binomial distribution
+with parameters n and p. The Fisher information was defined as this expectation, and we've just worked out the
+stuff in the parentheses, and on the bottom, I have some constants, let me square this fraction
+by squaring the top and bottom and drag
+the bottom outside. What I'm left with is the
+expected value of Y minus np, notice that y again
+is binomial and that n times p is the mean of
+the binomial distribution. So this expression right here is the variance of the
+binomial distribution, which you can recall or lookup. But that variance is n times p times one minus p. If we
+plug that in and we simplify, we get this expression for
+our Fisher information, don't forget, we don't just
+want the Fisher information, but the entire
+Cramér–Rao lower bound. In this example, our
+tau of e is p itself, so this derivative is one, and we found the
+Fisher information. So I'm going to
+plug this stuff in, and our Cramér–Rao lower
+bound is e times one minus p over n. Our first
+Cramér–Rao Lower Bound. So this is saying that
+no matter how you try to estimate p in the
+Bernoulli distribution, if you have an
+unbiased estimator, its variance cannot
+go lower than this. Let's talk about an
+unbiased estimator. The mean of the Bernoulli
+distribution is p and the variance is
+p times one minus p, and so we know an
+unbiased estimator for p the mean of this distribution
+is given by x-bar, and we know the
+variance for x bar, which is given by the variance of one of them divided by n, and the variance
+for one of them is p times one minus p.
+So the variance for this unbiased estimator for P actually equals the
+Cramér–Rao lower bound. We say it's variance achieves
+the Cramér–Rao lower bound, and this means that x bar is not only an unbiased
+estimator of p, but that we can't do better
+in terms of variants. In fact, this estimator
+for p is something known as the uniformly minimum
+variance unbiased estimator, which I'm going to touch on
+here in there in this course, but we're not really
+covering them, and I wanted to just talk
+about them very briefly here. The word uniformly
+in mathematics can usually be translated
+to the phrase, for all, think uniformly
+continuous function or any other definition in math that has the
+word uniformly in it, it usually is something
+holds for all x, for all Theta, so the
+uniformly means for all Theta, and if we have multiple
+unbiased estimators for Theta, let's say two they
+each have variances, and you'll notice that all of our variances are functions
+of the unknown parameter, we don't know what they are. So suppose I'm estimating
+Theta with two estimators, and I compute their variances, which are functions of Theta, and I plot them and I get this. So I have a blue estimator
+and a green estimator, and which one is better? I'm assuming they're
+both unbiased, and the blue estimator is
+better in this region, while the green estimator
+is better in this region. The problem is, the region is where Theta is and we
+don't know where Theta is, that's the whole point
+of our estimation. So while one estimator is better than the other for
+some values of Theta, it's not useful to
+us as an estimator if Theta is in another place. But a uniformly minimum
+variance unbiased estimator is going to be
+an unbiased estimator whose variance function looks, this is oversimplified,
+but is lower than all variances of all unbiased
+estimators for all Theta. This is known as the undo. That got a little hairy. In the next video,
+we're going to talk about some computational
+simplifications, we're computing the
+Cramér–Rao lower bound, and then we're going to do some examples that
+are going to work out a lot easier
+and a lot faster, and then we're going to
+relate these back to the behavior of maximum
+likelihood estimators. So I will see you
+in the next one.

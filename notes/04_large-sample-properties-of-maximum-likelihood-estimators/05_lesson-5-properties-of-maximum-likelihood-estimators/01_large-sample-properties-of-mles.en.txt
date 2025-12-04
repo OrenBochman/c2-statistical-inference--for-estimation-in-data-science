@@ -1,0 +1,224 @@
+You've made it to the final video in this
+module where we're going to bring it on home all of our new
+skills about asymptotics. And talk about the large sample properties
+of maximum likelihood estimators. And we're not going to prove these, they're kind of beyond
+the scope of this course. If you're interested in going
+deeper into this material, I would recommend a course
+in mathematical statistics. So suppose we have a random
+sample X1 through Xn from a distribution with a pdf f that
+depends on a parameter theta. And I'm going to let theta sub
+n hat be an MLE for theta. Now, I've never used this subscript
+n before, and I'm using it for the same reason that I introduced it
+on the sample mean in the last video. This is just to emphasize that it
+depends on n, it's nothing new. It's just a different notation because
+we're going to want to be sending an f to infinity. So under certain so
+called regularity conditions. Now, these are conditions that
+make the functions were working with in various distributions nice. These are the conditions that say you can
+interchange derivatives and integral. That the derivative of a log does exist. Some of the things we saw for
+the Cramér–Rao lower bound and a few more. So under certain regularity conditions
+we have several nice properties. The first is that the MLE is
+guaranteed to exist and it's unique. So for all of the nice known, named, and
+standard distributions and certainly for everything in the table of distributions
+you were given in this course, the MLS exist and are unique. We don't have any bimodal distributions
+with the exact same heights corresponding to two MLEs. And this is even true for distributions that don't usually
+satisfy the regularity conditions. Especially the one where you can
+interchange derivatives and integral, such as the uniform zero theta,
+this actually still applies. So the second cool property is
+that under mild conditions, all MLEs converge in probability to
+the thing we're trying to estimate. If this happens, we say that our MLE or whatever estimator we're talking about
+is a consistent estimator of theta. So consistent estimator just
+means conversions improbability. The next property is that all or most all MLEs are asymptotically unbiased. And this means that once you take
+the expected value, you're talking about a sequence of numbers that depend
+on n and no longer random things. And so you can talk about
+the limit as n goes to infinity. So this is our regular old limit
+of sequences of real numbers. And so maybe the MLE is not unbiased,
+we've seen cases like that. But it's always asymptomatically unbiased
+in the sense that this limit approaches the true value of theta. Next up, it is asymptomatically efficient. So far we've only talked about
+the concept of relative efficiency, which is a ratio of the variance
+of one estimator to another. But asymptotic efficiency says that
+we go as low as we can in the limit. And that means that the variance or the MLE estimators approach
+the Cramér–Rao lower bound for the variance of all unbiased
+estimators as n gets large. So it's tempting to say something
+like the limit of the variance equals the Cramér–Rao lower bound, but the
+Cramér–Rao lower bound also involves n. So that's why I put them together
+in a ratio to take the limit and move n in both the variance and
+the Cramér–Rao lower bound. And so the estimator is efficient
+if this limit goes to 1. The Cramér–Rao lower bound is always
+smaller than not an MLEs variance, but the variance for
+an unbiased estimator. So, if theta n hat were
+unbiased estimator, this number would be less than or
+equal to 1. With 1 being the best news we can
+have when the variance actually achieves the Cramér–Rao lower bound. Since MLEs are not necessarily unbiased,
+it's possible for them to have a variance smaller
+than the Cramér–Rao lower bound. But smaller or larger, the variant is kind of approaching the
+Cramér–Rao lower bound as n gets large. Again, the Cramér–Rao lower
+bound also depends on n, so you really need to consider the ratio. Finally, most MLEs are asymptotically
+normal with the correct mean. And we've already kind of seen
+that from asymptotic unbiasedness. And the best variance, which we just kind of saw when we
+talked about asymptotic efficiency. So this means recall asymptotic
+normality means if you take the MLE and you subtract the thing we're
+trying to estimate, and you divide by the square root
+of this sort of best variance. This is going to approach in
+distribution a normal 0, 1 or standard normal random variable. So, as I said, we're not going to be able
+to prove these things in this course. But let's at least verify a few of them
+quickly with an a familiar example. So suppose I have a random sample of IID
+random variables from the exponential distribution with rate lambda. We have seen that the maximum
+likelihood estimator for lambda is 1 over the sample mean X bar. And so we have existence and
+along the way when we took derivatives, we didn't get to critical values that we
+had to check so we also have uniqueness. We have seen that the expected
+value of our MLE for this exponential example is
+n over n- 1 times lambda. So it's not unbiased, but in the limit, that limit of that ratio goes to 1 and
+so the whole limit goes to lambda. And so, yes, we have verified that this
+MLE is in fact asymptotically unbiased. Next up, we have seen it was
+the weak law of large numbers. We have seen that sample means
+converge in probability to the mean of the distribution,
+assuming we have a finite variance. And my question to you is, is our MLE,
+which is 1 over the sample mean going to converge to 1 over the true mean,
+which would then be lambda? So I have to divert from this
+example a little bit and state some quick properties of
+convergence in probability. Suppose that Xn and Yn are sequences
+of random variables converging in probability to random variables X and
+Y respectively. We've got a bunch of nice properties, I'm
+going to throw them at you all at once. So the first is that
+the sum of the sequences, that new random variable sequence
+converges to the sum of the limits. The product converges to the product. The ratio converges to the ratio, assuming that you don't have any
+problems with 0 in the denominator. And also, if Xn converges in
+probability to a random variable X and you put those Xn through a continuous
+function that I'm calling g Then g f Xn is going to converge
+in probability to g of X. And the proof of these is not really
+beyond the reach of people taking this course like you. But it is beyond the scope of the course,
+so I don't want to spend time on it, but to prove these things, I would make
+use of the triangle inequality. I would make use of the delta
+epsilon definition of continuity to prove the fourth one. And I would manipulate these things
+to look at the original definition of convergence and probability and
+try to get the implications. Going back to the question we
+know by the weak law of large numbers of the sample mean for the
+exponential converges to the true mean. Which is 1 over lambda, our MLE for
+lambda was 1 over x bar, and we wanted to know if this actually
+converges then to lambda. And it does, because we can put
+the sample mean, which is converging to 1 over lambda through the function
+g of x equals 1 over x. And I did say this has to be continuous,
+and we have a discontinuity at zero. But it turns out not to be important
+because the exponential random variable will not take on the value
+zero with any positive probability. In other words,
+the probability that x equals zero and we have a problem is zero for
+this continuous distribution. We saw for the exponential distribution
+that the Cramer-Rao Lower Bound. For the variance of all
+unbiased estimators for lambda is lambda squared over n. And so I want to look at
+comparing this to the variance and seeing if our statements for
+maximum likelihood estimators hold up. The variance for
+the MLE is the variance for 1 over x bar. We can break this up in the usual
+way into an expected value of the things squared minus the expected
+value of the whole thing squared. Now, the second expectation we already
+found in a previous video, and so we need to find this other
+expectation to compute this variance. I'm going to do it in the same
+way we did in the previous video, I'm going to write the some of
+the xes as a new random variable y. And then x bar is y over n and
+so 1 over x bar is n over y and if you square it,
+you get n squared over y squared. And y as the sum of exponential has
+a gamma distribution with parameters. And the number of things
+were adding up and lambda the thing matching
+the exponential rate parameter. So I'm going to pull out the n squared and then I'm going to put 1 over y
+squared in front of the pdf for y. And over here I wrote out the pdf for y
+and we're going to do what we did before. Which is to kind of suck this 1 over y
+squared into this y 2 of power over here. So we end up with an integral like this,
+and assuming that n is greater than or equal to 3, it's kind of
+looking like another gamma pdf. Remember the x part
+without the constants for the gamma is x to the alpha minus
+1 times e to the minus beta x. So here the xes are y and it appears
+that our alpha is n minus 2 because the n minus 3 is n minus 2 minus 1,
+and it appears that beta is lambda. So I'm going to put in the constant I
+need to make this a proper gamma pdf. So I need to see lambda to the n minus 2,
+and I had lambda to the n so all I did was pull two lambdas outside. I need to see the gamma function of
+n minus 2 in the denominator, so I got rid of the gamma
+function that I couldn't use. I pulled it out and I compensated for
+putting in this 1 over gamma of n minus 2 by putting in another gamma of n
+minus 2 in the numerator out front. So now I have the pdf of a gamma
+distribution integrated over the whole space and that integral is 1. So if we do our simplifying calculations
+with the gamma distribution, notably gamma of n an integer n is
+n minus 1 times gamma of n minus 1. And gamma n minus 1 is n
+minus 2 gamma of n minus 2. And once you simplify
+the denominator down to that, you can cancel that gamma of n minus
+2 with the one in the numerator. And overall, you end up with this,
+this is not our variance this is the expected value shown in
+the upper left hand corner. We need to put it together into the
+variance definition with the other part that we already computed. And so we get the variance of
+our MLE looking like this. And if we make the ratio of the
+Cramer-Rao Lower Bound to the variance. We get a third degree polynomial in
+the numerator and denominator and the lead coefficients
+on both of them is 1. So as n goes to infinity,
+this goes to 1 over or 1 and that means that our MLE is in
+fact asymptomatically efficient. So recall the weak law of large numbers
+where we said that the sample mean converges in probability to the true
+meaning of the distribution. To prove this,
+we used Chebyshev's inequality. We used the fact that X bar is
+an unbiased estimator from mu, and we used the fact that the variance
+of the estimator went to 0. And we can prove that
+many things conversion probability using Chebyshev's, inequality. The fact that many things
+are unbiased estimators for other things and the variance for
+some of our estimators go to 0. It would be an exact copy of that
+proof where we will replace X bar by a theta hat and
+we'd replace mu by a theta. And we replace the variance of X
+bar with the variance of theta hat. So again the exact same proof can
+be used to show that if theta n hat is an unbiased estimator for
+theta and the variance goes to 0. That we do have convergence
+in probability to theta, which means that MLEs are consistent
+estimators for theta. We can actually go a little further
+than this new theorem I've stated, using the inequality prior
+to Chebyshev's inequality. The one for which Markov's
+inequality was a special case. We actually can show that this
+result holds if we replace unbiased estimator with
+asymptomatically unbiased. So one quick example and
+then we're done with this module. I want to use this new
+result we have to show that the maximum likelihood estimator. For theta in a uniform 0 theta
+distribution is a consistent estimator for theta. Again, the uniform doesn't satisfy all
+of the nice regularity conditions, so we're not guaranteed that this is going to
+be consistent, but I think we can get it. I'm going to let y be the maximum and
+then I want to know the distribution of y. So I'm going to look at
+the probability that this y sorry, Y n is less than or equal to some
+little y, and I'm going to rewrite y n. This is the only thing I know about it,
+and that is that it is equal to
+the maximum of x 1 through xn. So the little y is some fixed argument, so I put it here on a number line, and
+I want to figure out how to relate. The idea of the maximum of
+the xes being less than or equal to y to the individual xes. And it turns out the only way the maximum
+of your sample can be less than or equal to y. Is if all of your values in
+the sample are less than or equal to y and
+that statement holds in the reverse. If all of your values are less than or
+equal to y, then the maximum is less than or
+equal to y. So the event that the maximum of X1
+through X n is less than or equal to Y is equivalent to the event that each one
+individually is less than or equal to Y. All right, so where were we
+continuing where we left off? I can use the independence of X 1 through
+Xn to factor these probabilities and I can use identical nous
+to say that all of these probabilities because they have
+the same Y they're the same. So I can write this as one
+of the probabilities to the n power now using the C d. F for the uniform zero beta distribution. And if you need to pause the video and
+go work that out on the side, I'd recommend doing that plugging that
+in I get the CDF for why is why over tha tha all raised to the power where why can
+take on values between zero and data? What am I trying to do? I'm trying to show that this y n this
+maximum is a consistent estimator for data for the uniform distribution. This kind of makes sense because you
+have an interval from zero to feta and your random sample is somewhere in there,
+and it's highly unlikely that you're
+actually with probability zero. You will hit the data. But if you start putting more values in
+there and more until the interval gets really crowded,
+the maximum is going to creep up to Fatah. But that's why I think this
+maximum is a consistent estimator. So we want to find the expected
+value of Y n and we found the CDF. I'm going to take a derivative
+to find the pdf, and then I'm going to use that
+to find the expected value. It turns out to be an over
+n plus one times data. And this, at least the form of this
+ratio kind of makes sense because the coefficient in front of data
+is something less than one. So the expected value of the maximum is
+less than 30 to, which is what we expect when we're trying to pile up numbers
+on the interval from zero to Fatah, where we can't get greater than data. We can only hope to get
+right up to the data, but we're going to be less than data
+to doing similar calculations. I can compute the variance for y n and so
+combining these I have that the mean or the expected value of
+our maximum likelihood estimator Yn,
+which is the maximum of the X's. We have that it's a symptomatically
+unbiased for data and that its variance is going to
+zero as n goes to infinity. And so that's enough to say that
+we have a consistent estimator. This concludes this module and the next module we are going
+to start doing statistics. We have been doing statistics, but we're going to start doing
+more data oriented statistics. We're going to start off
+with confidence intervals. I will see you in the next one.

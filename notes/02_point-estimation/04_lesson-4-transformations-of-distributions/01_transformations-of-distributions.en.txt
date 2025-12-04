@@ -1,0 +1,263 @@
+Hello, welcome back.
+In this video, we're going to talk about transformations of distributions. Suppose you have a
+random variable X and it may be discrete, such as the geometric
+distribution or the binomial distribution, or continuous such as the exponential distribution
+or the normal distribution, and you have this random
+variable X and you want to manipulate it
+and put it through a function and figure out what the distribution of the
+new random variable is. For example, you might want
+to move from X to X squared. That's what this video
+is about and we're going to start with the discrete case. We're going to do this discrete
+case through an example. Hopefully, you've
+already heard of the binomial distribution
+either from before this course or from the materials provided
+earlier on in this module. But as a quick review, the binomial distribution
+comes about this way. Suppose you have a sequence of n independent trials
+of an experiment, where each trial can
+result in one of two possible outcomes,
+success or failure. Now suppose that
+the probability of success remains the same
+from trial to trial. We're going to call this p, and this is a parameter
+of this model. The random variable
+X is going to count the number of successes
+in the n trials. We say that X has a binomial distribution
+with parameters n and p, and we write it like this. Before we do a transformation, let's see if we can find the
+probability mass function for the binomial.
+Here's the setup. Well, I gave you
+the setup, right? There's n independent
+trials and I want to look at it
+in a specific case. Suppose that n is four and we want to find
+the probability that X, the number of
+successes, is three. We have to think about
+the ways we can get exactly three
+successes in n trials. We can get success,
+success, success, failure, or success, success, failure, success, or you get the idea. There's actually four
+ways for us to position the successes and the one failure for a total of four trials. Now each of these four outcomes they're disjoint from each other. You cannot witness
+success, success, success failure, and at the same time witness success,
+failure, success, success. By disjointness, we get to break up this
+probability into a sum. Then for each of these terms, we're seeing the four
+different trials, and those were assumed
+to be independent. We get to multiply the
+individual probabilities. The first one where we have three successes and one failure, we're going to get
+p times p times p times the failure probability, which is one minus p. The
+next term we're going to get the same four factors just
+in a different order, and in fact, for all
+four of these terms, we're going to see p
+cubed times one minus p. So we just have to
+add them up and we get four p cubed one minus
+p. To do this in general, for general n and for
+general little x, when I want to find
+the probability that the random variable
+X is equal to little x, we are going to have x, little p's, and the rest of them n minus x, one minus p's, and it really comes
+down to counting to figure out how
+many terms there are, to figure out what to put
+in the place of the four. Hopefully, you've all seen
+the combinatoric n choose x, which is n factorial over x factorial times n
+minus x factorial, and this is the number
+of ways to choose x things out of n things. In our case, the
+things are positions, one, two, three, n positions. We're trying to choose x of them to sprinkle
+in the successes. Here is the probability
+mass function. It's just like we did
+before with the four. We've got a p every time we have a success and
+there's x of those. We have a one minus p for
+the rest of the trials, and there are n minus x of those, and then we have to count up
+the total number of ways to scatter those successes
+in the n trials. We get the n choose x, and of course the indicator, because the number
+of successes in the n trials can take on
+values zero, one, two, up through n. Again, this is the binomial distribution with parameters n and p, and I think we're ready
+to make a transformation. Suppose that we have X with
+this binomial distribution, and a new random variable
+Y defined to be n minus X. What is the distribution of Y? I think in this case
+we can probably guess, and that's because we
+have n trials and X is counting a number of
+successes in those n trials. So n minus X is counting
+the number of failures. If we re-label success
+failure and failure success and use one
+minus p in place of p, I think we're going to see another binomial
+distribution here, but let's suppose we had
+no idea how to do this, my advice to you for this transformation
+is to just do it, to write out what you want
+and what you know and go. Here is the PMF for X and
+what I want is the PMF for Y. The probability that the random variable Y
+is equal to little y. Now all I know is
+that capital Y is n minus X and I do know how to compute
+probabilities for X. We wrote out the formula above. So I'm going to solve
+for this capital X. The probability that
+X equals n minus y, I'm just going to
+plug n minus y into my formula for
+probabilities for X. We get this and we're kind of done if we want only a probability mass function, but if we want to name
+the distribution, maybe we need to massage
+this a little further. Also, I think it would just be good practice because we're trying to find a function of y and right now, for example, our indicator says that n minus y takes on
+the values zero, one, two up through n. It would make a lot
+more sense when giving this PMF for y to not tell
+us what n minus y could be, but to tell us what y can be. Lets simplify this. I'm going to start
+with the indicator. Since n minus y is taking
+values from zero to n, let's look at the first one. If n minus y is zero, that means that y is n
+and if n minus y is one, that means that y is n minus one all the way down to the end, n minus y is n that
+means that y is zero. The fact that n minus y has to live in the set, zero through n, is equivalent to y living
+in a set zero through n. No one cares about the order is just a set
+of possible values. The other thing I
+want to simplify here is the combination. The n choose n minus y. Let's do this by
+looking at an example. Suppose we want to compute
+five choose three, this is five factorial over three factorial times five minus
+three or two factorial. We can certainly interchange those two numbers
+in the denominator. So we're going to get
+the same thing as if we had started
+with five choose two, because that would be
+five factorial over two factorial times the
+difference factorial, the three. In fact, anytime these two
+numbers add up to this number, the combination is
+going to be the same. In our PMF up here, the n choose n minus y, can be rewritten as n choose y. Plugging this stuff
+in, the new indicator, the new combination,
+we get this PMF. I've also re- arranged the p and one minus p just to show
+it in the binomial form, because success has become failure and failure
+has become success. We can see that Y has a binomial distribution
+with parameters n, and one minus p as expected. Again, when finding
+the distribution of transformations of a
+discrete random variable, my advice to you would
+be to just do it. Just write out what you want, plug-in what you know and go. We're ready to talk about transformations for
+continuous random variables. There's a problem here, we can't just start with
+what we want and go because the PDF or probability
+density function doesn't have a nice
+interpretation as a probability. It's a curve under which
+area represents probability, but you know what does? The cumulative
+distribution function. The cumulative
+distribution function or CDF is usually
+denoted by a capital F and it's defined as the cumulative probability that X is anywhere less than or
+equal to some little x. If X is discrete we can find this cumulative
+probability by adding up all the probabilities less
+than or equal to little x. In the continuous case, we get it by integrating. You'll notice the way I
+wrote things in this sum. I didn't say u goes from minus
+infinity up to X. I don't like to say that because I
+don't think it looks right. If the random variable doesn't
+take on integer values, it can still be discrete. Taking off, for
+example,1, 1.1, 1.2. But if I were to sum
+it up in this way, that really implies
+integer value, so we're not going to do that. If X is continuous, we get the CDF by
+integrating the PDF, and the fundamental theorem of calculus tells us
+we can undo this and get the PDF from the
+CDF by taking a derivative. We're ready to transform
+our distribution. Suppose that X is a continuous
+random variable with some PDF f sub x.
+I'm going to let y, sorry, I'm going to let g be a continuous differentiable
+and invertible function, and really what I
+wanted to be is nice. I'm going to take a derivative, so I should be able to
+take the derivative. I'm going to take an inverse. Hopefully, I'm able
+to take an inverse. For transformations, we're not restricted to functions
+that are so nice, but that's what we're
+talking about right now. I'm going to define a
+new random variable Y as g of capital X. Before I do that
+I wanted to point out that if g is invertible, it has to be either strictly
+increasing or strictly decreasing because if it goes up and then
+down for example, and you look at a point on
+the y-axis and you want to invert it and figure
+out where that came from on the x-axis, it's going to come from
+two different points. By virtue of being invertible, it is either strictly increasing
+or strictly decreasing. The inverse of an
+increasing or decreasing function is still
+increasing or decreasing, which might sound a little weird at first, maybe
+counter-intuitive, you're inverting the operation, maybe it should go the other way. We can prove my claim
+here algebraically, but just to get through this
+and get back to the stats, I just want to convince
+you graphically. Here is an increasing
+function plotted in blue, and its inverse is going to be the mirror image over
+the line y equals x. You can see that the
+concavity changed, we went from concave
+up to concave down, but both functions
+are increasing. The same would hold
+if we started with a decreasing function. I
+think we're ready to go. I have a continuous
+random variable X, with a PDF of sub x, and I'm defining y to be g of x, and g is nice. Let's start with the CDF for Y because CDF is interpretable
+as a nice probability. I'm going to start with a
+case where g is increasing. The CDF for Y is the probability that Y is less
+than or equal to little y, the only thing I know is that
+this Y is equal to g of X. Just like before in
+the binomial example, I want to solve down for the X. I'm going to apply g inverse to both sides of this inequality. The fact that g inverse is increasing is going to
+maintain the ordering. Here's the x-axis, if you have a point A that is
+below a point B, and you put it into an
+increasing function, this will go up somewhere
+and this will go up further, so on the y-axis, they'll maintain their ordering. That's why this inequality holds when I take g
+inverse of both sides, and on the left side, I
+get some cancellation. This looks like the CDF for X evaluated at g inverse of y, so we're ready for the
+PDF through a derivative. The PDF for y is the derivative with respect
+to y of the CDF for y. We've written that CDF in
+terms of the CDF for X. Now I'm going to take the
+derivative with respect to Y, do a little chain rule action, the derivative of the
+CDF is the PDF for x, and then I have to multiply
+by the derivative of what's inside, and there we have it, a formula for the PDF for Y, in terms of the PDF for X, and the given function. Really quickly I'm
+going to blow through the other case when
+g is decreasing. The only thing really,
+well, two things, but one major thing
+that's going to change here is that if you have
+a decreasing function, and on your x-axis, you look at a point A
+smaller than a point B, and you plot them into
+the decreasing function, the point A is going to map up to something higher
+than the point B. If you have an A less than B, and you evaluate both at
+a decreasing function, the results are going
+to switch order. Just doing what we did before, plugging in what
+capital Y equals, taking G inverse of both sides. We're going to flip
+this inequality. Cancelling the G and G
+inverse on the left, I get X. I want to
+turn this into a CDF, but the inequality is
+going in the wrong way. I'm going to use the
+compliment of this event, and turn this around and
+say this is one minus the probability that X is
+less than G inverse of Y. This, isn't exactly
+a CDF in general, but in the continuous case it is. Now, the reason it's not
+exactly a CDF in general, is because the
+inequality is strict. The CDF is defined
+as the probability that X is less than or
+equal to something. But in the continuous case, that's going to be
+exactly the same thing. Adding this point is not going to change anything, and so, we've written the CDF for Y
+in terms of the CDF for X. Let's go for the PDF,
+let's take the derivative, a little chain rule
+action, and we get this. At first glance you
+might be alarmed, because of the negative out front and PDFs can't be negative. But, G inverse is
+decreasing in this example, so this derivative
+is negative as well. When you multiply
+that negative value times the negative out front, everything is nice and positive. Let's just make it
+nice and positive to begin with by ignoring the negative out front and the negative in that derivative, and just put an
+absolute value on it. This is a formula that will
+work both in the increasing and decreasing cases.
+Let's try it out. As an example, I want to look at the gamma distribution with
+parameters alpha and beta. I think we've already hit this up in this module, but if not, you should've seen it in the supplementary
+reading for this module. Some people, when they talk about a gamma distribution
+mean one thing, and some people mean another. When I write that X has a
+gamma distribution with parameters alpha and
+beta, denoted this way. I mean, the PDF looks like this. Some people have all of the betas replaced
+by a one over beta. That's not wrong.
+It's just different. Throughout this course, I
+am going to mean this PDF. Okay. What do I want to find? I'm going to assume that X has a gamma distribution with
+parameters alpha and beta, and I'm going to take
+a positive constant C, and multiply Y times
+C, oops, sorry, and define Y as c times X. I want to know the
+distribution for Y. This is a pretty
+simple transformation, and you might think
+it's just busy work to show an example, but this is a transformation
+we're going to need a lot when we're analyzing
+data and doing statistics. Let's go. I've got
+a function G of X, and it,s C times X. If I invert this, I get X equals G inverse of Y, which is Y over C. Using the
+formula that we computed, which is to say that we take PDF for X and plug in the
+inverse function, and also multiply by the absolute value
+of the derivative of the inverse function,
+we get this. Okay. Let's simplify this. Here, I'm just going to
+rewrite what we have, and the first thing I
+want to simplify, well, actually the first
+thing I'll simplify is, I'll just drop that
+absolute value, because C is positive. Now I want to look
+at the indicator. The indicator says that Y over C is between zero and infinity. If you multiply through by C, because C is positive, it doesn't flip any inequalities. We get that this is equivalent to Y being between
+zero and infinity. I do get to change this
+indicator to say that Y is between zero and infinity
+and here's the rest of it. Do you recognize
+this distribution? Y, in this case has another
+gamma distribution. The first parameter
+is still alpha, and the second
+parameter is beta over C. The moral of this story is, if you multiply a Gamma random
+variable by a constant, and if you describe
+and parameterize the gamma distribution as
+we have in this course, then that constant ends up
+under the second parameter. Next up, when you observe
+a random variable, like that height of the person
+you're going to measure, what do you expect to see? We're going to talk
+about expectation in the next video.
+I'll see you there.

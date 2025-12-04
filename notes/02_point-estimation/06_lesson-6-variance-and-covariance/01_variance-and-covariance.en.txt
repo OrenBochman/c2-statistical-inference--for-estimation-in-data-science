@@ -1,0 +1,218 @@
+Welcome back. In this video
+we're going to talk about the idea of the spread
+of a distribution. Suppose you're trying to measure that true average height of all adult males in
+France and you go out and you randomly
+select a sample of a fixed size and you
+compute the sample average. That seems like a
+good idea. But why? One reason it might be a
+good idea is if we can show that on average,
+it is correct. What do I mean by on average? I mean that suppose you
+got another sample of size n and you computed the new sample average is going
+to be a little different. Suppose this is the true mean mu, and I take my first sample, and I compute the sample mean. I'm going to get a number maybe here and even next time
+I'll get a number here. Maybe the next time
+here, maybe here. I'd like two things
+of this statistic, and a statistic is any
+number computed from data, which is what we're doing when we choose N values
+and average them. The two things I would
+like out of this statistic is;I would like it to be
+in the right location. If the true mean is
+here and the thing I measuring from the population
+tends to be over here. It's not that useful. But there's another problem. If the true mean is here and that statistic
+we're measuring tends to be around the true mean centered
+in the right place, if it is very variable. Here's an example of something also centered in the right place. You want this, or
+do you want this? You want this than you want this. You want more predictability and less variability and that's
+what this lesson is about. It's about variance,
+which is one of the most important measures of spread that a statistician uses. Just like the expected value
+of a random variable X, had two notations for us. One was a capital E of X and the other was
+the Greek letter mu. This variance has two notations, so one is going to be Var of
+X and the other is the Greek letter sigma squared or
+you may use just V of X. Either way it's going
+to be defined as the expected squared distance away from the mean for
+a random variable X. So why use this? One of the first
+questions some people ask me when they're first shown this
+expression for variance, is why don't we just look at the expected value
+of X minus its mean. The reason is expectation is a linear operator and the
+mean mu is a constant. If we run this
+expectation through, we would get zero every time
+for every distribution. This is not a good
+measure of spread or really anything subzero. The next thing people
+usually bring up when I introduce variance is the idea of the expected absolute
+value of the distance between the random
+variable x and its mean. This is a pretty good idea, but it's not going to be as
+computationally convenient as the squared formula up
+here for some future things. So certainly for computation numerically, it's easy enough. Bam, you are positive. We're going to have
+things coming up in this course where
+it's going to be more convenient for us to use this
+definition for variance. As another bonus, the squared has the great property that it magnifies large
+deviations from the mean. When you square big numbers, they become really big and yet it doesn't magnify
+small deviations. If you square a number between
+01, it gets even smaller. This is an extra benefit of
+squaring this X minus mu. Okay. If you take the square
+root of the variance, we call that the
+standard deviation, and we denote it by
+a lowercase sigma. This is just another
+measure of spread, but some people really
+like to use this because it brings you back
+to the units of the problem. For example, if you're measuring people's heights in inches, the variance calculation
+involves squaring and so the units of that is
+going to be squared inches. If you take the square root, it's still a measure of how
+spread out those heights are, but it's back in the
+units of the problem. If you look at the
+normal distribution with mean mu and
+variance sigma squared, and you look at its PDF
+and do a little calculus. You will see that where it goes from concave down to concave up is exactly one standard
+deviation away from the mean. There is an alternate
+way to compute variance that a lot of people find easier. It's totally subjective
+though and that is, let us square this out and
+run the expectation through. Now over here, I have mu and so in the middle two
+mu squared and there's another mu squared out there
+and I combine them and I get the expected value of X
+squared minus mu squared, and mu is the
+expected value of X. An alternate formula for variance is the expected value of X squared minus the expected
+value of X all squared. What happens if you multiply a random variable by a constant, a non-random thing,
+and take the variance? If this was the expected value, we could just pull
+that a right on out, but what happens here? To figure this out, I'm going
+to say that the constant a times the random variable X is just a new random variable
+and I'm going to call it Y, and note that the
+mean for Y turns out to be a times the mean for X. So the variance of aX
+is the variance of Y, and here we're using our
+definition for the variance of Y. I'm going to plug in the aX for the Y and the a Mu X for the Mu of Y and I'm
+going to pull it out. The a is on both terms inside the parenthesis and
+when I pull it out, there's a squared
+and it pulls out squared and then comes all the way out of
+the expectation. So what we get is a squared
+times the variance of X. If you have a
+constant in front of your random variable and you want to compute the variance, you can pull it out but
+it comes out squared. Another thing that we're
+going to care about is, what is the variance of the
+sum of two random variables? Is it the sum of the variances? Unfortunately, it's not, and this is because
+of the square. It's for the same
+reason that numbers a plus b squared is not the same as a
+squared plus b squared. What is the variance of a sum? We will see that we can
+split it up into the sum of the variances if X
+and Y are independent, but if not, we're going to need another concept
+known as covariance. I'm going to describe covariance
+first through a picture. The covariance between X
+and Y is defined to be the expected value of X minus its mean times Y minus its mean, and notation that
+we're going to use for this is Sigma sub X Y and note that the covariance of X with itself is
+just the variance X. So what is covariance? We're going to try to figure
+this out through a picture. Here I took two
+random variables, X and Y and I went out
+and I observed them, maybe I don't know, approximately 20 times, and I got realizations or actual sampled numerical
+values and plotted them here. You can see as one goes up, the other one goes up as well. They have this positively
+sloped linear relationship. What would the covariance of random variables that
+looked like this be? The first thing I'm going
+to do is try to guess at where the true mean for X
+and the true mean for Y is. This is probably off because
+this is a very small sample, but I'm going to guess
+they're about here and here. For these points in the
+upper-right quadrant, you'll notice that
+all the X values are to the right of the X mean and all of the Y values
+are above the Y mean. If you look at X minus it's mean and Y minus it's
+mean and multiply them, you have to positive values, which you'll multiply to
+become a positive value. Down here in this
+lower left quadrant, you get to negative
+values which you'll multiply to become
+a positive value. If you think about averaging these deviations
+for every dot here, there'll be a couple of dots, at least in this picture, where these quantities, the product is negative,
+but not so many. The positive products really
+dominate this picture, and this is an example of random variables X and Y
+with a positive covariance. Here's an example of
+negative covariance, so it's a measure of
+a linear relationship between the random variables and the slope is not
+at all important. Let's look at our original
+positive covariance example. Now in the next slide,
+I'm going to make these blue dots light. They might be hard to
+see, but watch for them, and then we're going
+to add some red dots, and the red dots are an example of sampled values of an X and Y that are different that had a larger positive covariance. So you'll see it's not
+really about slope, it's about tightness
+around a line. If you have a covariance
+close to zero, you're going to see
+something like a cloud. Imagine what we did
+before breaking this up with the mean for
+X and the mean for Y, there are approximately
+the same number in all four quadrants, and so we'll get positives and negatives averaging out to zero. There is no upper or lower
+bound on covariance. So what is a large covariance? Is one million? Seems pretty large but not
+when compared to five million, and it's also in
+really weird units. An example of two random
+variables that have a positive covariance,
+maybe a weak one, but probably has a
+positive covariance is on the x axis to record the height of
+an individual and on the y-axis to record
+their shoe size. Taller people tend
+to have larger feet, but it's not a given. So I think it's a weak
+positive relationship. The point is that it's
+going to be in weird units. If you compute the covariance
+there, you're taking, your inches units that
+you're using for height, and whatever units shoe sizes are in, and multiplying them. What the heck does
+that even mean? Because it's in
+these weird units, and because there's no
+upper and lower bound, we're going to look at
+something known as correlation, which is just covariance
+that has been standardized. This is standardized so that this number is actually going to be between minus 1 and 1. I'm using CORR instead of COR just because if
+I'm writing this, and my handwriting
+is a little sloppy, a COV and a COR could be really
+difficult to tell apart. Correlation is noted by a Rho_X, Y, and then using our other
+already established notation. Rho of X, Y is sigma_X, Y divided by the two standard
+deviations multiplied. We can show algebraically that this is between minus
+1 and positive 1. If it's positive 1, what you're going to see is a perfect linear relationship, it has nothing to
+do with the slope, it has to do with
+the tightness of the spread around the line. If you have a correlation of 1, that means there's no
+variability at all. For every X, you know exactly
+where Y is along the line. If it's negative 1, you have the same thing but
+with negative slope. As an alternative for
+computing covariance, just like we had two ways
+to compute variance, I am going to multiply this stuff out and run the
+expectation through. Then you see we've got a
+mean for X and mean for Y. The final three terms are all a product of a mean
+for X, and the mean for Y, and when you add them up and
+take care of the negatives, you get a negative Mu_X_Mu_Y, you get a single one of them. This, of course, is
+the expected value of X times the expected value of Y. We've seen this thing before, this expression when
+we were talking about independence
+of random variables. We proved that if X
+and Y are independent, then the expected value of the product is the product
+of the expected value, in that case, this
+covariance would be zero. We know that if X and
+Y are independent, the covariance is zero, but a covariance of zero does not imply
+they're independent. We had a specific example, and I'll remind you
+of it in a moment. But I do want to point
+out that because of how correlation is defined to be
+covariance divided by stuff, the fraction can only be zero
+if the numerator is zero. Covariance is zero if and
+only if correlation is zero. If we have a correlation
+or a covariance of zero, we say that X and Y
+are uncorrelated. We did have that example where we had a
+covariance of zero, but they were not independent
+random variables, but we do have one direction. If X and Y are independent, they will have a covariance of zero and that means they'll have a correlation of zero and that means we get to say
+they're uncorrelated. But if they're uncorrelated, they may or may not
+be independent, as we had in the
+previous example, where I had a random
+variable X that had mean 0 and I defined Y
+to be X squared, which is pretty darn dependent. The expected value of X, Y was the expected
+value of X cubed, which was also zero. If you go back and look at
+our covariance formula, which is not up here right now, you'll get that the covariance between this X and Y are zero, and yet they're pretty
+darn dependent. This whole conversation about covariance and
+correlation came about when we were trying to figure
+out what the variance of the sum of two
+random variables is. The sum of two random variables is another random variable, and I'm going to call it Z
+and it has its own mean, Mu_Z, which turns out to be the mean for X
+plus the mean for Y. If I want the variance
+of the sum of X and Y, then I just want
+the variance of Z, and here is the definition
+of the variance of Z. I'm going to plug in, the fact that Z is X plus Y and the mean is the
+sum of the means. Now, I'm going to regroup these, I'm going to put the
+mean for X next to X, and the mean for Y next Y. In the next slide, I
+am going to square this out but I'm going to keep
+those two clumps together. I'm going to think of
+this as just two terms summed up and I'm going
+to square it out. After doing that and running the expectation
+through, we get this. You can see that we have
+the variance of X plus 2 times the covariance of X
+and Y plus the variance of Y. We've answered our question about the variance of a sum and
+we know something else. That is, if X and
+Y are independent, the covariance is zero, and the variance of the sum is going to be the
+sum of the variances. Imagine you want to estimate
+the true average value of something in a population and you grab a sample and
+you average those. This seems like a good idea. It seems like a
+common sense idea. But why, and can we do better? What does better even mean? We're going to talk about this in the next video.
+I'll see you there.

@@ -1,0 +1,95 @@
+Welcome back. In this lesson, we're going to learn about continuous random variables
+and their distributions. Suppose that you hit
+the streets with an infinite accuracy
+measuring tape, randomly select a person
+and measure their height. The chance or probability
+that that person is between say three feet and eight
+feet is quite high. There's close to 100
+percent chance or probability of one that the height is going to
+be between those values. Now the probability that
+the person is between 62 inches and 64 inches
+is much smaller. In fact, if you keep
+shrinking the interval 62 and 63, 62 and 62.5, 62 and 62.1, the chance is getting smaller and smaller and the probability
+is going to zero. Now, remember we're measuring
+with infinite accuracy. If we want, say, we
+can only measure up to the nearest inch or the
+nearest tenth of an inch, let's say tenth of an inch, we would have a discrete
+random variable because the heights would take on
+discrete values like 50, 50.1, 50.2, 50.3 in inches. We're assuming infinite
+accuracy here. If you're looking for a person
+who's exactly 73.2 inches, you're not going to
+find this person. If you think you've
+found this person, look again, they're probably
+73.0000000000000006. Now, you can't find
+that person either. But the point is, there's so many possibilities when
+you have infinite accuracy. You will never find this person, and the probability is zero. Now from random variables, I'm going to let X be the height of the person that I measure. For continuous random
+variable like height, the probability of
+seeing someone who is exactly 73.2 inches is zero, and in fact, the probability
+of finding someone who is exactly little x inches is zero. I'd like to define the analog of the
+probability mass function. If I let f of x be the
+probability that X equals X, this is very uninteresting
+because it's always zero. For a continuous random variable, we're going to define
+instead something known as a probability density
+function or PDF. We're still going to denote
+this by the letter F, and rather than
+equaling a probability, it's going to represent a curve under which area
+represents probability. For example, if you have
+a random variable X with a PDF f and you want to find the probability that
+X is greater than or equal to a and less
+than or equal to b, you would integrate
+the PDF from a to b. If you wanted to find the
+probability that X is strictly greater than a
+and strictly less than b, it would be the same
+integral because there's no area under the curve
+at those single points. There's two properties
+a PDF needs to have. Given a function f, it would be a PDF for something. If number 1, it is non-negative, and number 2, it integrates to one if you integrate
+over the whole world. In the height example, if this is a PDF for height, integrating from
+minus infinity to infinity is like trying to find the probability that the
+next person you measure is between minus infinity
+and infinity inches. That's definitely
+going to happen, probability 1,
+because that's two. The bell curve we've been
+looking at already in our first lesson is a
+probability density function. Remember our height
+histogram and the curve we put on top of it,
+here's the formula. This is a function of X, but you'll notice there's
+other things in here, and these are
+parameters that help us change the shape and
+location of the curve. The parameters are Mu
+and Sigma squared, and we say that X has a normal distribution
+with mean Mu and variance Sigma squared
+and write it this way. Mu is a location parameter. If you change the value of Mu, the entire bell curve is
+going to slide around. If you increase Sigma squared, it's going to get fatter and therefore shorter because
+the total area is one, So if it gets fatter,
+it has to come down. If Sigma squared gets smaller, it's going to get
+really tall and thin. Another important
+distribution that is going to come up a lot is called the
+exponential distribution. Here's the PDF. The
+exponential distribution takes on all positive values and it's described in
+terms of a PDF with a parameter Lambda that has
+to be greater than zero. If this got to be negative, then we'd have a
+negative out front and our PDF would be negative, and that doesn't make sense. Also, if our X's are positive and this
+Lambda was negative, then the negative
+of the negative up here would be a
+positive exponent. This thing is going to blow up, it's not going to be able
+to integrate to one. Lambda is called
+a rate parameter, and that's because this
+distribution is usually used to model rates of occurrences
+between something, inter arrival or inter
+occurrence times. If you are modeling
+customer traffic into a bank and you're sitting outside the bank and
+watching people walk in, the times between
+consecutive customers could be modeled with an
+exponential distribution. Or in a physic setting if you
+have a lots going on with particles bombarding the time to the next collision could have an exponential distribution. These are two cases where the exponential distribution is a really good model
+of what's going on. Most people denote
+this random variable as X squiggly line has the distribution exponential
+with parameter Lambda. I'm not going to
+use this notation, but I'm for now, and that's because I need to motivate for you why I want
+to change the notation. I'll come back to a notation for this in one or two videos. At this time, I'm
+going to direct you to yet another
+ungraded assignment, which will take
+you through all of the popular continuous
+distributions that we're going to
+need in this course. Check it out, become
+somewhat familiar with them. I will see you in the next video.

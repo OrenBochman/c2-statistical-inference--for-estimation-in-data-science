@@ -1,0 +1,266 @@
+Hello, welcome back,
+welcome to module 4. In this module we're going to be talking about
+confidence intervals. Now in most of this
+course so far, we've talked about
+estimators of perimeters a generic theta or a
+function tau theta. We've talked about
+alpha and beta for a gamma distribution mu and sigma squared for a
+normal distribution, lambda for an exponential
+lambda for a Poisson, P for the geometric. We've talked about
+how to come up with these estimators and
+how to measure error. We've talked about variance, which is a measure of how
+far away the estimator is from its mean and if it's unbiased for the thing
+you're trying to estimate, this is a measure of how far away you are from the thing you actually want and if it's
+not an unbiased estimator, then we stopped talking
+about variants and started talking about
+Mean Squared Error. But if we have an
+unbiased estimator, they are one and the same. If you are the statistician working for a scientist who has asked you to look at the data
+and estimate some things, should you come back
+with a point estimate of value and then tell
+them the variance. A variance on its own is
+really hard to interpret, it's easier to interpret
+relative to another variance, but I think instead
+of giving that scientist the estimate
+and the variance, you should give them a
+confidence interval, which is like a range of plausible values where you
+think the true parameter is. What is a confidence interval? I'm going to start off
+with a specific statement, suppose I say that a 95 percent
+confidence interval for the mean mu is
+negative 2.14 to 3.07. What does this mean? I'll tell
+you what it does not mean. First of all, it has nothing
+to do with your feelings, you are not 95 percent
+confident that the true mean is between negative 2.14 and 3.07. What does that even mean? Another thing, it does not mean that the true
+mean is between those two numbers 95
+percent of the time because those two numbers are fixed and the true
+mean is out there, but it's fixed and it's
+either in there or it's not. There's no probability, where does the
+probability come in? We've already talked about this, it comes in from random sampling. The fact that if you select
+a random sample and compute your estimator and if you got to do it again or
+if someone else did it, they're going to get
+a different estimator based on the randomness
+of the sample, you collect your sample, you estimate your parameter, you use the techniques of
+this video to come up with a confidence interval,
+whatever that means, I still haven't defined
+it and if you did it again or if different
+people did it, they would get different
+samples and different results, there we get different intervals. Here is a number line
+and here is a mu that I'm estimating or it could
+be more generically a theta. I'm going to take
+a random sample, I'm going to use
+the techniques of this video and we're
+going to compute a confidence interval and
+it comes out to be this. Now, as I was saying,
+multiple samples give multiple
+confidence intervals, if I take another sample and use the exact same procedure,
+I may get this, and if I took another sample and did the exact same procedure, I may get this, those green
+parentheses for the last one, they don't even include
+the parameter mu. But what I can say is that if I keep doing this
+in the long run, 95 percent of them are going
+to correctly capture mu, there's a mu and interval,
+5 percent of them, if you do what we're
+doing in this video, will miss that true mean mu, but 95 percent of
+them will capture it. We are going to build
+our confidence intervals from the ground up, I am not going to tell you how to do it and then show
+you an example, we're going to start right
+out with an example. I also want to emphasize that I think this is
+how you should be thinking about most
+statistical computations, not a formula in
+a box at the end, but knowing what you're doing
+so that you can figure it out when something is slightly different in your
+particular situation. Suppose I have a random
+sample of size n from the normal distribution with mean mu and variance
+sigma squared, I'm going to suppose that
+the mean is unknown, but the variance is known. Which sounds a little crazy. Why would you know the variance if you didn't know the mean? It is possible to make
+a case for this to say that I am selling cereal, and every year I changed
+the design on the box, and that drive sales. Over the last decade I've
+seen that the sales go up, and they go down,
+but the variance seems to stay the same. I want to take a
+sample from this year, and figure out the true
+mean sales of my cereal this year, that's a
+little contrived. What I'm going to tell you
+is that the sigma squared is assumed to be known
+as a building block, we'll eventually get
+rid of that assumption. Estimating mu, I
+want an estimator, x-bar is an estimator. I want to know its distribution, it is normally
+distributed with mean mu, and variance sigma squared over n. I'm not using the
+central limit theorem here, I am using the fact that we're starting with the
+normal distribution, and linear combinations
+of normals are normal. Then I know the mean,
+and variance for x bar no matter what
+the distribution. I'm going to take
+this information, and I'm going to standardize x-bar to turn it into
+a standard normal. This is something we can call z, which is our preferred letter
+for a standard normal, and if you look at the
+standard normal PDF, I can find for you two numbers,
+and they're not unique. But I can find two numbers that capture z with probability 0.95. There is two numbers on this PDF that has area 0.95 in the middle. Now this doesn't have
+to be in the middle, I could capture 95 percent
+of the area somewhere else. I'll talk about that eventually, but how are we going to do this? The CDF, or the standard
+normal distribution, we've been calling
+it capital fee, and we don't know what
+enclosed form but I've talked about the idea that people have integrated it numerically, and put this stuff in tables, and that you can
+also these days you software to integrate
+this distribution. We have talked about finding the probability
+that z is less than, or equal to a particular
+number say 1.14, and how you would do that in R, you would type
+p-norm 1.14 to find the area to the left of 1.14. If I have the area first, and want to find a number, that's sort of an
+inverse problem, and we've talked about finding all the area to the
+left of a number. The first thing I
+want to do with this, is I want to translate this in the middle to the left problem. If I have area 0.95
+in the middle, then I have area 0.05 divided by two in each tail, that is 0.025, and if I add on the
+lower tail here, then I wanted to find
+a number that has area 0.975 to the left. My colleague's question mark, and if you go back to
+the other slide here, the numbers I'm looking for
+it looks nice and symmetric, are question mark, and
+negative question mark. There is a command in R, it's the inverse of
+the p-norm command, and it's called q-norm. If you type q-norm 0.975, then it will return the number that cuts off at
+area to the left, and when I did this
+in R I got 1.96. We know that we can
+capture a standard normal between these two
+numbers, negative 1.96, and positive 1.96 with
+probability 0.95, and we know that our sample
+mean, when standardized, when you subtract the mean, and divide by the standard
+deviation acts just like z. These two numbers will
+work for that as well. The last step into coming up with a confidence interval is to solve this for mu in the middle. I'm going to move things
+around until I get mu isolated alone in the middle, and you see I've
+got two end points. This is weird from a
+probability perspective, if you haven't had a
+lot of probability, usually we have the random
+variable in the middle, and we talk about the
+probability that x is between one, and three. Here, the randomness
+is in the endpoints, the mu in the middle is
+constant, and fixed. These two end points form the 95 percent
+confidence interval. Here is our first
+confidence interval, this is 95 percent confidence
+interval for the mean mu of a normal distribution
+and that 95 percent, really is what gave us
+those specific numbers, 1.96, and negative 1.96. Let's talk about this a little
+more generally but first, a notation you might want to use. A more compact notation
+is to say x-bar plus, or minus 1.96 times sigma over the square root of n. Sigma
+squared was assumed known, sigma the square root is known, the sample size is always
+assumed known in this course. There are other courses that I hope you're going
+to go on to take in statistics where you're
+going to talk about choosing a sample size to
+get what you'd like to see. But let's talk about that 1.96. This is called a critical value. We use the words "critical
+value" to denote any number that cuts off a certain area
+under the curve of a PDF. In general, for a standard
+normal distribution, this is really common notation, but not completely
+universal, but really close. We are going to use
+a lowercase z_Alpha, this is not a random variable to denote the number that cuts off the area Alpha to the right for the
+standard normal curve. Y to the right and Alpha left, it has to do with historically where confidence intervals fell. They came up after
+hypothesis testing, which is something
+in the next course, if you're going to take that, and it's more historical
+reasons than anything else. In our case, with the 95
+percent confidence intervals, we found the critical
+values negative 1.96 and positive 1.96. But in general,
+we're going to put area 1 minus Alpha in the middle. I know you probably want
+to put Alpha there. But again, for
+historical reasons, we want area 1 minus
+Alpha in the middle. Also, Alpha in statistics is usually thought of
+as something small. It's not quite an epsilon, but it's a small thing. The Alpha for a
+confidence interval is going to represent the
+area out in the tails. For a 100 times 1 minus Alpha percent
+confidence interval, I want to put area 1 minus
+Alpha in the middle. For example, in the
+95 percent case, my Alpha was 0.05 and I put area 1 minus 0.05 or
+0.95 in the middle. If I have area 1 minus
+Alpha in the middle, then I have a total area
+of Alpha in the two tails. If I cut them off symmetrically, then I've got Alpha/2
+in both tails. This number is called, by our new definition, this is the critical value that we denote, lowercase c_Alpha/2. Now, by symmetry, the other one is negative lowercase c_Alpha/2. But we can also write
+it 1 minus Alpha/2. Because in our new notation, Z_1 minus Alpha/2 is a
+number that cuts off area 1 minus Alpha/2 to the right for the standard
+normal distribution, which means Alpha/2 to the left. We are not going to
+need this because of symmetry, but eventually, we're going to do
+confidence intervals for distributions that
+are not symmetric. In summary, if I have a
+random sample of size n from the normal distribution
+where mu is unknown, but sigma squared is known. A 100 times 1 minus Alpha
+percent confidence interval for mu is given by
+x bar plus or minus a z critical value with the
+subscript Alpha/2 times sigma over the square root
+of n. You will note that, everything we have done
+in this video is based on the fact that we started
+with a normal distribution. What did we do with that? We wanted a confidence
+interval for a parameter mu. We found an estimator x bar
+that we knew something about. We know the distribution
+of x bar is normal. Then we standardized it to something that didn't even
+involve the parameters. The variable Z had a standard
+normal distribution, mean 0, variance 1,
+nothing unknown there. Then we found critical values
+for that distribution or that random variable and then we translated it back to our x bar. But everything was really
+based on the fact that, x bar has a normal distribution. That was true because it was a linear combination of normals. But what if we start
+with something not normal or even unknown? By the central limit theorem, for a more general or even
+unknown distribution, if our sample size is large, which we usually take
+to be greater than 30, then x bar has a roughly
+normal distribution. If you have a sample of size n, and you know the variance, and you don't know
+the distribution, and you want a
+confidence interval for mu as long as your
+sample is large, you can use the central
+limit theorem to say that, x bar is approximately normal. Then you can go through
+other steps we just did, identical to what we
+did before to say that, an approximate large sample, 100 times 1 minus Alpha percent confidence
+interval for the mean is given by x bar plus or minus z_Alpha/2 times sigma over
+the square root of n, and we didn't even
+need normality. Let's look at an example. We have a supermarket chain
+that is trying to figure out whether or not they should add more organic offerings to
+their produce section. So they hire an
+external marketing firm to collect some data. Then they send it to us as a statisticians to
+make some conclusions. Not very many in
+this video because we only know one
+thing at this point. But we're going to
+make more conclusions as the rest of this
+course plays out. Suppose we took a random sample, or the marketing firm
+took a random sample of 200 customers from this
+particular region. They observed that the
+average amount spent on organic produce per
+person per month is $36. Suppose based on previous
+studies from previous years, we believe that the distribution of these amounts are normal. We know the variance, which is $5 per person. There's a variance of $5 and
+the spread of the amount per person per month
+spend on organic produce. I would like to return a 90 percent confidence
+interval for the true mean mu. The true average amount per
+month per person that anyone from that store is
+going to spend on organic produce in a month. I have this data, we
+got N equals 200 x-bar. Notice I've made it lowercase. This is not random
+but fixed at 36. It is observed and measured
+and not a random variable. We've got sigma squared
+somehow known to be five. So we're ready. We've got a formula here. We've got an X-bar
+plus or minus thing. The only thing we're
+going to need to do is find the appropriate
+critical value. Because things are normal
+here I'm going to look at the standard
+normal distribution. Really, if I was doing this from scratch, I would say, well, x-bar has a normal distribution and if I standardize
+it now I have a standard normal and I can find
+cutoffs for that and blah, blah, blah, blah, blah. For a standard normal
+distribution like this, this is the PDF
+for the normal 01, I would like to find
+two values that give us area 0.9 in the middle. This means that we have area 0.95 to the left of our
+question mark here. Then the other cutoff is
+the negative question mark. You can find this cutoff in
+R by typing qnorm(0.95). You'll get approximately 1.645. Our formula is
+X-bar plus or minus the critical value times
+the standard deviation over the square root of n.
+We've got an alpha of 0.1 because our confidence
+interval was 90 percent, one minus alpha 0.9. We know our z critical value and we have stuff to plug in. We do, and we end up with
+35.74 for up to 36.26. Again, this does not mean
+that the true mean is in there 90 percent of the time, or that we feel 90 percent
+confident that it's in there. It's just an interval that
+90 percent of the time, if you did our techniques, you would be right in
+including the true mean. In this video, I've talked about computing or capturing an area, a specified area in the
+middle between two numbers. I've taken those numbers to
+look symmetric about zero. There's no real reason to do that other than it's going to give you a shortest possible confidence
+interval. Try it out. If this end point
+moves over here, then this one has
+to move over here. Because there's less
+area over here, this one is going to have to move further over than this one move. That's going to increase
+the length of the interval. It would be a valid confidence
+interval in the end. But why give someone a bigger interval than
+you actually need? You're trying to
+estimate it for them and you'd like it as
+small as possible. In this module, we're
+not going to try to optimize any interval. But the choice of my cutoffs
+where I want to cut off the right area is
+going to be influenced by wanting to have the
+shortest interval. In the next video,
+we want to remove the ridiculous assumption that the variance is known
+for our population. We're going to introduce
+some new distributions that we're going to need
+in order to do this. I will see you there.

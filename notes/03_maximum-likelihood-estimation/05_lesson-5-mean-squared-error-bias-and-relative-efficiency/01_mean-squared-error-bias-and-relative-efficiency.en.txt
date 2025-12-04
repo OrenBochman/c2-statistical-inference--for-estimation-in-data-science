@@ -1,0 +1,91 @@
+Welcome back. In this video, we're going to talk
+about the concepts of mean squared error, bias and relative efficiency, and these were all useful items. We're comparing the quality
+of different estimators. We've seen this picture before, and these curves
+represent the shapes of histograms of the results
+you're going to see. If you have many samples and you compute an estimator
+of Theta many times. We already know that we
+should prefer the estimator corresponding to this blue curve over the estimator corresponding
+to the black curve. Because they both are centered in the right place or unbiased. But the blue curve has
+a lot less variability, which means more predictability. Because output of
+the estimator from the black curve is going to
+be center in the right place, but is going to be
+all over the place. The question is, how do we compare the blue curve
+with the red curve? We've talked about
+having a little bit of bias like we see here
+in the red curve, as a trade-off or possibly
+having smaller variance, which is higher predictability. But what are we predicting? If it's not in the right place. I think maybe we should not
+be looking at variance, but something known as
+mean squared error. The mean squared error looks
+at the error or signed a distance between the estimator and the thing we're
+trying to estimate, which is not necessarily
+the mean of this Theta hat. We square root and we
+take the expected value. This is known as the mean squared error or
+MSE for Theta hat. Now, this thing up here, it looks like a variance and it's true that the mean squared error is a variance if we have an
+unbiased estimator of Theta, because we have a
+random variable minus its mean squared
+in an expectation. Let's let Theta hat be an
+estimator of a parameter Theta, the bias of Theta hat. We're going to denote it by
+a capital B of Theta hat and define it as the expected value
+of Theta hat minus Theta. You can see that an
+unbiased estimator has a bias of zero. Now we want to relate it
+to the MSE and variance. Let's let Theta be a parameter
+we're trying to estimate. Let's let beta hat
+be an estimator which may or may not be unbiased. Let's look at the
+mean squared error. The mean squared error for
+Theta hat is by definition, the expected value of Theta
+hat minus Theta squared. I'm going to do a little plus or minus action here to try
+to see the variance. The variance would be
+the expected value of Theta hat minus its mean squared. I'm going to subtract off the mean of the
+estimator Theta hat, but also added back. I
+didn't change anything. This last part here is actually the bias term we have justifying, and then if I group
+the other two terms together and square this but those terms grouped together and run the
+expectation through. We're going to see
+three different terms. The first one is going to be the expected value of Theta hat minus its expectation squared. This is the definition of the variance of the random
+variable Theta hat. The second term which we have to do is going to be
+this expectation. Now look at this bias over here, this is an expected value
+of a random variable which is non-random minus the truth Theta,
+which is non-random. The bias is not random. It is constant in that sense. We can pull it outside
+of the expectation, in what we have left. Let's take the expectation
+out here through. We get the expected
+value of Theta hat minus the expected value of the
+expected value of Theta hat. This expected value of Theta
+hat is already not run them. We've already averaged
+out the randomness. Now we're taking again the expected value of a
+constant or nonrandom thing, which is the original thing, be expected value of Theta hat, and this term is zero. Remember we're squaring
+of this big expression. We talked about the
+first part squared. Now we're talking about the
+cross terms in the middle, which we just showed our zero. Let's look at the last term, the bias is not random. If you square it, it's
+still not random. Taking the expectation of it is like taking the expected
+value of three. The expected value of
+the Number 3 is 3. The expected value of the bias squared is the bias squared. Putting these
+altogether, what we have shown is that the mean squared
+error for our estimator, Theta hat of Theta this
+is equal to the variance for the estimator plus
+the square of the biased. Again, we can see that if we
+have an unbiased estimator the mean squared error
+corresponds to the variance. But if we have a biased estimator and we don't know how to compare maybe a very predictable small
+variance biased estimator versus a less predictable, wider, but unbiased estimator. MSE is the way to go. We can see it as a function
+of the original variance. The estimator corresponding
+to this red curve will still get credit for
+having small variance, but it will be penalized
+a little bit for being off the right spot. Let's let Theta 1 hat
+and Theta 2 hat be two unbiased estimators
+of a parameter Theta. We're going to define something called relative efficiency, which I've only ever seen defined for unbiased estimators, doesn't make that much sense to talk about it for a
+biased estimators. But I suppose you could. We say that the first estimator is more efficient than
+the second estimator. Now they're both unbiased, so they've got that going. We're going to compare them
+by variance, and we say, the first one is more efficient if it has smaller variance. The relative efficiency of the first estimator to
+the second estimator is the ratio of the variance of the second estimator over the variance of the
+first estimator. More efficient is better. Theta 1 hat is more
+efficient than Theta 2 hat. It will have a
+smaller variance and that will make this
+fraction larger. A large relative efficiency means that Theta 1 hat is
+better than Theta 1 hat. If the efficiency
+is greater than 1, we say that Theta 1 hat is more efficient at estimating
+Theta then Theta 2 hat. If it is less than 1, it is less efficient, and if it's equal
+to one, well great. You've got two hopefully
+good estimators. That was short, but are we done? We're done with this module, but we're not done by
+MLEs, by a long shot. So far I haven't made a very good case for why
+you'd want to use MLEs. We saw some horrible
+computation, some bias. I need to convince you that you're going to
+want to use these. I hope to see you
+in the next module.

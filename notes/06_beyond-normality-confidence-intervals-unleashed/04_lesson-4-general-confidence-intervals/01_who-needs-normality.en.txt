@@ -1,0 +1,124 @@
+Welcome back, everyone.
+In this video, we're going to truly talk
+about confidence intervals unleashed. What does that mean? So far, all of our
+confidence intervals are things you can look up in
+books or on the Internet, but what if you truly had
+to construct your own? Not everything is normal. We're just going to
+do this by example. Suppose that I have a
+random sample of size n from the exponential
+distribution with rate Lambda and suppose
+that I want to build a 95 percent or any percent confidence
+interval for Lambda. The first step is always
+to choose a statistic, and this is one that you need
+to be able to work with. You need to be able to
+compute a function of that statistic and the
+thing you're estimating, whose distribution is known to you and is unknown
+parameter-free. This quantity that
+we keep making is known in statistics as
+a pivotal quantity. Let's try the sample mean because we know a lot of things about the sample mean. Given we have an
+exponential distribution, what is the distribution
+of the sample mean? Well, we do know that the sum of exponentials has a
+Gamma distribution, where the first parameter is
+the number we added together and the second parameter matches that of the original
+exponentials. We did see way back in
+the first module that if you take a Gamma
+random variable and you multiply by a
+positive constant, you still get a
+Gamma distribution. It's just that, that
+constant ends up underneath the second parameter. This is only true
+if you parameterize the Gamma distribution as we have been doing
+in this course. Be careful if you're looking at other books or on the Internet, the constant might end up in front of the second parameter. The sample mean is just the
+sum with a constant in front, the constant being one over n, and if we put one over n
+underneath the second parameter, we end up with a Gamma
+distribution with parameters n and nLambda. That is starting with an exponential distribution
+with rate Lambda. If we take the sample mean
+of NIID random variables, we get a Gamma with
+parameters n and nLambda. The second step is always to find a function of the thing we're trying to estimate and the
+statistic we're using, whose distribution is known to us an unknown parameter-free. Why? Because if we
+know its distribution, we can put it between two
+critical values that capture the right area and if those critical values don't depend on the unknown parameter, then it will be easy for
+us to take our quantity in the middle and solve for
+the unknown parameter. We have X bar, which has a Gamma distribution with parameters n and nLambda, and given the
+discussion we just had, if we want to get rid of the
+unknown parameter Lambda, we can multiply by Lambda and
+that will end up dividing the second parameter in the Gamma distribution so that Lambda times
+the sample mean, is Gamma distributed
+with parameters n and n. This could be our
+pivotal quantity. The statistic that we put between critical values and then solve
+for Lambda in the middle. How could you get critical values for the Gamma and n distribution? You can get them using R
+like we have all along. You can use the
+command Q Gamma and put in the areas that you
+want to capture to the right, and then the two parameters
+for the Gamma distribution, the n and the n where these are actual fixed numbers that you have a sum fixed size
+n. Historically, people had to do
+numerical integrals and this was a lot of work and
+they would consult tables, but because the Gamma
+distribution has two parameters, we would have to set up quite a few tables that
+would correspond to each of the two parameters and all
+of the different areas that we wanted to capture and
+that is a lot of work. Historically, people transformed Gamma random
+variables into chi-squareds. We're going to do that as well, because even though we can get the Gamma critical
+values using software, there are plenty of
+reasons going forward. If you take any more courses in statistics past this course, there are plenty
+of reasons you're going to be wanting to be able to convert Gamma random
+variables to chi-squareds. It's an important skill
+for so many things. Let's do it. I'm going to start
+from the beginning again, for my confidence interval. Suppose we have a random
+sample of size n from the exponential distribution
+with rate Lambda, we're going to construct a 95 percent confidence interval. Our first step is always
+to choose a statistic, so I'm going to choose the
+sample mean because we know a lot about sample
+means, and step 2, is to look at the distribution of the statistic and
+maybe adjust it to get a pivotal quantity
+whose distribution is known to us an
+unknown parameter-free. We saw that our sample mean has a Gamma distribution with
+parameters n and nLambda, and if we multiply by Lambda, we get a Gamma distribution
+with parameters n and n, and I want to turn this
+into a chi-squared. I like that second
+parameter to be a one half. I'm going to multiply
+through by n again so that it divides the second parameter and
+I get a one and also, multiply through at
+the same time by two, so it divides the second
+parameter and we get a one half. We're really close to a
+chi-squared distribution now. A chi-square n distribution
+is defined to be a Gamma distribution with parameters n over 2 and one half. I don't have n over 2 but
+I do have 2_n over 2, which means that we've got a chi-square distribution
+with 2_n degrees of freedom. I've got a statistic and
+I know it's distribution, and that distribution is
+unknown parameter-free, so we're going to find the
+appropriate critical values. We're going to look at the
+chi-squared distribution with 2_n degrees of freedom, and for our 95 percent
+confidence interval, I'm going to put area of 0.95 in the middle with area
+0.025 in each tail. We've talked before for this specific distribution
+about starting from zero, and putting area 0.05
+in the upper tail or starting at a number that, going all the way up to infinity, gives us 0.05 in the lower tail. Here I'm just going to stick with one confidence interval. I'm going to put
+0.025 in both tails. These are chi-squared
+critical values, you know how to look them up, so let us put our statistic between these two
+chi-squared critical values, that cutoff area 0.025 in the upper tail and 0.025
+in the lower tail, which means that lower
+critical value actually has area point 0.975 above it. I can solve for Lambda
+in the middle and we get a chi-squared critical value divided by 2_n times
+the sample mean, and another chi-squared
+critical value divided by 2 times n times
+the sample mean. These two endpoints here are the endpoints of our
+confidence interval. I'm going to leave off
+a numerical example in this case, but presumably, you have a sample size and
+you have a sample mean, and you know how to look up these critical values because
+we've done this many times. You've got two actual numbers that capture the
+Lambda in the middle. Now, the numbers are either
+going to capture it or not, but by construction
+based on the sample, if you took another
+sample and got a new confidence interval and another one and a new
+confidence interval, and did it again, and
+again, and again, 95 percent of those samples are going to give you a
+confidence interval that correctly captures Lambda
+95 percent of the time. That was fun, but
+that's not all there is to confidence
+intervals unleashed. We worked with the sample
+mean because we're really familiar
+with sample means, but in practice, you have
+to work with what you have. Let's suppose we're given a different statistic that
+we have to work with, in our last video of this
+last module of this course, we're going to unleash more? I don't know. We're
+going to look at the same confidence interval based on a different statistic
+just because we can. I will see you in the next one.

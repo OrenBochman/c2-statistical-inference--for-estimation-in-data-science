@@ -1,0 +1,230 @@
+When you go and measure
+people on the street, do you have a certain expectation
+about what you'll find? For a random variable x, the expectation or
+expected value or mean, and these are all synonyms
+for the same thing, it's just a probability weighted average of the values
+in the distribution. In the discrete case, let's just work it out on
+our own without a formula. Suppose that x has this very simple distribution where it takes on the values one, two, and three, with
+probabilities 1/4, 1/4 and 1/2. The expected value or mean of x, we're going to denote
+by a capital E of x, and it's just as I said, this probability weighted average where we take each value
+in the distribution, and multiply by its
+respective probability. Even though the number 2
+is in the center here, the number 3 has half of the weight of this
+distribution on it. The average is pulled
+away from the center, and pulled more up towards three. That's why we get the 2.25. In general, for a
+discrete random variable, we write the expected
+value of X as the sum of x times the
+probability that X equals x. This probability of course, is our probability mass function, which we have denoted
+by an f of x. When you write it this way, you can easily see the analog to a continuous distribution. The sum, will turn
+into an integral. The PMF, probability
+mass function, will be replaced by a PDF,
+probability density function. Common notation for the
+mean or expected value of a random variable or
+equivalently its distribution, is to use a lowercase Greek mu. This is a constant in
+that it is not random. X is a random variable here, and we have integrated
+out all the randomness. As usual in the case of multiple random variables
+or distributions, we might subscript the mu
+to give several means. For example, suppose that X has the normal
+distribution with mean mu, and variance sigma squared. I would hope the mean
+or expected value of this distribution is mu, otherwise we have a very bad name of this distribution mean mu, and we've used the wrong symbol. But the expected
+value, let's see, is the integral from
+minus infinity to infinity of x times the PDF, and the PDF is this. Now, I'm just trying to talk about expectations
+of this video, I don't want to talk about how
+to do integrals right now, and I don't want you
+to be concerned, but if you or someone cranked
+through this integral, you do in fact get mu. As another example,
+let's talk about the exponential
+distribution that I introduced several videos ago. At the time, I said
+that I didn't like the notation I was using to denote this exponential
+distribution, this x squiggly line, x lambda. Now, I can tell you why I
+don't like that notation. The expected value of this continuous random
+variable is of course, the integral of x times the PDF. Now, I've put the integral from minus infinity to
+infinity in here, even though this
+distribution lives on the space from
+zero to infinity, just to show that you can always do it and you
+wouldn't be wrong, it's just that part of your integral is going to
+end up to be zero. Integrating the rest of
+this, the interesting part, using integration by parts, we get one over lambda. At the beginning of this module, I talked about the exponential
+distribution being a popular model of
+inter-arrival times. Maybe you're examining
+traffic flow at a certain intersection and
+you want to talk about the times between
+arrivals of vehicles, or the times between customers
+walking into a bank, or the times between particles colliding in a physics setting, or the times between packets of information moving
+along in the Internet. If our exponential
+distribution had, for example, a rate of two per hour, so by this I mean lambda is two, imagine if customers come into your store at a rate
+of two per hour, and x is the inter-arrival time, the amount of time
+you have to wait on average for a customer. If they're only coming
+in at two per hour, you would fully
+expect on average, it would take a half hour
+between customers to arrive. You're seeing this
+inverse relationship between the rate, and the mean. We use lambda as a rate, and one over lambda turned out to be the mean of the distribution. Yet some people use
+lambda in the other way. If we have an exponential
+distribution like this, as we have written, where
+the mean is one over lambda, we say that lambda
+is a rate parameter. Other people, and it's
+not wrong at all, will write the
+distribution like this. They have a one over lambda
+where we had a lambda, and their mean or expected
+value turned out to be lambda. Here we say that lambda
+is a mean parameter. When people just write X, X has this squiggly line
+exponential distribution lambda, it's hard to tell which
+one they're talking about. Often if you're reading
+a paper or a book, or you're on some website, you're going to
+have to go back up, flip back, scroll back, and try to figure out which exponential distribution
+you're talking about. For this reason, I like to use this more specific
+notation where I specifically write,
+rate versus mean. Suppose that X has a PDF
+or PMF, F sub x of x, and g is a function and I'm
+going to assume it's nice, although I don't need
+it for this result, I just need it for
+the method of proof. I want to figure out the
+expected value of g of X. This result that we're
+going to get is going to hold in both the discrete
+and continuous cases. But I'm only going to prove
+it in the continuous cases. You're going to see integrals where otherwise you
+would have seen sums. I'm going to define a
+new random variable Y to be g of capital X. This is a random variable and it has a distribution and
+it has an expectation. We already figured
+out the PDF for this, and so if I want the
+expected value of g of X, that is the expected value of Y that's the integral
+of Y against its PDF, and we have an
+expression or we have an exact expression for the PDF for y in terms of the PDF for X. We're going to plug it
+in. To go forward here, I'm going to leave
+out two details. One is what I'm doing
+with this absolute value. Remember, if g is invertible, it has to be either strictly increasing or
+strictly decreasing. This means in turn
+that the inverse is strictly increasing
+or strictly decreasing. That means that this
+derivative is either strictly positive or
+strictly negative. To do this integral, I would
+break it up into two cases, and I would say case 1, g inverse is increasing, the derivative is positive and I would drop
+the absolute value. Case 2, the derivative is
+negative because the inverse is decreasing and I would drop the absolute value and put a negative in front to
+turn it positive, which is what we have
+with the absolute value. I'm going to do a
+substitution here. I'm going to let x
+be g inverse of y, and then the
+differential dx is going to be the derivative
+of g inverse of y, dy. When you plug it in and
+simplify everything, you get to this. I skipped two things here. One of them was the
+details involving the absolute value that
+we've already talked about, and the other are details on
+the limits of integration. If you're doing a
+change of variables to turn one integral into another, you do have to watch
+out and see if the limits of integration
+are going to change as well. What if X takes on values
+from minus infinity to infinity that when you put them through
+the function g, you only get values between 0-1. The reason it's still okay to use minus infinity to
+infinity is because of this PDF for X that will have
+the limits built into it. Just like we saw a few slides ago with the exponential
+distribution, this will be defined to be
+something interesting on some region and zero
+on the other region. This formula right
+here is known as the law of the
+unconscious statistician. Now, I always thought this was the most ridiculous
+name because I don't think anyone is doing statistics while
+they're unconscious, but let's say they are. The reason it's called
+this is because it's finding an expectation without really thinking about it. If you have a random variable
+or a distribution with a random variable
+X associated and you want to find the
+expected value of g of X, that's a new distribution, that's a new random variable. You should use the PDF for the new distribution like we did and then we
+transformed it. But some people just
+jump straight to this, which is really convenient. You put the g of x in front of the PDF for the original
+x and integrate. People do this without thinking, and it's known as the law of the unconscious statistician. I just know it as
+something super convenient because I don't want to have to transform PDFs all the time. Let's go back to our
+discrete example and try our law of the
+unconscious statistician. I have a discrete
+random variable x taking on the values 1, 2, and 3 with probabilities
+1/4, 1/4, and 1/2. If I want to find the
+expected value of X squared, then I need to square each value times its respective probability, and I get 3.5. In the continuous case, let's look at the
+exponential again. I just went through all
+of this discussion to talk about the notation I'm going to use and then I
+failed to use it here. But this, I mean an
+exponential with rate lambda. If I want the expected
+value of X squared, I'll put X squared in front
+of the PDF and integrate. Doing two integrations by parts, I will end up with 2
+over lambda squared. In the case that you want to
+find the expected value of a function of two or even
+more random variables, you would put that function in front of the joint PDF and do a double or triple or
+however many variables you have integral. We're going to use this
+as an important tool for proving some important
+properties about expectation. The first is that expectation
+is a linear operator. This means if you have
+random variables X and Y, and you take a constant, a and b and you multiply them
+by constants and add them, that you can run the expectation through the sum and
+pull the constants out. How do we prove this? The thing on the left side
+here is a function of X and Y, so that's like your g of x, y in the top line. We're going to write it
+with lowercase letters in integral in front
+of the joint PDF, and where we're going to
+do a double integral. Now, we're simply going to use linearity of the integral that's going to pull
+this apart for us. Then over here, if you pull the x out of this inner integral, then you're integrating the
+joint PDF with respect to y and that gives you
+the marginal PDF for X. Once you do that, you're going to get at
+least the first term of this big sum. You're going to get a times
+the integral of x times the marginal PDF for x and that is a times the
+expected value of X. For the other term in this sum, you will have to interchange the order of integration first. But doing the same
+thing, you're going to pull the b out of the x integral and then integrate with respect to y to get the
+expected value of Y. Another thing we can prove
+with our new joint PDF g of x y formula for the expectation is this nice
+property about independence. If X and Y are independent
+random variables, then the expected value
+of a product like this will break up into a
+product of expectations. Let's prove it, X times Y is a function of two
+random variables, X and Y. It's like the G of X and Y
+from the previous slide. I just want to put it in
+front of the joint PDF for x and y and do a double integral. Because X and Y are independent, I do know that this
+joint PDF factors into two marginal PDFs
+and now I can move things around my inner
+integral is with respect to y. I'm going to pull the x
+out and also the f of x out, and then what I'm
+left with is the integral of y times f of y dy, which is the expected value of Y. That new constant I can pull
+outside of the whole thing, and we get the expected value of Y times an integral that looks like the
+expected value of X. As before, these results, these claims I'm making
+about properties of expectations also hold for
+discrete random variables. We're just proving them
+in the continuous cases. By the way, if random variables
+X and Y are independent, and you look at the
+expected value of a product of not
+just X and Y alone, but a product of a function
+of X and a function of Y, this will break apart into an expectation times
+an expectation. The proof is identical
+to what we saw before. The integral we had on the previous slide does
+replace the little x and little y with the
+g of x and h of y and move things around,
+it's identical. Another important
+thing is that I want to mention that although when
+x and y are independent, the expected value of the product is the product of
+the expected values. The reverse is not
+necessarily true. Let's look at an example, this is not the usual
+three-point example from this lesson, it's
+a little different. X is taking the
+values minus 1, 0, and 1 with respective
+probabilities 1/4, 1/2, and 1/4. The expected value of x, in this case, is zero. I didn't show the
+calculation here, but it's just minus 1 times 1/4, plus 0 times 1/2, plus 1 times 1/4. I'm going to bring
+another random variable Y into this problem. But because the expected
+value of X is zero, the expected value of X times the expected value of
+Y is going to be zero. As long as the
+expected value of Y is not something
+weird and infinite. I specifically, I'm going to
+define Y to be X squared. This is really darn
+dependent on X. These are not independent at all. The expected value of
+X times Y, though, can be written as
+the expected value of X times X squared, which is X cubed. We can use the law of the
+unconscious statistician to do in this case, a sum because it's discreet. We're going to take each
+value and cube it and multiply it by its
+respective probability. We're getting that the
+expected value of X times Y is zero and expected
+value of X is zero, and expected value of Y up
+here I don't even care about. I know that both sides
+of the equation, expected value of
+X times Y equals expected value of X times
+expected value of Y, they're both zero and
+yet in this case, X and Y are very dependent. Remember, if X and
+Y are independent, you can factor expectations. You also maybe it will affect your expectations
+sometimes when they're not independent so it's not an if and only
+if kind of thing. Next up, we're
+going to talk about the spread of the distribution. Are the values generated
+or the heights measured? Are they all clumping up in one place or are they
+really spread out? Are they highly predictable or are they all over the place? We'll figure this out and how
+to measure this next time.

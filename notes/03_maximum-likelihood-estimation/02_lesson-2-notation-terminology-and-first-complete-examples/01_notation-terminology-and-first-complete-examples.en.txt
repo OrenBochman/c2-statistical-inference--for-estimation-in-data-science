@@ -1,0 +1,179 @@
+Welcome back. In this video, we're going to formalize
+what we just talked about with maximum
+likelihood estimators, so remember the idea. We have a random sample
+X_1 through X_n, they're independent
+and identically distributed because that's
+what random sample means. From the sum
+distribution that has a parameter theta that
+we want to estimate. The idea is going to be that we collect the data, we fix it, and we look at it and
+we think of that, "Now that's constant and fixed." We want to come up with a value theta in the parameter space, the allowable values that makes that observed
+data most likely. If things are discrete, then we want to look at
+the joint probability of seeing that big X_1 is some little x_1 out through big X_n is
+some little x_n, and this is going to be
+a function of theta, and so we want to look
+at it as a function of theta and maximize it. Now in the continuous case, we can't really talk
+about probability. Remember for a continuous
+random variable, the probability that that
+random variable is equal to a particular
+value x is always 0. But we are going to look at the analogue to our
+probability mass function, which you'll recall is our
+probability density function. We're going to look at that
+as a function of theta, and the Xs are going to
+be fixed and observed, and as a function of theta, we want to find the value that maximizes the probability
+density function. So first, some notation. The probability density function or probability mass function, and I think I'm going to stop
+saying both from now on. I'm just going to say PDF or probability density function, and that's fine as long
+as you realize it means something different for discrete or continuous random variables. The probability density function we've been denoting by f of x, and you'll notice that I don't have any subscripts
+here because I don't need them because all of the Xs
+have the exact same PDF. But I do want to expand
+the notation a little bit so that we can see that
+there's a theta in there. So I'm going to separate the
+x and theta by a semicolon. The reason I'm doing that
+is because sometimes I'll have multiple Xs,
+X_1 through X_n, and multiple parameters
+like alpha and beta, and within those groups, I want to separate
+each thing by commas, and the semicolon will
+separate the groups. Now some people will use
+a vertical line here. I choose not to use
+that because it has a meaning in probability that you may not intend in terms
+of conditional probability. So the joint PDF for our data, X_1 through X_n is a function of X_1 through
+X_n and theta and we get it by taking the product of the individual PDFs and those individual PDFs
+are all the same, but we're plugging
+in different Xs. So this is not like
+an individual PDF to the nth power because we're evaluating it at these
+n different values. The joint PDF, we
+might write this as an f of the
+vector x and theta. Given the joint PDF, the data, the Xs are fixed, and we think of it
+as a function of theta and we want to
+find the value of theta that maximizes the joint probability
+density function or probability mass function. If we think of this as
+a function of theta, and the x's as fixed, we're going to rename
+the joint PDF. We're going to call it
+a likelihood function and write it as a
+capital L of theta. Yeah, there's still Xs in there but I'm suppressing
+that in the notation. What could a likelihood function look like as a function of theta? It could look like
+pretty much anything. So what I've shown here is
+a kind of ideal likelihood. It happens to have
+only one maximum, and our goal is going
+to be to maximize it and to find that value
+that gives us the maximum. So before we do that, I want to say one, two. I want to say a couple of
+things and that is that if I multiply the likelihood
+function by say 1/3, it'll scale it down where you'll see the maximum
+is in the same place. So the maximum likelihood
+estimator is going to be the location on that Theta axis that gives us the maximum value, so I could look at the
+likelihood function or I could look at 1/3 times the
+likelihood function, or I could look at three times
+the likelihood function, and you know what? I can even look at X_1 times the likelihood function
+because the data in maximum likelihood
+estimation is considered fixed and constant
+just like 3-1/2. Because I can multiply or
+divide my likelihood by a constant and not change
+where the maximum occurs, then we can actually
+define the likelihood to be anything proportional
+to the joint pdf. So we can throw out
+multiplicative constants, including multiplicative
+constants that involve Xs. Let's look at an example. Suppose I have a random
+sample X_1 through X_n^ iid, from the Bernoulli
+distribution with parameter p. So here I have recaped the probability mass function
+and you'll see that I've started using our new
+expanded notation, I've put an f of x and p here. The joint probability
+mass function we'll get by multiplying the
+individual ones together, because these guys are IID independent and
+identically distributed. Now, fix the Xs. Those are stuck,
+fixed, not moving, and think of this
+as a function of p. The values of p
+that are allowed, the parameter space
+for this model, are all values of p
+between zero and one. I'm going to go
+ahead and clean up this joint pmf a little bit. For example I have
+p^X_1 times p^X_2 times p^X_3 and that's going to be p to
+the sum of the Xs, and I've got 1 minus
+p^1 minus X_1, 1 minus p^1 minus X_2. If I add up those exponents, I'm going to get an exponent of n minus the sum of the Xs, and I do have a
+product of indicators, o the joint probability mass
+function looks like this. Now, a likelihood
+not the likelihood. A likelihood, I could take
+the entire joint pmf, but I could also drop
+the indicator stuff, so that is a multiplicative
+constant which is constant with respect to p. I
+think I'm going to drop it. Why not make it simpler? So notice I said a likelihood
+and not the likelihood, because I can also take
+this and I can put the indicators back and I
+can multiply by a million, and that's another likelihood. We want to maximize this
+as a function of Theta, and it's almost always easier to maximize
+the log-likelihood. We're going to denote that
+by this lowercase script L. So this is going
+to be the log of the likelihood, and in this case, I took the log and I used
+the property of logs that say that a log of a product
+becomes a sum of logs, and a log of
+something to a power, you can bring that power
+down in front of the log, so here is the log-likelihood. The log function is an
+increasing function. So the log of the
+likelihood is going to have different values
+than the likelihood, but because log is increasing, this is not going to mess up
+the location of the maximum, because if you have a value A that's
+smaller than a value B, and you put it through a
+function that is increasing, so the function evaluated
+at A is going to give you something smaller than
+the function evaluated at B. So ordered values come out ordered and the numbers
+are going to be different, but my point is that you
+can maximize the log of the likelihood and this is
+almost always easier to do, but you're going to
+do this all the time, and one day taking the log is actually going
+to make things worse. So remember the goal is
+not to take the log, it is to maximize the likelihood, and most of the time, the vast majority of time, this is easier to do when you take the log
+of the likelihood. So here again, is
+the log-likelihood. I want to maximize it
+with respect to p, so I'm going to take a
+derivative with respect to p and set it equal to 0. Now to solve for p, I could combine the two fractions
+on the left side here, into one fraction by getting
+a common denominator. But because this
+is set equal to 0, I could multiply both sides of this equation by whatever I want. I'm going to multiply through
+by the common denominator, p times 1 minus p. I'm going
+to do that on both sides. On the right-hand
+side I still have 0, and on the left-hand
+side I have this. We're trying to maximize
+as the function of p, we took a derivative,
+we set it equal to 0, now we need to solve for p. Multiply it out,
+cancel some things, recombine things, and you'll see that the solution for p is the sum of the xs over n. We're going to
+make this random, and an estimate, or as
+opposed to an estimate, we're going to put a hat on it. This is our first maximum
+likelihood estimator. Everything is capital and
+random, there's a hat on it, and up here is just an
+intermediate algebraic step. Do you recognize this example? This is our coin example again. But we have n flips, and we have the
+Bernoulli's ones and zeros for heads and tails, and the value of p is unknown, it's somewhere between 0 and 1. We're no longer restricted
+to 0.2, 0.3, and 0.8. The maximum likelihood estimator, is the sample mean of
+the ones and zeros. If you add up the ones and zeros, and divide by n, you're really computing the proportion
+of ones in your sample. You're really computing
+the proportion of times you see heads
+in your sample. This maximum
+likelihood estimator, at least, in this case, makes a lot of sense. Let's look at a
+continuous example. Suppose I have x_1 through x_n, a random sample or iid from
+the exponential distribution, with rate parameter Lambda. Now the PDF for one of
+them is right here, and I'm again using
+the expanded notation where I have a Lambda
+in the f over here. The joint probability
+density function comes from multiplying a
+bunch of these together, plugging in the different
+data values, x_1 through x_n. I can multiply this
+stuff together. I'm going to have Lambda
+to the nth power, I'm going to get e to a sum, and then a product of indicators. The parameter space,
+the Lambdas that are allowed are everything
+from 0 to infinity. Now, a likelihood is, at this point, I can drop
+constants of proportionality. Again, I'm going to
+drop that indicator. If there was a 3 in front, or if there was a product
+of the xs in front, but not involving the Lambda, I would drop that too. Again, I said a likelihood,
+not the likelihood. Our goal is to maximize this
+as a function of Lambda. We're going to take
+the log because that's almost always easier. Remember, we're using
+this little script l, to denote the log likelihood, which is a function of Lambda. We take the log and we get this. To maximize it, I want to take the derivative
+with respect to Lambda and set it equal to
+0, and solve for Lambda. Then the end, I want to
+make everything capital, and throw a hat on it. Here is our first continuous maximum likelihood
+estimator for Theta. It's actually 1 over x bar. This is exactly what we got
+with method of moments. Because if Lambda is the
+rate of this distribution, the true distribution
+mean is 1 over Lambda. If you equate that to the sample mean x bar
+and solve for Lambda, in the method of moments case, we got 1 over x bar. We weren't that happy
+about it because it was a biased estimator. I'm trying to convince you
+that MLEs are everything. But they're not unbiased. But they're
+asymptotically unbiased. Stay tuned for what that means. That was so much fun. I think we need to do it again. More MLEs in the next
+video. I'll see you there.

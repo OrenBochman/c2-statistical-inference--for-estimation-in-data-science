@@ -1,0 +1,264 @@
+Welcome back. We are still, believe it or not, trying to estimate things from
+a larger population based on a sample. So we take that sample and we compute quantities that might
+help us with the larger population. For example, maybe a sample mean, or maybe the sum of the values in
+the sample, or maybe the variants, or maybe the maximum value of the sample or
+the minimum value in the sample. Or the max minus the min,
+which is known as the range of the sample. Any function of your data
+is known as a statistic. So all of these things I just talked
+about, means, mins, maxes, sums, and variances, sample variances,
+that is, are statistics. And we're going to use them
+to estimate other things. And in order to figure
+out how well we're doing, we're going to need to know often the
+distributions of some of these statistics. A lot of them depend on sums, so
+we're going to start out by talking about the distribution of sums
+of random variables. As a first example, consider that X1
+through Xn are IID, independent and identically distributed,
+which means the exact same thing as a random sample from the Bernoulli
+distribution with parameter p. I want to know the distribution of
+the sum of the x's from 1 to n, and I'm going to call this
+new random variable, Y. So this one, I think,
+we might be able to figure out. The Bernoulli distribution, remember,
+is a bunch of ones and zeros, and we have independent Bernoulli's,
+that's one of the I's in IID. So we've got independent ones and
+zeros with probabilities p and 1-p. So what happens if you sum them up? Well, if you think of the ones as
+success and zeros as failures, then summing up the zeros and ones will
+give you the total number of ones, which is the total number of successes. And this is a binomial distribution. So this one was kind of guessable. If we start with a random sample from
+a Bernoulli distribution with parameter p, then the sum is binomial
+with parameters n and p, where n is the number
+of terms we summed up. So not all statistics have such
+obvious interpretations, so we're going to need some tools. The first thing I want to talk about is
+something known as a moment generating function. We're going to denote it by a capital M,
+and I'm going to use a sub X, but I don't need to. As per our previous discussions, this is useful if we have maybe two moment
+generating functions in the same problem, one for a random variable X and another
+for Y, then I would put the subscript on. So t is just a real number argument,
+and it's defined to be the expected value of e to the tX
+in the discrete or continuous case. The moment generating function has this
+name because it generates moments. So what are moments? Moments are expectations like this, the expected value of X,
+X squared, X cubed, on up. Now, I want to get back to our course in
+statistics and get to some actual data. So because I don't think we're going to be
+needing these moments, at least not for a while, I don't want to talk about how
+the moment generating function generates them, even though that's how the moment
+generating function gets its name. Instead, I want to talk about what is
+right now a more important property, and that is that moment generating functions
+uniquely determine the distribution. So here I've written out
+a moment generating function for a continuous distribution. If it was a discrete distribution,
+this would be a sum. And you can see that the moment
+generating function is written in terms of an integral involving the PDF,
+or a sum of a PMF. Now, how do we identify distributions? If you have a random variable X and you
+can compute its PDF and it matches that of the exponential distribution, then you say
+that you have an exponential distribution. So PDFs are enough for
+us to identify the distribution. Because of this relationship here,
+it's actually possible to invert this relationship and write down the PDF in
+terms of the moment generating function. This is really hard,
+we don't want to actually do it. And if you've ever heard
+of Laplace transforms, think inverse Laplace transforms, and you
+may have seen something like this already. But if you believe me when I say this,
+then if I have two random variables X and Y, and I compute the moment
+generating function for X and the moment generating function for
+Y, and they're the same. They're going to have
+the exact same distribution. So as an example of computing
+a moment generating function, let's look at our Bernoulli case again. So the moment generating function
+is defined to be this expectation, which is a sum over all the x of e to the
+tx times the probability mass function, which is the probability that X equals x. For this distribution, we only take
+on two values for X, zero and one. So if we write this out and multiply
+things out and start adding, we get this. Now, the e to the 0 is 1 and
+e to the t is t. And because the probability
+that X equals 1 is p and X equals 0 is 1 minus p,
+we get this, or this. We have found our first moment generating
+function, and it's defined for any t. It's important for moment generating functions to at least be
+defined on a neighborhood including zero. So if you're wondering how a moment
+generating function might not be defined, if this sum was an infinite sum,
+it might diverge for some values of t and converge to
+something for other values of t. And if it converges,
+then we have a moment generating function. And it's important that we
+at least get convergence for values of t in a neighborhood of zero. So as another example,
+let's look at the binomial distribution. This is again discreet, and so the
+expectation of e to the tx is the sum of e to the tx times the probabilities for
+the binomial, which you see right here. And I've got an e to the tx. And when you raise something to
+a power and then to another power, you get to multiply the exponents,
+and vice versa. So I can rewrite that e to the tx
+as e to the t raised to the x, and then I can put it together
+with the p to the x so I have that one term raised to the x. So to sum this up, I'm going to have
+you recall the binomial theorem from somewhere way back in your
+mathematical studies. And this says that if you're adding
+two real numbers, a plus b, and taking that to the nth power, you can write it as the sum of this
+combinatorics involving expression. In our case, if you look at the line above
+a is pe to the t and b is 1 minus p. So from that, we can use the binomial
+theorem and we've got the sum, which gives us the moment generating
+function for the binomial distribution. So now we know two moment
+generating functions. What are we going to do with it? Well, suppose that X1 through
+Xn is a random sample, or IID, from any distribution with a moment
+generating function M sub X. So if you ever see me talk about an X
+when really I have an X1 through Xn The X is meant to be a typical X, but there would be nothing wrong
+with me writing M sub X sub 1. Or even m sub X sub 5 because they
+all have the same distribution and therefore the moment generating functions. Which are expectations which are computed
+using probability, mass function. Or probability density functions
+are going to be exactly the same. Let's talk about the distribution
+of the some of these general random variables that are no
+longer just Bernoulli. The moment generating function for this new random variable Y is e
+to the tY in the expectation. And this is the expectation of t times,
+the some of the X's. And we can pull that tea inside
+the some and then the each. The sum is the same thing
+as a product of ease. So now we've got the expected
+value of the product as I goes from 1 to n of
+e to the t times X i. Now we already saw in an earlier
+lesson that if we have two functions of a different
+random variables in a product. If they're independent random variables,
+then we can break up the expectation. And here we're just doing that
+kind of on steroids, right? We have a product of end things and we
+have the product inside the expectation. And we get to take the products
+of the individual expectations. And this is by independence
+of the random variables. Because we get that from random sampling. And it's not true in general. So these expectations are all
+the same because I'm not saying the X's are all the same. They're certainly not, but
+on average, they're the same. They're expected to be the same, and expected values of functions
+of them are the same. Because you compute it just by using
+the common p d f that's common to all. So what you're seeing here is the moment
+generating function for one of them. And we've got that multiplied
+by itself and times. So we get the moment
+generating function or one of them raised to the end power. So to conclude, if we have X1
+through X n a random sample or I'd from some distribution with
+a moment generating function. That I will recall M or
+M sub X or M sub X sub 1. It's just supposed to be a typical one for
+that sample. Okay, so to sum up,
+we have a random sample of size n. In other words, X 1 through X n ii d. From some distribution and we're going to let i be the sum as
+I goes from 1 to n if their iid. We have just seen that the moment
+generating function of the sum. Is the moment generating function of
+one of them raised to the nth power. So let's see if we can use this to tell us
+something back to the Bernoulli example. Suppose that X 1 through
+X n a random sample or iid from the Bernoulli
+distribution with parameter p. And consider the new random variable Y which is the sum of the X's
+as I goes from 1 to n. We want to know the distribution of Y and
+in fact we've already figured this out. But let's see how moment generating
+functions could help us figure it out as an alternative. The moment generating function for
+the Bernoulli we already computed. And it was 1 minus p plus p e to the t. And so
+the moment generating function for Y. Because this is some of my i i d things
+is just going to be the moment generating function. For any one of these
+raised to the n th power. So I plugged in that moment generating
+function and what do we see? We see the moment generating function for the binomial distribution
+with parameters n,p. And my statement before about
+moment generating functions uniquely determining
+the distribution says that. If Y has the moment generating
+function of the binomial distribution with parameters n and p. Then Y actually has to
+have the distribution, the binomial distribution
+with parameters n and p? Now lets pretty neat. So let's talk about a continuous case. Suppose that X 1 through X n is
+a random sample from the exponential distribution with rate lambda. First, I want to find the moment
+generating function for the individual X's. So that we can use it to find the
+distribution of another some in this case. The sum of exponential. So just looking at a single exponential,
+the expected value of e to the t x. Or X1 in this case is going to
+be the integral now in general, from minus infinity to infinity. Although you might be saying doesn't
+this only go from 0 to infinity and you're right. But right now I just have the p d f in
+there and the p d f will cut us off. And make us only integrate
+over the correct region. Because the p d f is defined to
+be 0 when the X's are negative. So we do get the integral
+from 0 to infinity and there's the exponential p d f. And to do this integral, I'm going to pull
+those e's together and factor out the X. And we have an integral that we could do. It's not that hard, but
+I have a trick for you and that is if you forget
+the constant out front. And just kind of look at this
+function just the X part, it kind of looks like the p d f
+of an exponential distribution. With parameter lambda minus t. Now the lambda minus t for it to be a parameter of the exponential
+distribution must be greater than 0. Because the parameter for the exponential
+distribution are always not negative. Always actually positive. So in this case, what would happen
+if lambda minus t were negative? This moment generating
+function wouldn't even exist. The whole integral would blow up. So assuming that t is less than lambda,
+which makes this lambda minus t positive. And makes the whole integral nice and
+convergent. I think this looks like an exponential
+with rate lambda minus t. So let's put in the lambda minus
+t that we need to see out front. And kind of compensate forward
+by pulling out this lambda and dividing by lambda minus t. So we really didn't change anything. So now we've got the integral
+of an exponential p d f with parameter lambda minus t and
+all p d f 's integrate to one. So we've got lambda over lambda minus t. And again, this works only
+when t is less than lambda. But lambda is strictly positive. So we do have t' s,
+including a neighborhood of 0. I call this trick integrating
+without integrating. The more probability and
+statistics you do. The more PDFs you become aware of and the more integral that are not even
+from probability or statistics. You can maybe mash into a form where
+you know an integral would be 1. And you don't actually
+have to do the work. Okay, so let's find one more
+moment generating function. And then we'll talk about
+the distribution of the some of the X's. So remember that we're trying to find the
+distribution of the sum of exponential. And we're in this moment
+generating function section. So I suspect we're going to use them
+if we have an i i d exponential. The moment generating
+function of that sum. Is equal to the moment
+generating function for any one of them raised to the end power. Now, if we have any possibility
+of recognizing this. I think we're going to need a few more
+moment generating functions under our belts. Consider X 1 through X n ID
+from the gamma distribution with parameters alpha and beta. The moment generating function in this
+case is the expected value of e to the t Capital X, which is the integral of e
+to the tX in front of the gamma pdf. And we're integrating over 0 to
+infinity because that's where the gamma pdf is not 0. So I've got two es here, and
+I'm going to combine them. I'm on my way to another one of these
+integrating without integrating tricks here. And you'll see that I pulled
+the constants out front because my goal here is to avoid the integral. But my goal in doing that is
+to recognize what kind of distribution this might be a pdf for. And this appears to look
+kind of like a gamma pdf. It's not quite right, but it appears to be gamma with
+parameters alpha and beta minus t. So, just like our discussion for
+the exponential distribution, the second parameter, both parameters for the gamma
+distribution have to be positive. So this is a proper gamma distribution
+if beta minus t is positive. In order for
+it to be that gamma distribution, I will put in what I need in front of it,
+right in place of beta. In the whole beta pdf,
+we have beta minus t. And the alpha is just alpha. And to write this down,
+I needed to put some things in, and I compensated by putting
+some things out front so that the the expression is exactly
+what it is in the line above. And then so this integral is
+the integral of a gamma pdf with parameters alpha and beta minus t. It has to integrate to
+1 because it's a pdf. So it does and this says that the moment
+generating function for the gamma random variable any one of them is beta over
+beta minus t, all raised to the alpha. So this holds again for t less than beta. Otherwise, the integral
+would have blown up. So take our X1 through Xn, iid exponential
+with rate lambda and add them up. What is the distribution of the sum? So I'm going to let y be
+the sum from 1 to n of the Xi, we know the moment generating function for
+any one of these Xs. And because they're iid Xs
+the moment generating function for the sum is the moment generating function
+for one of them to the nth power. So I plugged it in. And what do you see? If you go back and look at the moment
+generating function of the gamma distribution, you'll see that we
+really got the gamma distribution with parameters n in place of alpha and
+lambda in place of beta. Because moment generating functions
+uniquely determine the distribution, we have now shown that the sum of n
+iid exponential random variables with some rate lambda has a gamma distribution. Where the first parameter is
+the number of things we added up and the second parameter, is the parameter
+from the exponential distribution. Now not all random variable sum up
+to a nice known named distribution. So you can always take the sum
+of random variables and that's your new random variable. But it might not be one from our list
+of kind of common ones we've been lucky so far. And we can be lucky some more. We did show that the sum of iid
+Bernoulli's is binomial with parameters n and p. We showed that the sum of
+n iid exponentials with rate lambda is gamma with parameters n and
+lambda and we could use the same procedure
+to show a few others. So one of them is that the some of
+m not to be confused with the n, the sum of m iid binomial random
+variables with parameters n and p. We could show that this is again binomial
+with parameter n times m and then p. We could also show that
+the sum of n iid gamma random variables is another type of gamma. And in this case, we end up
+multiplying n by the alpha parameter. And this is not that surprising, right? Because the gamma random variable
+can come from a sum of exponentials. So if you're summing up gammas, you're really summing up
+a whole lot of exponentials. So I would expect another gamma. In other news, the sum of normal
+random variables is again normal. And in fact, any linear combination
+of normal random variables is normal. They don't even have to be independent. Now we haven't shown that yet, but
+that's going to be important for us going forward. We also have that,
+if I take X1 through Xn independent but not identically distributed. So here they are all normal, which kind of sounds like
+they're identically distributed. But they're different normals with
+different means and different variances. And if you add them up,
+you get another normal, and you can show this using
+moment generating functions. And the mean of the mu sum of
+random variables is the sum of the original means, and the variance
+is the sum of the original variances. And that part kind of comes from,
+if you'll recall, we talked about the variance of
+a sum being the sum of the variance, if the random variables are independent. For one more normal case here,
+if we have a bunch of independent random variables from different
+normal distributions and we want to look not just at the sum but
+at a linear combination. So summing them up with all of these
+coefficients in here we still get another normal distribution, and we could show
+this with moment generating functions. And as long as you
+remember that any linear combination of normal random
+variables is again normal, then you don't have to memorize
+these means and variances. Because they are exactly what
+you would get if you took the expectation of that sum and
+the variance of the sum. So the mean and the variance for
+the distribution is the mean and the variance of the random variable y. So are you ready to estimate? So far, we've had a few common
+sense estimators, guesses, things that seemed like good ideas,
+things that seem like natural ideas. We're going to estimate the mean of the
+population with the mean in the sample. We're going to finish out this module,
+though, with our first formal,
+not just guessing method of estimation. It's called method of moments,
+and you don't want to miss it. I'll see you next time.

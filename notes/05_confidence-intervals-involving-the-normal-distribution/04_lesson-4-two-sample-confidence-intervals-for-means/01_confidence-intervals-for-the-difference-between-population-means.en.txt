@@ -1,0 +1,138 @@
+Welcome back, in this video. We're going to talk about confidence
+intervals for differences, in two means, from two different populations. So here's the setup, suppose I have
+a random sample of size N one, from one distribution,
+that is normal with mean mu one and variants sigma one squared. So up here I used, double sub scripting
+because I want to talk about a second set of X's, I could instead use single sub
+scripts and have this sample be excess and my next sample be Y's, but
+it's really not important. We're not going to be using,
+the double sub scripts very much. So, suppose I also have a random sample,
+of some size n two, from another normal distribution, with mean mu two and
+variance sigma two squared. I'm going to assume that these
+samples are independent and that both sigma one squared and
+sigma two squared are known. Let's try to find a 100 times one minus
+alpha percent, confidence interval. What the difference between the two means. Step one, for any confidence interval,
+and I'd really like you at this point to be thinking about these steps and
+not thinking about formulas in a box. Step one is to come up with
+some sort of estimator and a natural estimator from
+mu one minus mu two, is to take the sample mean from
+the first sample minus the sample mean? For the second sample,
+power to write these out explicitly, the first one would be a sum and we'd
+have n one terms and we divide by n one. And the second one would be a sum with
+n two terms and we divide by n two. So, the second step of any confidence
+interval, after you find an estimator, is to find the distribution
+of the estimator. And, we know that the first sample mean, because it's a sample mean from the normal
+distribution, is normally distributed. And we know it's mean and variance, because we've seen it a million times,
+similarly. The second sample mean,
+is a normal random variable and it has its own mean and
+variance like this. So the game is usually to look at
+the estimator of mu one minus mu two, and come up with a function of your estimator,
+in this case X one bar minus X two bar. And the thing you're trying to estimate,
+in this case mu one minus mu two, to come up with a function
+of those two things. Whose distribution is known to you,
+where you can say, I can go compute the critical value I need or I can go to
+software to get the critical value I need. It no longer depends
+on unknown parameters. In our case, our estimator is normally
+distributed, because it is a very simple linear combination of
+two normal random variables. And the mean,
+if you run the expectation through, is mu one minus mu two, the thing,
+we're trying to estimate. The variance, I'm going to go
+a little more slowly on this one. If I want the variance of
+the difference of the sample means, the first thing I'm want to do
+is rewrite the second term. I'm going to call this X one bar
+plus negative one times X two bar. Now you don't really need to do this, when
+we get to the end and you see the result, that's usually where you're
+going to go straight forward. But I want to make sure you know why? So, because the two samples
+were assumed independent, these two sample means
+are independent random variables. And we know if they're independent,
+we get to break up the variances, and remember constants come out of
+variances, but they come out squared. So, if I pull that minus 1 out,
+it will come out squared, which is of course plus one. So, the variance of the difference
+is the sum of the variances and not the difference of the variances. So, we know that our difference of
+sample means is normally distributed with mean mu one minus mu two. And the some of the variances and the
+variances were sigma one squared over n one and the other variance was
+sigma two squared over n two. And so, I can take this random
+variable and standardize it and turn it into a standard normal or
+normal zero one by subtracting it's mean. And dividing by, its standard deviation,
+which is the square root of its variance, which is now a kind of big,
+ugly expression. And no, you can't take the square root in
+doubt onto each of these squared terms. Because this statistic,
+this quantity computed from data, has a standard normal or Z distribution. We can put it between standard normal or
+Z critical values. As usual, I'm going to want
+to capture some kind of area one minus alpha in the middle, and
+then put alpha over two on both sides. Which means that I want numbers that cut
+off area alpha over two on both sides. Because the standard normal
+is symmetric about zero. I really want a number that's going
+to cut off area alpha over two, in the upper tail. And that's the Z sub alpha over two. And then by symmetry the negative of it. And the final step, step forward in
+finding any confidence interval, is then to solve for
+the thing you're trying to estimate. In this case mu one minus mu two,
+solve for that in the middle. When you do you get,
+it's kind of a big expression. So I'm sorry, it's over three lines, but we can certainly simplify
+it with a plus or minus. We get the estimator for that difference,
+plus or minus Z critical value, times the square root of the variance. So let's try it out in a real example,
+for this example, we're looking at fifth grade students
+from two neighboring counties that took a practice exam for
+a standardized test. Group one from county A, has 57 students. And the mean score,
+of that group was 77.2, while group B consisted of 63 students and
+their sample mean score was 75.3. Now, based on previous years data,
+we believe, that the distribution of scores for both
+groups, is roughly normally distributed. And based on previous years data, we believe we have a good
+handle on the true variances. So, we Have these numbers 15.3 and
+19.7, that we're going to treat as a true sigma one squared and
+sigma two squared, respectively. So, I want to find and
+interpret a 99% confidence interval, for the difference in the two mean scores,
+for the two groups of students. We have the data, we've got an n one and
+n two, the to sample sizes. We've got to sample means,
+lower case x's, we've got to true or assumed to be true variances and
+we have a formula in a box. To find a 99% confidence interval, involving the standard
+normal distribution. I'm going to look at the standard normal
+curve and put area 0.99 in the middle and the remaining area,
+distributed equally on both sides. Once again,
+you do not have to put it in the middle. But if you slide that interval around,
+one side is going to pick up area faster than the other and
+the interval is going to get longer, so you'll still return a valid
+99% confidence interval. But it will be longer and
+I do that, it's an estimator. You're trying to give someone your best
+guess for where the true difference in this case of means is, so
+why not give them the shortest interval? Okay, We have a new formula X
+one bar minus X two bar, plus or minus the Z critical value,
+times the square root of all this stuff. We know all of these things. I can find the critical
+value in R by typing Qnorm. So, norm for normal distribution,
+Q is the thing you would type to get a critical value that captures a certain
+area, in this case, area to the left. And so I wanted to combine
+the area here and here, to talk about the number here,
+that will capture area 0.995 to the left. And that turns out to be 2.56. So we plug everything in,
+we get this interval of values. This is an interval of, plausible values
+for the difference between the two means, now we don't know yet
+about hypothesis testing. If you want to know that, please take
+the course that follows this course. It's part of a sequence and
+you'll learn about hypothesis testing. But as an interval of plausible values,
+since it contains the number zero, because it starts with a negative and
+ends with a positive. It is plausible or reasonable to think, that the difference in means mu one
+minus mu two, is equal to zero and that means that it is plausible,
+that the two means are the same. So, even though we don't know
+exactly what hypothesis testing is, I think you might know the idea,
+you have some hypothesis, some idea,
+about the parameters you want to test. And you go take a sample and you build
+a kind of test, which we're not talking about in this course, but we can kind
+of do it with confidence intervals. This is kind of a hypothesis test that
+would say, you know it's plausible, that mu one is equal to mu two, because
+the confidence interval included zero. Now suppose you didn't
+want them to be equal. It seems that we can actually, well, we definitely can change
+the endpoints by changing the percentage. So it seems like we can remove
+the possibility of zero, if we change the percentage
+of this confidence interval, which is [NOISE], really bad,
+this is called data snooping. You need to set these, a percentages
+that you want to see before you look at what you have, or you're going
+to just be playing with it until you get what you want to see,
+which is bad statistics. So, in this video,
+we talked about a confidence interval for the difference mu one minus mu two,
+of two means for a normal distribution. If we have large samples,
+then we don't need normality. We can use the fact that X one bar and X two bar are approximately
+normal by central limit theorem. And we can use the fact that the two
+sample variances, are pretty good, approximators of the two true variances. So, an approximate 100 times one minus
+alpha percent confidence interval for the difference in means,
+is given by this, approximately. Next step, we're going to talk about
+again a difference in means, but we're going to talk about
+small sample situations where, at least one of the two
+sample sizes is small. And things get weird, so
+I'll see you there, in the next one.

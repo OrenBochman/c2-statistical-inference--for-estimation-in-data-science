@@ -1,0 +1,151 @@
+Hello everybody, welcome back to the last video of the last
+module of this course. In this module, we're still unleashing our
+confidence intervals. We're going to look at the exponential
+distribution again, and we're going to come up with a confidence interval for
+the rate parameter Lambda. In the last video, we used
+the sample mean x-bar. But sometimes you have
+to use what you have. In statistics you can either
+look up a formula in a book, on the Internet, or
+you can create one yourself and not be bound
+by what you can find. Here is the setup. Suppose that I have a random
+sample of size n from the exponential distribution
+with rate Lambda, and suppose that I
+want to construct a 95 percent confidence interval based on the minimum
+of the distribution. Why? Because in this case,
+this is all we have. Before we go into our
+step 1, step 2, step 3, and step 4, we want
+to figure out what the distribution of a
+minimum looks like. Suppose I have a
+random sample of size n from this exponential
+distribution. That means that I
+have some values here and here, and
+here, and here, and here, and here,1, 2, 3, 4, 5, 6, so n is 6 in this case. The minimum of the
+sample is over here. Let's look at a second
+sample of size 6. I have something here and here, and here, and here, and here, and here. The minimum in this case
+is right over here. In both cases, I found a minimum, and if I got another sample, I'd find another minimum and another sample, another minimum. The minimums are going to
+tend to be closer to 0. Then the regular sampled values, it's going to be really hard to get a minimum all
+the way up here. It has its own distribution. It's some distribution
+that has more of its mass or area or probability
+stuck down by 0. Let's try to find
+the distribution. For some notation. I'm going to let Y_n be the minimum of my
+random sample of size n. The CDF for each of the individual Xs is 1 minus e to the minus Lambda X because that's the CDF for the
+exponential distribution. I'm going to go for the
+CDF of the minimum, why? Because it's a continuous
+random variable and the PDF doesn't really
+represent probability. It's usually easier
+to look at a CDF, and is especially
+so in the case of finding the distribution
+of a minimum or a maximum. The CDF for Y_n looks like this, and I'm going to
+plug in what Y_n is. Now the goal is going
+to be to rewrite this probability in terms
+of the individual Xs. Because I know something
+about the individual Xs, I know their distribution. Let's take a look at what
+it means for the minimum of a sample to be less than or
+equal to some fixed number y. Here's a number y
+on a number line. Here's a random sample of size 3, such that the minimum is
+less than or equal to y. But here is another
+sample of size three, such that the minimum is
+less than or equal to y. Here's still is another
+random sample of size 3 such that the minimum is
+less than or equal to y. There are a lot of ways
+for the XS to fall so that the minimum is
+less than or equal to y. It's going to be
+hard to translate this statement about the
+minimum to a statement involving where the
+individual Xs fall with respect to this
+fixed number y. But not, if we look at the
+complement of this event. The minimum in a sample is
+greater than a fixed number y, if and only if every
+number in the sample is greater than y. I don't
+care exactly where they are, but I do know they're
+all greater than y. In order for the minimum
+to be greater than y. That means I get to rewrite
+this line as 1 minus the probability that
+X_1 is greater than y and X_2 is greater than y, and up to X_n is greater than y. Now by independence,
+I get to break this probability up into a
+product of probabilities. By identicalness, these
+probabilities are all the same. I get one of them raised
+to the nth power. Now, this is a tail probability for the exponential distribution. The probability that X_1
+is greater than x is 1 minus the probability it's
+less than or equal to X. In other words, 1 minus the CDF. I'm going to plug that
+in. Here's where we are. I'm going to plug in the actual
+CDF for the exponential. Do a little simplification. Do a little more simplification. When you raise something to a power and then up
+to another power, you get to multiply the powers, so this leaves us with 1 minus
+e to the minus n Lambda y, which we recognize as the CDF of an exponential
+distribution because we just wrote it down. But if you don't take the derivative and you'll
+recognize this as the PDF of an exponential with
+parameter n times Lambda. Here is a generic picture of an exponential distribution
+with rate Lambda. When you plug in zero, it starts at Lambda and then
+goes down exponentially, so n times Lambda, where n is your sample size
+is going to be larger. It's going to be higher
+up on the y-axis. A pdf starting there
+has to come down a lot faster because the total area under the curve has to be one. Now we're starting
+so much higher. This means that the bilk of the area for the blue curve that I've graphed is much
+closer to zero, than the bulk of the area
+for the original curve. That's what we expected. We didn't necessarily expect that the minimum has an exponential
+distribution itself. But we did expect the bulk of the area to move
+down towards zero. In fact, we got an exponential distribution
+with a higher rate. We're ready to develop our confidence interval for
+Lambda based on the minimum. Got a random sample of size n from this exponential
+distribution. I want a 95 percent
+confidence interval for Lambda based on the minimum
+value of the sample. Again, you might care about this if that's the data
+you have measured. You have to work with
+what you're given. If we're only given a minimum
+and not a sample mean, then this is what
+you'd have to do. Step 1 is to choose a statistic. In this case, it's
+been chosen for us. It's that minimum. Step 2
+is to find a function of the statistic whose
+distribution is known to us and unknown
+parameter free. We just showed that
+the distribution of the minimum is exponential
+with rate and Lambda. We can figure out the distribution of a constant
+times an exponential. Or you can realize that we
+already know what this is. Because such an exponential
+distribution is really a Gamma distribution with
+first parameter being one, second parameter matching
+that of the exponential. In the last video,
+we talked about what you get when you multiply
+a Gamma times a constant. We don't have to
+go back and figure this out for the exponential, because the exponential
+is a particular Gamma. I want to get rid of the
+Lambda and while I'm at it, let's get rid of the end to make this whole thing a lot easier. If I multiply the minimum, the y n by n times Lambda. That ends up under the second parameter in
+the Gamma distribution, which gives us a Gamma 1,1 and translating back
+to the exponential, an exponential with rate 1. For step 3, I want to find the appropriate critical values. Here is a so-called
+pivotal quantity. It's a quantity made of a
+statistic based on the data and the unknown parameter whose
+distribution is known to us and not dependent on
+any unknown parameters. You might think I'm going to
+go to r here, but I'm not, because the exponential
+distribution is so easy to work with. I want to integrate the exponential rate
+1 distribution up to some number that gives me
+area 0.95 to the left. Or I could be going
+in the middle and putting half of the 5
+percent area on both sides. Or I could be going from
+some number up to infinity. But let's go with this one. To find this number which
+I'm calling question mark, I need to integrate the
+exponential rate 1 pdf from zero up to this question mark
+and set that equal to 0.95. Now, this integral is 1 minus e to the
+minus question mark. If you set that equal to 0.95 and solve for
+the question mark, you get the negative of
+the natural log of 0.05. Now, the log of numbers between zero and 1 gives
+you negative values. Fortunately, this makes sense
+and is a positive value. Step 3 is to find our critical values and
+that's what we just did. We know that n times Lambda times the minimum value in the sample is
+exponential with rate 1, and we know that we can capture 95 percent of the area for this distribution
+between the number 0 and the number
+negative log of 0.05. I'm going to put the
+pivotal quantity between those numbers and solve
+for Lambda in the middle. In this case, I'm going to divide through by n times the minimum. n is a sample size. Y is a minimum of exponentials
+which is not negative, so there's no negatives, so nothing is going to flip. We end up with a
+confidence interval. In this case, 0 on the left and the negative log of 0.05 divided by n times that minimum
+on the right. We did it. That is the last video of the
+last module of this course. That was pretty intense because in constructing
+our confidence interval, we use skills from
+all over the course. If you understood
+what we did, great. But if not, don't
+worry, you'll get it. It takes some time to
+sink in and so take a little time before you go on to take the
+final for this course. Then you can go forth into
+the world and estimate. Hopefully, I will see
+you in another course in the near future. Click.

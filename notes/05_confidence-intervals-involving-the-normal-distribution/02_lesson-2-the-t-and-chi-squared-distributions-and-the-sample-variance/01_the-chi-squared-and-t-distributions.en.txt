@@ -1,0 +1,316 @@
+Welcome back everyone in this video, we are going to up our confidence interval
+games with two, new distributions. Our first new distribution is
+called the chi-square distribution. And if you look for it on the table of
+distributions provided in this course, you won't see it, or you will see it. Because it's not listed there as
+the chi-square distribution but, it's a particular form of the gamma
+distribution that we've already talked about. So if we have a random variable x with
+a gamma distribution, with the first parameter being n over 2, and the second
+being 1 over 2 where n is an integer, then we know the PDF looks like
+this because that's our gamma PDF. And this particular gamma distribution, is known as a chi-square
+distribution with parameter n. Now, if you go looking in other books or
+on the Internet, you may find this but you may also find people defining
+the chi-square distribution, as a gamma distribution with
+parameters n over 2 and 2. But remember in module one when I
+introduced the gamma distribution, I told you that some people use a 1 over beta,
+in place of where we're using a beta. So our beta for the gamma distribution
+is one-half, and one over that one-half is 2 that someone else's beta
+who parameterised it differently. The n parameter is known as
+a degrees of freedom parameter, and in this video, I want to talk
+more about what that means and how it got that name but for
+now, it's just a parameter. The chi-squared n distribution looks like
+this, it shoots off to infinity, it has an asymptote, at 0, and it's easy to use
+our properties of the gamma distribution. Remember the mean is alpha over beta, and
+the variance is alpha over beta squared. Now we have alpha is n over 2 and beta is
+one half, so plugging those into our mean and variance formulas for the gamma
+distribution, the mean of the chi-squared is n, the degrees of freedom parameter,
+and the variance is 2n. So here are some things to know about
+the gamma distribution and some of them are going to be able to show or prove,
+using moment generating functions. Now the chi-squared is a gamma and we've
+already talked about the moment generating function for a gamma distribution,
+it's right here. And so this is a gamma alpha beta, and if
+we're going to plug in the alpha equals n over 2 and the beta equals one-half we
+get this, which is the moment generating function for a chi-squared distribution
+with n degrees of freedom. So suppose that X1 through
+Xn no you know what, I've got an end in this problem already. So suppose that X1 through Xk, are independent random variables
+each with chi-square distributions. And in this particular example
+they're not identical chi-squared distributions because they each have
+a different parameter n in them, so Xi is chi-squared
+with parameter n sub i. I want to know the distribution
+of the sum of these chi-squares, and if these were ID and they all had the
+same degrees of freedom parameter, well, that's just a special case of
+what we're doing right now. When we want to find the distributions
+of big fat sums like these, I always recommend moment
+generating functions. The moment generating function for
+y is the expected value of e the ty, I'm going to plug in what y is
+it's the some of these capital Xs. And then we have e to a sum, especially
+if you pull that t inside the sum, and each to a sum is a product of Es, and because these random
+variables are independent, that product can be factored
+outside of the expectation. So this is just a bigger version of,
+the expected value of the product of X and Y, is the expected value of X
+times the expected value of Y, if they're independent. So here's what we have so far for the moment generating function of
+the random variable that we're calling Y, and this thing in here is just the moment
+generating function for X sub i. And X sub i has a chi-square distribution,
+with n sub i degrees of freedom, which is a gamma distribution with
+parameters n sub i over 2 and one-half. So you can look in your table and pull out that moment generating
+function plug it in, multiply this out, you're going to get the same thing over
+and over again with different exponents. And when you multiply those,
+you add up the exponents, and so we get the some of the ni divided by
+2 now that could all be in the sum, or you can factor the one-half out, and
+we've got the sum of the ni, divided by 2. This is again the moment generating
+function of a gamma distribution and in particular the chi-squared. So what we have here now, is if we add up k independent
+chi-squared random variables, we get another random variable that has
+a chi-squared distribution as well. And the new degrees of freedom
+are the individual degrees of freedom, all added up. And if they were i, id,
+with parameter n in every one of them, then we're going to get
+a chi-squared distribution, with new parameter n plus n plus n plus
+k of them with parameter n times k. So again that i id, case for chi-squareds,
+is just a special case of this. Okay, now we're going to talk about
+a relationship between the chi-squared distribution and the standard normal. We talked about usually calling
+the standard normal random variable z, but it's not that special of a notation. So we could talk about a random variable
+x with the standard normal distribution. So I suppose I have such an X, and
+I want to look at the distribution of squaring the X, so I'm going to define
+a new random variable Y to be X squared. We could show, that the distribution
+of Y is a chi-squared distribution with one degree of freedom. I would suggest showing this
+using moment generating functions like we did in module one lesson eight. Of course, we just used moment generating
+function a minute ago here, but that was for sums. Back in Module one, you will have seen some examples of
+doing other kinds of transformations. Really, you just write the moment
+generating function for Y down, it's the expected value of either the TY,
+and then you fill in what, Y is it's X squared. And you manipulate it and you go and
+you can get it to the moment generating function for
+a standard normal distribution. Another way you can show this is
+going back to Module 1, Lesson 4, we talked about actual transformations. And explicitly finding the PDF
+from the original PDF without going through moment generating functions. We talked about a new random variable Y, being defined as a function
+G of around the variable X. And we said that G had to be nice, so
+it needed to be differentiable and invertible, and all of these nice things. And in this case, if we're looking
+at Y equals X squared as X being put through the function, G of X equals
+X squared, that's not invertible, because it's a parabola opening upward,
+right? So if you take any point on the Y axis and trace it back down,
+you'll get two points on the X axis. Why did I bring up our G
+inverse transformation again? I did it because I wanted to very
+briefly talk about a higher dimensional version of that G inverse transformation. Suppose I have two random variables x1 and
+x2 with a joint PDF f sub x1 and x2. And suppose I have new
+random variables y1 and y2, which are each defined as functions g1 and
+g2 respectively of the x's. So, mimicking this formula
+above in this 2D case, I'm going to take in order to
+get the joint PDF for the y's, I'm going to take the joint PDF for the
+x's and plug in the two inverse functions. Now, this is a system of equations, so it's not really correct to use
+the notation g1 inverse and g2 inverse because that kind of
+implies that you can invert g1 and you can invert g2 when really we're
+inverting them simultaneously as a system. Now, in our old PDF, we had
+an absolute value of a derivative and the analog in 2D is the absolute
+value of this thing called a Jacobian which is a determinant of
+a matrix of partial derivatives. So there's two sets of lines here. These lines over here are for
+the determinant. And then these lines up here
+are the absolute value. So what mine I need this for? We're going to need it to
+introduce our new distribution, our second new distribution and
+this one is truly new, not just a variant of another distribution, and
+that is known as the t-distribution. So the t-distribution is
+built up in this way. Suppose I have a standard normal random
+variable that I'm going to call Z and an independent random variable W that
+has a chi-square distribution with n degrees of freedom. If I formed the ratios Z over
+the square root of the entire quantity W over n, and
+name that new random variable T, we could use the Jacobian method
+to find the distribution of T. Now, the Jacobean method was two random
+variables to two random variables and here I seem to be going from 2 to 1. But what you can do is the following. So at first I'm going to
+translate back to the notation in the bivariate transformation
+Jacobian thing on the previous slide. There we had an x1 and x2 and
+here I have a Z and W. So just to make it a little easier, I'm
+going to define x1 to be Z and x2 to be W. Then we have a new random variable
+Y1 which is X1 over the square root of X2 divided by N all
+under the square root. And we don't have a second Y. But, you can choose a second Y. Kind of arbitrarily but not really. So if you choose an arbitrary
+function of X1 and X2 to be your second function, your Y2,
+then you can use the formula on the previous slide with
+the bivariate transformation and the Jacobian to come up with
+the joint PDF for Y1 and Y2. And then, hopefully, if you chose wisely,
+you can integrate out Y2 to get back to the marginal PDF for
+Y1 alone, which is what we wanted. So when I say that you choose Y2
+arbitrarily, there are some caveats there. You need to be able to invert
+the system of equations. So you've got Y1 as a function of W and
+Z and Y2 as a function of W and Z. And you need to be able to solve for
+W and Z each in terms of Y1 and Y2. So, choose your second function wisely. Another thing you're going to need is to
+be able to take those derivatives for the Jacobian and most importantly
+to be able to integrate out Y2. And the wrong choice of Y2 is going to
+lead to a very complicated joint PDF for Y1 and Y2, in which case, it will be really hard to integrate out
+Y2 to get to the marginal PDF for Y1. So we're not really concerned about this
+in this course, but I just wanted to let you know that whenever you're trying
+to find a distribution involving two continuous random variables and you have
+a fraction, it usually works out well to define your second random
+variable to be the denominator. So this new random variable T is
+how we define a t-distribution and it depends on a parameter n and
+so we have a t-distribution with parameter that is also known as
+a degrees of freedom parameter. So if we did the Jacobian
+transformation and then integrated out the Y2 that
+we didn't want to have and then put all the write letters back in, we
+could actually come up with a PDF for T. However, you're never going to need
+this PDF, no one uses it in closed form. It is used much like the standard
+normal CDF, we're only going to use or compute values for the t-distribution
+using tables or software. Okay, so
+this distribution is symmetric about zero. And we could show that the mean is 0. And we could show if he
+wanted to go through the calculations that
+the variance is n over n- 2. You can see that this variance is
+greater than 1 for any fixed n. But as n gets large,
+the variance is approaching 1. We're going to write capital T squiggly
+line has the distribution t in parentheses n to denote the degrees
+of freedom for this distribution. Which again, we haven't talked about
+those words, degrees of freedom, but it's just a parameter at this point. The t-distribution is
+another kind of bell curve. So what I've plotted here is the normal
+distribution, the standard normal distribution, bell curve and a couple of
+t-distributions with different parameters. So the lower the parameter,
+the flatter this distribution, and the higher parameter, the closer is
+actually getting to the standard normal. And we can show this formally using
+the PDF from the previous slide and taking limits as n goes to infinity. But you need to remember
+quite a bit of calculus, some real specific stuff
+to get that limit to work. But again,
+if you have a t random variable and it has n degrees of freedom
+as n gets larger and larger, that t gets closer and
+closer to a standard normal. So, why are we talking about this now? Suppose I have x1 and
+x2 up through xn, a random sample, IID from the normal distribution with
+mean mu and variance sigma squared. Indulge me for a moment and let me write
+out the some of the Xi's- the mu squared. I'm going to do a little plus or
+minus game in here and I'm going to subtract a sample mean and
+I'm going to add it back in. And now I'm going to square
+this whole thing but I'm going to think of it
+as really two clumps. So kind of like an a plus b squared. So you'll get the first one
+squared plus 2 times the a and b plus the last one to be squared. And then I'm going to
+run the some through. So we get these three terms. And in the center, I've pulled out X bar-
+mu because that doesn't depend on i so I was able to pull it out of the i some. And this is the term out of these
+three that I want to look at First. So in particular the sum
+of Xi minus X bar. If you ran the sume through, he would
+get the some of the Xi minus the sum of the X bars, but
+the X bars are not dependent on i. So if you add up X bar and times you get X bar plus X bar plus X bar,
+you get n of them. You get n times X bar, which turns out
+to be, because X bar is one over n, the some of the Xs, you're just
+going to get the some of the Xs and this whole term zeros out, okay? So now we're down to only
+two terms of interest and I want to look at these after
+dividing through by a sigma squared. The reason for
+which will become apparent really soon. So here I have three terms and
+they're all random variables and I would like to talk about
+their distributions. So I'm going to call these
+random variables Y1, Y2, and Y3. And let's break them down. So Y1 is up here in the corner and
+I know that Xi has a normal distribution with mean mu and
+variance sigma squared. Therefore, I know that Xi minus mu over
+sigma has a standard normal distribution. I just wanted to remind you at this point,
+some people say why you sometimes use a squared event and sometimes not
+a squared of n when standardizing? Taking a normal random variable down
+to a standard normal always means subtracting it's mean and
+dividing by its standard deviation. Now that standard deviation is
+the square root of variance. Remember, the variance for the sample mean
+X bar is the original variants over n. So when I take the square root, I get the original standard
+deviation over the square root of n. And the reason I don't have it
+here is because there's no X bars, I'm just standardizing an individual
+X to a standard normal. So we just learned that if you take
+a standard normal and square it, you get something with a high square
+distribution with one degree of freedom. Actually, I'm not done, there's a some
+there, so let's deal with that. So we know that each of the terms in
+the sum is chi squared with one degree of freedom, and
+each of the terms are actually. All of the terms are independent of each
+other because the Xis were independent of each other because
+of the random sample. So this term up here is really summing
+up n chi squared random variables, each with one degree of freedom and
+independent ones at that. And so this some has a chi
+square distribution with n degrees of freedom,
+that is the distribution of Y1. So I'm going to skip Y2 for
+the moment and talk about Y3. This is what Y3 look like. We know because we started
+with normality here. So I'm not using
+the central limit theorem, I'm using the fact that linear
+combinations of normals are normal. We know that the sample mean has
+a normal distribution with mean mu and variance sigma squared over n. So if we standardize it by
+subtracting it's mean and dividing by the square
+root of its variance. In other words, it's standard deviation, we get something that is normal 0,
+1 or standard normal. And if we square that,
+we get a chi squared one. This is our Y3 term. So now we have an expression
+Y1 equals Y2 plus Y3. And we've determined
+that Y1 has a chi square distribution with n degrees of freedom. And Y3 has a chi squared
+with one degree of freedom. And I care now about this last
+term which was the second term. This looks familiar, doesn't it? If I divided by n minus 1 and got rid of that sigma squared,
+this is our sample variance. And so the term that I actually
+have doesn't have an n minus 1 and it does have a sigma squared. So if I take that some of those things
+squared divided by sigma squared, this is equivalent to taking the S
+squared, multiplying by n minus 1. So you cancel it from that denominator and
+dividing by sigma squared. So this down here is the new
+way we're going to write Y2. To sum it up,
+we've got Y1 equals Y2 plus Y3. We know that Y1 has a chi square
+distribution with n degrees of freedom. We don't know the distribution of Y2,
+and we're about to figure that out. And we know that Y3 has a chi square
+distribution with one degree of freedom. So I'm going to find
+the distribution of Y2, and I'm going to try using
+moment generating functions. I'm going to take the moment
+generating function of Y1. And that is the moment generating
+function of the sum of Y2 and Y3. And we can pull this apart
+into a product of two moment generating functions if Y2 and
+Y3 are independent. So let's look at our Y2 and Y3 here. They don't seem independent and
+yet they do. So what do I mean by that? Our Y3 is a function of
+the sample mean X bar. And our Y2 is the sample variance,
+which is also a function of X bar, if you look at the original definition for
+sample variance. So in that sense they
+don't look independent. But what's happening here is that
+X bar is a measure of location for this distribution. And s squared is an estimator for
+the spread of the distribution, which actually we can show is
+independent of the location in the case of the normal distribution,
+but not in general. And how you would do this is you would use
+the Jacobian formula that I talked about in this lesson. You're not going to have to use that, I
+just wanted to give you a tool in case you wanted to know how to prove
+some of these things. You would use that Jacobian formula and
+you would use an n dimensional version. So that two x two matrix of derivatives
+that was the Jacobian would become an n by n matrix of derivatives. And you would deal with
+all of the X1 through Xn. And you would make a Y1
+that is maybe X bar. And maybe Y2 isn't exactly
+how I would do it, but Y2 to be S squared the sample variance and
+Y3 through Yn to be arbitrary. You would find a big fat
+joint distribution and then integrate n minus 2 things out. So if you did that, you would have
+the joint distribution of two things, X bar and the variance,
+sigma squared the sample variance. And it would factor,
+it would factor into separate pieces, the X bar stuff and the S squared stuff. And so X bar and
+the sample variance S squared are independent for
+the normal distribution. So let's use this fact to find
+the moment generating function for Y1. It is the moment generating function
+of Y2 plus Y3, and by independence. And if you don't remember this, then write out that moment generating
+function as the expected value it is and factor you have an E to a sum and
+then you get a product of Es. And then one of them has a Y2 and one of
+them has a Y3, and those are independents. You can pull the expectations apart and you will get a product of the original
+moment generating functions. From this I can solve for
+the moment generating function of Y2. It's the moment generating function
+of Y1 divided by that of Y3. And we know these because Y1 was chi
+squared with n degrees of freedom, and Y3 was chi squared with
+one degree of freedom. So if you divide, you have the same
+things here, but with different powers, you get to subtract and You get that the
+moment generating function for Y2 is this. And this is the moment
+generating function for a chi squared random variable
+With n- 1° of freedom. So what have we just seen? We have just, it was kind of long, but
+we started with a random sample from the normal distribution with mean mu and
+variance sigma squared. And I kind of,
+I didn't let you in on a secret, but I kind of wanted to know
+the distribution of the sample variance. Now it has a distribution and
+it has a pdf, but that would not be one of any nice
+known named and common distributions. So instead of looking exactly at
+the sample variance s squared, if you look at n- 1 times s
+squared over sigma squared, with that is a nice known
+name distribution and we just showed that that was a high score
+distribution with n- 1° of freedom. In our last lesson, we derive some
+confidence intervals based on normality. We've devised confidence intervals for
+the mean mu of a normal distribution or the mean mu of a more generic
+distribution, assuming a large sample. And the fact that the sample mean is
+approaching a normal random variable regardless of the starting distribution
+by the central limit theorem. In both cases, we assume that
+the variance sigma squared was known and maybe in one case we actually didn't,
+and that was the large sample case. Back in the module,
+when we were talking about types of convergence of sequences
+of random variables, we had a theorem that said that if
+a random variable is unbiased for a parameter theta and
+if it's variance converges to zero, then that random variable
+converges in probability to theta. Or is a consistent estimator of theta. And we already know that our sample
+variance is an unbiased estimator for sigma squared. The variance is something
+you could totally do. It's just a hairy computation,
+do it in your free time, if you really want to try it. But we can compute the variance
+as a function of n and show that it goes to zero. So by that theorem back in the module when
+we were talking about convergence and probability, we know that the sample
+variance s squared converges in probability to sigma squared. That is s squared is a consistent
+estimator of sigma squared. So for large samples if you started
+with the normality x bar is normal. If you didn't then x bar
+is approximately normal. And for large samples if you
+know sigma squared great, then you know the distribution of x bar. But if you don't know sigma squared
+because the sample is large, you can use the sample variance
+because it is approaching sigma squared in the sense
+we just talked about. The problem is when the sample is small
+and you don't know the true variants, that's where the t distribution comes in,
+and we'll talk about that in the next one.

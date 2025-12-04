@@ -1,0 +1,241 @@
+Hello everybody, welcome
+back to Statisticians. In this video, we're going to continue to talk about
+confidence interval. In particular, we're
+going to talk about confidence intervals
+for variances, so the sigma squared out
+there for our population. We're going to figure
+out how to construct a confidence interval for the difference between two different
+population proportions. Now, we're not
+actually going to need or learn any new
+skills in this video. Instead, we're going to bask in the glory of what we
+have learned so far, and realize that we can
+answer these two questions that we've yet to address
+with our existing skills. Let's jump right in with a proportion example
+for two populations. I have a random sample
+of 500 people from a certain region of
+a country that's about to undergo a
+national election. I pulled that random
+sample and asked the people whether they preferred Candidate
+A or Candidate B, and of those 500 people, 320 of them said
+that they preferred Candidate A. I have a
+sample proportion a P-hat, 320 over 50, which is supposed to be estimating
+a true proportion, if I had everyone in the
+entire voting population. Now, I'm going to take
+a random sample from a different region of
+the country and here I was only able to talk to
+420 people, so not 500. But we're in a
+different region of the country and this is
+a national election, so they're still talking
+about the same candidates. Of these 420 people, 302 said they preferred Candidate A. I have an estimate a P_2- hat from
+this region of the country. I want to construct a
+confidence interval for the difference between
+the true proportions, a P_1 minus a P_2, that will allow us to make some inferences about
+how they're related. Are they equal? Is one
+larger than the other? Do they have a lot of
+spread between them? Let's see what we can do. Step 1, for any confidence
+interval is to come up with an estimator that we want
+to work with and frankly, that we can work with. The very natural thing
+to do here is to look at our two sample proportions and in here we have hidden
+sample sizes as well. These proportions not only
+give us sample proportions, but we have an n_1 and an n_2. We want to use the central limit theorem that we talked about in a previous video, when we were talking about sample proportions
+for one population. In that video, we noticed that a sample proportion is
+really a sample mean, if you go out into that sample or even the larger
+population and you assign 1s and 0s for candidate
+A versus candidate B. Then if you collect
+all the 1s and 0s and add them up and divide
+by your sample size, you actually end up getting the proportion of
+1s in the sample. The sample proportion is a sample mean and the central
+limit theorem can apply. We had a particular
+rule of thumb that was better if for the
+Bernoulli distribution that we're dealing with, than the more generic
+and greater than 30, which we have to
+use when we don't have very much information. We wanted the estimator P-hat, we wanted to look at three standard deviations
+on both sides of that, and we wanted to make sure those three standard
+deviations were small enough, so that the normal distribution we're seeing by the
+central limit theorem can gets squished to live
+between zero and one. Three standard deviations is the number that you need to get 99.7 percent of your
+normal observations between zero and one. I did check it out for
+both, this P_1 hat, P_2 hat and we were well
+within the interval 0,1. I didn't bring those
+computations with me, but I did check it out and we're ready to build
+our confidence interval. Step 1, is to come up with an estimator for the
+difference in proportions. The obvious estimator is the difference in the
+sample proportions. Step 2, is to look at the
+distribution of our estimators, so by the central limit theorem, because each of these
+sample proportions is really a sample
+mean of 1s and 0s. We can say that these
+act approximately for large samples as
+normal random variables. The mean, for example, for our first sample proportion
+is the first proportion, the true proportion for
+that first population. It is an unbiased
+estimator and the variance is the variance of one of those Bernoulli
+random variables, which in this case is
+P_1 times 1 minus P_1. It's that divided
+by the sample size, which in this case is n_1 and we have something really
+similar for P_2 hat. I want to find a function
+of my estimators and the thing I'm trying to estimate whose distribution
+is known to us, and is unknown parameter-free. The reason is that if we know
+this distribution and it doesn't depend on us knowing
+things we don't know, we can get the correct critical values to
+apply to our problem. For simplicity, and this is what most
+people will do honestly, and because our sample
+sizes are quite large, I'm going to replace
+the true variances for those two normal distributions on the previous slide
+with estimators. Because otherwise,
+there's just too many unknown piece
+floating around. Here's what we have
+at this point. I have the first
+sample proportion minus the second
+sample proportion, those are each normally
+distributed or approximately four large samples. The difference is a
+linear combination of normals, which is, again, normal with mean P1 minus P2 and variance the sum of
+the original variances. You're allowed to sum
+them only because the two samples were
+assumed to be independent. P1 hat minus P2 hat is
+normally distributed, I want to standardize
+it by subtracting its mean and dividing by
+its standard deviation, which is the square root of its variance to get
+a normal zero one. Then because we're using the normal zero one distribution, we're going to do step three, which is to put this between two appropriate critical values and the appropriate
+critical values here are z critical values. Those are critical values
+for the standard normal. In the problem, I asked for a 90 percent confidence interval. I'm going to put 90 percent
+of the area in the center of a bell curve and the remaining 10 percent
+out in the tails, which is going to boil down
+to 0.05 area in each tail. If we want the cut off that has 0.05 in the upper tail and
+point 0.95 in the lower tail, we call that value Z_0.05. We can look this up in R
+or table and we get 1.645. Putting the standardized
+statistic from the previous slide between the positive and
+negative critical value, we get this as a
+confidence interval in general and now we are going
+to plug in our numbers. But do you see what we did? We just derived a
+confidence interval, a theoretical confidence
+interval from scratch. When I plug in the numbers, I get negative 0.129
+to negative 0.029. One thing this suggests
+to me as being an interval of plausible values for the difference P1 minus P2, because this individual
+doesn't actually contain zero, it's completely in the negatives, it suggests to me that
+the true proportions are not quite possibly equal based
+on this particular sample. I reported those sample
+proportions as fractions before, but here I've written them out in decimal form so you can
+see the difference. It does seem like P2 hat
+is larger than P1 hat, but before going into this, we weren't quite sure
+how large is large, how big of a difference
+we needed to say they were statistically
+different. For our second example, we're going to talk
+about variance for a single population. A potato chip manufacturer
+manufacturers 10 ounce bags of potato chips and the company always
+over fills the bags slightly so as not to
+have angry customers. In addition to
+overfilling the bags, putting more than
+10 ounces in there, they want to have a very small variance in how much they put in
+there so that they don't put 10 ounces plus a half ounce and then plus
+or minus five ounces, which defeats the purpose of
+trying to be over 10 ounces. We want to overfill
+the bags and we want the distribution
+of the bag weights to be mostly above 10. Here's 10 on overline. If we overfill the bag, I can never do this
+because I always have the wrong direction
+in my mirrored video, but we are overfilling
+the bag over 10 and we want to make sure
+we have a small variance. Let's come up with a
+confidence interval for the true variance of the weight of our
+potato chip bags if we looked at every bag
+we ever put together. We looked at a random sample of 20 bags and the quality
+control manager at the plant finds that the sample
+variance is 0.52 ounces. Assuming that the fill weights
+are normally distributed, let's try to find and
+construct from scratch with our skills a 95 percent
+confidence interval for Sigma, the true standard deviation
+for all bags fill weights. Step one is going to be to
+decide on an estimator. I'm going to use the
+sample standard deviation. It's a very natural choice. You know how to compute a
+sample variance and take the square root and you have
+a sample standard deviation. Step two is to try to look at
+the distribution of this so that hopefully we can come up with a quantity
+that we can work with. Recall that for a
+normal distribution, n minus 1 times the sample
+variance divided by the true variance has a chi square distribution with n minus 1
+degrees of freedom. This is a distribution
+that is known to us and unknown parameter free. It's a chi square distribution with n minus 1
+degrees of freedom. I can completely describe that distribution without
+having to know Sigma. For our 3rd step, we're
+going to put this quantity, this statistic between
+appropriate critical values and there are three possibilities here and there are
+actually many more. In this first line, I put the statistic between two cases where critical
+values within minus one degrees of freedom and I put my 95 percent area in the middle. Now, this is not a
+symmetric distribution, but I chose to cut off a total of five percent area
+putting 0.25 in each tail. The name of the critical value
+that cuts off area 0.25 in the upper right tail is chi squared sub 0.25
+comma n minus 1. The other one that cuts off
+area 0.25 In the lower tail is chi squared of 0.975
+comma n minus one. I can look up these
+critical values in r, I can put my statistics
+between them and I can solve down for the unknown
+Sigma squared or in this case, all the way to Sigma. But if you look at the
+Chi squared distribution, it doesn't take on
+any negative values, it starts at zero and
+goes off to infinity. I could choose to take the lower end point of not
+my confidence in her role, but the beginning of my
+confidence interval, because it's going to turn
+out different in the end, I could take that
+lower end point to be zero and then in the upper tail, take the value that cuts off five percent of the
+area in the upper tail. I'm capturing 95 percent
+of the area for the chi squared n minus 1
+curve between zero, and a critical value that has five percent area above
+and 95 percent below. Still, again, I might take a confidence interval
+that goes from some value up to infinity and in our notation that some
+value is going to have to have 95 percent area
+above the critical value. We have this kind of
+notation for this. Let's look at the first one, here is the first confidence
+interval I talked about with the five percent area out
+split between both tails. These are the critical
+values I came up with in r. You already
+know how to do that and I would suggest
+pausing this video and trying it and making sure you can actually find
+these critical values. In here I have n minus one, I have the observed
+sample variance and I've divided
+by Sigma squared. This is the statistic. This is n minus one
+squared over Sigma squared that has the chi
+square distribution. I'm going to move
+some things around and now I have one over Sigma squared in the middle and I'm
+going to flip everything, which is going to change the direction of
+the inequalities. The number two is less
+than the number three, but the number 1/2 is actually larger than
+the number 1/2. I did change the sides
+that things were on rather than just
+turn the inequalities. I actually moved the
+numbers to the other side. Finally here, because
+I don't really want a confidence
+interval for variance, but instead for
+standard deviation. I'm going to offer Sigma
+and take a square root all the way across and we get this 99 percent
+confidence interval or the unknown
+standard deviation of the true weight of potato chips from our factory
+in our 10 ounce bags. On the previous slide,
+I talked about building the confidence intervals in
+different sliding it around, in one case we started from zero and then went up to
+a certain critical value, which turns out to be 30.14353. Again, I would post
+the video if I were you and make sure you know
+where this value came from, what percentage critical value it was and how to look it up. But if you solve down for Sigma, we get this confidence interval. Okay, and the third
+confidence interval that I recommended was to go from
+a number up to infinity, and that seems crazy because even though we're
+capturing the right area, it seems infinitely long. Who wants an estimate like that? I think Sigma squared is
+infinitely long interval. But it turns out
+because of the flip, the one over this really actually gives us
+a finite interval. It was using zero
+as an end point in the previous interval that gave us something infinitely long. All three of these are valid 95 percent
+confidence intervals. In practice, people do
+all of these in practice, no one bothers to try to optimize that is to
+figure out, okay, I can put my five
+percent in both tails, I can put it only
+in the lower tail, only in the upper tail. But you know what else
+I can do? I can put one seventh of that
+five percent in the lower tail and six seventh of the five
+percent in the upper tail. There's going to be
+an optimal way to do this optimal meaning, giving you the shortest
+confidence interval. But we're not going to worry
+about it at this point. This concludes this video where we really did nothing new
+in terms of technique, but it was our first time
+making confidence intervals for population proportion differences and population variances. In the next video,
+we're going to compare the true variances for two
+different populations. The reason this
+gets his own video is because it gets
+his own distribution. It's a new one. If you want to see what it is, you
+better come back. I will see you in the next one.

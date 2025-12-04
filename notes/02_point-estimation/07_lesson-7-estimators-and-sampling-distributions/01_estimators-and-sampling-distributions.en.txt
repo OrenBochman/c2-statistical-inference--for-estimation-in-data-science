@@ -1,0 +1,214 @@
+Welcome back. Remember in
+our first video when we were running around on the
+streets of France annoying citizens
+by measuring them. Honestly, we were probably
+annoying them more by not using the metric system
+but that's not the point. The point is, why
+were we doing this? We were doing this
+because we wanted to know the true average height of
+all adult males in France. We took a random
+sample of people, a subset of that
+larger population, and computed the average there. This seems like a
+really good idea. It seems like a really
+common-sense idea, but why? That's what we're going to
+talk about in this video. Once you actually
+have a sample and you measure them and you compute the average, you have a number. The true average out there is a number and your number
+is either right or wrong. It's not really worth
+talking about then. We want to know before
+we take the sample, what statistic we
+want to measure. A statistic is any
+function of the data. The sample mean x-bar
+is a statistic. If I want to look at
+the maximum height of my sample, that's a statistic. Another statistic I might want to look at is the median
+value in my sample, which means I line up
+all the heights from smallest to largest and
+grab the one in the middle. Again, once you have a number, you're right or wrong but if we talk about this before
+we take the sample, then we've got probability. The probability or
+randomness in these values comes from the fact that we're taking these random samples. If you were to do it again
+and randomly sample people, you would get different people and you would get
+a different value. If you were to do it again, you'd get another sample
+mean or sample median or whatever you're computing
+and another value. If you pile up these numbers
+and make a histogram, they're forming their
+own shape known as a sampling distribution
+but in theory, we're only going
+to get one value. What we want to do is study
+the sampling distribution of some statistics like
+the sample mean to try to answer questions
+before we take the sample. Like if we do this, what is the probability
+we're going to be close to the true mean height? Notation for this video and in fact, for
+the whole course, we're going to denote a random
+sample as a collection of n random variables drawn from a population
+or a distribution. The world out there
+for us, in theory, is some like normal
+distribution or exponential distribution
+and these are variables. They're random variables before they're sample before they're observed and locked in
+and n is our sample size. They're assumed to
+be independent. Meaning if I were to measure the height of someone
+I pulled off the street, I'm not also going to
+measure his family. I want total random draws of people so that they're
+independent of each other. We're also assuming they're
+identically distributed. Now there's tall people
+and there's short people, but overall there's some
+population distribution where we're finding
+the tall people and short people and we're
+assuming that there's one distribution that describes
+the entire population. These words independent
+and identically distributed are always
+abbreviated by iid. This is identical to the
+meaning of a random sample. If I were to give you a
+problem to work on and say, suppose you have a random sample, X_1 through X_n, blah, blah, blah, and then go on and
+use independent somewhere, you might jump up and say, "You never said these
+were independent." But I did because it's part of the definition of
+a random sample. Again, random sample means iid and that means independent and
+identically distributed. Here's some more notation, suppose we have a random sample from the gamma distribution. I've taken a random
+sample of size n from the gamma distribution with
+parameters Alpha and Beta. We would write that
+X_1 through X_n, squiggly line has the
+distribution gamma, Alpha, Beta, just like we
+did before with one random variable but now we list them all and we put
+iid over this wiggly line. That tells you that
+they're independent and identically distributed. They all have the
+gamma distribution and they all have the
+same gamma distribution. We don't have a gamma
+distribution with one Alpha and another gamma distribution
+with another Alpha, identical. Again, random sample,
+iid, same thing. In general, we're going to use a Theta to denote a
+generic parameter. This could be the mean mu
+for a normal distribution. It could be the perimeter p
+for a geometric distribution. It could be the lambda
+for an exponential, and it can even be vector-valued. It could represent
+both Alpha and Beta. For the Gamma distribution. We're going to be talking
+about estimators. Now I'm saying that
+really funny for a reason because I'm trying to distinguish the word from
+estimate, estimator estimate. I'm going to say it
+funny a couple of times, but then I'll go back to
+normal pronunciation. An estimator is a
+random variable, it's the sample mean before
+you've taken the sample. But we could also look at the maximum, we could
+look at the median, we could look at the
+idea of sample variance. We talked about variants
+in the last lesson, and I will show you how to compute a sample
+version of variance. But the estimator is
+the random variable, and if we're estimating theta, we denote the estimator
+with a theta hat. Now, unfortunately, this hat notation is also
+used for an estimate. An estimate is a numerical
+value which we still sometimes want to talk about generally like with an x-bar not
+knowing the number, but it's a lowercase x
+because we're assuming we've already taken it and it's
+fixed and no longer random. Theta hat is going to be
+an estimator of theta, sometimes an estimate, and I'll stop saying estimator like that. Suppose we're trying to estimate a true
+average of something, and we go out into the population and we take a
+sample of some fixed size n, and we get a sample mean. That's going to fall somewhere, and hopefully, it's
+going to be close to the true mean mu. But if we were to do it
+again with a new sample, it's going to be somewhere else. Again, somewhere else. We want our estimator. Said I wasn't going
+to say that anymore, but we want our estimator of
+mu to be correct on average. X-bar, for example, is
+its own random variable with its own distribution that we call a sampling distribution, and it has its own mean
+and its own variance, so we can compute
+the expected value of x-bar or its variance or many other things that we
+usually just associate with random variables we would like. This video is about nice
+properties of estimators. We would like the expected value of x-bar to be the true mean mu. If this is true, we say that x-bar is an
+unbiased estimator of mu. In general, if an
+estimator theta hat of theta is an unbiased
+estimator of theta. That means that the expected
+value of theta hat is theta. You have a true value,
+you're trying to figure out, you grab some kind
+of statistic out of the population and
+you get a number, and if you did it again,
+you get a number, number, number and on average, if you're right, then it's
+an unbiased estimator, and that's a really good thing. Suppose that X_1 through
+X_n is a random sample from any distribution with mean mu because they're
+identically distributed, random sample means IID, they all have the same mean
+and the same variance. That doesn't mean that
+they're the same numbers once you observe them. But they have the same chance of being in the same places, and on average they're
+going to be the same. Because how do you compute
+this expected value? You take integral
+of x times the PDF, and they all have identical PDFs. Let's let mu be this
+common mean and consider looking at
+x-bar as an estimator. Here I put the expected value of x-bar and then I rule
+out what x-bar is, and then I use the fact
+that expectation is a linear operator to pull the one over n out and
+to pull the sum out. The expectation in there is mu every time there's n of them. When you add them up, you
+have one over n times n mu, for mu, and we didn't
+even name a distribution. What we have just seen is that no matter what distribution
+you're talking about, the sample mean, x-bar is always an unbiased estimator
+of the true mean mu. Which means on average is right. On average, meaning
+if you were to take repeated samples, then
+it's going to be right. As another quick example, suppose that X_1
+through X_n are IID from the exponential
+distribution with rate Lambda. If we look at the
+sample mean and we wanted to expect a value, we already know that it's the same as the expected
+value of any one of them, and recall that the mean for the exponential distribution
+was one over lambda. You also have a table of
+distributions that was provided with this module to give you lots of other
+means of distribution. When you want to
+find the expected value of a sample mean, this is as quick as
+looking up the mean of the actual distribution
+or doing that integral. Suppose I want to estimate
+a parameter Theta, so this is a generic
+parameter and I have some statistic that I can go
+and compute from the data. Maybe I take all the
+values and square them and add them up
+and return that value. The statistic we already said, has his own sampling
+distribution. That means that if you
+in theory could sample it again and again
+and make a histogram, it would have some shape. If this estimator you're using the statistic is an unbiased
+estimator for Theta, then that shape is going to
+be centered around Theta. This is a little overly
+simplified because we can have crazier shapes that
+on average are right, that don't look so symmetric. But suppose I choose
+another statistic to look at in the population and
+sample it over and over again, then get many values
+and look at a histogram and smooth it out and I get this. This still appears to
+be right on average. It's still appears to be representing an
+unbiased estimator of Theta but it has more spread. If you only get one chance to sample from that population, you're going to get one value from either of these curves. Now, with the blue
+curve, that value is more tightly concentrated
+around the mean, is less variable and with the other curve it's not
+so tightly concentrated. Although they're both
+right on average, I think I would rather use the estimator that
+corresponds to the blue curve but unbiasness is not the be-all-end-all
+property of estimators. What if you took something
+with a little bit of bias? But that was highly
+predictable and that it had really
+small variants. That might be just the
+thing you're looking for. It's hard to compare
+estimators sometime but we definitely
+like unbiased and sometimes you might have
+to take a trade-off and to take a little bit of
+bias but have small variance, but wouldn't it be
+great if you had both? That's going to be our goal. I'm going to let
+X_1 through X_n be a random sample from any distribution,
+continuous, discrete, any your favorite distribution and I'm going to suppose
+that distribution has some mean Mu and variance Sigma squared which I'm
+assuming is finite. Now, we already know
+that the sample mean X bar is an unbiased
+estimator for the mean Mu. But what about its spread? Is it going to be predictable
+or really spread out? What can we say
+about its variance? If I take the variance of X bar and write it out, remember, we can pull out constants
+and they come out squared and we can pull out
+sums if they're independent. This is just a generalization of variance of X plus Y
+is the variance of X plus the variance of Y to a larger sum and we do have independence because
+we have a random sample. Each of these variances is Sigma squared and we're summing
+it over and over again, n times, so we get n of
+them and in the end, the variance for X
+bar is Sigma squared, which is the original variance
+over n. It's smaller than the original variance and
+this is totally believable. Imagine a university is giving a calc 2 exam and they have 2,000 students and this score on the calc 2 exam could
+be all over the place. If you wanted to look at the random variable like you wanted to pull scores
+out of that population, you could get scores that
+are unfortunately zero and you can get scores that are a 100 or more if there's bonus points. Very variable. But, if instead of just sampling
+from that whole group, you instead went into
+each recitation section, let's say of size 40 and you
+average those and brought back the mean from this
+recitation and this recitation. That's not going to
+be it's variable because it's going to
+be really hard to find a whole section of
+people whose average is zero or average is 100 and
+we're seeing that here. The variance of a sample mean is the original
+variance of the values, the grades in this case
+but divided by n. Next up, we're going to briefly
+talk about distributions of sums of random variables. It's out of place here
+but we really need it as a tool for going forward and in our final
+lesson after that, for this module,
+we're going to have our first official method of estimation that is beyond just guessing and something that feels right. I'll see you then.

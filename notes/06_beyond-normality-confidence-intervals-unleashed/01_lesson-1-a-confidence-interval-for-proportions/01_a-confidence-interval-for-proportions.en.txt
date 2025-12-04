@@ -1,0 +1,199 @@
+Welcome back. You've made it to the last module in
+this course I'm so glad to see that you're still here in this module I call
+it confidence intervals unleashed. So, so far we've been making a lot of
+assumptions, most notably the assumption of normal distributions, not everything is
+normally distributed it's not that bad of an assumption, though,
+because of the central limit theorem, we do have an awful lot of things
+that are normally distributed. In this module we're just going to let it
+all go, we're going to unleash it, and we're going to derive
+confidence intervals for almost any distribution we care about and
+almost any parameter in that distribution, or at least going to
+talk about the method. And then one day you're going to have
+to do this for work or research and it might take a little thought, but
+hopefully you'll remember this course and know what to do. So, in this first video we're going to
+talk about confidence intervals for population proportions and
+it's going to involve normality. Okay?
+So we're not quite unleashed yet, call this video confidence intervals
+in the dog park having a great time but not out there in the world
+running free just yet. So I've got a population out there and
+I want to know the true proportion of individuals in that population that
+are Over 6FT or under 6FT or in this particular case I want to start right
+off with an example some polling data. So I took a random sample of 500 people
+and how do you do that anyway in a way that they seem to be independent and
+the same sort of distribution like you don't go into a certain
+precinct that has a certain tendency. This is something you learn in later
+courses in this masters of data science if you're going through the whole program,
+it's part of the design of experiments. But suppose I have a random sample
+of size 500 from a population of people who were voting in
+a national election and we asked them whether or
+not they like candidate A or candidate B. Now from this sample I saw 320 people
+out of the 500 who liked candidate A, so I have a sample proportion of
+people who like candidate A and I want to construct a 95% confidence and
+rule for the true proportion out there. If you had the entire population the true
+proportion that like candidate A let's let P be this true proportion that we
+want to make a confidence interval for and we have an estimate. Remember early on in this course I talked
+about the difference between an estimator and an estimate, an estimator is
+a random variable and estimate is and observed random variable,
+it's when you have the numbers. So I have an estimate which
+boils down to 16/25 and the estimate tour before taking
+the sample would be to go in there and take the number of people in
+the sample who like candidate A and divide by the total number. And each time you go and grab a random
+sample of size 500 Disproportion is going to be a little bit different that's again, the idea of a sampling
+distribution of a statistic. We actually have a model here and
+that is that we have a random sample of size N from a Bernoulli distribution
+because if you go out there and check off a box likes candidate
+A does not like candidate A. You can record those as ones and
+zeros and so we have one with probability P where P is this unknown proportion
+that we're trying to estimate? And so again, we're talking about
+a Bernoulli distribution here, note that in the case of data that has
+ones and zeros, a proportion like this is actually a sample mean, when what you're
+recording are the ones and zeros. If you want the true proportion, you want
+to count the total number of ones and divide by the sample size, so that's what you get when you add
+up all of your ones and zeros. So our proportion or estimator is a sample
+mean, we know so much about the sample mean, which is why this video isn't going
+to take that long by the central limit theorem our estimator is approximately
+normally distributed for large samples. So what are the mean and variance? We know the mean of the P hat, which
+is the mean of the sample mean X Bar, which is the mean of any one of the random
+variables, which in this case is coming out of the Bernoulli distribution
+with parameter P and that mean is P. So this P hat this sample proportion is an
+unbiased estimator of the true proportion and we know the variance of the sample
+mean in this case the proportion and it's the original variants for
+one of the X the X is being the zeros and ones divided by an and if you look up the
+variance for the Bernoulli distribution, you'll see that it's P times one minus P,
+so here it is divided by N. By the central limit theorem P hat,
+which is a sample mean, is approximately normally distributed, and we just figured
+out what the mean and variance need to be. In particular if we take
+our estimator P hat and we standardize it by
+subtracting it's mean and dividing by its standard deviation,
+which is the squared of its variants. We're going to have something that is
+Approximately behaving like a normal 01 or standard normal random variable,
+assuming we have a large sample, so this is an Asymptotic result and
+how large is large. We have already talked a lot about
+N greater than 30 being large and in fact that could be considered large
+here, but that is recommendation for an unknown distribution here I'm talking
+about a Bernoulli distribution and I think knowing that we can do better. So again, the N greater than 30 is a rule
+of thumb when you don't really have any information, but P hat and the true
+P are proportion lives between zero and 1 and I'm saying that P had is
+approximately normally distributed which doesn't make a lot of sense because
+the normal distribution lives between minus infinity and infinity. But if you tighten up
+that bell curve enough, you can get almost all the area in
+an interval of length one in particular, 99.7 percent of the area or
+probability for a standard normal curve is between -3 and
+3. So the standard normal has variants one
+and therefore standard deviation one, so you might hear this fact
+as 99.7 of the area for a normal curve is within three
+standard deviations of the mean. So what are our standard deviations
+in our proportion, example, the standard deviation is
+the square root of the variant so it's the square root of P1- P over N. And P is unknown to us I
+want to look at this and make sure I have a sample large enough so
+that the estimator P hat is within three of these standard
+deviations from the true main mu and that corresponds to putting
+the almost the whole bell curve on the interval from 0 to 1 with
+little skinny tails at the end. But I don't know P, so I can't tell
+you what the standard deviation is in practice, people estimated
+by plugging in the estimator for the proportions, so you see,
+I've thrown hats on things in here. And to conclude this discussion before we
+can go forward and make our confidence interval, we would like to maybe figure
+out if our sample size is large enough, namely if this interval which is
+our estimator minus three standard deviations up to the estimator plus
+three standard deviations if that interval is entirely contained
+within the interval From 0 to 1. So that's our idea of large when
+dealing with proportions and since our estimator is P hat which is
+a sample mean, and that's normally distributed at least roughly for large
+samples and this is our sense of large. We can standardize it into a normal 01 by
+subtracting its mean P and dividing by its standard deviation and putting it between
+two Z critical values because of that standard normal distribution that we're
+seeing from the central limit theorem. So the next step in a confidence interval
+is to take an expression like this and isolate the unknown parameter
+in this case P in the middle, so this looks a little complicated because
+there's a P up in the numerator, there's a couple of P in
+the denominator under the square root. And this looks difficult, but
+actually can be done now, most people don't do this they'll
+do what I'm going to tell you next. Before the record If you wanted to
+isolate P you would note that this inequality up here on the top line
+is equivalent to saying the term in the middle squared is less than
+the term on the right squared. And so moving things around, multiplying
+the denominator over to the critical value side and then subtracting
+everything to the other side we get this, which I'm not going to expand out and
+simplify but if you did, you would see that it is a polynomial,
+it's a quadratic expression in P. And so you can examine the zeros
+of the corresponding parabola for the quadratic expression and
+look to the left and right and try to figure out where this
+expression is positive and where it's negative and
+you can unravel that information to get down to an interval or
+P where P has to be. So we're not going to do it, we're going
+to do the much more standard approach, which is to say it's all
+an approximation anyway so I don't know the standard deviation
+the square root of P one minus P over N I'm going to plug
+in the estimator for p. On one hand, you might think why
+don't we use more exact information? If we have it? And on the other hand, you might think
+this is all approximate anyway, so it's not that important also,
+this is easier. So if I put P hats in
+the denominator here and put it between these two Z critical
+values, I can now easily solve for P in the middle and
+I get this confidence interval. This is an approximate because of
+the large Sample and other approximations we made an approximate 100 times 1
+-9 percent confidence interval for the true proportion out
+there in the population. So, back to the example,
+we've got voters in a country and there is a true proportion of people
+out there who like candidate A and a true proportion that like candidate B. So I'm going to let P be the proportion
+that likes candidate A we want to find a 95% confidence interval for P and we took a sample of size 500 and
+we got an estimated or sample proportion of 16/25,
+which came from 320 over 500. So, before making a conference center
+roll, the first thing I'm going to check is whether this expression here, P
+hat and then I'm going to take away three standard deviations and add three Standard
+Deviations, which will form an interval. I want to check whether or
+not this interval is fully contained in the interval from 0 to 1 because
+that is going to be the bool of the normal distribution we're using and
+we really can't have it go on very much further because our proportion
+is always stuck between zero and one. Now, in this case I got 0.5756 up 0.7044
+so definitely nicely contained in the interval between zero and one, so
+it is a go for assuming normality. Because we want a 90%
+confidence interval and we're talking about a standard
+normal distribution, you'll recall that this means
+we want to put area 0.95 in the middle under the standard normal
+curve and we can put it anywhere. But putting in other places is
+going to lengthen the interval and why not get the shortest interval
+that we can which is going to be in the center where the bulk of the area is. So I want the critical value
+that cuts off area 0.95 in the middle with a total
+area of 0.05 in the tails and that means 0.025 in each tail. And so if you just look at the upper tail,
+can you find a critical value for the standard normal distribution? That cuts off area 0.025? Yes. You can hit up a table or are and you can use the D Norm function
+that we've already talked about. Okay?
+We've got a critical value, we have our sample proportion,
+we certainly have our sample size, we've got a formula, we're going to put
+it all together and we get this result. So this is a way to estimate the true
+proportion of people out there in the population who like candidate A and
+also to express our uncertainty. We think it's somewhere
+between 0.5 979 and 0.6821 with 95% certainty. Although I warned you when we started
+talking about confidence and rules, it's not about your feeling, but it's
+about the amount of error you're willing to accept because if you take another
+sample, you'll get another P Hat, you get a different confidence
+interval and you take another sample, you get another P Hat and
+different confidence interval. And there's a true P out there
+living on a number line and some of these confidence intervals
+will cover the true value P and a few of them won't because
+you'll get some funky samples. But for a 95 percent confidence
+interval in the long run, if we kept redoing this 95% of the time, the resulting interval would cover
+the true unknown value of P. In the last module,
+we talked about confidence intervals were differences between two means,
+MU one and MU two. In this example for this video, we just
+talked about confidence intervals for proportions and we realized that
+we already knew what to do because sample proportions are sample means. In fact, if you want to compare
+proportions between two different populations, so maybe the proportion
+of people whose height is over five FT in one country versus another, then you
+want to find a confidence interval for a difference between means because
+these proportions are just means and so you can do exactly what we
+did in the previous module. In the next video,
+we're going to talk about confidence and rules in a way that will help
+us compare true variances that are unknown to us from two
+different populations. You might recall in the last
+module we were doing confidence intervals based on the T distribution and
+at one point I said, we need to assume that the two variances
+for the populations are equal. So how might you find some evidence for
+that if you made a confidence interval for say signal one squared over sigma two
+squared and that confidence interval being an interval of plausible or Reasonable
+values contained the number one. Then you are saying that it is reasonable
+up to a certain level of confidence that signal one squared is equal to sigma two
+squared and then you can go forward and do the T tests that we talked
+about in the last module. So that's up next where we look at
+confidence intervals for variances and we'll have a whole new distribution. So I will see you there.

@@ -1,0 +1,147 @@
+Welcome back. Let's try
+and experiment, shall we? I'm going to flip a fair
+coin where I get heads with probability 1/2 or tails
+with probability 1/2. We're going to define a variable that we'll call capital X. We'll define it to be 1, if we get heads on the
+coin or 0 if we get tails. Now before the coin is flipped, the value of X is unknown. It's waiting on the results of this experiment
+involving randomness, so we call X a random variable. Now in general, outside of this coin flipping experiment,
+a random variable, is a kind of mapping
+from the set of outcomes of an experiment
+involving probability, into the real numbers. It is convention in
+probability and statistics to always use capital letters when talking about
+random variables. Another way we might
+write this down, is to remove the heads
+and tails entirely, and just say that it
+takes on the value 1 and 0 with probability 1/2 each. Still another way is to make this very probability centric and to write the probability that
+capital X equals little x. This is a function where we can plug in different
+values for little x. If we plug in 1, we
+want to get 1/2. If we plug in 0, we
+want to get 1/2. If we plug in 7, we want to get 0
+because in our heads, tails 1 and 0 experiment, we will never return
+the value of a 7, we will do that
+with probability 0. This function of little x is known as a probability
+mass function, and it's usually denoted
+by a lowercase f of x. Now in a problem where you have multiple random variables, say a random variable capital X and a random variable capital Y, if you want to write down both probability mass functions, rather than using
+an F and say a G, we're going to generally stick to F's and use subscripts like this. Now in here, these are
+arguments to the function. Although we're going
+to try to avoid it, we can talk about
+the probability that the random variable capital
+X equals a value little y. Here is the probability
+mass function, or pmf, that we're talking about in our coin
+flipping experiment. This function tells us how, if we had a number line with the numbers
+representing outcomes, how the probabilities
+are distributed, and It's pretty boring. We're going to get probability
+1/2 on each of these. I made a height of 1/2, and if you remember
+in the intro video, I'm plotting density here, so the base of my
+rectangles is length 1. The total area of each rectangle
+is the probability 1/2. let's make this a little
+more interesting. Maybe the coin is not
+exactly a fair coin. If we flip something where we get heads with some
+probability little p, where that's a fixed number
+between 0 and 1 and then get tails with the rest
+of the probability, then, we have a slightly
+more general model, which depends on a number that we need to fix called a parameter p. This is anything
+between 0 and 1 inclusive. The probability mass function
+now looks like this, and this is such an
+important random variable that comes up so
+often it gets a name. It's known as a Bernoulli
+random variable, or the distribution
+of values is known as a Bernoulli distribution with parameter p. Now we write in shorthand X
+with a squiggly line, and that squiggly line can be read, 'Has the distribution.' If we write X squiggly
+line Bernoulli p, or maybe just Bern p,
+some people write that, that means we're talking about a random variable that
+takes on two values, 1 and 0 with probability
+p and 1 minus P. Now I wanna talk about
+a little bit of notation that I think will
+be helpful in this course, and that is an
+indicator function. I'm going to let A be
+some set of real numbers. It could be like a
+continuous interval or a set of discrete
+points, or even weirder. I am going to talk
+about a function that we'll call capital I sub A, and it's a function of
+X, and this will be 1 or 0 depending on whether that
+X is in the set A or not. With this indicator, we can write the Bernoulli probability
+mass function like this. Note that when I
+plug in X equals 1, I get this part is p, and then I get 1 minus P to the 0 which goes away, that's 1. Then I plug in 1
+to the indicator, and because a 1 is
+in that set below, the Indicators switches on
+and gives us the value of 1. Overall here, if I
+plug in X equals 1, I get out P. If I
+plug in X equals 0, I will get out 1 minus P, and if I plug in X equals 7, it might look like I'm
+starting to get P^7, 1 minus P^1 minus 7. But then you look
+at the indicator and when you plug 7 in there, because it's not in
+this set 0 and 1, that's going to be 0 and
+the whole thing will 0 out. I think Indicators are really convenient for probability
+and statistics, and it's for a reason larger than just writing it more compactly because I'm not
+even sure we do that. Is it really that hard to say here's my probability
+mass function, and by the way, it's zero otherwise where
+I haven't defined it, that's not hard at all, but I'm using indicators
+for something that I hope to convince you of
+the importance of later. Alternative common
+notation for indicators are this double
+line one or a chi, or sometimes something known
+as an Iverson bracket, which is just square brackets, which I think is
+really hard to tell apart from other symbols
+we're going to be using. Here's another experiment, let's go beyond
+the coin flipping; suppose I have a sequence of independent trials
+of an experiment, and suppose that each
+trial can result in one of two possible outcomes,
+success or failure. Further, suppose
+that the probability of success is a number little p, and the probability of failure is the rest of the probability, one minus p. Let's define a random variable X
+to be the number of trials until we see
+the first success. This random variable
+X is said to have a geometric distribution
+with parameter p, and we might write it like this; X squiggly line has
+the distribution geom p although I do have
+something more to say about this notation at
+the end of this lesson. What is the probability
+mass function here? First of all, if we're counting the number of trials
+until the first success, you'll note that X takes on
+positive integer values 1, 2, 3 and there's
+really no upper bound. To figure out the
+probability mass function, let's look at a
+particular number. Let's look at the
+probability that X equals 4. So to get x to be 4, we need to see our first
+success on the fourth trial, and that means we
+need to see failure, then failure, then
+failure, and then success. These are independent trials. Hopefully you've seen in some more beginning probability
+course that when you are computing the probability for something involving
+independent events, you get to multiply
+the probabilities. In this case, they are 1 minus p, 1 minus p, 1 minus p,
+and p respectively. We get the probability that
+X equals 4 is 1 minus p cubed times p. What
+can we say in general? In general, the probability
+that X equals little x, this means the first success
+happened on the X trial. We had failure, failure, failure, we had X
+minus 1 of those. So that's why you're seeing
+1 minus p^x minus 1, and we have a single success, which will have probability
+p. This function will only take on this value if the x's
+we're plugging in are 1, 2, 3 on up. We could write this
+piecewise where we say, and the function is 0 otherwise, or we can use an indicator. Again, this function says
+that when you plug in an X that's actually
+in this set down here, this whole thing
+takes on the value 1, and if it's not down there, it takes on the value 0. X is the number of trials
+until the first success. But there's another
+way that people commonly define this
+geometric distribution, and that is to
+count the number of failures before
+the first success. In our example before, when X was four, we had four trials until
+we saw our first success. If we define it this way, the X would be three
+because there's three failures before
+that first success, and it's not hard to use the same reasoning to show that the probability mass
+function looks like this. Now people still call this a geometric random variable,
+myself included, and what I'm about to show
+you is not common notation, but I think it might be
+useful in this course. To know which geometric
+we're talking about exactly, we'll either use the
+context of the problem, is what we're counting taking
+on the value zero or not? Or we'll denote it by putting
+a 0 and 1 subscript on the geom when we say x has the geometric distribution
+with parameter p. There are so many more discrete
+distributions that arise so often that
+they get names. Rather than take you
+through all of these, I'm now going to send you to some reading
+where you can learn other common discrete
+distributions as well as their names and
+notations for them, and this maybe review
+for a lot of you. If it is, I'd advise
+at least glancing it over so that we're all on the same page with our notation. Check it out and I'll be waiting for you in the next lesson.

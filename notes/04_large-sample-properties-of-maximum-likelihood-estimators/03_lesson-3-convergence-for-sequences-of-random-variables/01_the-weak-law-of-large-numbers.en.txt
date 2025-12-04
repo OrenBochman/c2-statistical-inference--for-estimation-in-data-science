@@ -1,0 +1,288 @@
+Welcome back. In this video, we're going to talk
+about the concept of convergence of sequences
+of random variables. The reason we care about this is because our estimators are random variables and they
+depend on n, our sample size. We'd like to know how they
+behave our estimators, that is, as the sample size
+gets larger and larger. Are our estimators getting
+better and better? Let's start right off with
+a bunch of sequences that you've probably seen
+somewhere back in calculus. The first one I have
+here is the limit as n goes to infinity of 1/n. There's nothing random here and the denominator is
+getting larger and larger, forcing the fraction smaller and smaller and it's going to zero. For my second example, I'm looking at the
+limit as n goes to infinity of one half
+raised to the nth power. When you take powers of one-half, you get one-half, one-fourth, one-eighth, one-sixteenth,
+something that's going down, down, down to zero. Then I have a couple of ratios of polynomials and perhaps
+you remember the rules that say that if the degree
+of the polynomial in the denominator is larger
+than that of the numerator, the ratio goes to zero. Whereas if the degree is the same in the numerator
+and denominator, the ratio goes to the
+lead coefficient on top over the lead
+coefficient on the bottom, which in this case is two-thirds. There's nothing random here and that's the whole
+point of this video. What do we do when we
+have random variables? Here is just one more limit
+in case you didn't get enough of regular
+non-random limits. We know what it means to take the limit of the sequence a_1, a_2, a_3, etc when the
+as are defined this way. But what does it mean to take the limit of a sequence
+of random variables? Is that limit random? Can it be constant? I don't know, let's find out. But one thing I can tell you about what you're seeing
+right now is that this is meaningless because random variables are not numbers. They're wannabe potential
+numbers that are sometimes over here
+and sometimes over here and often over
+here and so it's hard to say what they might be approaching because
+they are always moving. In order to talk about the convergence of a sequence
+of random variables, we have to introduce
+probability in some way and there's
+many ways to do this and we're mostly interested in 2-3 types of convergence. One of them is not really
+a convergence type as much as something I think
+we already know about. We've seen this idea of
+asymptotic unbiasedness. We've had an estimator that the expected value was not the parameter we were
+trying to estimate, but the expected
+value in the limit was and so what we've
+done here is taking the expected value of the
+random variable that removes the randomness and now we're just talking about
+a sequence of numbers. There are two other types of convergence that are
+stronger than that. What do I mean by stronger? I mean that if we define one type of convergence
+and another, if this one implies this one but not necessarily
+the other way around, then this one is stronger. I have two types of
+convergence here that are stronger than
+some other types and weaker than some other types. The first one is the idea of
+convergence in probability. You take any Epsilon
+greater than zero and you have a sequence of
+random variables X_1, X_2, X_3 on up and another random
+variable X and we say that the X_n converge in probability
+to X if this limit holds. Now, there is an equivalent
+way to say this. We can take compliments
+of this probability, basically do a one
+minus on both sides of this equation and we
+can change out that greater than Epsilon to
+a less than or equal to Epsilon and on the right
+hand side will become one. What you're seeing here is that if X_n are getting close to X, then that distance,
+that magnitude there, that distance between X_n and
+X is eventually not going to be larger than Epsilon so that probability should
+be going to zero. Just for the record here, whether or not I have a strict inequality
+here or not is actually not important and it's
+not because this is limited to continuous random
+variables because it's not. It's because of the for
+all Epsilon statement. If you are greater than
+or equal to some Epsilon, then you are strictly
+greater than another Epsilon and it's the for all
+Epsilon that saves us here. If this holds we say that X_n converges in
+probability to X and we write X_n with an
+arrow to the X with the letter P over the top for
+convergence in probability. How do we show convergence
+in probability? We're going to be mostly using a very famous inequality in statistics known as
+Chebyshev's inequality and in order to prove that, we're going to use another
+inequality that doesn't really have a name but is sometimes called
+Markov's inequality. To prove both of these, we would really benefit from a simpler notation
+for integrating. Here, I have an integral
+going from zero to two, so the x values go
+from zero to two. I could also write
+this a little more compactly as the
+integral over a set A, where A consists of all the values of x
+between zero and two, either inclusive or not,
+including the endpoints. It really doesn't
+matter for integration. I said this was a
+more compact notation and that really was not much more compact than the
+integral from zero to two. Here's where it
+becomes important. Suppose you have a
+random variable x with really any distribution. I gave the exponential
+distribution as an example but
+suppose you want the probability that
+the absolute value of the sine of x is
+greater than 1/2. One way you can do
+this is to define a new random variable y to be that absolute value
+of the sine of x and maybe you can find the probability density
+function for Y. This is not one of those
+G-inverse problems, because that requires you to
+have an invertible function. Both this absolute value and the sine prevent this function
+from being invertible. However, if you go
+back to our proof of the G-inverse function
+where we started with cdfs and we took derivatives. You can go through many
+of those same steps to approach this problem and you might be able to
+find this probability. But I don't have a closed form
+formula for you like we do in the G-inverse case. That's one way to
+get this probability is to try to make a
+transformation to a new random variable and then if you call that absolute
+value of sine of x, y, then really you want the probability that y
+is greater than 1/2. If you can find the pdf for y, you can do that integral, maybe. A second way to do this and this is where we're
+going to take advantage of this compact integral
+notation is to integrate the pdf for x over the
+appropriate regions. Here's a graph of
+sine and it goes on forever in both
+directions actually. It has a negative
+values in its domain. If we want the probability
+that the absolute value of the sine of x is
+greater than 1/2, that's equivalent to saying that the x is in these
+regions and more. There's an infinite number
+of regions on both sides. These regions that I've shown
+with these orange lines are places values of x for which the sine of x and the absolute value of
+that is greater than 1/2. We could integrate the
+pdf for x over all of these regions and I've written only two integrals here, but this goes on forever
+in both directions. That is really tedious. We can also write it like this. This is just the
+integral of the pdf for x integrated over all x such that the absolute value of the sine
+of x is greater than 1/2. That is really compact way to write this sequence of integrals. It's going to be really helpful in a couple of proofs
+that are coming up. I have an inequality for you. It doesn't really have a name, but there is a special case of this inequality that has a name. Suppose that x is
+a random variable, this could be discrete
+or continuous and suppose that g is a
+non-negative function. Let c be any real number
+greater than zero. Then we have this
+probability that g of x is greater than
+or equal to c is less than the expected value of g of capital x needs to
+be capital or it's not random and that expectation is uninteresting and
+that gets divided by c. In the case where g of x
+is the absolute value of x, this inequality is known
+as Markov's inequality. Let's prove the more
+general inequality here. This is what I want to
+prove just to remind you, and I'm going to start
+with the expectation. The expected value of g of x is the integral over
+the whole world, which may get cut
+off by indicators in the pdf but generally speaking, over the whole world of g
+of x times the pdf for x. By the way, this proof is obviously in a
+continuous setting, but there is a discrete
+analog for this proof. The next thing I'm going to
+do is I'm going to break up the integral into two regions. I'm going to break it up
+into an integral over all the x's for which g of x is greater than or equal to
+c and all of the x's for which g of x is less than c. Now, I am going to use the
+fact that g of x is non-negative and a pdf is
+certainly non-negative. Both of these integrands
+are non-negative and therefore the integrals
+are non-negative. If I drop one, I will get something smaller. In other words, this
+expression here is greater than or equal
+to the first integral. Now for that first integral, I'm integrating
+overvalues of x for which g of x is greater
+than or equal to c. This is going to
+be greater than or equal to what I would
+get if I plugged in c or g. Here's where we are with
+our expectation of g of x. Now I can pull the c out and the remaining integral
+is integrating the pdf for x over this particular set of values where g of x is
+greater than or equal to c. That is precisely how you compute the
+probability that g of capital X is greater than or
+equal to c. If you look at this expectation here and this inequality
+and this result here, and you do division by c, which was given to be
+greater than zero. It won't be zero and
+it won't be negative, in which case it might
+flip the inequality. If you divide that c over, under the expectation, you have exactly what we wanted to show. The point of me showing this generalization of
+Markov's inequality is to prove a really
+important inequality in statistics known as
+Chebyshev's inequality. In this case, we have
+a random variable X from a distribution with some mean mu and some assumed to be finite variance
+sigma squared. Sigma squared or the variance, is the expected
+value of X squared minus the expected
+value of x all squared. That could actually blow
+up and be infinite. But we're assuming we
+have a finite variance, then we get this result. I'm going to turn this
+around, and on the left, I'll get 1 minus
+this probability, which is the probability of
+the complement of this event. Then I get 1 minus 1 over k
+squared on the other side, and the inequality is
+going to flip as well. For example, if the number 2 is smaller than the number 3, the number one-half is actually larger than
+the number one-third. It's the second form of Chebyshev's inequality that
+has a nice interpretation. This is the probability
+that a random variable X is within k standard
+deviations of its mean. That is at least 1
+minus 1 over k squared. Remember sigma,
+the square root of the variance is the
+standard deviation. How do we prove this? I
+need to pick one to prove, and I am going to
+prove the first one. We only need to prove one, these are equivalent statements. The reason I'm going to
+prove the first one is because I want to use the
+inequality we just talked about that has this g of x greater than
+or equal to c form. Let's go. The probability
+on the left-hand side, I can rewrite as this probability
+with the squares in it. I couldn't do that if there
+was no absolute value because squaring things does not necessarily preserve
+an inequality, but it does when both sides
+are already positive. That sigma, the square root of the variance is assumed to
+be the positive square root. The k was given as positive, and the absolute
+value is positive. These two things in the probabilities are
+equal or equivalent. Now we've got a g of x and a c. We can apply the
+inequality that the generalized version of Markov's inequality to say that this is less
+than or equal to the expected value
+of g of x divided by c. When you plug in what g
+of x is and c you get this. This expectation on the top, that's the variance
+of the distribution. We get a sigma squared up there, and it cancels with the
+sigma squared on the bottom. We get 1 over k squared
+and along the way, we got a less than or equal to, so we have proven the line
+at the top of the screen. Now let's use Chebyshev's
+inequality to show convergence in probability of some
+sequences of random variables. By the way, I started off this video saying the
+reason we're looking at this is because our
+estimators are random variables. But in this video, I just want to ignore that and just look at generic
+random variables, and then we'll go
+apply this stuff to actual estimators of things. This is just a reminder of the definition of
+convergence in probability. I wanted to point out before we went on that this
+random variable X, and actually the X_n, could be a constant. That is usually the
+case in our MLEs. We say, or we hope, that our random
+variable, theta hat, which is a random
+variable, we hope that, that converges to the
+true constant theta. We've got random variables
+converging to constants. The reason I don't have
+to change anything, we're defining convergence
+to a constant, is that any constant can
+be thought of as a very, very boring random variable. For example, the constant
+three can be thought of as the random variable
+x that takes on the value three with
+probability one. The first thing we're
+going to prove today is something known as the
+weak law of large numbers, usually abbreviated by WLLN. This says that if we
+have a sequence of IID random variables from some distribution with mean mu and finite variance
+Sigma squared, that our sample mean always converges in probability to the true mean of
+the distribution. This may look a
+little weird to you. It might not appear that there's an n on the left-hand side, but the sample mean is
+an average of n things. It's one over n times a sum
+that goes up to n of things. Sometimes, we're going
+to write X bar sub n to be the same
+exact sample mean, but we'll do it so we can emphasize the dependence
+on the sample size. Let's prove the weak
+law of large numbers. I'm going to start by
+fixing an arbitrary Epsilon greater than zero because we need that for convergence
+in probability. Then I'm going to remind you
+of Chebyshev's inequality. Then I'm going to translate Chebyshev's inequality to
+the random variable X bar. Now, X bar has its own mean, mu sub X bar and its own variance Sigma
+square root of X bar, and therefore its own
+standard deviation, Sigma sub X bar. This is me just rewriting Chebyshev's inequality in the
+particular case of X bar. Now because mu sub X
+bar is the same as mu and Sigma squared sub X bar is the original Sigma
+squared over n, that makes the Sigma
+sub X bar Sigma over the square root of n.
+I plug that stuff in, and here we have
+Chebyshev's inequality written down for the sample mean. To show convergence
+in probability, I really would like this
+guy here to be an Epsilon. Now Epsilon is fixed
+throughout our problem, but I'm going to use
+Chebyshev's inequality and the fact that I can
+choose any positive k, and the inequality will hold. I'm going to choose k so that
+this quantity is Epsilon. When I do that, I get k is Epsilon times the square
+root of n over Sigma. When I plug that into
+the right-hand side here, I get this. Now, to finish this off, I'm going to take the
+limits of both sides with respect to n as n
+goes to infinity. On the right-hand
+side I get zero. From this, I can conclude that the limit of
+that probability on the left-hand side is at least less than or equal to zero. But it's a probability, it's always between zero and one, so it must be zero. This is one of our ways or
+one of our definitions to show convergence in
+probability of X bar to mu. To sum it all up, the
+weak law of large numbers says that if you have
+X1 through Xn IID random variables and they have some common mean mu and a
+common variance Sigma squared, then we have shown that the
+sample mean converges in probability to mu as long as the individual
+variances are finite. That came in in our last limit. We had a Sigma squared over n and we let n go to infinity. If that Sigma squared in
+the numerator is infinite, then we can't guarantee that that fraction would go down to zero. As a very quick example, because we've already
+done the hard work, consider a random sample of size n or actually an
+infinite sequence, a random sample that
+goes on forever from the exponential distribution with rate one over Lambda. We can now say that the sample
+mean X bar converges in probability to one
+over Lambda because that is the particular
+value of mu, the mean of any one of them
+for this distribution. If we move to the
+Gamma distribution, we can say that the
+sample mean converges in probability to Alpha over Beta. Because given the way we've defined the Gamma
+distribution in this course, that is a distribution that
+has mean Alpha over Beta. Here are two quick applications of the weak law of large numbers. Why are we doing this? Again, we're doing
+this because our MLEs are random variables and they depend on the sample
+size, usually. Like X bar is one over n, the sum as i goes from one to n, or the minimum in a sample size is a minimum among n things. Then there's the bad estimators. You just jump up
+and down and yell 17 and don't look at the data, that's an estimator and
+it doesn't depend on n. But for the ones
+that depend on n, which is our MLEs for sure, we want to know how they
+behave as n gets larger. We want to say that they get
+closer to the right value. We want to say that our
+Theta hat as a function of n is converging in probability the true
+Theta, and we will. I will see you in the next video.

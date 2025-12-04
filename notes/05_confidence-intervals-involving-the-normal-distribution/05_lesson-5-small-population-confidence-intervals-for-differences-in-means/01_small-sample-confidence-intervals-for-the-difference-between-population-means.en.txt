@@ -1,0 +1,271 @@
+Welcome back. In the final
+video of this module, we're going to continue to talk about confidence intervals and in particular a confidence
+interval for the difference between means of two
+different populations. We're going to assume
+we have samples from the two populations and
+a few other things. Number one, that the
+populations have normal distributions, number two, that the variances are
+unknown and number three, that at least one of the
+two sample sizes is small. With at least one
+small sample size, the sample variance for that
+sample or maybe both of them is not a good estimator
+for the true variance. I smell a T distribution. Let's formalize this, suppose that I have
+a sample of size n_1 from a normal distribution with mean Mu_1 and
+variance Sigma_1 squared, and suppose I have an independent
+sample of size n_2 from another normal distribution with its own mean Mu_2 and its own
+variance Sigma 2 squared. I'm going to assume that
+both Sigma_1 squared and Sigma_2 squared are
+unknown, and as I said, these samples are independent and I'm going to assume
+that at least one of the sample sizes the n_1 or n_2 are small meaning
+less than or equal to 30. Our goal is going to be to find 100 times one minus Alpha
+per cent confidence interval where the difference
+between the two means. In the first half of this video, I'm going to make
+a huge assumption, which you might think ridiculous, and that is I'm
+going to assume that the unknown variances are equal. Now, this is reasonable
+for some models, particularly models of if you
+have a product and you have changed the packaging and you are looking at the sales
+per month of your product, the variance tends to stay the same from month to month
+on something like that. But if you have the extra
+special Batman edition cover, then maybe the sales will go
+up so the mean will change, but the variance not so much. The second reason
+we're assuming this is because it makes
+things convenient, so by the end of this video, we're going to remove
+this assumption. But for now, let's keep it. The first thing we do with
+any confidence interval is find an estimator
+for the thing we're trying to make a
+confidence interval for and if I'm trying to
+estimate Mu_1 minus Mu_2, I think a very natural thing
+to do would be to look at the estimator X_1
+bar minus X_2 bar, where, as I'm sure you can guess, X_1 bar is the sample mean
+for the first sample of size n_1 and X_2 bar is the sample mean for the
+second sample of size n_2. The next step is to find the distribution of
+our estimator and then see if we can manipulate it to some function of the estimator
+and the thing we want, whose distribution is known to us and free of any
+unknown parameters, because we can take
+that distribution and compute or look
+up critical values. I'm getting a little
+ahead of myself, because we started with normal distributions both of these sample means are normal, and you know the
+means and variances as they relate to the
+original population, and so X_1 bar minus X_2 bar, that's a linear
+combination of normals, which we know is again normal. To fully specify this normal
+distribution we need, it's mean and it's variance. Its mean is the expectation, which if you run through, you get Mu_1 minus Mu_2, which is great because that's what we're
+trying to estimate. The variance I'm going to
+take a little more slowly and forgive me if I'm insulting
+you with my first step, but I just want to make
+sure everyone gets this. Suppose I'm looking
+for the variance of this estimator X_1
+bar minus X _2 bar. Rather than think of subtracting one random
+variable from another, I'd rather you think
+of it as adding, except that the second one has a coefficient of negative
+one in the front. Now, in general, variances
+don't pull apart, variances of sums are
+not sums of variances, but they are if the random
+variables are independent. Here's where the independence
+of the two samples comes in so I get to split the
+variance and run it through. Now I'm going to pull the
+constant negative one out, but you'll recall
+that when you pull a constant outside of a variance, it comes out squared. It comes out as positive one. There's the punch
+line, the variance of the first sample mean minus the second sample mean is the sum and not the difference
+of the variances. The next part of step 2 is to take the fact that we
+know we have an estimator with a known distribution and try to manipulate
+it into a function of the estimator and
+the thing we want to estimate whose distribution
+is known to us. One thing I can do
+here with a normal I can think of
+standardizing it by subtracting its mean
+and dividing by the square root of its variance or its standard deviation. This is normal 0,1, but it's not that
+useful to us because we don't know sigma 1
+squared or sigma 2 squared. All we're doing at this point is assuming that they're equal. If we were to take this
+quantity and put it between two Z critical values and try to solve down for M_1 minus
+M_2 in the middle, the endpoints would depend on
+the unknown sigma squared. Let's suggest this a little bit. Here's what I started with, the standard normal on
+the previous slide, I rewrote sigma 1 squared
+and sigma 2 squared as just a sigma squared since
+they have a common value. I could have called
+them both sigma 1 squared or both sigma 2 squared. I chose to just take the
+subscripts off altogether. In this next step, I'm
+pulling the variants out front of the some
+of these fractions. Now we have two
+sample variances from different populations and
+different sample sizes, so we'd like to put
+them together in some way to estimate
+the common variance. How should we do this? Maybe we can average them. But I don't think this
+is the greatest idea because I think we
+should give more weight to one of the sample variances
+if it happens to come from a much larger sample or even just a larger sample
+than the other one. Again, here's our
+sample information, a sample of size and
+one and size and two from various
+normal populations, we have a first sample
+mean and a second sample mean and a first and
+second sample variance. I now want to combine
+these sample variances in a way that more heavily weights the
+one that comes from a distribution where we
+have a larger sample, therefore more data
+and more information. Assuming that sigma 1
+squared equals sigma 2 squared and that we call the
+common value sigma squared. I'm going to use this
+weighted average. I've multiplied the S_1 squared and S_2 squared
+by some coefficients, and I'll get a larger
+coefficient or weight on the one that
+comes from a larger sample, if there is one, and then divide it by something
+so that I do have, in effect, a weighted average. This variance is known
+as a pooled variance, and that's why I
+have a subscript of a P on the bottom down here. Let's look at this
+pooled variance, I'd like to know its distribution and what do we already know? We know that n_1 minus 1 times
+the first sample variance over the first variance because this comes from
+a normal distribution. We've seen that this ratio has a chi-squared distribution with usually end degrees of freedom, which is the sample size. But in this case, it's a
+sample of size and one. I didn't mean n
+degrees of freedom, I meant n minus 1. In this case, Chi-squared with n_1 minus 1 degrees of freedom. Similarly, the
+other standardized, not standardized in the same way a sample mean is it's
+not centered at zero, but a manipulated version of the sample variance
+for the second sample has a chi-squared distribution with parameter n_2 minus 1. Now, these two cases were random variables are independent, and we know that when you sum up independent Chi-squared
+random variables, you get another Chi-squared and you get to add the
+degrees of freedom. In this case n1 minus 1
+plus and n_2 minus 1 for a grand total of n1
+plus n_2 minus 2. Back to our pooled variance, because we're not
+quite there yet. If I take this variance on the left-hand side
+and multiply by the associated degrees
+of freedom n_1 plus n_2 minus 2 and
+divide by the variance. If I do the same
+thing to both sides, the right-hand side is going to break up into these
+two fractions. We know each of these has a Chi-square distribution and because the samples
+are independent, the Chi-squared random
+variables are independent, so we get another
+Chi-squared out of this. Just like with our
+original sample variances. We don't know a nice name for the distribution of the
+sample variance alone, but when multiplied by an n minus 1 and divided
+by a true variance, we're getting Chi-squared
+just like we saw before. Now it's time to go back to this statistic on
+which we're going to base our confidence interval. Here I have the statistic
+that we started out with. We had that X_1 bar minus X_2 bar is normally
+distributed with mean M_1 minus M_2 and variance sigma squared over n_1 plus
+sigma squared over n_2. Remember there's no sigma
+1 squared and sigma 2 squared anymore because we're assuming that
+they're the same. We pulled that sigma squared
+out in that denominator. Still inside the square root, and now I'm going to
+place the pooled variance in place of where that true variance was.
+That's right here. I want to know the
+distribution of this thing. Let's rewrite it with the true variance
+under there and we're going to divide by this quantity so that we haven't
+changed anything. Now, we just saw that
+this quantity with an n_1 plus n_2 minus 2 in front of the S squared
+has a chi squared distribution and I'm starting
+to see a t, aren't you? We need to divide by the degrees of freedom
+for that chi squared. When I put in the n_1 plus n_2 minus 2 to get the chi
+squared I want to see, I can also divide by it because that's also something
+I want to see. What I have here is a standard,
+normal, random variable, and what I have over
+here is a chi squared random variable divided by its degrees of freedom
+in the denominator, and under a square root. Assuming the X bars and the Sigma and the S squareds
+are independent, which is something that's true for the normal distribution, it's a little surprising, but it's true, then this is how we define
+a t distribution. In particular, the
+t distribution with n_1 plus n_2 minus 2
+degrees of freedom. So this quantity here, we're going to put between two t critical values
+and then solve down for what we care about the mu_1 minus mu_2
+in the middle. When you do that, you end up with a confidence interval
+that looks like this, so X_1 bar minus, X_2 bar plus or minus the appropriate t
+critical value times the square root of
+the pooled variance times some stuff with
+the n_1 and n_2 in it. Let's look at an example. I didn't put any words
+around this example, but suppose we have
+two samples from normal distributions
+or populations that behave like
+normal distributions, and suppose the
+first is a sample of size 9 with a sample mean of 23.2 and then observed
+sample variance of 4.3. Again, I have found issues
+here where it's hard to tell what is capital
+and what is lower case, but this x_1 bar and
+this s_1 squared are lower case because they are non-random and observed numbers. Now, suppose I have a
+sample of size n_2, and n_2 I'm going
+to take to be 8, and I have a sample from
+a different population, which has a sample mean of 24.7, and a sample variance of 5.2. My goal is going to be to
+find a confidence interval, 90 percent, in fact, or the difference in
+means mu_1 minus mu_2. We just saw that small samples and ss in place of Sigma
+mean we have to be careful and not just try to use the idea that these sample
+variances converge and approach the true variances as the sample size gets large because we don't
+have large samples. But we're going to appeal
+to the t distribution. Here's the formula for
+the pooled variance, and when I plug all these
+numbers in, I get 4.72. The appropriate t
+critical value for a 90 percent confidence interval
+would be for us to take a t distribution
+in this case with n_1 plus n_2 minus 2
+degrees of freedom. So that, in this case, is 15 degrees of freedom. I want to put area
+0.9 in the middle, which means I want to put
+area 0.05 in each tail. This means that if I just
+fill in the lower tail and look at the point that cuts off 0.05 in the upper tail, that has 0.95 in the lower tail, and that's how we look
+up at t critical value. We call it t_0.05,15, the 15 denoting the
+degrees of freedom. You can look this up in
+a table and get 1.753. But I didn't, I went
+to R, and in R, just like we had commands
+before with dnorm and pnorm, we have a command qt, which will give you the cut
+offs or critical values. The first thing you
+want to put in is the area you're trying
+to cut off to the left, and the second thing is
+the degrees of freedom. Here is the formula for
+our confidence interval. We have all the numbers, we're going to plug
+this in and I get an actual interval
+with actual numbers. What does this tell me
+about the difference between the sample means? One thing I'm seeing is in
+this confidence interval, I would think of the
+interval as an interval of plausible values for
+the difference Mu_1 minus Mu_2 and you'll notice that this interval actually
+contains the value zero. That saying that it is
+plausible or possible that based on the sample
+we're thinking that it's possible that Mu_1 minus
+Mu_2 is equal to 0, which is the same thing
+as saying we think it's possible that Mu_1
+is equal to Mu_2. Although this course is not
+about hypothesis testing, we just did a hypothesis test, we had two true means out there, we wanted to know
+maybe if they were possibly equal or one was
+greater than the other, so we made a confidence interval. We saw in this case that it
+contains the value zero, telling us that zero again is a plausible value from Mu_1 minus Mu_2 and that we just might
+have Mu_1 equals Mu_2. To derive this
+confidence interval, we assumed that the two true population
+variances were equal and really sometimes that is the case for certain types of models, but what if it's not? Then we're not going
+to try to make a pooled variance
+because the point of the pooled variance was you
+estimate one common value. If I just stick the S's so that the sample
+variance is down here, the distribution of
+this statistic is not known analytically
+or exactly. To work with this
+statistic and make a confidence interval
+or a hypothesis test, this is known as the
+Behrens-Fisher problem. The most popular solution to the Behrens-Fisher problem is something known as
+Welch's approximation. Welch showed that if you have normal distributions
+and small samples and S's instead of Sigma's, this is going to be approximately t-distributed with Nu that's the Greek letter Nu degrees of freedom where Nu is
+given by this mess. In R you could do a confidence interval
+just like the one we already did, given some data, two samples, two sample
+means, two sample variances, and now this
+approximate degrees of freedom to tell you what kind of critical value to look up. But rather than do
+this one by hand, I'm going to go straight to
+R. Just to get some data, I'm going to simulate
+10 values from the standard normal distribution
+and I'm going to put those values in a vector called
+X, and that's right here. Now I'm going to independently
+simulate 14 values from another standard
+normal distribution and put those in a vector
+that I'm calling Y. Now, in R you can type
+t.test and the rest of this, and you'll get a
+confidence interval for the difference between the means and a little
+more information. You're going to get something
+that looks like this. There's things in here that
+we don't know about yet, but you can definitely see this thing that
+I've boxed off in the middle that didn't come
+with a beacon box like this. I boxed it off. You
+can see it says a 90 percent confidence
+interval and gives two numbers, the negative 0.62 to
+the positive 0.65. For this particular example, where the means
+absolutely were the same, because both samples came from a normal distribution
+with mean zero, it's good that we see zero
+in the confidence interval because that means we have
+a pretty good chance of being able to say that the difference in
+the true means is zero or that the true means are equal, and we know they are. This concludes this module. In the next and final
+module for this course, we're going to remove these
+assumptions about normality. It's not the worst assumption in the world because
+the central limit there makes a lot of things look like they have the
+normal distribution, even if what you started with was a very different distribution. But it's restrictive,
+so in the next module, we're going to really
+expand our horizons. I call it confidence
+intervals unleashed, and I will see you there.

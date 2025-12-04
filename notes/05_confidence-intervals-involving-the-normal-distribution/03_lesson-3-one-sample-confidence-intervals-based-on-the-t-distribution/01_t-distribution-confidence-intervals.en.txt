@@ -1,0 +1,292 @@
+Welcome back. Let's put this
+t-distribution to work. Suppose that we have a
+random sample of size n, so that 's IID from
+any distribution with mean mu and a finite
+variance sigma squared. If you're wondering why I
+sometimes say finite variance, it looks because things
+can go wacky if it's not. But why did I ever say
+that about the mean? The mean is defined to be the expected value of
+x and the variance is the expected value
+of X squared minus the expected value of
+X quantity squared, and we can show that if
+the variance is finite, the mean will be two, so that's an automatic given once we say that the
+variance is finite. Now suppose that our
+sample size is large. In most textbooks,
+this means that n is greater than 30 or
+greater than 40, and in the real-world, those
+numbers are also used. But I just want to
+caution you if you're doing something really critical where your results are really important and someone's
+life is on the line, I would definitely try
+to get a larger sample, and if I can't, I would
+start examining that sample, looking at histograms to at least try to convince
+myself that I think that the asymptotic normality
+assumption is valid. Suppose that mu and sigma
+squared are both unknown. In this video, we
+want to come up with a confidence interval for mu, and we've already done this, but it involved sigma squared,
+which is now unknown. In this example, I don't
+have a given distribution, but we know by the
+central limit theorem that for this large sample, x-bar is approximately normally distributed as the sample size gets larger and
+larger and larger. Specifically, it's an
+asymptotic result. We know that x bar is
+asymptotically normal and its mean, normal or not, asymptotic
+or not, is always mu, the mean of the original
+distribution and its variance is the
+original variance over n, so you might be tempted when you see
+asymptotically normal, and we've already talked about this as just another reminder, you might be tempted
+to say that x-bar approaches this distribution
+as n gets large. The problem is this distribution
+depends on n as well. What this does mean is that
+when properly standardized, this quantity here is going to converge in distribution to a standard normal distribution, so we're going to use
+this, in this way. We're going to say that
+for large samples, we think that this
+random variable approximately behaves
+like a standard normal. Recall how we made our
+confidence interval in the past. We put our standard
+normal between two standard normal
+critical values that will give us the right
+area in the middle, and then we took this
+expression and we solve down for mu in the middle. The problem with that is that
+the results are going to depend on this sigma
+and sigma is unknown. If I try to return the
+confidence interval to someone and I say, "You should use X-bar plus
+or minus z sub alpha over two times sigma over
+the square root of n." They won't know sigma, they won't be able to use
+it, so in this video, we want to talk about using the sample variants in
+place of the true variance. Here's our expression
+for the sample variance. We have in back in
+the module where we talked about convergence of sequences of random variables, we had a theorem
+that said that if a random variable is an unbiased estimator of
+some parameter theta, and if the variance of
+that random variable is going to zero as
+n goes to infinity, then that random variable is converging in probability
+to that parameter theta. Another way we say this is that that random variable is a
+consistent estimator of theta. We've seen that
+the expected value of S squared is sigma squared, that was the whole reason
+we use the n minus one and the denominator
+as opposed to the end, which seems a little
+more natural. If you go back and
+look at that lesson, we've worked out an expectation, we squared things out,
+we ran a sum three, we pushed and pushed and
+we got sigma squared. You can do that again with
+a variance calculation, although it's a lot messier. If you want have time
+with it this weekend. The point is that that theorem we had in our convergence of random variables module says that this unbiased estimator, which has a variance that we can compute and show
+is going to zero, is converging in probability
+to sigma squared, it's a consistent estimator. For that matter,
+the S squared that other people define using
+an n in the denominator, which is a little bit biased, is also converging in
+probability to sigma squared and can be used in what we're
+about to talk about. The sample variance
+is approximately the true variance, in some sense. We have this idea about
+convergence in probability. This is a weird statement
+because S squared is a random variable and Sigma
+squared is a constant. The S squared, if you
+looked at its distribution, its mean is focusing in on Sigma squared and its variance
+is shrinking down to zero. It is approaching that one
+constant in that sense. That means we can use the sample variance in
+place of the true variance, for some calculations
+with large samples. What I'm trying to
+say is that X-bar minus Mu for large samples, over S, over the square root of n, is approximately normal. Again, the central
+limit theorem is giving us normality of X-bar, and this convergence in probability result of S
+squared to Sigma squared, is saying that we'll be
+okay if we plug in an S instead of Sigma when normalizing
+or standardizing X-bar. We can get an approximate
+large sample, 100 times 1 minus Alpha percent confidence
+interval for the mean, by putting this quantity
+between two Z critical values, and solving for Mu in the middle. We get this confidence interval, which looks just like
+the one we had before, but there's an S
+in place of Sigma. On this slide I've just summed up everything we needed here, we had a random sample of size n. We assume that n was large. Mu and Sigma squared
+were the mean and variance of the distribution
+that the sample came from. We assume that both Mu and
+Sigma squared were unknown. You can go through
+approximately the same steps we've done in previous videos, to show that this is a
+confidence interval, with the right level
+of confidence. Before we go on, I did
+want to make sure you knew about a computational
+simplification. I'm not sure if it's simpler, but depending on the data and summary statistics you may be
+given, it might be simpler. There's another way we can write the sample variance and
+it looks like this. You would get that by squaring this out and running the sum through and massaging
+it until you get this. This is useful because you may be recording summary
+statistics from data like, the sum of the X's, and the sum of the X's squared, and not actually have all
+the individual data points, which is needed to compute the variance from
+this expression. Suppose that X_1 through
+X_n is a random sample from any distribution with mean Mu
+and variance Sigma squared. Now suppose that the
+sample size is small. Suppose that both Mu and
+Sigma squared are unknown, and we want a 100 times 1 minus Alpha percent confidence
+interval for Mu. If we don't know
+the distribution, we are out of luck. We don't have the central
+limit theorem giving us the X-bar is approximately normal even though we
+didn't start with normals, and we don't have convergence in probability
+approximately holding, for the sample variance
+to the true variance. Small samples, you need
+to know more information. You need to know the
+underlying distribution. It could be normal
+and it could not be normal, but you need to know it. In this video we're
+going to talk about the normal case
+for small samples, when Sigma is unknown. In the last module
+for this course, I call it confidence
+intervals unleashed. We're going to take
+our skills and apply them to many
+different distributions. We won't just be stuck,
+with normal distributions. Suppose that X_1 through X_n are iid or a random sample from
+the normal distribution, with mean Mu and
+variance Sigma squared. I'm going to assume that
+the sample size is small, so we can't use the
+central limit theorem, and that Mu and Sigma
+squared are both unknown. Again, our goal is a 100 times 1 minus Alpha percent confidence
+interval from Mu. Now, X-bar has a
+normal distribution. This is not by the
+central limit theorem, but this is because we started with a normal distribution, and X-bar is therefore a
+linear combination of normals. We know that the mean
+and variance for X-bar are Mu and
+Sigma squared over n, regardless of the distribution. We've got the
+distribution for X-bar. However, the variance
+Sigma squared and therefore Sigma squared
+over n are unknown. How can we standardize this and turn it into
+a standard normal, a Z, something we can put
+between Z critical values, to solve for Mu in the middle. Well, we can't. But
+that's why we talked about a couple of new
+distributions in the last lesson. We want to use the
+sample variance in place of Sigma squared. Because of the small sample, it's maybe not a
+great approximation. But all is not lost if you know the underlying distribution, and in particular, if the underlying
+distribution is normal. What should we do?
+In order to do this, we need to know the distribution of x
+bar minus Mu over S, the sample standard deviation
+over the square root of n. Let's look at it. X minus Mu over S over
+the square root of n. I wouldn't know the distribution if
+this S was a Sigma, so let's put that in
+there for a moment. I can't really do that, or can I? I can do that if I
+compensate for it by then multiplying by a Sigma and dividing by an S. When
+you multiply these, you actually get the
+original expression. I'm going to square
+the Sigma over S and put the whole thing
+under a square root. Now, these are non-negative
+variables and parameters, and you don't have to worry
+about a plus or minus thing. Because usually the square root of X squared is
+not necessarily X, because X could
+have been negative, but we don't have
+that problem here. I'm going to flip
+the fraction and move it to the
+denominator like this. Then I'm going to multiply
+and divide by n minus 1. This guy over here has a
+standard normal distribution. Of course, we don't know Sigma, so that doesn't seem very
+helpful, but it will be. This guy over here, the thing inside in
+this numerator in the square root we just
+proved in the last video, has a Chi-squared distribution
+with parameter n minus 1, or n minus 1 degrees of freedom. We also talked in the last video about the sample mean and sample variance for the normal distribution being independent. What you're looking at here? A normal 0, 1 divided
+by the square root of a Chi-squared random variable divided by its
+degrees of freedom, and that's how we define
+the t-distribution. When we define the
+t-distribution, we used n degrees of freedom. In this case, we're
+using n minus 1. This guy all the way
+on the left up here, has a t-distribution with n
+minus 1 degrees of freedom. The t-distribution
+is a bell curve. It's centered at zero. It's flatter than the normal. But we talked about how it gets closer and closer
+to the normal 0, 1 bell-curve as n gets large. If we want to find a
+confidence interval based on a statistic. Now a statistic is any function computed from data like this. If we wanted to find
+a confidence interval using a statistic that
+has this distribution, we're going to want
+to capture the right area in the middle. In general, for a 100 times 1 minus Alpha percent
+confidence interval, we'll put 1 minus
+Alpha in the middle, and Alpha over 2 in both tails. We've already talked
+about this not being an absolute requirement. You could slide those end
+points around and capture area 1 minus Alpha between
+two different values. But what's going
+to happen there is your interval is going
+to end up longer than it would be if
+you put it right in the middle where you
+have the highest stuff, you have most of the area. We're going to use the
+same or similar notation for critical values. We're going to say
+the number that cuts off area Alpha over 2 to the right is
+t_ Alpha over 2. But we have to add a little
+bit more to this notation, something that reflects
+the degrees of freedom. I'm going to use t_ Alpha over 2, comma n minus 1. Now, t critical values
+are usually tabulated, someone who has worked out
+the numerical integrals. These days are in software, so you can get these
+in R. If we put this t random variable between the two t critical values and
+solve for Mu in the middle, we get an exact, not approximate,100
+times 1 minus Alpha percent confidence
+interval for Mu, assuming a normal distribution. We had to use an estimator
+for the variance over here. That means we're a little
+bit more uncertain. The critical values of
+the t-distribution, here's the standard normal
+and the t is squished down. The area in the
+center is going down. The Z critical values when transferred to a t-distribution, are going to be out
+a little wider, and this is where our
+uncertainty comes in because we didn't know the
+variance Sigma squared. Here again is the t, n minus 1 PDF with area 1
+minus Alpha in the middle, and area Alpha over
+2 on both sides. In our confidence interval
+that we just completed, we use symmetry about zero to say that the critical values
+are t_Alpha over 2, n minus 1 and the
+negative of that value. But if we didn't have symmetry, this value down here
+would be written as t_1 minus Alpha
+over 2, n minus 1. Because this first
+subscript gives us the area captured to the
+right of this value. If we want Alpha
+over 2 to the left, we want 1 minus Alpha
+over 2 to the right. To sum up, if we
+have a random sample from the normal distribution
+and we have a small sample, and sigma squared is unknown, and we want a confidence
+interval for the mean Mu, we're going to do exactly
+what we did before, but we're going to
+use t critical values instead of z critical values. Let's look at an example. A small study is being
+conducted to test a new sensor for a continuous
+glucose monitoring system. Based on previous studies, it is believed that the
+lifetime of the sensors measured in days is approximately
+normally distributed. We take a random sample of 20 patients who were
+fitted with this sensor, and we want to follow them until the sensor
+dies out on them, and look at the time
+that that takes in days. In our group of 20 people, it took on average 187 days
+for the sensors to wear out. The sample variance we saw among those 20 patients was 16.2 days. We are assuming that we're starting with a
+normal distribution based on things looking
+normal from previous studies. We have a small sample, and I want a 95 percent
+confidence interval for the true sensor
+mean lifetime Mu. You'll notice we don't
+know the sigma squared, and we're using a
+sample variance. Small sample and sample
+variance instead of sigma squared means you
+must know the distribution. If it's normal, then the distribution you're working with is the t-distribution. In this example, I'm going
+to pull out the numbers. We had n equals 20. We had x-bar. Now I know I'm still
+using this bad font, but this is a lowercase
+x-bar because it's been observed and is no
+longer random, was 187. The lowercase s-squared, the observed sample
+variance is 16.2, and the Alpha for a 95 percent
+confidence interval is 0.05 because we
+have 95 percent in the middle and Alpha
+distributed over both ends. If you were trying to get the appropriate
+critical value in r, last time we used a function for the standard normal
+called q-norm, and now we're going to
+use a function called qt. If you want 95 percent
+area in the middle, this qt function will give you a number that cuts off a
+prescribed area to the left. We're going to include the lower tail in that 95
+percent and really look at the number that brings us
+up to total area of 0.975. In our, you would
+type qt 0.9 75,19, which is n minus 1 for this case. I did it, and I got
+approximately 2.09. Plugging it in, we
+have a formula. We have all the numbers. We've got the confidence
+interval, it is 185.11-188.88. This is an interval of
+plausible values for the mean, and it was based on a certain
+confidence level, which, again, does not mean
+anything when talking about this particular
+interval of numbers. But our construction is
+such that if you took a new sample and did it again and a new sample and did it
+again and a new sample, that 95 percent of those would correctly capture
+the true mean Mu. Now I'm assuming we
+only get one sample, but I'm okay with 95 percent. If not, go higher
+with your percentage. In the next video, we're going to talk about two-sample problems. For example, comparing the means between samples from two
+different populations. Now a confidence
+interval is an interval of plausible values for
+the unknown parameter. If you have a population with mean Mu 1 and mean
+Mu 2, and you look, say, at the difference
+Mu 1 minus Mu 2, that's a new parameter. If you compute a confidence
+interval for Mu 1 minus Mu 2, and you interpret it as an
+interval of plausible values, you almost have, in a
+sense, a hypothesis test. For example, if that interval of plausible values include zero, then you're saying it is plausible that Mu 1
+minus Mu 2 is zero, or equivalently, that
+Mu 1 equals Mu 2. If it contains only
+positive numbers, you are in effect saying that you believe that Mu 2 is
+smaller than Mu 1. We can draw some conclusions
+that we will actually see in hypothesis testing if you take the next course
+in this sequence. Two samples coming up,
+and I will see you there.

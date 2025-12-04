@@ -1,0 +1,128 @@
+Suppose that X and Y are
+discrete random variables. I might want to talk about
+the probability that X equals some fixed x and Y
+equals some fixed y. In probability the word "and"
+is represented by a comma. If you see this, it means the probability that
+X equals x and Y equals y. This joint probability
+is known as a joint probability
+mass function when you think of it as a
+function of x and y. We're going to call it
+f, just like before, but it's going to
+be a function of two variables, x and y. We can talk about the random variable X
+taking on the value y. In case it's confusing, especially in a problem where we have many random variables, we might also use
+subscripts on this PDF. The subscripts will tell us which random variables
+the PDF goes with. Joint probability mass functions are most of the time not
+written out with formulas, but instead in a tabular
+form like this example. Across the top here
+I can see that the possible values for x are 1, 2, and 3 and the possible
+values for y are five and 11. If you want to know
+the probability that x equals 1 and y equals 5, you just have to go into
+the table and read it out. It's in this case 0.2. What if I want to know a
+probability involving x alone? If I want to know the
+probability that x equals 1, that comes from these two cases. I need to sum them. I'll get 0.2 plus
+0.15 equals 0.35. This probability for x alone
+is found in the margin. That's why this probability is known as a marginal probability. A marginal probability
+is when you have multiple random variables and you move down in the
+dimensions from 2-1, or maybe 10-1, or maybe 10-6. You sum out the random
+variables you don't want. In this case, if we compute
+all of these probabilities, they are describing marginal
+probability mass functions. I can write them like this. The marginal PMF for x is the joint PMF with
+all the y is summed out, and the y is the reverse. Let's get continuous. In the continuous case, the probability of seeing a particular value
+is always zero, but if we have two
+random variables, x and y, the joint
+probability density function, remember before in the
+one-dimensional case, it was a curve under which
+area represented probability. Now it's a surface under which volume represents
+probability. If I want the probability
+that x is between a and b, and y is between c and d, and where these
+things are strict or not strict in equalities
+is not important, I would integrate the joint
+PDF over that region. Just as in the discrete
+case, analogously, we can get the marginal
+probability density functions by integrating the joint PDFs over all of the values for the variable
+that we don't want. Here's an example of a joint PDF for a continuous
+random variables. I can write it piece-wise. It's taking the value
+8 times x times y. If x is less than y and they're both
+between zero and one. Here's one way to rewrite
+this with Indicators. I can say that y is somewhere
+between zero and one. Up here it looks like
+y is greater than x, but there's no lower bound on x, so y can get arbitrarily small. That's why I'm saying y goes from 0-1 and x goes from 0-y. Another way to do this is to
+let x run all the way from 0-1 and keep y up above x. This indicator is
+going to be one when y is greater than x
+and smaller than one. If you sketch this region, so here's an x and y axis, we see a triangular region. I haven't graphed the 3D PDF, but this triangular region is on the floor and the
+PDF is above it. If you integrate over
+the whole region, you should get one. Here are two ways to
+do this integral. If you need to pause the video, and think about your
+limits of integration. Let's find a marginal PDF for x. Imagine a particular fixed x, just fix it, for that x, you'll see that y goes from here, which is the line y equals
+x up to here, which is one. The marginal PDF for x at x, I'm going to take the
+joint PDF and integrate with respect to y
+as y goes from x-1. I did that and I
+get this function. This will hold for all
+xs between zero and one. We can find the marginal PDF for y by integrating for a fixed y, we can take x from zero to y. I've already found the
+marginal PDFs for x and y, and here I'm just going
+to find one of them again and the reason
+I'm doing it again is that I want to do it now with indicators is to give you an idea of how you can manipulate
+Indicators in integrals. The marginal PDF for x is
+going to be the integral of the joint pdf overall
+minus infinity to infinity values for y. This is an integral
+with respect to y. Eight can be pulled out. x is also a constant which can be pulled out
+with respect to y. Then if the other
+indicator in there says that y goes
+from x up to one. I'm going to replace
+this with a one and only allow the values of
+y from x to one. In other words, changing
+the limits of integration. Then you integrate and go and you're done and you
+get the same thing. Random variables x and y are said to be independent if their joint PDF factors into the product of their
+marginal PDFs. As an example, let's look
+at our last example. We found these two marginal PDFs and when you multiply them, you do not get the
+original joint PDF. Therefore, in this case, x and y are not independent. Here's another example. Here's another joint PDF
+that is equal to x times y, and x goes from zero to one
+and y goes from zero to two. To find the marginal pdf for x, I'm going to
+integrate out the y's and define the
+marginal PDF for y, I'm going to
+integrate out the x's and I end up with
+these two functions. This might be a good time for
+you to pause the video and make sure you can get
+the same marginal PDFs. We can see that x and y are independent because if I
+multiply these marginal PDFs, I get the joint PDF back. I can see back here that this was going to
+factor or be pulled apart and it was really
+just a matter of figuring out what kind
+of constants I need. Here I got a 2 1/2, but maybe I could get an
+eighth and 1/8 or a 1/4 and 4, and does it really matter if I don't care about
+the marginal PDFs? My question is, could I say, if the goal is to
+show independence, could I just say this
+factors into an x part and y part and let someone else work out the constants later if
+they want the marginals. This would be a lot
+easier. Let's go back to our first joint PDF example, 8xy. This eight times
+x times y factors into an x part and a y part. We saw that they're not
+independent and that's because the x and y are connected or tied together
+in the Indicator. My question was, to
+establish independence, do we really need to integrate
+to find the marginal PDFs? or can we just say this joint PDF factors
+into an x part and y part and let
+someone else work out the constants if they
+want the marginal PDFs? The answer is actually yes
+if you include Indicators. This is one of several
+reasons I really like to use Indicators
+in probability. We're not going to prove it here. A quick way to see if
+you're indicators are going to factor or
+not factor is to sketch the region
+because for this pdf, we wrote the indicator
+product down in two ways, and who's to say we can
+write down in another way where x and y are
+completely disjoint. A picture is to say
+that if you graph or sketch the region
+over which you're integrating if it's rectangular. A rectangle or even an
+infinite rectangle. This can go on up forever. Then that is enough to
+say that you can rewrite the Indicators into
+pure X1 and pure Y1. To sum up, x and y are
+independent if the joint pdf factors into the
+product of the two marginals. But my pro tip to you is a secret is that you don't need to integrate to
+find those marginals. If you can just factor it, including the Indicators, then that's enough to
+see they're independent. [NOISE] In our next video, we're going to talk about
+the distribution of transformations of
+random variables. Suppose that x has an exponential distribution
+with parameter lambda and I want to know
+the distribution of a new random variable y
+that's equal to x squared. How are you going to
+find it? Stay tuned.

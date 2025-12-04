@@ -1,0 +1,89 @@
+Hello. Welcome back, everyone. Welcome to Module 2. In this module,
+we're going to talk about maximum
+likelihood estimation. This is huge. It's a big deal. It's huge. If you were to walk away
+from this course knowing only one method of estimation, please make it maximum
+likelihood estimation. This is the one
+you're most likely to have to use out there
+in the real world, and it's most likely going to
+apply to your problem when other estimators don't exist or don't have nice properties
+or too hard to find, maximum likelihood
+estimation is where it's at. In this rather short video, I just want to motivate the
+idea with a silly example, just to give you the idea behind maximum
+likelihood estimation. Because what it is is you have a population out there
+with a distribution, with the parameter Theta
+that you want to know. Then you take a random sample, X_1, X_2 up through X_n. This is your data
+and you look at it. Based on that sample, you try to figure out
+the value of Theta from the parameter space
+that is most likely. As a very simple and
+over-simplified example, let's consider flipping a coin. Suppose I have a coin which
+comes up heads or tails, and suppose that it is
+not exactly a fair coin. It's warped or weighted and it will come up heads with
+some probability little p, which is unknown, and the
+parameter I want to estimate. Then of course, it will be tails with the rest
+of the probability, 1 minus p. The parameter space here is all values of p in
+the interval from 0 to 1. However, for this very first way, way over simplified example, I'm going to just assume that p can take on only three
+possible values. It can be 0.2, 0.3, or 0.8. Suppose I flip the coin
+20 times and I see heads, heads, tails, tails, heads,
+heads, heads, heads, tails, heads, heads, heads, heads, heads, tails,
+tails, heads, heads, heads, tails, tails, heads,
+heads, heads, heads. I hope you did follow along
+or pause or rewind the video because I think I didn't
+say anything like that sequence up there and I'm sure I didn't even get 20 flips. But suppose this is
+the data you observe. This has an awful
+lot of heads in it. Which value of the
+probability of getting heads on any one flip out of 0.2, 0.3, or 0.8 is most likely? I think there's a
+lot of heads here, so I think there's
+a high probability of getting heads on the coin. I'm going to guess that it's 0.8. I'm going to guess that the
+value p equals 0.8 out of these three possibilities makes this observed data most likely. Suppose we only flip the coin twice and we see heads, heads. Out of the three values for p, the probability of getting heads. Well, I really don't have strong evidence
+for any of them. But given what I have,
+I'm seeing lots, relatively speaking, of heads, everything in my really
+small sample is heads. I'm still going to think
+that 0.8 is most likely. But I can understand
+why you doubt me here. Let's formalize the process. We have a model here. I'm going to flip the coin twice, and I have two random variables, X_1 and X_2, which take
+on the values 1 and 0 when I get heads or
+tails respectively. The probability of getting
+probability of getting one is a parameter little p. The probability of
+getting tails is 1 minus p. In this oversimplified model, p can only take on
+one of three values. This random variable, of course, you recognize as the
+Bernoulli distribution. I have a random sample of size 2 from the Bernoulli
+distribution with parameter p, and I have this kind of restricted parameter space just to make this problem super easy. The first thing I
+want to look at is the joint probability mass
+function for X_1 and X_2. That is the joint
+probability that X_1 is some little x_1 and X_2
+is some little x_2. Because these are independent, I get to break this probability
+apart and multiply. Each of these individual ones, we get from the Bernoulli PDF or PMF probability mass function. I'm going to plug that in. Now, given that I only have four kinds of data
+points I can observe. I'm observing two values. I could get heads and
+heads, heads and tails, tails and heads, or tails and tails so there's
+four possibilities. In this oversimplified model, since there's only three
+possibilities for a P, I can actually list out all the relevant
+probabilities here. Here is a joint probability
+mass function table. Across the top, I have the
+possible values for the data. Down the side, I have
+the possible values for P. Suppose our data is 0,0, that means we get tails, tails. I want to look at the
+probabilities in the 0,0 column. I see probabilities
+of 0.64, 0.49, 0.4, and the largest
+probability is 0.64. That corresponds to
+a value p of 0.2. Give it I observed
+the data is 0,0, the most likely value of
+p is going to be 0.2. If I observe 0 and then 1, then I am going to look at the 0,1 column here where I
+have three probabilities, 0.16, 0.21, and 0.16. The largest or maximum
+probability there occurs corresponding
+to the value p of 0.3. What I'm saying here
+is if I see 0,1, the most likely value of p, the one that gives me
+the highest probability of seeing that data is 0.3. I'm going to get the
+same thing if I look at the 1,0 column. Let's skip ahead to the 1,1. Now, in the 1,1 column, if I observe 1,1, that means I get heads and heads. I look at the probabilities
+in the table. The largest probability is
+0.64 out of those three there, and it corresponds
+to a value P of 0.8. In conclusion, when
+the data is 0,0, the most likely
+value of p is 0.2. When the data is 0,1 or 1,0, the most likely
+value of p is 0.3. When the data is 1,1, two heads in a row, the most
+likely value of p is 0.8. Again, two flips, not
+a lot of evidence, but still, given those two flips, both came up heads, it's most likely, given
+that slight evidence, that we're going to go with
+the highest value of p, the highest probability
+of getting heads. To sum it up, we
+have an estimator, we have a p and we're
+going to put a hat on it. p-hat is going to be 0.2, 0.3, or 0.8 depending on the
+data. That was easy enough. In our next lesson, we're going to really formalize this and put more mathematics behind this and a whole lot of notation. Please come back. I hope to
+see you in the next one.

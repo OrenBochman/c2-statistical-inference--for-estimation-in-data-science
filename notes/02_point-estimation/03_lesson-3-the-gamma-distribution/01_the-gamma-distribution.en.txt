@@ -1,0 +1,262 @@
+Hello everybody.
+In the last video, we talked about
+continuous distributions and the concept of a probability density
+function or PDF. We also named some very important
+continuous distributions and then I sent you off
+to do a little reading, naming other continuous
+distributions in there. Well, there's one in
+there that you read about that is so
+important that I thought we should come back and
+talk about it a little bit more in its own special video, and that is the
+Gamma distribution. If you have a random
+variable X that is continuous with this PDF, which looks a
+little complicated, I'm going to explain what
+all these symbols are, then we say that X has
+a Gamma distribution. There are two parameters
+in here, Alpha and Beta. Alpha is known as a shape parameter for reasons
+that we're going to see in a few slides and we're going to talk about
+Beta in the next slide. But I do want to point out that the X part of this
+PDF, over here, is really the function and then this other
+stuff is just constants. They might look a little scary but they're
+just constants. We're going to define them and just hold on for a moment, and bear with me. If X has this Gamma
+distribution and this PDF, I'm going to write
+X squiggly line has the distribution of capital
+Gamma, Alpha, Beta. Then you notice there's also
+a capital Gamma up here, and that stands for
+something different. When the capital Gamma
+has two parameters in it, it is describing the
+name of a distribution. When the capital Gamma
+has one parameter in it, this is a constant. It's actually a
+function known as the Gamma function with the
+value Alpha plugged in. Again, we're going to
+define it momentarily. Before going on and defining and naming
+the Beta parameter, I did want to point
+out that some people parameterized the Gamma
+distribution differently. Some books, some websites, some other professors
+you might come across, if they say that X squiggly line has the distribution
+Gamma, Alpha, Beta, they might actually mean that they're
+talking about this PDF. You can see the Betas are all flipped from where
+we have the Betas. This is slightly
+different and it can cause you trouble if you
+are looking in a textbook, or a website, or
+a professor that uses one notation
+over the other. When people write
+X squiggly line has the distribution Gamma, Alpha, Beta, I will always mean this. I'm never going to bring
+this one up again, but you should be aware that other people might
+be using that. We said that Alpha is a shape parameter for reasons
+about to be explained. If you use this
+parameterization, Beta is known as a
+scale parameter. As you increase it
+and decrease it, it takes the shape of the
+distribution, squishes it, and raises it, lowers it, and flattens it, and it
+re-scales the distribution. If you're using our
+parameterization for the Gamma PDF, Beta is known as an
+inverse scale parameter. For this course,
+is not important to be able to name
+the parameter, we're just going to say X has a Gamma distribution with
+parameters Alpha and Beta. Again, we are always
+going to mean this PDF and we're never
+going to use this PDF. I've been calling Alpha
+a shape parameter. To look at the shape
+of the distribution, let's just ignore the constants. If you have a function and
+you're multiplying it by 100, you have the same
+shape function. Just everything is re-scaled. Both parameters, Alpha and Beta, have to be positive and if Alpha is actually
+greater than one and you look at most of the Gamma PDF barring the
+constant sitting out front, you can see that when
+Alpha is greater than one, we have X to a
+positive power times e to a negative X with
+a constant in front. That means that when X is zero, because of this X, the function is going
+to evaluate to zero, and it's going to be tied down here, if you look at a plot. It's then going to go
+up as X increases, and we get X to the power
+getting larger and larger. But eventually the e to
+the negative X part is going to overtake the
+exponent on the X, and bring it back down to zero. If we play with the Alpha
+and the Beta parameters, we can shift this
+distribution around, we can move the lump, we can change which
+direction it is skewed in, and we're going to see many different shapes for the Gamma distribution
+going forward. Let's look at this distribution, again, when Alpha equals 1. If Alpha equals 1, we have X to the Alpha minus 1, which is X to the 0, which is 1. The PDF becomes e
+to the minus Beta X and yes I dropped some
+constants in the front. But e to the minus Beta X
+is an exponential curve. When you plug in X equals 0, the e to the zero becomes one. We're going to start
+at some height, that's going to be given by the constants that I
+have missing out here, and we're going to go down
+exponentially like this. Finally, since the parameter
+Alpha needs to be positive, we've talked about it
+being greater than one, and now being equal to 1, what happens if
+it's less than one? If it's less than one, then X to the Alpha minus one
+is X to a negative power, which is like 1 over X
+to a positive power. This means, as X
+gets very very tiny, we have a fraction that is blowing up and
+going to infinity. In fact the PDF
+has an asymptote. It runs right up the y-axis
+and goes up to infinity. When alpha is greater than 1, equal to 1 or less than 1, and it always by default has
+to be greater than zero, we get three distinct
+shapes of the distribution. So far I've been ignoring
+the constants in the front. In particular, I want to talk
+about this function here, which is known as
+the Gamma function. Now again, if you
+see a capital Gamma, alpha comma beta, we're referring to the name
+of the distribution. But if you see a
+capital Gamma of just a single
+variable like this, then it is something
+different known as a gamma function.
+Let's define it. The gamma function is defined
+as this integral here, and we can't really do this in closed form unless
+alpha is an integer, then we might be
+able to get at it with several
+integration by parts. Note however, that this integral is identical
+to this integral. If you wanted to do this
+second integral here, you might make a u substitution, and if you let u be beta times x and rewrite the integral
+because Beta is positive, the limits of integration will still be zero to infinity, and you're going to get
+plugging in the u's, you're basically
+going to get this integral with U's in it. Try it if you don't believe me, but these are the
+exact same integral, and when we write it this way, you can see that
+this Gamma function, Let's go back up to the PDF. The gamma function
+is precisely what we need to make the
+PDF integrate to 1. It's not all that clever. I invite you to
+take your favorite non-negative at
+integrable function. Integrable, meaning if you
+integrate it over some region, it actually converges
+and is finite, and then after you integrate it, define that value to be a
+constant named after you and put one over your
+constant in front of the function and you've
+created your own PDF. As bad as it looks,
+it's just the constant that makes the
+PDF integrate to 1. This Gamma function has several cool properties,
+and in this video, I just wanted to touch on
+three of them that are going to be important
+for us in this course. The first is that when you evaluate it at one, you get one. In other words,
+gamma of 1 equals 1. This is super easy to see. If you just plug one into
+alpha for this integral, you get the integral
+from zero to infinity of e to the minus x, and you have two choices; One is to do the relatively
+simple integral. The other is to note that this
+is a PDF in its own right. This is the exponential
+with lambda equals 1. Because it's a PDF
+on zero to infinity, when we integrate from zero to infinity, we know we get one. The second property I want
+to talk about is if alpha, the real number alpha, which has to be positive, if it's greater than 1, then we can actually say
+that gamma of alpha is equal to alpha minus 1 times
+gamma of alpha minus 1. We get a recursive relationship which brings the argument
+of the Gamma function down, and to show this, I would just write out
+the gamma function as an integral and do
+integration by parts. You may recall
+integration by parts. If you're integrating
+a u times dv, you get u times v minus
+the integral of vdu. In this case, u is going to
+be x to the alpha minus one, and dv is going to be
+e to the minus x dx, and you would take du, which is going to
+be Alpha minus 1, x to the Alpha minus 2, and you would
+integrate dv to get negative e to the negative x dx. When you put these
+back together using the integration
+by parts formula, you get something
+that looks like this. We need to evaluate
+this first block from zero to infinity, so when x equals 0, this is certainly zero. When x is infinite, we did say that alpha has
+to be greater than 1, so this x is blowing up, but the e is coming down and this whole
+term goes to zero. It's really a limit rather than evaluating it at infinity, and if you need to
+convince yourself of this then you would show it
+using L'Hopital's rule. This other part has an
+alpha minus 1 out front, and the rest of it looks like
+the Gamma function again, except the alpha part
+has come down by one. In other words, we have
+precisely zero for this integral plus alpha minus 1 times gamma of alpha minus 1, and that's what we
+wanted to show. As a final property
+and there are many more properties
+of the Gamma function. But as I said, these
+are the important ones that we're going to be
+using a lot in this course. If n is a positive integer, then we can use our
+previous property to say that gamma of n is
+n minus 1 factorial. Because n being a
+positive integer, is also an Alpha, even though alpha can
+be any real number, so by our previous property, we know that gamma of n is n minus 1 times gamma
+of n minus 1, and applying that
+recursive property again, we can write gamma of n
+minus 1 as n minus 2, gamma of n minus 2. If we keep going down
+until we hit gamma of 1, remember, we show that
+gamma of 1 is equal to 1, and we eventually get n minus 1, n minus 2 all the way down
+to one and a big product, and we write this as
+n minus 1 factorial. Here's a really fun fact
+about the Gamma distribution. We are going to prove this in about two videos when we have a little more
+machinery behind us but it's so important
+and so widely used in statistics that
+I wanted to get you thinking about it right now. Suppose that X has the Gamma distribution
+with parameters Alpha and Beta and c is a
+positive constant. If you form a new
+random variable Y by taking X and
+multiplying by c, we will show that this still has a Gamma distribution and
+the first parameter is unchanged and the second
+parameter gets divided by that constant c be
+careful if you're out there in the world reading papers and books and websites, people use two different
+parameterizations for the Gamma distribution so this property might end up looking a little bit different. You might see someone tell
+you that if you have a Gamma, Alpha, Beta random
+variable and you multiply by a constant c, that you get a new random
+variable that is Gamma Alpha, c times Beta and that
+means they're using the other way to write
+down the Gamma PDF, which I'm not going to
+mention again because I don't want anyone
+to get confused. We're going to talk about one Gamma PDF for
+this entire course. At the beginning of this video, I said that we were going
+into the Gamma distribution because it is so important in statistics and that is not exactly true and
+yet completely true. The distribution that I really
+want to get at is known as a chi-squared
+distribution but it turns out this chi-squared
+distribution is just a special case of the Gamma distribution
+and that's why we just spent so much time on the Gamma distribution so
+using our parameterizations, if we have a random variable X that has the Gamma
+distribution with parameters n over
+two and one-half, where n is a positive integer. Then we say that this
+Gamma distribution, it has its own special name. It's known as a
+chi-squared distribution with n as a parameter
+to affect the shape of the distribution and this
+parameter is known as a degrees of freedom parameter and eventually later
+in this course, in the second half
+of this course, we will learn why it's called that
+and what degrees of freedom means but right now, it's just something
+that's changing the shape of the distribution
+is just a parameter. We're going to write
+x squiggly line has the distribution of
+capital chi squared of n. The chi-squared
+distribution comes up all of the time in statistics and often it allows us to unify different
+areas of statistics. If we have different
+distributions of things that we
+might be estimating, we can maybe transform them into chi-squared distributions
+and we will know a lot about the chi-squared distribution as the course goes on so we'll know a lot about
+the things we're estimating. Let's do a quick example
+about how we might transform a random variable into a
+chi-squared random variable. Most often, this is going to mean that we're starting
+with some sort of Gamma distribution so suppose that a random variable X has a Gamma distribution with the first parameter Alpha
+being a positive integer n, and the second parameter being a generic positive
+real number Beta. I would like to make some adjustments to
+X to turn it into a chi-squared random
+variable so I want this first parameter
+to be n over two and the second
+parameter to be one-half. Remember what we just
+talked about a moment ago. If you multiply a Gamma random variable times
+a positive constant, you still get a Gamma
+distribution and it ends up under the
+second parameter. I want this Beta to be a one-half so I want
+two things to happen. Number 1, I want to
+get rid of the Beta. I'm going to multiply
+by Beta and it will go under this Beta,
+canceling the Beta. That would give me a Gamma n,1. I'm not quite there and close. I want an n, 1/2 so not only am I going
+to multiply it by Beta, but I'm also going
+to multiply it by two so this two Beta is
+going to come under here, and the Betas will cancel
+and we get a Gamma n, 1/2. How do we get the first
+parameter to be n/2? Well, we don't quite
+get it to be n/2, but note that we can write
+it as 2n/2 and now this is the definition of the
+chi-squared distribution with 2n degrees of freedom. Now it's okay if you
+don't fully grasp, but at this point or
+if it looks scary, you're going to see it so much. You are going to become really used to this and
+it's going to be no big deal when we
+actually get into the statistics part of the course that looks
+like statistics, you know, with data
+and estimation. So we've talked about
+random variables, we've talked about
+distributions, probability mass functions for discrete random variables and probability density functions for continuous random variables. In the next video, I want to tell you about
+joint distributions and this is where you have two or more random variables,
+for example, an X and a Y and you want to talk about how they
+act together so maybe what is the
+probability that X equals 2 and Y equals 3
+at the same time, so joint probabilities and for joint probabilities we have joint probability mass functions and joint probability
+density functions so I hope you come back and I will
+see you in the next one.

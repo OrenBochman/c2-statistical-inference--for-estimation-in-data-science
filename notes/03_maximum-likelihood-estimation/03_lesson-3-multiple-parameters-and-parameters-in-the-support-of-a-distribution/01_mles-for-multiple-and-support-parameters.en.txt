@@ -1,0 +1,194 @@
+Welcome back in this video
+we're still talking about maximum likelihood estimation, but
+we're going to kick it up a notch or two. So we're going to to consider
+two cases in this video. One is when theta is higher dimensional,
+so theta might be the vector of mu and
+sigma squared. In other words, there's multiple unknown
+parameters in your distribution. And the other cases when
+the parameter is in the indicator. So the indicator, remember,
+tells us where we define our pdf. But it actually is defined everywhere. It's just 0 outside of the certain region,
+and that is known as a support. A support of a function is the region
+over which it is non-zero. And if the parameter is involved
+in defining the support, things were going to get a little weird. So an example of that is the uniform
+distribution on the interval from 0 to theta. Uniform, equally likely,
+nice flatline pdf, the total area under that pdf
+is the area of the rectangle. And so the height has to be 1 over theta
+because the base goes from 0 to theta and that base is the support
+of the distribution. It's 0 everywhere else. So this is a case where the parameter
+is involved in the support of the distribution. But first, a two parameter example. So let's look at the normal distribution. Suppose I have an X1 through Xn,
+or random sample or iid from the normal distribution with
+mean mu and variance sigma squared. The pdf for any one of them looks like
+this and the joint pdf comes from multiplying the individual pdfs with the
+different Xis in them, and we get this. So I changed up notation a little bit. This is a really common way
+to write this joint pdf. You don't need to do this. But my square root became a one-half power
+and that squared in the denominator. So I ended up taking two pi sigma squared
+to the one-half in the denominator, so it's two pi sigma squared to the negative
+one-half in the numerator and then I have any of those. So I have two pi sigma squared to
+the negative one-half to the end. And when you raise something to
+a power and then to another power, you get to multiply the exponents,
+the n and the negative one-half. So that's why I get this term here. We want to maximize this with
+respect to mu and sigma squared, and we might be able to simplify this
+a little bit and drop some constants. So first we wanted to find a likelihood,
+which is either the pdf or a simplified version. The parameter space, by the way, is mu, the mean can take on all values from minus
+infinity to infinity and sigma square. The variance has to be strictly positive. As is almost always the case,
+it is easier to work with this distribution if we first
+take the log, any base. But I'm using a natural log. And so the log of this likelihood
+here is this expression. By the way,
+I took my likelihood to be the joint pdf. There were no indicators there, and
+the reason there were no indicators is because the pdf is defined everywhere
+from minus infinity to infinity. So we don't need to multiply that by
+a function that is one everywhere. But there are other constants
+of proportionality here, for example, this to pie could
+be pulled out front. It's raised to the minus n over 2, but
+I can write this first part as 2 pi to the minus n over 2 times sigma
+squared to the minus n over 2. In which case I could
+drop the two pi part. I've left it in my likelihood and
+I've done that, so you can see where it's going to
+go if you didn't remove it. We're going to maximize this with
+respect to mu and sigma squared. So that means we're going to take a
+partial derivative with respect to mu and 1 with respect to sigma squared. You might want to take it with respect to
+sigma, but we're going for sigma square, the variance. So I want you to think of sigma squared. It is the parameter, it is the symbol. Don't think of it as something squared. So I'm going to take the derivative with
+respect to not sigma but sigma squared. Set them equal to 0, and then solve for
+a mu and sigma squared simultaneously. The derivative with respect to mu of
+the Log Likelihood looks like this and that simplifies to this, and
+I'm going to set it equal to 0. Now our goal is ultimately to solve for
+mu and sigma squared. And this is the derivative
+with respect to mu, and it looks like I can
+actually solve this for mu. But in general, the derivative
+with respect to one parameter versus the derivative with
+respect to another parameter, do not necessarily give you the MLS for
+those parameters, respectively. You have to take both of those equations,
+set them equal to 0, and solve the system of equations. However, this thing is only equal to 0,
+if that sum is 0. Because a sigma squared in the denominator
+is never going to make this 0. And if I run the some through, I get this. And if I solve for mu,
+I get the sample mean. So in the end, that was just for algebra. For the estimator,
+I want to make it a capital X bar, a random variable sample mean,
+and put a hat on my mu. So let's look at the other derivative of
+the log Likelihood with respect to sigma squared. It looks like this, and
+I'm going to set it equal to 0, and solve for sigma squared. This has an unknown mu in it but
+I'm solving the system simultaneously, and we already solved for
+mu, it was X bar. So I'm going to plug that in. Check this out of here. The derivative of a log is the derivative
+of the thing inside over the thing inside. So the derivative of the log of 2
+pi sigma squared with respect to sigma squared is 2 pi
+over 2 pi sigma squared. And you'll see by this third line,
+the two pies have cancelled. They've gone away and this is why it doesn't matter that
+you kept it in the first place. So when you're dropping constant of
+proportionality, you could keep them, but they're going to go away. Solving for Sigma squared, I did that by
+again not getting a common denominator and adding these fractions, but
+instead getting a common denominator and multiplying all the way
+through by it on both sides. So on the right side, I still get 0. And on the left side I get rid of
+the fractions and running through this and solving for sigma squared., I get this. Now In the end, you want to make
+everything capital and random and put a hat on it. So our maximum likelihood estimators or
+MLES, for mu and sigma squared are the sample mean and
+this expression. And this expression is sometimes
+referred to as a sample variance. And that's something I want to talk
+about in just a little more detail before we go on. So recall that the variance of
+a distribution or a random variable X is the expected squared deviation
+away from the true mean mu. And that is a probability
+weighted average. And that has a sample counterpart,
+which is an actual average. So we can add up values of the X's
+minus the mean, which is unknown. So we're going to use the sample mean,
+so we're going to take the Xis, minus the sample means square them,
+and average them. And this is one definition of
+something known as a sample variance. It's usually denoted by a capital
+because it's random S squared. But here I put a 1 subscript
+because of something coming up. What if you wanted to find the expected
+value of the sample variance? You could put an expectation on
+the left side and on the right side, you can pull this 1 over n out. You can bring the expectation
+inside the sum. You can square this out and run
+the expectation through those terms and there's lots of busywork plug and
+chug here but you will get down to n minus
+1 over n times sigma squared. So this definition of the sample variance
+is a biased estimator of the variance. If it was unbiased,
+we would get just sigma Squared. But from this I can guess
+at an unbiased estimator. I'm going to call that capital S squared. And this is also known
+as a sample variance. And if I take the original variance and
+multiply it by the reciprocal of this chi, multiply by n over n minus 1 and that's
+going to carry through all the operations. And in the end I'll get n over n minus 1,
+times n minus 1 over n, times sigma squared,
+which will just give a sigma squared. So both my S1s squared and this thing I'm calling S Square
+are known as the sample variance. And in this course,
+unless stated otherwise, we're always going to use
+the unbiased version. This denominator is known as the degrees
+of freedom of this calculation. And I will talk more about
+what this means later, but here's a little bit of intuition. When estimating the variance
+with the sample variance, you'll see that I used something
+that I've already estimated, and that is my estimator of
+the mean of the distribution. Suppose you were taking
+a class that had three exams. They were all equally weighted,
+and you had nothing else. No homeworks, nothing else. Suppose I graded your exams but
+never gave them back to you, never reported the grades. But I told you that the sample
+mean of those three exams was 93. You can now make up some exam scores. You probably won't get them right. But if the mean is tied down to being 93, then you can only make
+up 2 out of 3 of those. The third one is locked in, and
+we are free to vary 2 out of 3. In general with the same idea,
+If you had n exams and I told you your average was X bar and
+you wanted to then, you could possibly make up values for
+your n exams but you're locked in. So you're only free to
+vary n minus 1 of them. That's why again, this is called the
+degrees of freedom of this calculation. But let's go back to the normal example. Here were two MLEs for
+the two parameters, and so this is the the biased
+version of sample variance. Another biased estimator from MLEs. This is supposed to be
+the greatest estimator, and I'm not really selling it at this point. But hang in there, and I hope to
+convince you that MLEs are important. For my second example, I'm going to look at the case where
+the parameter is in the indicator. And I'm going to look at
+the example I already talked about, which is the uniform distribution
+on the interval from 0 to theta. So here's the pdf, and you can see
+the parameter in the indicator, and the joint pdf is gotten by multiplying
+the individual pdfs together. Those pdfs are all the same, but
+we're plugging in different Xs. And so in the end,
+I get this 1 over theta, n times. So I get 1 over theta to the n and
+then a product of a bunch of indicators. So usually our next step is to
+write a likelihood function, and we drop the indicators. And that's because they
+haven't involved theta, so they are constant with respect to theta. But these indicators actually involve
+theta and can't just be dropped. We can't just delete it,
+it's a part of our likelihood function. However, this doesn't mean we want to
+take its log and its derivatives. Look at, for example, that's totally
+made up piecewise-defined function. So I've got x Squared and x+1, and
+it's defined to be x squared and x+1 over these different regions. And those regions are standing in for,
+like, indicators. I can write this out as x squared times,
+an indicator that says I'm on 0 to 1 plus X plus 1 times an indicator that
+says I'm on everything greater than 1. Now, if I were to take
+the derivative of this function, then I would get 2X, for the X squared,
+and I would get 1 for the x+1. But you don't take the derivative
+of this stuff over here. This is just a placeholder for
+the region you're talking about. If I want to take the log
+of this function, I'm going to take the log of x squared and
+the log of x+1. And these things over here again
+are placeholders telling me what regions I'm in for each part of this
+piecewise-defined function. The bottom line is you don't
+take derivatives of indicators, you don't take logs of indicators. They just sort of come along for the ride. And I would recommend you keeping them
+separate, kind of a marginal know. So they are part of the likelihood. But we're going to try to
+maximize the likelihood and ignore the indicators until we need them. I'm going to just file away that
+indicator and work with this, but I can't completely discard the indicator,
+I need to keep it in mind. I'm going to take the log of this
+likelihood, so I get the log likelihood and the log of theta to the minus n, which
+is what this is, is minus n log of theta. And if you take the derivative
+with respect to theta, you get minus n over data. Now, if you set that equal to 0,
+you're in trouble. This is a fraction and the only way it
+can be 0, is if the numerator is 0. The numerator is n and that's the sample
+size and that is presumably not 0. Or you wouldn't be doing this,
+you wouldn't have any theta. So what happened? Our goal is to find the MLE for theta. And that means our goal is to maximize
+the likelihood as a function of theta, and the derivative failed us. But our goal is still the same. So if you look at this likelihood,
+this original likelihood or you could look at the log likelihood. And you look at it as a function of theta, you can see that this is
+a decreasing function of theta. As theta gets larger,
+the 1 over theta to the n gets smaller. So to maximize this, we want to
+take theta as small as possible. Theta, in this parameter space for
+this uniform, is allowed to be anything
+from 0 to infinity. So at first glance, you might think
+you need to take the theta to be 0, which is going to make this
+whole thing undefined. But remember a maximum
+likelihood estimator to do that, we fixed the theta that's sitting there,
+that's fixed. And given that, we have to find the value
+of data that maximizes the likelihood, so here's where the indicator comes in. Consider the interval from 0 to theta,
+and suppose I have a random sample and I'm sampling values in this interval and
+I get these. So in this case, n is 4. And I want to estimate theta. So theta is above all of these and given the theta is fixed,
+theta can't be down here. The smallest theta can
+be is the largest X. That's the smallest value of theta that
+will allow us to see this kind of sample. So the smallest theta is the largest X,
+and that is our MLE. We're going to put a hat on it, and
+we're going to make everything capital. And if you know, order statistics
+notation, you might use it here, but if not, don't worry about it. And if you don't know what I'm
+talking about, don't worry about it. Our MLE for
+theta is the maximum value in the sample. In the next video, we're going to talk
+about the invariance property of MLEs, and you don't want to miss it because it's
+going to make your life a lot easier. So I'll see you there
