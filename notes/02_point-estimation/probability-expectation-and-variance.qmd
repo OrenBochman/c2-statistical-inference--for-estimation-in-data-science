@@ -1,0 +1,121 @@
+---
+title: "Probability, Expectation, and Variance"
+---
+
+[refrigerator]{.column-margin}
+
+
+::: {#exr-01-refrigerator }
+## Expected refrigerator price
+A big box store sells three different models of refrigerators having 
+20, 21.5, and 26.8 cubic feet of usable storage space, 
+respectively. Let X = the amount of storage space purchased by the next 
+customer to buy a freezer. Suppose that X has probability mass function given by
+
+| x (cubic feet) | 20  | 21.5 | 26.8 |
+|----------------|-----|------|------|
+| $\mathbb{P}(x)$| 0.1 | 0.7  | 0.2  |
+: PMF for refrigerator storage space {#tbl-refrigerator-pmf }
+
+If the price of a refrigerator with $X$ cubic feet of capacity is 
+$PRICE=(20X+100)$, what is the expected price paid by the next customer to buy a freezer?
+:::
+
+::: {.callout-tip}
+## Solution
+
+1. Solution Strategy: 
+    1. we need to find the expected value of PRICE
+    2. PRICE is a linear transformation of the X variable
+    3. The expectation can then be calculated as usual ie 
+       $$
+       \sum_i P(x_i) \cdot PRICE(x_i)
+       $$ {#eq-refrigerator-expected-price }
+
+```{r}
+
+data <- data.frame(
+  x   = c(20,21.5,26.8),
+  p_x = c(0.1, 0.7, 0.2)
+)
+data
+
+
+Expecred_Price <- function(data) {
+  sum((20*data$x+100) * data$p_x) #implementation of @eq-refrigerator-expected-price
+}
+Expecred_Price(data)
+```
+
+:::
+
+[Circuit board]{.column-margin} 
+
+::: {#exr-02-circuit-board }
+## Circuit board lifetimes
+In proof testing of circuit boards, the probability that any particular diode will fail is 0.03 . Suppose a circuit board contains 150 diodes and that each one performs or fails independently of all others.
+
+[How many diodes would you expect to fail]{.mark}, and what is the [standard deviation]{.mark} of the number that are expected to fail?
+
+:::
+
+
+::: {.callout-tip}
+## Solution
+
+1. Solution Strategy: 
+    1. Let $X$ = number of diodes that fail. Since each diode is an iid Bernoulli trials with fixed probability of failure and independence. Their sum will follow a Binomial distribution.
+    2. $\therefore X \sim \mathcal{Bin}(n = 150, p = 0.03)$
+    3. The expectation and standard deviation of a binomial distribution are given by:
+       - $E(X) = n \cdot p \qquad SD(X) = \sqrt{n \cdot p \cdot (1 - p)}$
+
+```{r}
+n <- 150
+p <- 0.03
+expected_failures <- n * p
+sd_failures <- sqrt(n * p * (1 - p))
+expected_failures
+sd_failures
+```
+:::
+
+
+---
+
+[Skink dispersal]{.column-margin}
+
+
+::: {#exr-03-skink-dispersal }
+## Skink dispersal distances
+
+Let $X$ denote the distance, in meters, that an animal moves from its birth site to the first territorial vacancy it encounters. Suppose that for Solomon Island prehensile-tailed skinks, $X$ has an exponential distribution with rate parameter  $\lambda = 0.014$.
+
+What is the probability that the distance exceeds the mean distance by more than 2 standard deviations?
+:::
+
+
+::: {.callout-caution}
+## Check Parameterization
+
+The best way to mess up is to get the parameterization of the exponential distribution wrong. 
+Even worse if we also have a poison in the mix. 
+Jem cautions us about this several times.
+
+i.e. do we need to use $\frac{1}{\lambda}$?)
+
+PDF from handout:
+$$
+f(x) = \lambda e^{-\lambda x} \mathbb{I}_{x \geq 0}(x)
+$$
+
+Does R parameterize the same way?
+:::
+
+::: {.callout-tip}
+## Solution
+
+- strategy:
+    1. Given: $X \sim \mathcal{Exp}(rate = 0.014)$  
+    2. We have $\mu$ and $\sigma$  from 
+
+:::
