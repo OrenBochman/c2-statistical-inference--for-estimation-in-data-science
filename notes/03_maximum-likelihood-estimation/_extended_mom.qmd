@@ -1,0 +1,67 @@
+#### GMoM - Overbooking Example
+
+##### Overview
+
+Although I leaned about moments and moment generating functions years and years ago. I don't think I rea;y every used this knowledge in practice. It does seem to be a tool that could be useful in many data science problems as estimating moments from data is one of the simplest manipulations we can do and we also have the added benefit that for large sample sizes we should have a decent estimator on our hands. 
+
+- The weak law of large numbers means that the sample moments converge in probability to the population moments.
+- The central limit theorem means that for large sample sizes the sample moments are approximately normally distributed around the population moments.
+- Berry-Esseen theorem gives us a bound on how fast the sample moments converge to the population moments.
+- We may even improve the estimators using techniques like Rao-Blackwellization to get minimum variance unbiased estimators (MVUE) when we have sufficient statistics. Rao-Blackwellization can be implemented using a resampling technique called bootstrapping.
+
+In cases where we need to do numerical MLE for our parameter estimation, the MoM estimators can be used to get initial estimates for the parameters which can help the numerical optimization converge faster. Remeber that MCMC methods need a burn in to get to the high probability regions of the parameter space. Good initial estimates can dramatically reduce the burn in time! (Though we may well be double dipping this is more of an issue in ML than in statistical inference).
+
+
+#### The Overbooking problem
+
+::: {.column-margin #video-overbooking }
+{{< video https://www.youtube.com/watch?v=qt3e-6i2rW8  >}}
+"GMM (Generalized Method of Moments) Explained" by Nicolas Roever - One of the best explanations of GMM.
+:::
+
+I recently watched the video "GMM (Generalized Method of Moments) Explained"
+The video suggest using GMM to solve a rather tricky problem of overbooking in airlines.
+The approach is quite simple and suggests that once we do the parameter estimation using GMM we can then use the estimated distribution to do risk management and determine the optimal overbooking level. This seems like a great way to show risk management works with 
+
+1. frequentist estimation methods (point estimation using GMM)
+2. MCMC methods that can propagate uncertainty in the parameter estimates to uncertainty in the risk management decision.
+
+This idea might then be further expanded to making decisions in bigger problems possibly driving a strategic decision making framework. Also this looks like a good candidate for solving an isolated part of more complex class of supply chain problems.
+
+---
+
+#### Problem Statement
+
+This problem is interesting because it combines uncertainty quantification with risk management. 
+
+- An airline has a flight with 1200 seats. 
+- The airline knows from historical data that the number of passangers who show up for a flight follows a Normal distribution with mean 1100 and an unknown standard deviation $\sigma$.
+- For each seat that the airline sells, it makes a profit of $100.
+- For each passenger that shows up but cannot be seated (because the flight is overbooked), airlines typically pay a compensation of double the one -way flight 
+- The airline wants to determine how many tickets to sell in order to maximize its expected profit.
+
+
+## Solution
+
+### Solution Strategy:
+
+1. We use the extended method of moments to estimate the unknown standard deviation $\sigma$ of the number of passengers who show up for a flight.
+2. We use this estimate to estimate the expected profit for different levels of overbooking.
+
+### Extended Method of Moments to estimate $\sigma$
+
+
+
+
+ideas: 
+
+1. [ ] wrap in shiny app where you can 
+2. [ ] support adding fleet of planes with different sizes 
+    - what is the optimal overbooking level for each plane size
+3. support different destinations for each plane with different demand characteristics. The destiantion has cost that is proportional to the distance [fuel and labour costs scale with distance and with number of staff needed] income scale with passenger count and demand.
+    - what is a good overbooking level for each destination and plane size
+4. add support for a business and leisure passengers [business passengers are less price sensitive and more likely to show up] but they buy later so you need to reserve some seats for them. 
+
+
+
+

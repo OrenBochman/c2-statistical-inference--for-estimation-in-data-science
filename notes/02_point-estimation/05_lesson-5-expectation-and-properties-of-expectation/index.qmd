@@ -1,0 +1,25 @@
+---
+title: "Module 2: Point Estimation"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+## Expectation & its Properties {#sec-expectation-and-properties-of-expectation}
+
+### Video
+
+::: {.column-margin}
+{{< video 01_expectation-and-properties-of-expectation.mp4 >}}
+
+[transcript](01_expectation-and-properties-of-expectation.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-expectation-and-properties-of-expectation_module1_lesson4.pdf){width=700 height=700}
+
+### Quiz (Graded)
+
+{{< include ../_probability-expectation-and-variance.qmd >}}
+
+### Reflection
+

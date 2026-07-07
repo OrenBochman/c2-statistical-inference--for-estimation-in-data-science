@@ -1,0 +1,4 @@
+---
+title: "Module 4: Large Sample Properties of Maximum Likelihood Estimators"
+subtitle: "Statistical Estimation for Data Science and AI"
+---

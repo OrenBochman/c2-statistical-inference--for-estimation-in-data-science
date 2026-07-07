@@ -1,0 +1,72 @@
+#### The Cramer-Rao Lower Bound
+
+
+::: {#exr-01-CRLB-known-variance }
+## Cramer-Rao Lower Bound for the mean with known variance
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from any distribution with mean $\mu$ and variance $\sigma^2$. 
+Assume that $\sigma^2$ is known.
+
+Find the Cramer-Rao lower bound for the variance of all unbiased estimators of $\mu$.
+
+- [ ] $\frac{\mu}{\sigma \sqrt{n}}$
+- [ ] $\frac{\mu^{2}}{n}$
+- [ ] $\frac{\mu}{n}$
+- [x] $\frac{\sigma^{2}}{n}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+Recall that the CRLB theorem which states, the variance of any unbiased estimator $\widehat{\tau(\theta})$ of $\tau(\theta)$ is bounded below by the inverse of the Fisher Information $I_n(\theta)$.
+
+$$
+Var[\widehat{\tau(\theta})] \geq \frac{[\tau'(\theta)]^2}{I_n(\theta)}
+$$
+The Fisher Information for a RV is given by:
+$$
+I_n(\theta) = E \left[ \left( \frac{\partial}{\partial \theta} \ln f(\vec{X};\theta) \right) ^2 \right]
+$$
+
+:::
+
+::: {#exr-02-CRLB-known-mean }
+## Cramer-Rao Lower Bound for the variance with known mean
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from any distribution with mean $\mu$ and variance $\sigma^2$.
+
+Assume that $\mu$ is known.
+
+Find the Cramer-Rao lower bound for the variance of all unbiased estimators of $\sigma^2$
+
+- [ ] $\frac{\sigma^{2}}{n}$
+- [ ] $\frac{2 (\sigma^{2})^{2}}{n}$
+- [ ] $\frac{\mu^{2}}{n}$
+- [ ] $\frac{\mu}{\sigma \sqrt{n}}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::
+
+::: {#exr-03-CRLB-poisson }
+## Cramer-Rao Lower Bound for Poisson distribution
+
+Let $X_{1},X_{2}, \ldots, X_{n}$ be a random sample from the Poisson distribution with parameter $\lambda>0$. 
+
+Find the Cramer-Rao lower bound for the variance of all unbiased estimators of $P(X=0)$
+
+- [ ] $\frac{\lambda e^{-2 \lambda}}{n}$
+- [ ] $\lambda/n$
+- [ ] $\lambda^{2}/n$
+- [ ] $\frac{\lambda^{2}e^{-\lambda}}{n}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::

@@ -1,0 +1,27 @@
+---
+title: "Lesson 2: Joint Distributions and Independence"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_joint-distributions-and-independence.mp4 >}}
+
+[transcript](01_joint-distributions-and-independence.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_joint-distributions_c2_m1l2.pdf){width=700 height=980}
+
+### Reflection {.active}
+
+1. **Joint distributions** are what we usually think about in multivariate statistics. Univariate distributions are very useful models but I consider them as the first step in building blocks for more complex statistical models that capture relationships between multiple variables.
+
+2. **Independence and conditioning are related concepts** When considered in measure theoretic probability theory one can see that they are two sides of the same coin. Conditioning means the two RVs can't be factored as a separate product of their marginals, while independence means they can.
+
+3. **Graphical models and Bayesian networks** One of the more interesting notions I learned about in graphical models and bayesian networks is that we can combine factors i.e. small joint distributions over subsets of variables to get a joint distribution over all the variables. If a big joint distribution can be factored into smaller joint distributions it means
+
+  1. that we can reason about each block as a sub-system that is independent of the other blocks.
+  2. that there are lots of empty blocks in the big joint distribution that are zero - so that we can infer its parameters from less data and with less computational resources.
+
+4. **The EM algorithm for fitting mixture models** is a good example of how we can use the factorization of the joint distribution to make inference tractable.

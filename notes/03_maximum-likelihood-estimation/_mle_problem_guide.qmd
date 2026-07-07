@@ -1,0 +1,19 @@
+
+#### Problem solving Guide
+
+Let's summarize what we have learned about finding Maximum Likelihood Estimators (MLEs).
+
+Maximum Likelihood Estimators are based on the following steps:
+
+1. Start with the PDF or PMF of the distribution with indicators.
+2. The Likelihood function for a IID random sample $X_1, X_2, ..., X_n$ is the product of the individual PDF or PMF evaluated at each data point.
+3. The estimator for a parameter can be found by setting the derivative(s) of the Likelihood function with respect to the parameter(s) equal to zero and solving for the parameter(s).
+   In general though we might have to solve simultaneous equations if there are multiple parameters.
+4. We can simplify the Likelihood function in several ways:
+    - we can drop indicators that do not contain the parameter(s) of interest.
+    - we can take the logs of the Likelihood function and work with the log-likelihood function. It has the same maximum as the Likelihood function but is often easier to work with.
+    - We can drop constants that do not contain the parameter(s) of interest.
+5. If the indicator depends on the parameter(s) of interest we might have to consider different cases for the parameter(s) based on the data. But for the uniform distribution we saw that this leads to the MLE being the max of the data.
+
+
+We also saw that MLE's can coincide with the Method of Moments estimators. Just like MOM estimators MLE's can be biased. We will soon see though that MLE's are asymptotically unbiased and efficient.

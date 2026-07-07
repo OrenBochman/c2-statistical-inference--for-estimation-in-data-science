@@ -1,0 +1,96 @@
+
+## Chapter 7. The Central Limit Theorem
+### Section 1. The Central Limit Theorem for Sample Means (Averages)
+
+TRY IT 7.1
+An unknown distribution has a mean of 45 and a standard deviation of eight. Samples of size n = 30 are drawn randomly from the population. Find the probability that the sample mean is between 42 and 50.
+Solution:
+P(42 < x̄ < 50) = (42,50,45,) = 0.9797
+TRY IT 7.2
+The length of time taken on the SAT for a group of students is normally distributed with a mean of 2.5 hours and a standard deviation of 0.25 hours. A sample size of n = 60 is drawn randomly from the population. Find the probability that the sample mean is between two hours and three hours.
+Solution:
+P(2 < x̄ < 3) = (2,3,2.5,) = 1
+TRY IT 7.3
+In an article on Flurry Blog, a gaming marketing gap for men between the ages of 30 and 40 is identified. You are researching a startup game targeted at the 35-year-old demographic. Your idea is to develop a strategy game that can be played by men from their late 20s through their late 30s. Based on the article’s data, industry research shows that the average strategy player is 28 years old with a standard deviation of 4.8 years. You take a sample of 100 randomly selected gamers. If your target market is 29- to 35-year-olds, should you continue with your development strategy?
+Solution:
+You need to determine the probability for men whose mean age is between 29 and 35 years of age wanting to play a strategy game.
+P(29 < x̄ < 35) = normalcdf (29,35,28,) = 0.0186
+You can conclude there is approximately a 1.9% chance that your game will be played by men whose mean age is between 29 and 35.
+TRY IT 7.4
+Cans of a cola beverage claim to contain 16 ounces. The amounts in a sample are measured and the statistics are n = 34,  x̄ = 16.01 ounces. If the cans are filled so that μ = 16.00 ounces (as labeled) and σ = 0.143 ounces, find the probability that a sample of 34 cans will have an average amount greater than 16.01 ounces. Do the results suggest that cans are filled with an amount greater than 16 ounces?
+Solution:
+We have P( x̄> 16.01) = normalcdf(16.01,E99,16,) = 0.3417. Since there is a 34.17% probability that the average sample weight is greater than 16.01 ounces, we should be skeptical of the company’s claimed volume. If I am a consumer, I should be glad that I am probably receiving free cola. If I am the manufacturer, I need to determine if my bottling processes are outside of acceptable limits.
+Section 2. The Central Limit Theorem for Sums
+
+TRY IT 7.5
+An unknown distribution has a mean of 45 and a standard deviation of eight. A sample size of 50 is drawn randomly from the population. Find the probability that the sum of the 50 values is more than 2,400.
+Solution:
+0.0040
+TRY IT 7.6
+In a recent study, it was reported that the mean age of iPad users is 35 years. Suppose the standard deviation is 10 years. The sample size is 39.
+    a. What are the mean and standard deviation for the sum of the ages of iPad users? What is the distribution?
+    b. Find the probability that the sum of the ages is between 1,400 and 1,500 years.
+    c. Find the 90th percentile for the sum of the 39 ages.
+Solution:
+    a. μΣx = nμx = 1,365 and σΣx = σx = 62.4 
+The distribution is normal for sums by the central limit theorem.
+    b. P(1400 < Σx < 1500) = normalcdf (1400,1500,(39)(35),()(10)) = 0.2723
+    c. Let k = the 90th percentile. 
+k = invNorm(0.90,(39)(35),() (10)) = 1445.0
+TRY IT 7.7
+The mean number of minutes for app engagement by a table use is 8.2 minutes. Suppose the standard deviation is one minute. Take a sample size of 70.
+    a. What is the probability that the sum of the sample is between seven hours and ten hours? What does this mean in context of the problem?
+    b. Find the 84th and 16th percentiles for the sum of the sample. Interpret these values in context.
+Solution
+    a. μΣx = nμx = 70(8.2) = 574 minutes and σΣx = ()(σx) = ()(1) = 8.37 minutes
+    b. Let k = the 95th percentile. 
+k = invNorm (0.95,(70)(8.2),()(1)) = 587.76 minutes 
+Ninety five percent of the sums of app engagement times are at most 587.76 minutes.
+    c. ten hours = 600 minutes 
+P(Σx ≥ 600) = normalcdf(600,E99,(70)(8.2),()(70)(1)) = 0.0009
+Section 3. Using the Central Limit Theorem
+
+TRY IT 7.8
+Use the information in Example 7.8, but use a sample size of 55 to answer the following questions.
+    a. Find P(x̄< 7).
+    b. Find P(Σx > 170).
+    c. Find the 80th percentile for the mean of 55 scores.
+    d. Find the 85th percentile for the sum of 55 scores.
+Solution:
+    a. 0.0265
+    b. 0.2789
+    c. 3.13
+    d. 173.84
+TRY IT 7.9
+Use the information in Example 7.9, but change the sample size to 144.
+    a. Find P(20 < x̄ < 30).
+    b. Find P(Σx is at least 3,000).
+    c. Find the 75th percentile for the sample mean excess time of 144 customers.
+    d. Find the 85th percentile for the sum of 144 excess times used by customers.
+Solution:
+    a. 0.8623
+    b. 0.7377
+    c. 23.2
+    d. 3,441.6
+TRY IT 7.10
+Based on data from the National Health Survey, females between the ages of 18 and 24 have an average systolic blood pressures (in mm Hg) of 114.8 with a standard deviation of 13.1. Systolic blood pressure for females between the ages of 18 to 24 follow a normal distribution.
+    a. If one female from this population is randomly selected, find the probability that their systolic blood pressure is greater than 120.
+    b. If 40 females from this population are randomly selected, find the probability that their mean systolic blood pressure is greater than 120.
+    c. If the sample were four females between the ages of 18 to 24 and we did not know the original distribution, could the central limit theorem be used?
+Solution:
+    a. P(x > 120) = normalcdf(120,1E99,114.8,13.1) = 0.3457. There is about a 35% chance, that the randomly selected woman will have systolics blood pressure greater than 120.
+    b. P(x̄ > 120) = normalcdf(120, 1E99,114.8,)(120, 1E99,114.8,13.140) = 0.006. There is only a 0.6% chance that the average systolic blood pressure for the randomly selected group is greater than 120.
+    c. The central limit theorem could not be used if the sample size were four and we did not know the original distribution was normal. The sample size would be too small.
+TRY IT 7.11
+According to Boeing data, the 757 airliner carries 200 passengers and has doors with a height of 72 inches. Assume for a certain population of men we have a mean height of 69.0 inches and a standard deviation of 2.8 inches.
+    a. What doorway height would allow 95% of men to enter the aircraft without bending?
+    b. Assume that half of the 200 passengers are men. What mean doorway height satisfies the condition that there is a 0.95 probability that this height is greater than the mean height of 100 men?
+    c. For engineers designing the 757, which result is more relevant: the height from part a or part b? Why?
+Solution:
+    a. We know that μx = μ = 69 and we have σx = 2.8. The height of the doorway is found to be invNorm(0.95,69,2.8) = 73.61
+    b. We know that μx = μ = 69 and we have σx = 0.28. So, invNorm(0.95,69,0.28) = 69.49
+    c. When designing the doorway heights, we need to incorporate as much variability as possible in order to accommodate as many passengers as possible. Therefore, we need to use the result based on part a.
+TRY IT 7.12
+In a city, 46 percent of the population favor the incumbent, Dawn Morgan, for mayor. A simple random sample of 500 is taken. Using the continuity correction factor, find the probability that at least 250 favor Dawn Morgan for mayor.
+Solutions:
+0.0401

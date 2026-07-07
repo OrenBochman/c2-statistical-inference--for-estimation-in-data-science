@@ -1,0 +1,106 @@
+## Method of Moments Estimation (Graded Quiz)
+
+
+::: {#exr-01-method-of-moments-bernoulli }
+## Bernoulli distribution
+[Bernoulli MoM estimator]{.column-margin}
+
+1. Let $X_1, X_2, \ldots, X_n$ be a random sample from the Bernoulli distribution with parameter $p$. Let $\widehat{p}$ be the method of moments estimator for 
+$p$.
+Which of the following is true. (Check all that apply.)
+:::
+
+
+::: {.callout-tip}
+## Solution
+
+- [x] $\widehat{p}$ is the proportion of values in the sample that are equal to 1.
+- [x] $\widehat{p}$ is an unbiased estimator of $p$.
+- [ ] $Var(\widehat{p}) = 1$
+- [x] $\widehat{p}$ is the sample mean.
+
+:::
+
+
+::: {#exr-02-method-of-moments-geometric }
+## geometric distribution
+[MOM geometric distribution]{.column-margin}
+
+Let $X_1, X_2, \ldots, X_n$ be a random sample from the geometric distribution with parameter $p$ that takes values in 
+$\{1, 2, 3, \ldots\}$. Let
+
+Which is the method of moments estimator of $p$ 
+
+- [ ] $\frac{1- \overline{X}}{\overline{X}}$
+- [ ] $\overline{X}$
+- [ ] $\frac{1}{\overline{X}+1}$
+- [ ] $\frac{n}{2}$
+:::
+
+::: {.callout-tip}
+## Solution
+
+$$ 
+- \frac{1}{\overline{X}+1}
+$$
+:::
+
+[MOM beta distribution]{.column-margin}
+
+::: {#exr-03-method-of-moments-beta }
+Let $X_1, X_2, \ldots, X_n$ be a random sample from the Beta distribution with parameters $a$ and $b$. Let
+
+Which of the following are the method of moments estimators for 
+$a$ and $b$?
+
+-  [ ] $\widehat{a}=\frac{\overline{X}}{\overline{X}+1} \text{ and } \widehat{b}=\widehat{a}(\overline{X}+1)$
+-  [ ] $\widehat{a}=\frac{\overline{X}^{2}(1-\overline{X})}{\frac{1}{n} \sum_{i=1}^{n} X_{i}^{2}-\overline{X}^{2}}-\overline{X} \text{ and } \widehat{b}=\widehat{a} \,\frac{1-\overline{X}}{\overline{X}}$
+-  [ ] $\widehat{a} = \frac{\overline{X}}{\overline{X}+1} \text{ and } \widehat{b} = \left( \frac{\overline{X}}{\overline{X}+1}\right)^{2}$
+-  [ ] $\widehat{a}=\frac{\overline{X}^{2}(1-\overline{X})}{\frac{1}{n} \sum_{i=1}^{n} X_{i}^{2}}-\overline{X}^{2} \text{ and } \widehat{b}=\widehat{a}(\overline{X}+1)$
+:::
+
+::: {.callout-tip}
+## Solution
+
+-  [x] $\widehat{a}=\frac{\overline{X}^{2}(1-\overline{X})}{\frac{1}{n} \sum_{i=1}^{n} X_{i}^{2}-\overline{X}^{2}}-\overline{X} \text{ and } \widehat{b}=\widehat{a} \,\frac{1-\overline{X}}{\overline{X}}$
+:::
+
+
+::: {#exr-04-method-of-moments-pareto }
+## Pareto distribution
+[MOM Pareto distribution]{.column-margin}
+
+Let $X_1, X_2, \ldots, X_n$ be a random sample from the continuous Pareto distribution distribution as given in the table of distributions for this course.
+
+Which of the following is the method of moments estimator for $\gamma$?
+
+- [ ] $\overline{X}$
+- [ ] $\frac{1}{\overline{X}-1}$
+- [ ] $\frac{1}{\overline{X}+1}$
+- [ ] $\frac{1}{\overline{X}}+1$
+:::
+
+::: {.callout-tip}
+## Solution
+- [x] $\frac{1}{\overline{X}}+1$
+:::
+
+
+:::{#exr-05-method-of-moments}
+## Are of method of moments estimators unbiased?
+[Unbiasedness of MoM estimators]{.column-margin}
+
+Method of moments estimators are guaranteed to be unbiased estimators.
+
+- [ ] True
+- [ ] False
+:::
+
+::: {.callout-tip}
+## Solution
+
+- [x] False
+
+:::
+
+

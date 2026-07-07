@@ -1,0 +1,17 @@
+---
+title: "Module 2: Point Estimation"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+## Variance and Covariance  {#sec-variance-and-covariance}
+
+::: {.column-margin}
+{{< video 01_variance-and-covariance.mp4 >}}
+
+[transcript](01_variance-and-covariance.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-variance-and-covariance_module1_lesson5.pdf){width=700 height=700}
+
+### Reflection

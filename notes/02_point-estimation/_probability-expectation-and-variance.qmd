@@ -1,0 +1,195 @@
+
+#### Probability, Expectation, and Variance"
+
+
+
+::: {#exr-01-refrigerator }
+## Expected refrigerator price
+[refrigerator]{.column-margin}
+
+A big box store sells three different models of refrigerators having 
+20, 21.5, and 26.8 cubic feet of usable storage space, 
+respectively. Let X = the amount of storage space purchased by the next 
+customer to buy a freezer. Suppose that X has probability mass function given by
+
+| x (cubic feet) | 20  | 21.5 | 26.8 |
+|----------------|-----|------|------|
+| $\mathbb{P}(x)$| 0.1 | 0.7  | 0.2  |
+: PMF for refrigerator storage space {#tbl-refrigerator-pmf }
+
+If the price of a refrigerator with $X$ cubic feet of capacity is 
+$PRICE=(20X+100)$, what is the expected price paid by the next customer to buy a freezer?
+:::
+
+::: {.callout-tip}
+## Solution
+
+1. Solution Strategy: 
+    1. we need to find the expected value of PRICE
+    2. PRICE is a linear transformation of the X variable
+    3. The expectation can then be calculated as usual ie 
+       $$
+       \sum_i P(x_i) \cdot PRICE(x_i)
+       $$ {#eq-refrigerator-expected-price }
+
+```{r}
+
+data <- data.frame(
+  x   = c(20,21.5,26.8),
+  p_x = c(0.1, 0.7, 0.2)
+)
+data
+
+
+Expecred_Price <- function(data) {
+  sum((20*data$x+100) * data$p_x) #implementation of @eq-refrigerator-expected-price
+}
+Expecred_Price(data)
+```
+
+:::
+
+
+::: {#exr-02-circuit-board }
+## Circuit board lifetimes
+[Circuit board]{.column-margin} 
+
+In proof testing of circuit boards, the probability that any particular diode will fail is 0.03 . Suppose a circuit board contains 150 diodes and that each one performs or fails independently of all others.
+
+- [How many diodes would you expect to fail]{.mark}, and 
+- [what is the standard deviation]{.mark} of the number that are expected to fail?
+
+:::
+
+
+::: {.callout-tip}
+## Solution
+
+1. Solution Strategy: 
+    1. Let $X$ = number of diodes that fail. Since each diode is an iid Bernoulli trials with fixed probability of failure and independence. Their sum will follow a Binomial distribution.
+    2. $\therefore X \sim \mathcal{Bin}(n = 150, p = 0.03)$
+    3. The expectation and standard deviation of a binomial distribution are given by:
+       - $E(X) = n \cdot p \qquad SD(X) = \sqrt{n \cdot p \cdot (1 - p)}$
+
+```{r}
+n <- 150
+p <- 0.03
+expected_failures <- n * p
+sd_failures <- sqrt(n * p * (1 - p))
+expected_failures
+sd_failures
+```
+:::
+
+
+---
+
+
+
+::: {#exr-03-skink-dispersal }
+## Skink dispersal distances
+[Skink dispersal]{.column-margin}
+
+Let $X$ denote the distance, in meters, that an animal moves from its birth site to the first territorial vacancy it encounters. 
+Suppose that for Solomon Island prehensile-tailed skinks, $X$ has an exponential distribution with rate parameter  $\lambda = 0.014$.
+
+What is the probability that the distance exceeds the mean distance by more than 2 standard deviations?
+:::
+
+
+::: {.callout-caution collapse="true"}
+## Check Parameterization
+The best way to mess up is to get the parameterization of the exponential distribution wrong. 
+Even worse if we also have a Poisson in the mix. 
+Jem cautions us about this several times.
+i.e. do we need to use $\frac{1}{\lambda}$?)
+
+PDF from handout:
+$$
+f(x) = \lambda e^{-\lambda x} \mathbb{I}_{x \geq 0}(x)
+$$
+
+Does R parameterize the same way?
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+- strategy:
+    1. Given: $X \sim \mathcal{Exp}(rate = 0.014)$  
+    2. We have $\mu=\frac{1}{\lambda}$ and $\text{sd}=\frac{1}{\lambda}$  from wikipedia
+
+```{r}
+rate<-0.014
+pexp(1/rate + 2*(1/rate), rate = rate, lower.tail = FALSE)
+```
+:::
+
+
+::: {#exr-04-mode-gamma }
+## Mode of gamma distribution
+[Mode of gamma distribution]{.column-margin}
+
+[The mode of a continuous distribution with probability density function $f(x)$ is the value of $x$ that maximizes $f(x)$.]{.mark}
+
+What is the mode of the  gamma distribution with parameters $\alpha$ and 
+$\beta$ for $\alpha > 1$?
+:::
+
+::: {.callout-tip}
+## Solution 
+- Strategy:
+    1. The PDF of a gamma distribution is given by:
+       $$
+       f(x) = \frac{1}{\Gamma(\alpha) }\beta^\alpha x^{\alpha - 1} e^{-x\beta} \mathbb{I}_{x \geq 0}(x)
+       $$
+    2. To find the mode, we take the derivative of $f(x)$ with respect to $x$, set it to zero, and solve for $x$.
+    3. The derivative is:
+
+       $$
+       f'(x) = \frac{1}{\Gamma(\alpha) }\beta^\alpha \left( (\alpha - 1)x^{\alpha - 2} e^{-x\beta} - \beta x^{\alpha - 1} e^{-x\beta} \right)
+       $$
+
+    4. Setting $f'(x) = 0$ and solving for $x$ gives:
+       $$
+       (\alpha - 1) \cancel{x^{\alpha - 2}} \cancel{e^{-x \beta}} = \beta x^{\cancel{\alpha - 1}} \cancel{e^{-x\beta}}
+       $$
+
+       Simplifying, we find:
+       
+       $$
+       x = \frac{(\alpha - 1)}{\beta}
+       $$
+
+    5. Therefore, the mode of the gamma distribution for $\alpha > 1$ is:
+       $$
+       \text{Mode} = \frac{(\alpha - 1)}{\beta}
+       $$
+:::
+
+
+::: {#exr-05-poisson-second-moment }
+## Poisson second moment
+[Poisson second moment]{.column-margin}
+
+Suppose that $X$ is a Poisson random variable with parameter 
+$\lambda$. What is  $\mathbb{E}[X^2]$?
+:::
+
+::: {.callout-tip}
+## Solution
+- Strategy:
+    1. We know that for a Poisson distribution, $E[X] = \lambda$ and $Var(X) = \lambda$.
+    2. We can use the relationship between variance and expectation:
+       $$
+       \text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+       $$
+    3. Rearranging gives:
+       $$
+       \mathbb{E}[X^2] = \text{Var}(X) + (\mathbb{E}[X])^2
+       $$
+    4. Substituting the known values:
+       $$
+       \mathbb{E}[X^2] = \lambda + \lambda^2
+       $$
+:::

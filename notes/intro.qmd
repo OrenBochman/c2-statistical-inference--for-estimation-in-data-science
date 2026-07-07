@@ -1,0 +1,30 @@
+# Introduction
+
+This book is:
+
+1. the course note in html
+1. My own reflections.
+2. Extra excercises and examples 
+3. Problem solving guides.
+4. In places where I felt that the teacher was handwaving^[Though in retrospecet the handwaving is usually a good thing and later on resolved. ], I add some extra theorems. 
+
+## TODOS:
+
+1. add a nice cover (via gemeni prompt that will work for more books)
+2. make a quarto friendly videoplayer that shows the transcript. 
+   note: idealy a quarto extention with a web component that uses a similar syntax to
+
+```
+   {{< video-plus
+    src="https://www.youtube.com/watch?v=0j6AZhZFb2M" 
+    transcript="file.txt"
+    slides="file.pdf"
+    >}}
+```
+
+3. add reflection to section without.
+4. add the ability to exclude stuff from the epub (e.g. the videos) using profiles.
+5. some research notes - e.g. ideas to extend the method of moments, including using the MGF and characteristic function to get the moments. 
+5. record my own videos.
+
+

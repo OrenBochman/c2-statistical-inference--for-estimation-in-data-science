@@ -1,0 +1,30 @@
+---
+title: "Module 2: Point Estimation"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+## Distributions of Sums 
+
+::: {.column-margin}
+{{< video 01_distributions-of-sums.mp4 >}}
+
+[transcript](01_distributions-of-sums.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-distributions-of-sums_module1_lesson7.pdf){width=700 height=400}
+
+### Reflection
+
+I remember that in my first course on probability theory by professor [ely merzbach](https://scholar.google.com/citations?user=waNmBS8AAAAJ&hl=en) pointed out how sums and products of random variables do not typically result in random variables of the same distribution family. He was so happy when he gave us a number of examples. However at that point the distribution he gave us meant very little to me. 
+
+By the time I was actually using these concepts in practice I had more or less forgotten this important lesson. This is a **common pitfall** particularly for people who lack training in probability theory.
+
+I recently reviewed his [book](https://www.magnespress.co.il/en/book/Probability_Theory-2784) @Merzbach99 and found myself paying more and more attention to the material on characteristic functions. 
+
+These are perhaps the most powerful tool in probability theory for deriving distributions of sums and products of random variables. They are however complex valued functions and require some knowledge of complex analysis as well as the convolution operation. However this not only simplifies many derivations and proofs but provides a link to the powerful tools of Fourier analysis that are widely used in signal processing and machine learning.
+
+I hope, some day soon I will write a blog post on this topic! However just building an intuition about the convolution operation requires much ground work.
+

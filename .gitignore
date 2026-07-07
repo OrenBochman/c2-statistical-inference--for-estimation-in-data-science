@@ -1,0 +1,54 @@
+# Quarto generated files and folders
+.quarto/
+_freeze/
+_site/
+_book/
+results/
+docs/
+
+# Output file formats (adjust as needed)
+*.html
+*.pdf
+*.docx
+*.tex
+*.typ
+*.epub
+*.srt
+notes/**/*.txt
+!notes/**/*.en.txt
+
+
+# R and Python specific files (if applicable)
+.Rhistory
+.RData
+.Rproj.user/
+env/
+.venv/
+venv/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+
+# LaTeX artifacts
+*.lof
+*.log
+*.lot
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.idx
+*.ind
+*.ilg
+*.out
+*.toc
+*.xml
+*.fdb_latexmk
+*.fls
+
+00-download/
+
+/.quarto/
+**/*.quarto_ipynb

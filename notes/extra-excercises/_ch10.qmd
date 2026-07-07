@@ -1,0 +1,255 @@
+
+## Chapter 10. Hypothesis Testing with Two Samples
+
+### Section 1. Two Population Means with Unknown Standard Deviations
+
+TRY IT 10.1
+Two samples are shown in Table 10.2. Both have normal distributions. The means for the two populations are thought to be the same. Is there a difference in the means? Test at the 5% level of significance.
+
+| | Sample Size | Sample Mean | Sample Standard Deviation |
+|---|---:|---:|---:|
+| Population A | 25 | 5 | 1 |
+| Population B | 16 | 4.7 | 1.2 |
+
+: Table 10.2
+
+Solution:
+The p-value is 0.4125, which is much higher than 0.05, so we decline to reject the null hypothesis. There is not sufficient evidence to conclude that the means of the two populations are not the same.
+TRY IT 10.2
+A study is done to determine if Company A retains its workers longer than Company B. Company A samples 15 workers, and their average time with the company is five years with a standard deviation of 1.2. Company B samples 20 workers, and their average time with the company is 4.5 years with a standard deviation of 0.8. The populations are normally distributed.
+    a. Are the population standard deviations known?
+    b. Conduct an appropriate hypothesis test. At the 5% significance level, what is your conclusion?
+Solution:
+    a. They are unknown.
+    b. The p-value = 0.0878. At the 5% level of significance, there is insufficient evidence to conclude that the workers of Company A stay longer with the company.
+try it 10.3
+Two professors, A and B, teach classes on the same subjects. Scores of 10 students from each class are selected randomly. The final exam scores of the students are as follows: 
+Professor A: 
+97 
+62 
+73 
+58 
+84 
+74 
+66 
+93 
+73 
+85 
+ 
+Professor B: 
+85 
+64 
+74 
+55 
+76 
+67 
+72 
+84 
+71 
+98 
+ 
+Professor A says that the mean score of their class is more than the mean of professor B’s class. Is professor A correct? Test at a 5% significance level. Answer the following questions: 
+
+a. Is this a test of two means or two proportions? 
+b. Are the population standard deviations known or unknown? 
+c. Which distribution do you use to perform the test? 
+d. What is the random variable? 
+e. What are the null and alternative hypotheses? Write the null and alternative hypotheses in words and in symbols. 
+f. Is this test right-, left-, or two-tailed? 
+g. What is the p-value? 
+h. Do you reject or not reject the null hypothesis? 
+i. At the ___ level of significance, from the sample data, there ___ (is/is not) sufficient evidence to conclude that ___. 
+
+solution:
+
+a. two means 
+b. unknown 
+c. Student’s t 
+d.  
+e. 
+    1. Null hypothesis: the means of final exam scores are equal for both professors. 
+    2. Alternative hypothesis: the mean of final exam scores for class of professor B is less than mean of final exam scores for class of professor A. 
+f. left-tailed 
+g. p-value = 0.03 
+h. Reject the null hypothesis. 
+i. Professor A is correct. The evidence shows that the mean of final exam scores of the class of professor A is more than that of the class of professor B. 
+
+At the 5% level of significance, from the sample data, there is (is/is not) sufficient evidence to conclude that the mean of final exam scores of the class of professor A is more than that of the class of professor B. 
+
+try it 10.4
+Calculate Cohen’s d for Try It 10.4. Is the size of the effect small, medium, or large? Explain what the size of the effect means for this problem.
+
+Solution:
+     
+     
+d = 0.49 
+The effect is medium because 0.49 is very close to Cohen’s value of 0.5 for medium effect size. The size of the differences of the means for the two companies is small, indicating that there is not a significant difference between them. 
+
+
+TRY IT 10.5
+
+Weighted alpha is a measure of risk-adjusted performance of stocks over a period of a year. A high positive weighted alpha signifies a stock whose price has risen while a small positive weighted alpha indicates an unchanged stock price during the time period. Weighted alpha is used to identify companies with strong upward or downward trends. The weighted alpha for the top 30 stocks of banks in the northeast and in the west as identified by Nasdaq on May 24, 2013 are listed in Table 10.8 and Table 10.9, respectively.
+
+| A    | B    | C    | D    | E    | F    |
+|------|------|------|------|------|------|
+| 94.2 | 75.2 | 69.6 | 52.0 | 48.0 | 41.9 |
+| 36.4 | 33.4 | 31.5 | 27.6 | 77.3 | 71.9 |
+| 67.5 | 50.6 | 46.2 | 38.4 | 35.2 | 33.0 |
+| 28.7 | 26.5 | 76.3 | 71.7 | 56.3 | 48.7 |
+| 43.2 | 37.6 | 33.7 | 31.8 | 28.5 | 26.0 |
+
+: Table 10.8 Northeast
+
+| A     | B    | C    | D    | E     | F    |
+|-------|------|------|------|-------|------|
+| 126.0 | 70.6 | 65.2 | 51.4 | 45.5  | 37.0 |
+| 33.0  | 29.6 | 23.7 | 22.6 | 116.1 | 70.6 |
+| 58.2  | 51.2 | 43.2 | 36.0 | 31.4  | 28.7 |
+| 23.5  | 21.6 | 78.2 | 68.2 | 55.6  | 50.3 |
+| 39.0  | 34.1 | 31.0 | 25.3 | 23.4  | 21.5 |
+
+: Table 10.8 West
+
+Is there a difference in the weighted alpha of the top 30 stocks of banks in the northeast and in the west? Test at a 5% significance level. Answer the following questions:
+    a. Is this a test of two means or two proportions?
+    b. Are the population standard deviations known or unknown?
+    c. Which distribution do you use to perform the test?
+    d. What is the random variable?
+    e. What are the null and alternative hypotheses? Write the null and alternative hypotheses in words and in symbols.
+    f. Is this test right, left, or two tailed?
+    g. What is the p-value?
+    h. Do you reject or not reject the null hypothesis?
+    i. At the ___ level of significance, from the sample data, there ______ (is/is not) sufficient evidence to conclude that ______.
+    j. Calculate Cohen’s d and interpret it.
+Solution:
+    a. two means
+    b. unknown
+    c. Student’s-t
+    d. X̄ 1 - X̄ 2
+    e. 
+        1. H0 : μ1 = μ2 Null hypothesis: the means of the weighted alphas are equal.
+        2. Ha : μ1 ≠ μ2 Alternative hypothesis : the means of the weighted alphas are not equal.
+    f. two-tailed
+    g. p-value = 0.8787
+    h. Do not reject the null hypothesis
+    i. This indicates that the trends in stocks are about the same in the top 30 banks in each region.
+5% level of significance, from the sample data, there is not sufficient evidence to conclude that the mean weighted alphas for the banks in the northeast and the west are different
+    j. d = 0.040, Very small, because 0.040 is less than Cohen’s value of 0.2 for small effect size. The size of the difference of the means of the weighted alphas for the two regions of banks is small indicating that there is not a significant difference between their trends in stocks.
+Section 2. Two Population Means with Known Standard Deviations
+
+TRY IT 10.6
+The means of the number of revolutions per minute of two competing engines are to be compared. Thirty engines of each type are randomly assigned to be tested. Both populations have normal distributions. Table 10.11 shows the result. Do the data indicate that Engine 2 has higher RPM than Engine 1? Test at a 5% level of significance.
+| Engine | Sample Mean Number of RPM | Population Standard Deviation |
+|--------|---------------------------|------------------------------|
+| 1      | 1,500                     | 50                           |
+| 2      | 1,600                     | 60                           |
+
+: Table 10.11
+Solution:
+The p-value is almost zero, so we reject the null hypothesis. There is sufficient evidence to conclude that Engine 2 runs at a higher RPM than Engine 1.
+TRY IT 10.7
+The average age of 10 professors selected randomly in university A is 46.672 with a standard deviation of 8.53. The average age of 10 professors selected randomly in university B is 47.531 with a standard deviation of 7.83. 
+Does the data indicate that university A has older professors than university B, on average? Test at a 5% level of significance. 
+Solution:
+The total sample size is 10 + 10 = 20., which is greater than 10, so we can use the Student’s t-distribution. 
+The random variable is = difference between the mean age of universities A and B. 
+	 
+	 
+The phrase “older than” translates as a “>” symbol and goes into . Therefore, this is a right-tailed test. 
+The distribution is:  
+The mean for the normal distribution is 0 since and . 
+The p-value is obtained as 0.4258. Since alpha is less than the p-value, do not reject the . 
+At the 5% level of significance, from the sample data, there is not sufficient evidence to conclude that the mean age of professors in university A is more than the mean age of professors in university B. 
+
+Section 3. Comparing Two Independent Population Proportions
+
+TRY IT 10.8
+Two types of valves are being tested to determine if there is a difference in pressure tolerances. Fifteen out of a random sample of 100 of Valve A cracked under 4,500 psi. Six out of a random sample of 100 of Valve B cracked under 4,500 psi. Test at a 5% level of significance.
+Solution:
+The p-value is 0.0379, so we can reject the null hypothesis. At the 5% significance level, the data support that there is a difference in the pressure tolerances between the two valves.
+
+TRY IT 10.9
+A survey was conducted about the favorable beverage as tea. The data collected is summarized in the table. Is the proportion of males favoring tea more than females favoring tea? Test at a 1% level of significance. 
+ 
+|              | Male | Female |
+|--------------|------|--------|
+| Favor tea    | 16   | 18     |
+| Total surveyed | 230  | 218    |
+
+Solution:
+Let and be desired population proportions. 
+ 
+ 
+The test is for “less than,” so it is left-tailed. 
+Distribution for the test: 
+ 
+ 
+ 
+This follows an approximate normal distribution. 
+Calculate the p-value using the normal distribution: 
+p-value = 0.1023 
+Decision: Since , do not reject . 
+Conclusion: At 1% level of significance, from the sample data, there is not sufficient evidence to conclude that the proportion of females favoring tea is less than the proportion of males favoring tea. 
+
+
+TRY IT 10.10
+A government researcher is investigating whether there is a difference in the use of helmets by motorcyclists in different geographic regions for those states where use of helmets is required by law. The research shows that for motorcyclists in the northeast U.S., 7622 out of 113,231 motorcyclists did not wear helmets. In the southeast U.S., 7439 out of 104,873 motorcyclists did not wear helmets. Test at a 5% significance level. Answer the following questions:
+a. Is this a test of two means or two proportions?
+b. Which distribution do you use to perform the test?
+c. What is the random variable?
+d. What are the null and alternative hypothesis? Write the null and alternative hypothesis in symbols.
+e. Is this test right-, left-, or two-tailed?
+f. What is the p-value?
+g. Do you reject or not reject the null hypothesis?
+h. At the ___ level of significance, from the sample data, there ______ (is/is not) sufficient evidence to conclude that ____________.
+Solution:
+a. two proportions
+b. normal for two proportions
+c. Subscripts: 1 = Northeast, 2 = Southeast 
+P′2 - P′2
+d. Subscripts: 1 = Northeast, 2 = Southeast
+H0: p1 = p2 H0: p1 − p2 = 0 
+Ha: p1 ≠ p2 Ha: p1 − p2 ≠ 0
+e. two-tailed
+f. p-value = 0.00086
+
+			Figure 24
+g. Reject the H0.
+h. At the 5% significance level, from the sample data, there is sufficient evidence to conclude that there is a difference between the proportion of motorcyclists who did not wear helmets for northeast and southeast regions of the U.S.
+Section 4. Matched or Paired Samples
+
+TRY IT 10.11
+A study was conducted to investigate how effective a new diet was in lowering cholesterol. Results for the randomly selected subjects are shown in the table. The differences have a normal distribution. Are the subjects’ cholesterol levels lower on average after the diet? Test at the 5% level.
+
+| Subject | A   | B   | C   | D   | E   | F   | G   | H   | I   |
+|---------|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Before  | 209 | 210 | 205 | 198 | 216 | 217 | 238 | 240 | 222 |
+| After   | 199 | 207 | 189 | 209 | 217 | 202 | 211 | 223 | 201 |
+
+: Table 10.16
+
+Solution:
+The p-value is 0.0130, so we can reject the null hypothesis. There is enough evidence to suggest that the diet lowers cholesterol.
+TRY IT 10.12
+A new prep class was designed to improve SAT test scores. Five students were selected at random. Their scores on two practice exams were recorded, one before the class and one after. The data recorded in Table 10.18. Are the scores, on average, higher after the class? Test at a 5% level.
+
+| SAT Scores         | Student 1 | Student 2 | Student 3 | Student 4 |
+|-------------------|-----------|-----------|-----------|-----------|
+| Score before class | 1840      | 1960      | 1920      | 2150      |
+| Score after class  | 1920      | 2160      | 2200      | 2100      |
+
+: Table 10.18
+
+Solution:
+The p-value is 0.0874, so we decline to reject the null hypothesis. The data do not support that the class improves SAT scores significantly.
+TRY IT 10.13
+Five ball players think they can throw the same distance with their dominant hand (throwing) and off-hand (catching hand). The data were collected and recorded in Table 10.20. Conduct a hypothesis test to determine whether the mean difference in distances between the dominant and off-hand is significant. Test at the 5% level.
+
+|            | Player 1 | Player 2 | Player 3 | Player 4 | Player 5 |
+|------------|----------|----------|----------|----------|----------|
+| Dominant Hand | 120      | 111      | 135      | 140      | 125      |
+| Off-hand      | 105      | 109      | 98       | 111      | 99       |
+
+: Table 10.20
+Solution:
+The p-level is 0.0230, so we can reject the null hypothesis. The data show that the players do not throw the same distance with their off-hands as they do with their dominant hands.

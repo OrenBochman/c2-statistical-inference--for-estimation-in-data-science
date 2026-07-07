@@ -1,0 +1,695 @@
+
+## Chapter 3. Probability Topics
+
+### Section 1. Terminology
+
+::: {#exr-try-3-1}
+
+The sample space S is all the ordered pairs of two whole numbers, the first from one to three and the second from one to four (Example: (1, 4)).
+
+a. S = _____________________________ 
+
+Let event A = the sum is even and event B = the first number is prime.
+
+b. A = _____________________, B = _____________________
+c. P(A) = _____________, P(B) = ________________
+d. A AND B = ____________________, A OR B = ________________
+e. P(A AND B) = _________, P(A OR B) = _____________
+f. B′ = _____________, P(B′) = _____________
+g. P(A) + P(A′) = ____________
+h. P(A|B) = ___________, P(B|A) = _____________; are the probabilities equal?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. S = {(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,1), (3,2), (3,3), (3,4)}
+b. A = {(1,1), (1,3), (2,2), (2,4), (3,1), (3,3)}
+
+B = {(2,1), (2,2), (2,3), (2,4), (3,1), (3,2), (3,3), (3,4)}
+c. P(A) = , P(B) = 
+d. A AND B = {(2,2), (2,4), (3,1), (3,3)}
+
+A OR B = {(1,1), (1,3), (2,1), (2,2), (2,3), (2,4), (3,1), (3,2), (3,3), (3,4)}
+e. P(A AND B) = , P(A OR B) = 
+f. B′ = {(1,1), (1,2), (1,3), (1,4)}, P(B′) = 
+g. P(B) + P(B′) = 1
+h. P(A|B) =  = , P(B|A) =   = , No.
+:::
+
+
+::: {#exr-try-3-2}
+A number is randomly selected between 1 to 10. 
+Describe the sample space S, identify each of the following events with a subset of S, and compute its probability (an outcome is the number selected). 
+
+a. Event F = the outcome is 5. 
+b. Event A = the number is more than 6. 
+c. Event B = the number is odd. 
+d. The complement of B. 
+e. A GIVEN B. 
+f. B GIVEN A. 
+g. A OR B. 
+h. A’ OR B. 
+i. Event P = the outcome is a composite number. 
+j. Event M = the number is a multiple of 3. 
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. $F={5},P(F)=1/10$
+b. $A={7,8,9},P(A)=3/10$ 
+c. $B={1,3,5,7,9},P(B)=5/10$ 
+d. $B'={2,4,6,8,10},P(B')=5/10$ 
+e. $A∣∣∣B={7,9},P{A∣∣∣B}=2/5$ 
+f. $B∣∣∣A={7,9},P(B∣∣∣A)=1/2$ 
+g. $A OR B={1,3,5,7,8,9,10},P(A OR B)=7/10$
+h. $A' OR B={1,2,3,4,5,6,7,9},P(A' OR B)=4/5$
+i. $P={4,6,8,9,10},P(P)=1/2$
+j. $M={3,6,9},P(M)=3/10$
+
+:::
+
+
+::: {#exr-try-3-3}
+
+The table describes the distribution of a random sample S of 100 individuals, organized by gender and whether they like tea or coffee.
+
+| Sex | Tea | Coffee |
+|:---|---:|---:|
+| Men | 22 | 26 |
+| Women | 16 | 36 |
+
+Let's denote the events: 
+
+- M = the subject is a man, 
+- W = the subject is a woman, 
+- T = the subject likes tea, 
+- C = the subject likes coffee. 
+
+Compute the following probabilities: 
+
+a. P(M) 
+b. P(W) 
+c. P(T) 
+d. P(C) 
+e. P(M AND T) 
+f. P(W and C) 
+g. P(M OR W) 
+h. P(M OR T) 
+i. P(W OR C) 
+j. P(M') 
+k. P(T|M) 
+l. P(W|C) 
+m. P(C|W) 
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(M) = 0.48 
+b. P(W) = 0.52 
+c. P(T) = 0.38 
+d. P(C) = 0.62 
+e. P(M AND T) = 0.22 
+f. P(W and C) = 0.36 
+g. P(M OR W) = 1 
+h. P(M OR T) = 0.64 
+i. P(W OR C) = 0.78 
+j. P(M') = 0.52 
+k. P(T|M) = 0.4583 (rounded to four decimal places) 
+l. P(W|C) = 0.5806 (rounded to four decimal places) 
+m. P(C|W) = 0.6923 (rounded to four decimal places) 
+:::
+
+### Section 2. Independent and Mutually Exclusive Events
+
+::: {#exr-try-3-4}
+
+You have a fair, well-shuffled deck of 52 cards. It consists of four suits. The suits are clubs, diamonds, hearts and spades. There are 13 cards in each suit consisting of 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, J (jack), Q (queen), K (king) of that suit. Three cards are picked at random.
+
+a. Suppose you know that the picked cards are Q of spades, K of hearts and Q of spades. Can you decide if the sampling was with or without replacement?
+b. Suppose you know that the picked cards are Q of spades, K of hearts, and J of spades. Can you decide if the sampling was with or without replacement?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. With replacement
+b. No
+:::
+
+::: {#exr-try-3-5}
+
+You have a fair, well-shuffled deck of 52 cards. 
+It consists of four suits. The suits are clubs, diamonds, hearts, and spades. 
+There are 13 cards in each suit consisting of 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, J (jack), Q (queen), and K (king) of that suit. 
+S = spades, H = Hearts, D = Diamonds, C = Clubs. 
+Suppose that you sample four cards without replacement. 
+Which of the following outcomes are possible? 
+Answer the same question for sampling with replacement.
+
+a. QS, 1D, 1C, QD
+b. KH, 7D, 6D, KH
+c. QS, 7D, 6D, KS
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Without replacement: 1. Possible; 2. Impossible; 3. Possible
+
+With replacement: 1. Possible; 2. Possible; 3. Possible
+:::
+
+::: {#exr-try-3-6}
+
+Draw two cards from a standard 52-card deck with replacement. Find the probability of getting at least one black card.
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+The sample space of drawing two cards with replacement from a standard 52-card deck with respect to color is {BB, BR, RB, RR}.
+Event A = Getting at least one black card = {BB, BR, RB}
+P(A) = 0.75
+:::
+
+::: {#exr-try-3-7}
+
+A box has two balls, one white and one red. 
+We select one ball, put it back in the box, and select a second ball (sampling with replacement). Find the probability of the following events:
+
+a. Let F = the event of getting the white ball twice.
+b. Let G = the event of getting two balls of different colors.
+c. Let H = the event of getting white on the first pick.
+d. Are F and G mutually exclusive?
+e. Are G and H mutually exclusive?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(F) = 
+b. P(G) = 
+c. P(H) = 
+d. Yes
+e. No
+:::
+
+::: {#exr-try-3-8}
+Let event A = learning Spanish. 
+
+Let event B = learning German. 
+
+Then A AND B = learning Spanish and German. 
+
+Suppose $P(A) = 0.4$ and $P(B) = 0.2$. $P(A AND B) = 0.08$. 
+
+Are events A and B independent? 
+
+Hint: You must show ONE of the following:
+
+- $P(A|B) = P(A)$
+- $P(B|A) = P(B)$
+- $P(A AND B) = P(A)P(B)$
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(A|B) =  =  = 0.4 = P(A)
+The events are independent because P(A|B) = P(A).
+
+:::
+
+::: {#exr-try-3-9}
+
+In a bag, there are six red marbles and four green marbles. The red marbles are marked with the numbers 1, 2, 3, 4, 5, and 6. The green marbles are marked with the numbers 1, 2, 3, and 4.
+
+- R = a red marble
+- G = a green marble
+- O = an odd-numbered marble
+- The sample space is S = {R1, R2, R3, R4, R5, R6, G1, G2, G3, G4}.
+S has ten outcomes. What is P(G AND O)?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Event G and O = {G1, G3}
+P(G and O) =   = 0.2
+
+:::
+
+::: {#exr-try-3-10}
+
+A student goes to the library. Let events B = the student checks out a book and D = the student checks out a DVD. Suppose that P(B) = 0.40, P(D) = 0.30 and P(B AND D) = 0.20.
+
+a. Find P(B|D).
+b. Find P(D|B).
+c. Are B and D independent?
+d. Are B and D mutually exclusive?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(B|D) = 0.6667
+b. P(D|B) = 0.5
+c. No
+d. No
+:::
+
+::: {#exr-try-3-11}
+
+In a basketball arena,
+
+- 70% of the fans are rooting for the home team.
+- 25% of the fans are wearing blue.
+- 20% of the fans are wearing blue and are rooting for the away team.
+- Of the fans rooting for the away team, 67% are wearing blue.
+
+Let A be the event that a fan is rooting for the away team. 
+Let B be the event that a fan is wearing blue. 
+Are the events of rooting for the away team and wearing blue independent? Are they mutually exclusive?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(B|A) = 0.67
+P(B) = 0.25
+So P(B) does not equal P(B|A) which means that B and A are not independent (wearing blue and rooting for the away team are not independent). They are also not mutually exclusive, because P(B AND A) = 0.20, not 0.
+
+:::
+
+::: {#exr-try-3-12}
+
+Mark is deciding which route to take to work. His choices are I = the Interstate and F = Fifth Street.
+
+- P(I) = 0.44 and P(F) = 0.56
+- P(I AND F) = 0 because Mark will take only one route to work.
+
+What is the probability of P(I OR F)?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Because P(I AND F) = 0,
+P(I OR F) = P(I) + P(F) - P(I AND F) = 0.44 + 0.56 - 0 = 1
+
+:::
+
+::: {#exr-try-3-13}
+A box has two balls, one white and one red. We select one ball, put it back in the box, and select a second ball (sampling with replacement). Let T be the event of getting the white ball twice, F the event of picking the white ball first, S the event of picking the white ball in the second drawing.
+
+a. Compute P(T).
+b. Compute P(T|F).
+c. Are T and F independent?.
+d. Are F and S mutually exclusive?
+e. Are F and S independent?
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(T) = 
+b. P(T|F) = 
+c. No
+d. No
+e. Yes
+:::
+
+### Section 3. Two Basic Rules of Probability
+
+::: {#exr-try-3-14}
+Anna has to buy a new car. She has two choices, car A and car B. Anna can afford only one car. The probability that Anna will buy car A is P(A) = 0.25, and the probability that Anna will buy car B is P(B) = 0.65. Find:
+
+- P(A AND B) 
+- P(A OR B) 
+:::
+
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+- P(A AND B) = 0 because it is given that Anna can afford only one car. 
+- Since P(A AND B) = 0, then P(A OR B) = P(A) + P(B) = 0.25 + 0.65 = 0.9. Note that the probability that Anna does not a car must be 0.1. 
+:::
+
+
+::: {#exr-try-3-15}
+Helen plays basketball. For free throws, she makes the shot 75% of the time. Helen must now attempt two free throws. C = the event that Helen makes the first shot. P(C) = 0.75. D = the event Helen makes the second shot. P(D) = 0.75. The probability that Helen makes the second free throw given that she made the first is 0.85. What is the probability that Helen makes both free throws?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+$P(D|C) = 0.85$
+$P(C AND D) = P(D AND C)$
+$P(D AND C) = P(D|C)P(C) = (0.85)(0.75) = 0.6375$
+
+Helen makes the first and second free throws with probability 0.6375.
+:::
+
+
+::: {#exr-try-3-16}
+A school has 200 seniors of whom 140 will be going to college next year. Forty will be going directly to work. The remainder are taking a gap year. Fifty of the seniors going to college play sports. Thirty of the seniors going directly to work play sports. Five of the seniors taking a gap year play sports. What is the probability that a senior is taking a gap year?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+P=0.1
+:::
+
+
+::: {#exr-try-3-17}
+
+A student goes to the library. Let events B = the student checks out a book and D = the student check out a DVD. Suppose that P(B) = 0.40, P(D) = 0.30 and P(D|B) = 0.5.
+
+a. Find P(B AND D).
+b. Find P(B OR D).
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(B AND D) = P(D|B)P(B) = (0.5)(0.4) = 0.20.
+b. P(B OR D) = P(B) + P(D) − P(B AND D) = 0.40 + 0.30 − 0.20 = 0.50
+:::
+
+
+::: {#exr-try-3-18}
+
+A school has 200 seniors of whom 140 will be going to college next year. Forty will be going directly to work. The remainder are taking a gap year. Fifty of the seniors going to college play sports. 
+Thirty of the seniors going directly to work play sports. Five of the seniors taking a gap year play sports. What is the probability that a senior is going to college and plays sports?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Let A = student is a senior going to college.
+Let B = student plays sports.
+
+$P(A) = 140/200$
+$P(B) = (50 + 30 + 5) / 200= 85/200$
+
+$P(B|A) = 50/140$
+$P(A AND B) = P(B|A)P(A)$ =  50/140 * 140/200 = 1/4
+:::
+
+::: {#exr-try-3-19}
+
+A student goes to the library. Let events B = the student checks out a book and D = the student checks out a DVD. Suppose that P(B) = 0.40, P(D) = 0.30 and P(D|B) = 0.5.
+
+a. Find $P(B′)$.
+b. Find $P(D AND B)$.
+c. Find P(B|D).
+d. Find P(D AND B′).
+e. Find P(D|B′).
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(B′) = 0.60
+b. P(D AND B) = P(D|B)P(B) = 0.20
+c. P(B|D) =   = 0.2/0.3 = 0.66
+d. P(D AND B′) = P(D) - P(D AND B) = 0.30 - 0.20 = 0.10
+e. P(D|B′) = P(D AND B′)/P(B′) = (P(D) - P(D AND B))(0.60) = 0.10/0.60 = 0.06
+:::
+
+
+### Section 4. Contingency Tables
+
+::: {#exr-try-3-20}
+
+Table 3.4 shows the number of athletes who stretch before exercising and how many had injuries within the past year.
+
+| | Injury in last year | No injury in last year | Total |
+|---|---:|---:|---:|
+| Stretches | 55 | 295 | 350 |
+| Does not stretch | 231 | 219 | 450 |
+| Total | 286 | 514 | 800 |
+
+: {#tbl-3-4}
+
+a. What is $P(athlete stretches before exercising)$?
+b. What is $P(athlete stretches before exercising|no injury in the last year)$?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(athlete stretches before exercising) =  = 0.4375
+b. P(athlete stretches before exercising|no injury in the last year) =  = 0.5739
+:::
+
+
+::: {#exr-try-3-21}
+
+Table 3.7 shows a random sample of 200 cyclists and the routes they prefer. Let O = older and H = hilly path.
+
+| Age Group | Lake Path | Hilly Path | Wooded Path | Total |
+|---|---:|---:|---:|---:|
+| Younger | 45 | 38 | 27 | 110 |
+| Older | 26 | 52 | 12 | 90 |
+| Total | 71 | 90 | 39 | 200 |
+
+: Table 3.7
+
+a. Out of the older group, what is the probability that the cyclist prefers a hilly path?
+b. Are the events “being older” and “preferring the hilly path” independent events?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(H|M) = 52/90 = 0.5778
+b. For M and H to be independent, show P(H|M) = P(H) 
+
+$P(H|M) = 0.5778, P(H) = 90/200 = 0.45$
+
+$P(H|M)$ does not equal $P(H)$ so $M$ and $H$ are NOT independent.
+:::
+
+
+::: {#exr-try-3-22}
+Fred's preference to drink coffee or iced tea depends on the season. When it is summer, Fred's preference to drink coffee is 1/4, and his preference to drink iced tea is 3/4. When it is rainy season, Fred's preference to drink coffee is 1/2, and his preference to drink iced tea is 1/2. When it is winter, Fred's preference to drink coffee is 4/5, and his preference to drink iced tea is 1/5. A day randomly selected in a year has a probability of 1/3 for each season. The event here is selection of a day randomly in a year. 
+
+
+| Season | Summer | Rainy | Winter | Total |
+|---|---:|---:|---:|---:|
+| Coffee | 1/12 | 1/6 | 4/15 | __ |
+| Iced tea | 1/4 | 1/6 | 1/15 | __|
+| Total | __ | __ | __ | __ | 1
+
+
+- The first entry is (1/4)(1/3)=(1/12).
+- The second entry is (3/4)(1/3)=(1/4).
+Verify the remaining entries. 
+
+a. Complete the probability contingency table. Calculate the entries for the totals. Verify that the lower-right corner entry is 1. 
+b. What is the probability that Fred will drink iced tea? 
+c. What is the probability that the day is in summer or rainy season given that Fred drinks iced tea? 
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a.
+
+| Season | Summer | Rainy | Winter | Total |
+|---|---:|---:|---:|---:|
+| Coffee | 1/12 | 1/6 | 4/15 | 31/60 |
+| Iced tea | 1/4 | 1/6 | 1/15 | 29/60 |
+| Total | 4/12 | 2/6 | 5/15 | 1 |
+
+b. 29/60
+c. 25/29
+
+
+:::
+
+::: {#exr-try-3-23}
+
+Table 3.11 relates the weights and heights of a group of individuals participating in an observational study.
+
+| Weight/Height | Tall | Medium | Short | Totals |
+| Overweight    | 18   | 28     | 14 | __ |
+| Typical Weight Range |20 | 51 | 28 | __ |
+| Underweight | 12 | 25 | 9 | __ |
+| Totals | __ | __ | __ | __ |
+
+: Weights and heights  {#tbl-3-11}
+
+a. Find the total for each row and column.
+b. Find the probability that a randomly chosen individual from this group is Tall.
+c. Find the probability that a randomly chosen individual from this group is Overweight and Tall.
+d. Find the probability that a randomly chosen individual from this group is Tall given that the individual is Overweight.
+e. Find the probability that a randomly chosen individual from this group is Overweight given that the individual is Tall.
+f. Find the probability a randomly chosen individual from this group is Tall and Underweight.
+g. Are the events Overweight and Tall independent?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Weight/Height | Tall | Medium | Short | Totals
+Obese |18 | 28 | 14 | 60
+Normal |20 | 51 | 28 | 99
+Underweight |12 | 25 | 9 | 46
+Totals |50 | 104 | 51 | 205
+
+a. Row Totals: 60, 99, 46. Column totals: 50, 104, 51.
+b. $P(Tall) = 50/205 = 0.244$
+c. $P(Obese \text{ AND } Tall) = 18/205 = 0.088$
+d. $P(Tall|Obese) = 18/60 = 0.3$
+e. $P(Obese|Tall) = 18/50 = 0.36$
+f. $P(Tall \text{ AND } Underweight) = 12/205 = 0.0585$
+g. No. $P(Tall)$ does not equal $P(Tall|Obese)$.
+:::
+
+
+### Section 5. Tree and Venn Diagrams
+
+::: {#exr-try-3-24}
+
+In a standard deck, there are 52 cards. 12 cards are face cards (event F) and 40 cards are not face cards (event N). Draw two cards, one at a time, with replacement. All possible outcomes are shown in the tree diagram as frequencies. Using the tree diagram, calculate P(FF).
+
+![Figure 3.3](figure-3-3.png)
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Total number of outcomes is 144 + 480 + 480 + 1600 = 2,704.
+P(FF) = 
+:::
+
+::: {#exr-try-3-25}
+In a standard deck, there are 52 cards. 
+Twelve cards are face cards (F) and 40 cards are not face cards (N). 
+Draw two cards, one at a time, without replacement.
+The tree diagram is labeled with all possible probabilities.
+
+![Figure 3.5](figure-3-5.png)
+
+a. Find $P(FN \text{ OR } NF)$.
+b. Find $P(N|F)$.
+c. Find $P(\text{at most one face card})$. 
+
+Hint: "At most one face card" means zero or one face card.
+
+d. Find $P(\text{at least one face card})$. 
+
+Hint: "At least one face card" means one or two face cards.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(FN OR NF) =  
+b. P(N|F) = 
+c. P(at most one face card) =  = 
+d. P(at least one face card) = = 
+
+:::
+
+::: {#exr-try-3-26}
+Suppose there are four red balls and three yellow balls in a box. 
+Two balls are drawn from the box without replacement. 
+What is the probability that one ball of each coloring is selected?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+ + 
+:::
+
+::: {#exr-try-3-27}
+#### Venn Diagrams for Experimental Outcomes
+Suppose an experiment has outcomes black, white, red, orange, yellow, green, blue, and purple, where each outcome has an equal chance of occurring. 
+
+Let event $C = {green, blue, purple}$ and event $P = {red, yellow, blue}$. 
+Then $C \text{ AND } P = {blue}$ and $C \text{ OR } P = {green, blue, purple, red, yellow}$. Draw a Venn diagram representing this situation.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Figure 12
+:::
+
+::: {#exr-try-3-28}
+Roll a fair, six-sided die.
+
+Let A = a prime number of dots is rolled. 
+
+Let B = an odd number of dots is rolled. 
+
+Then $A = {2, 3, 5  }$ and $B = {1, 3, 5}$. 
+
+Therefore, $A \text{ AND } B = {3, 5}$. $A \text{ OR } B = {1, 2, 3, 5}$. 
+
+The sample space for rolling a fair die is $S = {1, 2, 3, 4, 5, 6}$. 
+
+Draw a Venn diagram representing this situation.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Figure 12
+:::
+
+::: {#exr-try-3-29}
+Fifty percent of the workers at a factory work a second job, 25% have a spouse who also works, 5% work a second job and have a spouse who also works. Draw a Venn diagram showing the relationships. Let W = works a second job and S = spouse also works.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+:::
+
+::: {#exr-try-3-30}
+In a bookstore, the probability that the customer buys a novel is 0.6, and the probability that the customer buys a non-fiction book is 0.4. Suppose that the probability that the customer buys both is 0.2.
+
+a. Draw a Venn diagram representing the situation.
+b. Find the probability that the customer buys either a novel or a non-fiction book.
+c. In the Venn diagram, describe the overlapping area using a complete sentence.
+d. Suppose that some customers buy only compact disks. Draw an oval in your Venn diagram representing this event.
+:::
+
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. 
+```{r}
+#| label: fig-vendiag-bookstore
+#| 
+library(VennDiagram)
+venn.plot <- draw.pairwise.venn(6, 4,2,
+  c("Novel", "Non-Fiction"),
+  filename = NULL,
+  output = TRUE
+)
+grid.draw(venn.plot)
+```
+
+b. $P(Novel OR Non-Fiction) = 0.8$
+c. The overlapping area represents the probability that a customer buys both a novel and a non-fiction book, which is 0.2.
+d. The oval representing customers who buy only compact disks would be separate from the existing Venn diagram, indicating that this event is independent of buying novels or non-fiction books.
+:::

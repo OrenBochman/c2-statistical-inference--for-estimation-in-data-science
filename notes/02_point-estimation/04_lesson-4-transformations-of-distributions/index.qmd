@@ -1,0 +1,27 @@
+---
+title: "Lesson 4: Transformations of Distributions"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+## Transformations of Distributions {#sec-transformations-of-distributions}
+
+::: {.column-margin}
+{{< video 01_transformations-of-distributions.mp4 >}}
+
+[transcript](01_transformations-of-distributions.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-transformations-of-distributions_module1_lesson3.pdf){target="_blank"}
+
+
+
+### Reflection
+
+We want to do transformations of RVs to get new RVs. 
+
+- For PMF the advice is: "just do it".
+- For PDF, we can't apply the transformation to the PDF but we can apply the transformation to its CDF and then differentiate to get the PDF of the transformed RV.
+    - this means that we get to play with integrals and derivatives which is so much fun.
+    - also we will need to make use of some algebra to recover our "canonical" form of the CDF/PDF from the integral

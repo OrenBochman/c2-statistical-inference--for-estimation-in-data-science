@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+// You can define variables here if needed
+
+/*-- scss:rules --*/
+.math.display {
+  // Forces KaTeX internal containers to align horizontally to the left
+  .katex-display {
+    display: flex !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    
+    // Optional: Add padding so formulas don't stick right to the page edge
+    padding-left: 1.5em; 
+  }
+}

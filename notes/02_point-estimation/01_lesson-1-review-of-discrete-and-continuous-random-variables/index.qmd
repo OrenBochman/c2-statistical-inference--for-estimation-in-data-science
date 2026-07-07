@@ -1,0 +1,377 @@
+---
+title: "Lesson 1: Discrete RVs & PMFs"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_discrete-random-variables-and-probability-mass-functions.mp4 >}}
+
+[transcript](01_discrete-random-variables-and-probability-mass-functions.en.txt){target="_blank"}
+:::
+
+### Handout
+
+- The original is [Handout](02_important-discrete-distributions_Important_Discrete_Distributions.pdf)
+- I've cleaned it up here.
+- I might expand it a bit to make things more visual and interactive. 
+- However, this is very basic stuff and already covered in greater depth in my bayesian probability specialization's notes. 
+- It might be better to spend the time on a interactive quiz sequence that I can use to drill this on a regular basis till I can do it all in my sleep. 
+
+
+#### The Bernoulli Distribution {#sec-bernoulli-distribution}
+
+Experiment of flipping a fair coin 1 times the outcome that is a RV
+
+Before $X$ out come is  unknown so we call it a random variable.
+More technically a random variable is mapping from the sample space to the real numbers.
+
+The convention is to use capital letters for a RV and small letters for its realizations.
+
+There are three notations 
+
+$$
+X = \begin{cases}
+1 & \text{if Heads } \\
+0 & \text{if Tails }
+\end{cases}
+$$
+
+$$
+X = \begin{cases}
+1 & \text{with probability } 0.5 \\
+0 & \text{with probability } 0.5
+\end{cases}
+$$
+
+$$
+f(x) =P(X=x) = \begin{cases}
+0.5 & \text{if } x=1 \\
+0.5 & \text{if } x=0 \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+The last one is called the **probability mass function** (PMF) 
+
+We can visualize it as a histogram with two bars one at 0 and one at 1 with height 0.5 each.
+
+If the probability is not 0.5 i.e. we have a biased coin then the PMF would be this PMF is called the Bernoulli distribution and it is parameterized by the probability of success $p$
+
+This (0/1) type of random variable comes up so often that it gets a name!
+
+$X$ is called a Bernoulli random variable with parameter $p$. 
+
+Alternatively, we say that $X$ has a Bernoulli distribution with parameter $p$. We write
+
+$$
+X \sim \text{Bernoulli}(p)
+$$
+
+$$ 
+f(x) =P(X=x) = \begin{cases}
+p & \text{if } x=1 \\
+1-p & \text{if } x=0 \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+
+
+the indicator function is defined as:
+
+$$
+I_{A}(x) = \begin{cases}
+1 & \text{if } x \in A \\
+0 & \text{if } x \notin A
+\end{cases}
+$$
+
+We can use an indicator function to write the PMF in a more compact way:
+
+$$
+f(x) = P(X=x) = p^x (1-p)^{1-x} I_{\{0,1\}}(x)
+$$  
+
+Alternative notations are $\mathbb{1}_A(x)$ or $\mathcal{X}_A(x)$ 
+
+#### The Geometric Distribution {#sec-geometric-distribution}
+
+Consider an experiment consisting of a sequence of independent trials of something where each trial can have only two possible outcomes, usually labeled as “success” and “failure”.
+
+We will denote success and failure by $\mathbf{S}$ and $\mathbb{F}$, respectively.
+
+Let $p$ be the probability of “success” on any one trial. 
+Here, $p$ must live in the interval $[0, 1]$.
+
+Let 
+
+$$
+X = \text{number of trials until the first success}
+$$
+
+Then the possible values for $X$ are $1, 2, 3, \ldots$
+
+For example, in an idealized world, you might imagine someone shooting baskets in basketball and $X$ as the number of tries they have to take until they make a basket.
+
+(In real life though, the assumptions that the success probability is constant for all trials and the trials are independent would probably be violated as the person could be learning from each failed attempt and making adjustments to get better or maybe their arms are tired and they are getting worse!)
+
+Note that 
+
+
+$$
+\begin{aligned}
+P(X = 1) &= P(\text{S on first trial}) \\
+&= p
+\end{aligned}
+$$
+
+Further, note that 
+
+
+$$
+\begin{aligned}
+P(X = 2) &= P(\text{F on 1st trial AND S on 2nd trial}) \\
+&\stackrel{indep}{=} P(\text{F on 1st trial}) \cdot P(\text{S on second trial}) \\
+&= (1 − p) \cdot p
+\end{aligned}
+$$
+
+Similarly, 
+$$
+\begin{aligned}
+P(X = 3) &= P(\text{F on 1st trial AND F on 2nd trial AND S on 3rd trial}) \\
+&\stackrel{indep}{=} P(\text{F on 1st trial}) \cdot P(\text{F on 2nd trial}) \cdot P(\text{S on 3rd trial}) \\
+&= (1 − p) \cdot (1 − p) \cdot p = (1 − p)^2 \cdot p 
+\end{aligned}
+$$
+
+A pattern is forming. 
+
+Indeed, we have 
+$$
+P(X = x) = (1 − p)^{x−1} \cdot p \quad \text{for } x = 1, 2, 3, \ldots
+$$
+
+Since $P(X = x) = 0$ for $x$ not in $\{1, 2, 3, ...\}$, we conclude that the PMF is 
+
+$$
+f(x) = \begin{cases} 
+(1 − p)^{x−1} \cdot p , & x = 1, 2, 3, ... \\ 0 , & \text{otherwise} 
+\end{cases}
+$$ 
+
+This can be written in indicator notation as 
+
+$$
+f(x) = (1 − p)^{x−1} \cdot p \cdot I_{\{1,2,3,...\}}(x)
+$$
+
+$X$ is said to have a geometric distribution with parameter $p$. We write $X \sim \text{geom}(p)$. 
+
+Note: The geometric random variable can also be defined as $X = \# \text{failures before the first success}$. 
+
+In this case, $X$ can take on the value 0 and it is easy to verify that the PMF changes slightly
+to $f(x) = \begin{cases} (1 − p)^x \cdot p , & x = 0, 1, 2, ... \\ 0 , & \text{otherwise} \end{cases}$.
+
+Which may also be written as $f(x) = (1 − p)^x \cdot p \cdot I_{\{0,1,2,...\}}(x)$.
+
+#### The Binomial Distribution
+
+Consider a sequence of n independent trials of an experiment where each trial can result in
+either “successes” (S) or “failure” (F). 
+
+Suppose that the probability of success remains the same from trial to trial. Call it $p$ where $0 \leq p \leq 1$.
+
+Let $X$ = # of successes in n trials. While it looks similar, this is different from the geometric random variable. 
+
+There, we continued trials until the first success. Here, we will have a n (a fixed number) of trials and count up all the successes.
+
+In this case, $X$ is said to have a binomial distribution with parameters $n$ and $p$.
+
+We write
+$$
+X \sim \text{bin}(n, p)
+$$
+
+As the number of successes in n trials, $X$ can take on values in $\{0, 1, 2, \ldots, n\}$.
+
+The probability mass function (pmf) is 
+
+$$
+f(x) = P (X = x) = P (SSFSF \ldots F \text{ or } SFSFS \ldots S \text{ or } \ldots) 
+$$
+
+where each listed configuration of outcomes includes exactly $x$ S’s and exactly $ n − x$ F’s.
+
+Since the outcomes are disjoint, we get
+
+$$
+f (x) = P (X = x) = P (SSF SF ... F ) + P (SF SF S ... S) + ··· \quad (0.1)
+$$
+
+Since the trials are independent,
+$$
+P (SSF SF ... F ) = p \cdot p \cdot (1 − p) \cdot s \cdot (1 − p) \cdot \cdot \cdot (1 − p) = p^x (1 − p)^{n−x}
+$$
+
+In fact, every term in (0.1) gives that same probability since every term has the same number of S’s and F ’s! So,
+
+$$
+f (x) = P (X = x) = c \cdot p^x (1 − p)^{n−x}
+$$
+
+where $c$ is the number of terms in (0.1).
+
+How many ways are there to write down sequences of n S’s and F ’s with exactly x S’s? 
+
+We need to choose x slots out of n in which to put the S’s. There are
+$$
+\binom{n}{x} = \frac{n!}{x!(n − x)!}
+$$
+
+different ways to do this. Thus,
+
+$$
+c = \binom{n}{x}.
+$$
+
+So, we have seen that X ∼ bin(n, p) means that X has pmf
+
+$$
+f(x) = P (X = x) = \binom{n}{x} p^x (1 − p)^{n−x} I_{\{0,1,...,n\}}(x) \quad (0.2)
+$$
+
+#### The Poisson Distribution
+
+When counting the number of occurrences of some event, it is often the case that you will want to use the [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution).
+
+Let $X$ be a random variable taking on values in ${0, 1, 2, \ldots}$. 
+
+$X$ is said to have a Poisson distribution if the probability mass function for X is 
+
+$$
+f(x) = P (X = x) = \begin{cases}
+e^{-\lambda} \frac{\lambda^x}{x!} & \text{if } x = 0, 1, 2, \ldots \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+which may also be written as 
+$$
+f(x) = e^{-\lambda} \frac{\lambda^x}{x!} I_{\{0,1,2,...\}}(x)
+$$ 
+Here, $\lambda > 0$ is a parameter for the distribution.
+
+We write
+$$
+X ∼ \text{Poisson}(\lambda)
+$$
+
+While this pmf might appear to be highly structured, it really is the epitome of randomness. Imagine taking a 20 acre plot of land and dividing it into 1 square foot sections. 
+
+(There are 871,200 sections!) Suppose you were able to scatter 5 trillion grass seeds on this land in a completely random way that does not favor one section over another. 
+One can show that the number of seeds that fall into any one section follows a Poisson distribution with some parameter $\lambda$. 
+
+More specifically, one can show that the Poisson distribution is a limiting case
+of the binomial distribution when $n$ gets really large and $p$ gets really small. 
+“Success” here is the event that any given seed falls into one particular section. We then want to count the number of successes in 5 trillion trials.
+
+In general, the Poisson distribution is often used to describe the distribution of rare events in a large population.
+
+### Ungraded Quiz
+
+{{< include ../_recognizing-discrete-distributions.qmd >}}
+
+### Reflection {.active}
+
+1. This segment covers some of the distributions that arise out of a binary trial. (e.g. we don't consider the negative binomial distribution here.) If you think about it bernoulli, geometric and binomial distributions and the poisson distribution are all based on the notion of one or a sequence binary trials. The simplest experiment we can generally run have binary outcomes so these distributions are not just commonly encountered, but also rather useful for modeling a wide range of phenomena. 
+
+2. One of the main themes in this part of probability theory is how to count the number of ways we can count events that can arise from different sequence of binary trials. It generally matters if the events are ordered or not, if they are independent or not, if they are with replacement or without replacement. 
+
+There are formulas for counting these different configurations and they are the basis for the PMFs of the different distributions. 
+
+However I think that this is not the main result for this lesson - as it focuses on just converting the distribution bellow  without diving too deeply into their properties or trying to generalize counting techniques.
+
+## Continuous RVs & PDFs
+
+::: {.column-margin}
+{{< video 03_continuous-random-variables-and-probability-density-functions.mp4 >}}
+
+[transcript](03_continuous-random-variables-and-probability-density-functions.en.txt){target="_blank"}
+:::
+
+### Handout
+ 
+[Handout](04_important-continuous-distributions_Important_Continuous_Distributions.pdf){width=700 height=980}
+
+### Quiz
+
+{{< include ../_calculations-with-continuous-distributions.qmd >}}
+
+### Distribution Table
+
+[Distribution_Table](05_table-summarizing-important-distributions_Distribution_Table.pdf)
+
+#### Introduction
+
+This document provides a clean, well-structured reference for standard parametric families of both discrete and continuous probability distributions, derived from the reference tables.
+
+#### Parametric Families of Discrete Distributions {#sec-parametric-families-of-discrete-distributions}
+
+The table below summarizes the key properties of common discrete probability distributions, including their Probability Mass Function (PMF), Parameter Space, Mean, Variance, and Moment Generating Function (MGF).
+
+Note that $I_A(x)$ denotes the indicator function, which equals $1$ when $x \in A$ and $0$ otherwise.
+
+| Name | Probability Mass Function (PMF) | Parameter Space | Mean | Variance | Moment Generating Function $E[e^{tX}]$ |
+|:---|:---|:---|:---|:---|:---|
+| **Uniform (Discrete)** | $\frac{1}{n+1}I_{\{0,1,\dots,n\}}(x)$ | $n=1,2,\dots$ | $\frac{n}{2}$ | $\frac{n(n+2)}{12}$ | $\sum_{j=0}^{n}\frac{1}{n+1}e^{jt}=\frac{1-e^{(n+1)t}}{(n+1)(1-e^{t})}$ |
+| **Bernoulli** | $p^{x}(1-p)^{1-x}I_{\{0,1\}}(x)$ | $0\le p\le1$ | $p$ | $p(1-p)$ | $(1-p)+pe^{t}$ |
+| **Binomial** | $\binom{n}{x} p^{x}(1-p)^{n-x}I_{\{0,1,\dots,n\}}(x)$ | $0\le p\le1$, $n=1,2,\dots$ | $np$ | $np(1-p)$ | $[(1-p)+pe^{t}]^{n}$ |
+| **Hypergeometric** | $\frac{\binom{K}{x}\binom{M-K}{n-x}}{\binom{M}{n}}I_{\{0,1,\dots,n\}}(x)$ | $M=1,2,\dots$, $K=0,\dots,M$, $n=1,\dots,M$ | $n\frac{K}{M}$ | $n\frac{K}{M}(1-\frac{K}{M})\frac{M-n}{M-1}$ | Not useful |
+| **Poisson** | $\frac{e^{-\lambda}\lambda^{x}}{x!}I_{\{0,1,\dots\}}(x)$ | $\lambda>0$ | $\lambda$ | $\lambda$ | $\exp[\lambda(e^{t}-1)]$ |
+| **Geometric (support starting at 0)** | $p(1-p)^{x}I_{\{0,1,\dots\}}(x)$ | $0<p<1$ | $\frac{1-p}{p}$ | $\frac{1-p}{p^{2}}$ | $\frac{p}{1-(1-p)e^{t}}$ for $t < -\ln(1-p)$ |
+| **Geometric (support starting at 1)** | $p(1-p)^{x-1}I_{\{1,2,\dots\}}(x)$ | $0<p<1$ | $\frac{1}{p}$ | $\frac{1-p}{p^{2}}$ | $\frac{pe^{t}}{1-(1-p)e^{t}}$ for $t < -\ln(1-p)$ |
+| **Negative Binomial (support starting at 0)** | $\binom{r+x-1}{x}p^{r}(1-p)^{x}I_{\{0,1,\dots\}}(x)$ | $0<p<1$ and $r>0$ | $\frac{r(1-p)}{p}$ | $\frac{r(1-p)}{p^{2}}$ | $\left[\frac{p}{1-(1-p)e^{t}}\right]^{r}$ for $t < -\ln(1-p)$ |
+| **Negative Binomial (support starting at r)** | $\binom{x-1}{r-1}p^{r}(1-p)^{x-r}I_{\{r,r+1,\dots\}}(x)$ | $0<p<1$ and $r>0$ | $\frac{r}{p}$ | $\frac{r(1-p)}{p^{2}}$ | $\left[\frac{pe^{t}}{1-(1-p)e^{t}}\right]^{r}$ for $t < -\ln(1-p)$ |
+| **Beta-binomial** | $\binom{n}{x}\frac{\mathcal{B}(x+a,n-x+b)}{\mathcal{B}(a,b)}I_{\{0,\dots,n\}}(x)$ | $a>0, b>0$, $n=1,2,\dots$ | $\frac{na}{a+b}$ | $\frac{nab(n+a+b)}{(a+b)^{2}(a+b+1)}$ | Not useful |
+| **Logarithmic** | $\frac{(1-p)^{x}}{(-x\ln p)}I_{\{1,2,\dots\}}(x)$ | $0<p<1$ | $\frac{1-p}{-p\ln p}$ | $\frac{(1-p)(1-p+\ln p)}{-(p\ln p)^{2}}$ | $\frac{\ln[1-(1-p)e^{t}]}{\ln p}$ for $t < -\ln(1-p)$ |
+| **Discrete Pareto** | $\frac{1/x^{\gamma+1}}{\sum_{j=1}^{\infty}(1/j^{\gamma+1})}I_{\{1,2,\dots\}}(x)$ | $\gamma>0$ | $\frac{\sum_{j=1}^{\infty}(1/j)^{\gamma}}{\sum_{j=1}^{\infty}(1/j)^{\gamma+1}}$ for $\gamma>1$ | — | Does not exist |
+
+#### Parametric Families of Continuous Distributions {#sec-parametric-families-of-continuous-distributions}
+
+The table below summarizes the key properties of common continuous probability distributions, including their Probability Density Function (PDF) or Cumulative Distribution Function (CDF), Parameter Space, Mean, Variance, and Moment Generating Function (MGF).
+
+| Name | PDF $f(x)$ / CDF $F(x)$ | Parameter Space | Mean | Variance | Moment Generating Function $E[e^{tX}]$ |
+|:---|:---|:---|:---|:---|:---|
+| **Uniform** | $f(x)=\frac{1}{\beta}I_{(\alpha,\alpha+\beta)}(x)$ | $-\infty<\alpha<\infty$, $\beta>0$ | $\alpha+\frac{\beta}{2}$ | $\frac{\beta^{2}}{12}$ | $\frac{e^{(\alpha+\beta)t}-e^{\alpha t}}{\beta t}$ |
+| **Normal** | $f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{1}{2\sigma^{2}}(x-\mu)^{2}}$ | $-\infty<\mu<\infty$, $\sigma>0$ | $\mu$ | $\sigma^{2}$ | $\exp[\mu t+\frac{1}{2}\sigma^{2}t^{2}]$ |
+| **Exponential** | $f(x)=\lambda e^{-\lambda x}I_{(0,\infty)}(x)$ | $0<\lambda<\infty$ | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^{2}}$ | $\frac{\lambda}{\lambda-t}$ for $t<\lambda$ |
+| **Bilateral Exponential (Laplace)** | $f(x)=\frac{1}{2}\beta e^{-\beta|x-\alpha|}$ | $-\infty<\alpha<\infty$, $0<\beta<\infty$ | $\alpha$ | $\frac{2}{\beta^{2}}$ | $e^{t\alpha}/(1-t^{2}/\beta^{2})$ for $|t|<\beta$ |
+| **Gamma** | $f(x)=\frac{1}{\Gamma(\alpha)}\beta^{\alpha}x^{\alpha-1}e^{-(\beta x)}I_{(0,\infty)}(x)$ | $\alpha>0$, $\beta>0$ | $\frac{\alpha}{\beta}$ | $\frac{\alpha}{\beta^{2}}$ | $(\frac{\beta}{\beta-t})^{\alpha}$ for $t<\beta$ |
+| **Weibull** | $f(x)=\frac{\gamma}{\beta}(\frac{x-\alpha}{\beta})^{\gamma-1}e^{-(\frac{x-\alpha}{\beta})^{\gamma}}I_{(\alpha,\infty)}(x)$ | $-\infty<\alpha<\infty$, $\beta>0$, $\gamma>0$ | $\alpha+\beta\Gamma(1+\frac{1}{\gamma})$ | $\beta^{2}[\Gamma(1+\frac{2}{\gamma}) - \Gamma^{2}(1+\frac{1}{\gamma})]$ | Not useful;<br>$E[(X-\alpha)^{k}] = \beta^{k}\Gamma(1+\frac{k}{\gamma})$ |
+| **Beta** | $f(x)=\frac{1}{\mathcal{B}(a,b)}x^{a-1}(1-x)^{b-1}I_{(0,1)}(x)$ | $a>0$, $b>0$ | $\frac{a}{a+b}$ | $\frac{ab}{(a+b)^{2}(a+b+1)}$ | Not useful;<br>$E[X^{k}] = \frac{\mathcal{B}(a+k,b)}{\mathcal{B}(a,b)}$ |
+| **Pareto** | $f(x)=\frac{\gamma}{(1+x)^{\gamma+1}}I_{(0,\infty)}(x)$ | $\gamma>0$ | $1/(\gamma-1)$ for $\gamma>1$ | $\gamma/[(\gamma-2)(\gamma-1)^{2}]$ for $\gamma>2$ | Does not exist |
+| **Cauchy** | $f(x)=\frac{1}{\beta\pi}\frac{1}{1+(\frac{x-\alpha}{\beta})^{2}}$ | $-\infty<\alpha<\infty$, $\beta>0$ | Does not exist | Does not exist | Does not exist |
+| **Logistic** | $F(x)=[1+e^{-(\frac{x-\alpha}{\beta})}]^{-1}$ | $-\infty<\alpha<\infty$, $\beta>0$ | $\alpha$ | $\beta^{2}\pi^{2}/3$ | $e^{\alpha t}\beta\pi t \csc(\beta\pi t)$ |
+| **Gumbel (Extreme Value)** | $F(x)=\exp[-e^{-(\frac{x-\alpha}{\beta})}]$ | $-\infty<\alpha<\infty$, $\beta>0$ | $\alpha+\beta\gamma_e$ where $\gamma_e \approx 0.577216$ | $\beta^{2}\pi^{2}/6$ | $e^{\alpha t}\Gamma(1-\beta t)$ for $t<1/\beta$ |
+| **Log-normal** | $F(x)=\Phi(\frac{\ln x-\mu}{\sigma})I_{(0,\infty)}(x)$ | $-\infty<\mu<\infty$, $\sigma>0$ | $\exp[\mu+\frac{1}{2}\sigma^{2}]$ | $\exp[2\mu+2\sigma^{2}] - \exp[2\mu+\sigma^{2}]$ | Does not exist;<br>$E[X^{k}] = \exp[k\mu+\frac{1}{2}k^{2}\sigma^{2}]$ |
+
+### Reflection {.active}
+
+1. In some cases like the beta we have a continuous distribution that extends a discrete one (the binomial). These versions are less intuitive but often much more useful in practice.
+   The beta distribution is also a conjugate prior for the binomial distribution in Bayesian statistics, which makes it very useful for updating beliefs about probabilities based on observed data.
+
+2. Many distributions have **multiple parameterizations**.
+
+    1.  When working with R or Python or even specific libraries we get some ad hoc parameterizations and we need to ensure that we are not creating a bug by writing one parameterizations on paper and then another one in implementation or after porting code.
+    2. The different parameterizations are not arbitrary - they reflect different ways of thinking about the same distribution. For example, the exponential distribution can be parameterized by its rate (λ) or its scale (β = 1/λ). The rate parameterization is often more intuitive when thinking about the frequency of events, while the scale parameterization is more intuitive when considering the average time between events.
+    3. To switch or adapt between parameterizations can be as easy as adding a conversion step in our code or calculations. But it might be better to use an interface - that hides the conversion and lets us work with the parameterization we find most intuitive.
+      However it some cases switching parameterizations can be more involved - for example when the parameterization affects the support of the distribution or when it changes the functional form of the pdf/pmf.
+
+3. Most distributions are related in some way. The main relationships are generalization or special cases, limiting cases. Understanding the relationships is the key for a deeper understanding of probability theory for data science where we are primarily interested in engineering models that have desirable properties.
+
+4. One approach to distributions I find attractive is to remember its origin story or as this is called its generative process. These may start as urn models (like the binomial or hypergeometric) or as waiting time models (like the exponential or Poisson). Understanding the generative process helps us understand when to use a distribution and how to interpret its parameters.
+
+5. Distributions are also organized into families. For example, the exponential family of distributions includes many common distributions (normal, binomial, Poisson, gamma) and has nice mathematical properties that make them useful for statistical inference.
+
+6. Another organizing relation is conjugacy which means that we can update our beliefs about a distribution without changing its form. For example, the beta distribution is conjugate to the binomial distribution, which means that if we start with a beta prior and observe binomial data, our posterior distribution will also be a beta distribution. This property is very useful in Bayesian statistics as it simplifies the process of updating our beliefs based on new data.

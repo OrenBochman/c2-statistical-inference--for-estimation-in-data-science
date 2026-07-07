@@ -1,0 +1,169 @@
+
+## Chapter 6. The Normal Distribution
+
+### Section 1. The Standard Normal Distribution
+
+::: {#exr-try-6-1}
+What is the z-score of x, when x = 1 and X ~ N(12,3)?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+z =  ≈ –3.67
+:::
+
+::: {#exr-try-6-2}
+Fill in the blanks.
+
+Jerome averages 16 points a game with a standard deviation of four points. X ~ N(16,4). Suppose Jerome scores ten points in a game. The z–score when x = 10 is –1.5. This score tells you that x = 10 is _____ standard deviations to the ______(right or left) of the mean______(What is the mean?).
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+1.5, left, 16
+:::
+
+::: {#exr-try-6-3}
+Use the information in Example 6.3 to answer the following questions.
+
+a. Suppose a 15 to 18-year-old male from Chile was 176 cm tall from 2009 to 2010. The z-score when x = 176 cm is z = _______. This z-score tells you that x = 176 cm is ________ standard deviations to the ________ (right or left) of the mean _____ (What is the mean?).
+b. Suppose that the height of a 15 to 18-year-old male from Chile from 2009 to 2010 has a z-score of z = –2. What is the male’s height? The z-score (z = –2) tells you that the male’s height is ________ standard deviations to the __________ (right or left) of the mean.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Solve the equation z = (x−μ)/σ for x. x = μ + (z)(σ)
+
+a. z = (176−170)/6.28 ≈ 0.96, This z-score tells you that x = 176 cm is 0.96 standard deviations to the right of the mean 170 cm.
+b. X = 157.44 cm, The z-score(z = –2) tells you that the male’s height is two standard deviations to the left of the mean.
+
+:::
+
+::: {#exr-try-6-4}
+In 2012, 1,664,479 students took the SAT exam. The distribution of scores in the verbal section of the SAT had a mean µ = 496 and a standard deviation σ = 114. Let X = a SAT exam verbal section score in 2012. Then X ~ N(496, 114).
+
+Find the z-scores for x1 = 325 and x2 = 366.21. Interpret each z-score. What can you say about x1 = 325 and x2 = 366.21 as they compare to their respective means and standard deviations?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+The z-score for x1 = 325 is z1 = –1.5.
+
+The z-score for x2 = 366.21 is z2 = –1.14.
+
+Student 2 scored closer to the mean than Student 1 and, since they both had negative z-scores, Student 2 had the better score.
+:::
+
+::: {#exr-try-6-5}
+Suppose X has a normal distribution with mean 25 and standard deviation five. Between what values of x do 68% of the values lie?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+between 20 and 30.
+:::
+
+::: {#exr-try-6-6}
+The scores on a college entrance exam have an approximate normal distribution with mean, µ = 52 points and a standard deviation, σ = 11 points.
+
+a. About 68% of the y values lie between what two values? These values are ________________. The z-scores are ________________, respectively.
+b. About 95% of the y values lie between what two values? These values are ________________. The z-scores are ________________, respectively.
+c. About 99.7% of the y values lie between what two values? These values are ________________. The z-scores are ________________, respectively.
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. About 68% of the values lie between the values 41 and 63. The z-scores are –1 and 1, respectively.
+b. About 95% of the values lie between the values 30 and 74. The z-scores are –2 and 2, respectively.
+c. About 99.7% of the values lie between the values 19 and 85. The z-scores are –3 and 3, respectively.
+:::
+
+### Section 2. Using the Normal Distribution
+
+::: {#exr-try-6-7}
+If the area to the left of x is 0.012, then what is the area to the right?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+1 − 0.012 = 0.988
+:::
+
+::: {#exr-try-6-8}
+The golf scores for a school team were normally distributed with a mean of 68 and a standard deviation of three.
+
+Find the probability that a randomly selected golfer scored less than 65.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+```{r}
+#normalcdf(0,65,68,3) = 0.1587
+round(pnorm(65, 68, 3), 4)
+```
+:::
+
+::: {#exr-try-6-9}
+The golf scores for a school team were normally distributed with a mean of 68 and a standard deviation of three. Find the probability that a golfer scored between 66 and 70.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+normalcdf(66,70,68,3) = 0.4950
+:::
+
+::: {#exr-try-6-10}
+Use the information in Example 6.10 to answer the following questions.
+
+a. Find the 30th percentile, and interpret it in a complete sentence.
+b. What is the probability that the age of a randomly selected smartphone user in the range 13 to 55+ is less than 27 years old.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Let X = a smart phone user whose age is 13 to 55+. X ~ N(36.9, 13.9)
+
+a. To find the 30th percentile, find k such that P(x < k) = 0.30.
+   invNorm(0.30, 36.9, 13.9) = 29.6 years
+    Thirty percent of smartphone users 13 to 55+ are at most 29.6 years and 70% are at least 29.6 years.
+b. Find P(x < 27)
+   normalcdf(0,27,36.9,13.9) = 0.2342
+   (Note that normalcdf(–1099,27,36.9,13.9) = 0.2382. The two answers differ only by 0.0040.)
+:::
+
+::: {#exr-try-6-11}
+Two thousand students took an exam. The scores on the exam have an approximate normal distribution with a mean μ = 81 points and standard deviation σ = 15 points.
+    a. Calculate the first- and third-quartile scores for this exam.
+    b. The middle 50% of the exam scores are between what two values?
+
+Solution:
+    a. Q1 = 25th percentile = invNorm(0.25,81,15) = 70.9 
+Q3 = 75th percentile = invNorm(0.75,81,15) = 91.1
+    b. The middle 50% of the scores are between 70.9 and 91.1.
+
+TRY IT 6.12
+
+Using the information from Example 6.12, answer the following:
+    a. The middle 40% of mandarin oranges from this farm are between ______ and ______.
+    b. Find the 16th percentile and interpret it in a complete sentence.
+    
+Solution:
+
+a. The middle area = 0.40, so each tail has an area of 0.30.
+   1 – 0.40 = 0.60
+   The tails of the graph of the normal distribution each have an area of 0.30.
+   Find k1, the 30th percentile and k2, the 70th percentile (0.40 + 0.30 = 0.70).
+   k1 = invNorm(0.30,5.85,0.24) = 5.72 cm
+   k2 = invNorm(0.70,5.85,0.24) = 5.98 cm
+b. invNorm(0.16, 5.85, 0.24) = 5.61; 16% of mandarin oranges from this farm have diameter 5.61 cm or less.

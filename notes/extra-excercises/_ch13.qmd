@@ -1,0 +1,144 @@
+
+## Chapter 13. F Distribution and One-Way ANOVA
+
+### Section 2. The F Distribution and the F-Ratio
+
+TRY IT 13.1
+As part of an experiment to see how different types of soil cover would affect slicing tomato production, Marist College students grew tomato plants under different soil cover conditions. Groups of three plants each had one of the following treatments
+    • bare soil
+    • a commercial ground cover
+    • black plastic
+    • straw
+    • compost
+All plants grew under the same conditions and were the same variety. Students recorded the weight (in grams) of tomatoes produced by each of the n = 15 plants:
+
+| Bare | Ground Cover | Plastic | Straw | Compost |
+|---:|---:|---:|---:|---:|
+| 2,625 | 5,348 | 6,583 | 7,285 | 6,277 |
+| 2,997 | 5,682 | 8,560 | 6,897 | 7,818 |
+| 4,915 | 5,482 | 3,830 | 9,230 | 8,677 |
+
+: Table 13.4
+
+Create the one-way ANOVA table.
+Solution:
+Enter the data into lists L1, L2, L3, L4 and L5. Press STAT and arrow over to TESTS. Arrow down to ANOVA. Press ENTER and enter L1, L2, L3, L4, L5). Press ENTER. The table was filled in with the results from the calculator.
+One-Way ANOVA table:
+
+| Source of Variation | Sum of Squares (SS) | Degrees of Freedom (df) | Mean Square (MS) | F |
+|---|---:|---:|---:|---:|
+| Factor (Between) | 36,648,561 | 5 – 1 = 4 | 9,162,140 | 4.4810 |
+| Error (Within) | 20,446,726 | 15 – 5 = 10 | 2,044,672.6 | |
+| Total | 57,095,287 | 15 – 1 = 14 | | |
+
+
+
+Section 3. Facts About the F Distribution
+
+TRY IT 13.2
+There are multiple variants of the virus that causes COVID-19. The length of hospital stays for patients afflicted with various strains of COVID-19 is shown in Table 13.6. 
+Test whether the mean length of hospital stay is the same or different for the various strains of COVID-19. Construct the ANOVA table, find the p-value, and state your conclusion. Use a 5% significance level.
+.
+
+| Delta Strain | Omicron Strain | Alpha Strain | Gamma Strain | Beta Strain |
+|---:|---:|---:|---:|---:|
+| 13.9 | 11.7 | 18.2 | 16.9 | 9.3 |
+| 14.9 | 15.1 | 14.6 | 12.8 | 15.8 |
+| 16.8 | 9.9 | 10.1 | 11.2 | 16.4 |
+
+: Table 13.6
+
+Solution:
+We test for the equality of mean length of hospital stay:
+H0 : μ1 = μ2 = μ3 = μ4 = μ5
+
+The one-way ANOVA table results are as shown:.
+
+| Source of Variation | Sum of Squares (SS) | Degrees of Freedom (df) | Mean Square (MS) | F | p-value |
+|---|---:|---:|---:|---:|---:|
+| Factor (Between) | 14.056 | 5 – 1 = 4 | 3.514 | 0.353095 | 0.8362 |
+| Error (Within) | 99.52 | 15 – 5 = 10 | | | |
+| Total | 113.576 | 15 – 1 = 14 | | | |
+
+
+
+
+Distribution for the test: F4,10
+Probability Statement: p-value = P(F > 0.3531) = 0.8362
+Compare α and the p-value: α = 0.05, p-value = 0.8362, α > p-value
+Make a decision: Since α > p-value, we do not reject H0.
+Conclusion: At the 5% significance level, there is insufficient evidence from these data that different strains of COVID-19 virus will cause a significant difference in the length of a hospital stay.
+TRY IT 13.3
+Four sports teams took a random sample of players regarding their GPAs for the last year. The results are shown in Table 13.8.
+
+| Basketball | Baseball | Hockey | Lacrosse |
+|---:|---:|---:|---:|
+| 3.6 | 2.1 | 4.0 | 2.0 |
+| 2.9 | 2.6 | 2.0 | 3.6 |
+| 2.5 | 3.9 | 2.6 | 3.9 |
+| 3.3 | 3.1 | 3.2 | 2.7 |
+| 3.8 | 3.4 | 3.2 | 2.5 |
+
+: Table 13.8 GPAs for four sports teams
+
+Use a significance level of 5%, and determine if there is a difference in GPA among the teams.
+Solution:
+With a p-value of 0.9271, we decline to reject the null hypothesis. There is not sufficient evidence to conclude that there is a difference among the GPAs for the sports teams.
+TRY IT 13.4
+Another fourth grader also grew bean plants, but this time in a jelly-like mass. The heights were (in inches) 24, 28, 25, 30, and 32. Do a one-way ANOVA test on the four groups. Are the heights of the bean plants different? Use the same method as shown in Example 13.4.
+Solution:
+    • F = 0.9496
+    • p-value = 0.4402
+From the sample data, the evidence is not sufficient to conclude that the mean heights of the bean plants are different.
+Section 4. Test of Two Variances
+
+TRY IT 13.5
+The New York Choral Society divides its singers who are men into four categories from highest voices to lowest: Tenor1, Tenor2, Bass1, Bass2. In the table are heights of the men in the Tenor1 and Bass2 groups. One suspects that taller men will have lower voices, and that the variance of height may go up with the lower voices as well. Do we have good evidence that the variance of the heights of singers in each of these two groups (Tenor1 and Bass2) are different?
+
+| Tenor1 | Bass2 |
+|---:|---:|
+| 69 | 72 |
+| 67 | 72 |
+| 68 | 67 |
+| 72 | 75 |
+| 70 | 74 |
+| 67 | 70 |
+| 71 | 67 |
+| 65 | 70 |
+| 64 | 70 |
+| 66 | 75 |
+| 72 | 66 |
+| 69 | 71 |
+| 76 | 71 |
+| 74 | 72 |
+| 70 | 64 |
+| 68 | 68 |
+| 72 | 74 |
+| 74 | 66 |
+| 72 | 74 |
+| 68 | 73 |
+| 75 | 70 |
+|  | 75 |
+|  | 68 |
+|  | 72 |
+|  | 66 |
+|  | 72 |
+
+: Table 13.11
+
+Solution:
+The histograms are not as normal as one might like. Plot them to verify. However, we proceed with the test in any case.
+
+Subscripts: T1= tenor1 and B2 = bass 2
+
+The standard deviations of the samples are sT1 = 3.3302 and sB2 = 2.7208.
+
+The hypotheses are
+
+H0: σT12= σB22 and H0: σT12 ≠ σB22 (two tailed test)
+
+The F statistic is 1.4894 with 20 and 25 degrees of freedom.
+
+The p-value is 0.3430. If we assume alpha is 0.05, then we cannot reject the null hypothesis.
+
+We have no good evidence from the data that the heights of Tenor1 and Bass2 singers have different variances (despite there being a significant difference in mean heights of about 2.5 inches.)

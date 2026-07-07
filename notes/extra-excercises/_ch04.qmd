@@ -1,0 +1,578 @@
+## Chapter 4 Discrete Random Variables
+
+### Section 1  Probability Distribution Function (PDF) for a Discrete Random Variable
+
+::: {#exr-try-4-1}
+#### Post Op Call Distribution
+A hospital researcher is interested in the number of times the average post-op patient will ring the nurse during a 12-hour shift. 
+
+For a random sample of 50 patients, the following information was obtained. 
+
+Let $X$ = the number of times a patient rings the nurse during a 12-hour shift. 
+
+For this exercise, $x = 0, 1, 2, 3, 4, 5$. 
+
+$P(x)$ = the probability that $X$ takes on value $x$. 
+
+Why is this a discrete probability distribution function (two reasons)?
+
+| X | P(x) |
+|---|------|
+| 0 | P(x = 0) = $\frac{4}{50}$ |
+| 1 | P(x = 1) = $\frac{8}{50}$ |
+| 2 | P(x = 2) = $\frac{16}{50}$ |
+| 3 | P(x = 3) = $\frac{14}{50}$ |
+| 4 | P(x = 4) = $\frac{6}{50}$ |
+| 5 | P(x = 5) = $\frac{2}{50}$ |
+
+: Call distribution {#tbl-4-1}
+
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+1. it conforms with the axioms, i.e. positive, adds up to 1.
+2. it has a discrete support.
+:::
+
+::: {#exr-try-4-2}
+Jeremiah has basketball practice two days a week. Ninety percent of the time, he attends both practices. Eight percent of the time, he attends one practice. Two percent of the time, he does not attend either practice. What is X and what values does it take on?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+:::
+
+
+
+::: {#exr-try-4-3}
+A customer orders 1, 2, or 3 bottles of water. The probability of ordering 1 bottle is 0.6, the probability of ordering 2 bottles is 0.3, and the probability of ordering 3 bottles is 0.1. Find the long-term average or expected value, μ, of the number of bottles a customer will order.
+:::
+
+
+::: {#exr-try-4-4}
+#### Post Op Call Expected Value
+A hospital researcher is interested in the number of times the average post-op patient will ring the nurse during a 12-hour shift. 
+
+For a random sample of 50 patients, the following information was obtained. 
+
+Let $X$ = the number of times a patient rings the nurse during a 12-hour shift. 
+
+For this exercise, $x = 0, 1, 2, 3, 4, 5$. 
+
+$P(x)$ = the probability that $X$ takes on value $x$. 
+
+Why is this a discrete probability distribution function (two reasons)?
+
+| X | P(x) |
+|---|------|
+| 0 | P(x = 0) = $\frac{4}{50}$ |
+| 1 | P(x = 1) = $\frac{8}{50}$ |
+| 2 | P(x = 2) = $\frac{16}{50}$ |
+| 3 | P(x = 3) = $\frac{14}{50}$ |
+| 4 | P(x = 4) = $\frac{6}{50}$ |
+| 5 | P(x = 5) = $\frac{2}{50}$ |
+
+: Call distribution {#tbl-4-4}
+
+What is the expected value?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+:::
+
+::: {#exr-try-4-5}
+You are playing a game of chance in which four cards are drawn from a standard deck of 52 cards. You guess the suit of each card before it is drawn. The cards are replaced in the deck on each draw. You pay $1 to play. If you guess the right suit every time, you get your money back and $256. What is your expected profit of playing the game over the long term?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+:::
+
+::: {#exr-try-4-6}
+Suppose you play a game with a spinner. 
+
+You play each game by spinning the spinner once. 
+$P(red) = \frac{2}{5}$, $P(blue) = \frac{2}{5}$, and $P(green) = \frac{1}{5}$. 
+If you land on red, you pay $10. 
+If you land on blue, you don't pay or win anything. 
+If you land on green, you win $10. 
+
+
+Complete the following expected value table.
+
+|       | $x$  | $P(x)$ | $x\times P(x)$ |
+|-------|------|--------|-------|
+| Red   | __   | __     |$-\frac{20}{5}$ |
+| Blue  | __   | $\frac{2}{5}$ | __ |
+| Green | 10   | __ | __|
+
+: Table 4.11 {#tbl-4-11}
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+|       | $x$    | $P(x)$ | $x\times P(x)$ |
+|-------|--------|--------|-----------------|
+| Red   | -10    | $\frac{2}{5}$ | $-\frac{20}{5}$ |
+| Blue  | 0      | $\frac{2}{5}$ | 0 |
+| Green | 10     | $\frac{1}{5}$ | | $\frac{10}{5}$ |
+:::
+
+::: {#exr-try-4-7}
+Two stacks of cards are placed on a table.
+Each stack has cards number 1 to 8.
+One card from each stack is picked up. 
+Let $X$ = number of cards showing an odd number.
+Construct a table like Table 4.11 and calculate the mean $\mu$ and standard deviation $\sigma$ of $X$.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+The sample space has 64 outcomes: 
+
+(1,1) 
+(1,2) 
+(1,3) 
+(1,4) 
+(1,5) 
+(1,6) 
+(1,7) 
+(1,8) 
+(2,1) 
+(2,2) 
+(2,3) 
+(2,4) 
+(2,5) 
+(2,6) 
+(2,7) 
+(2,8) 
+(3,1) 
+(3,2) 
+(3,3) 
+(3,4) 
+(3,5) 
+(3,6) 
+(3,7) 
+(3,8) 
+(4,1) 
+(4,2) 
+(4,3) 
+(4,4) 
+(4,5) 
+(4,6) 
+(4,7) 
+(4,8) 
+(5,1) 
+(5,2) 
+(5,3) 
+(5,4) 
+(5,5) 
+(5,6) 
+(5,7) 
+(5,8) 
+(6,1) 
+(6,2) 
+(6,3) 
+(6,4) 
+(6,5) 
+(6,6) 
+(6,7) 
+(6,8) 
+(7,1) 
+(7,2) 
+(7,3) 
+(7,4) 
+(7,5) 
+(7,6) 
+(7,7) 
+(7,8) 
+(8,1) 
+(8,2) 
+(8,3) 
+(8,4) 
+(8,5) 
+(8,6) 
+(8,7) 
+(8,8) 
+ 
+The sample space is used to complete the following table: 
+
+| x | P(x) | x*P(x) |
+|---|------|--------|
+| 0 |      | 0      |
+| 1 |      |        |
+| 2 |      |        |
+
+The mean is calculated by adding the values in the third column of P(x), so . 
+The square root of the sum of values obtained in the fourth column will give the standard deviation.
+
+| Outcome | x   | P(x)   | x ⋅ (Px) | (x - μ)2 ⋅ P(x) |
+|---------|-----|--------|----------|------------------|
+| win     | 100 | 0.0108 | 1.08     | [100 – (–8.812)]2 ⋅ 0.0108 = 127.8726 |
+| loss    | –10 | 0.9892 | –9.892   | [–10 – (–8.812)]2 ⋅ 0.9892 = 1.3961 |
+:::
+
+::: {#exr-try-4-8}
+## Betting on Earthquakes
+
+On May 11, 2013 at 9:30 PM, the probability that moderate seismic activity (one moderate earthquake) would occur in the next 48 hours in Japan was about 1.08%. 
+As in Example 4.8, you bet that a moderate earthquake will occur in Japan during this period. 
+
+If you win the bet, you win 100 USD . 
+If you lose the bet, you pay 10 USD. 
+
+Let $X$ = the amount of profit from a bet. 
+
+Find the mean and standard deviation of $X$.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+$$
+\mu = Expected Value = \mu = 1.08 + (–9.892) = –8.812
+$$
+
+If you make this bet many times under the same conditions, your long term outcome will be an average loss of $8.81 per bet.
+
+$$
+\sigma = \sqrt{127.8726 + 1.3961} \approx 11.33
+$$ 
+:::
+
+::: {#exr-try-4-9}
+### School Lunches
+The state health board is concerned about the amount of fruit available in school lunches. Forty-eight percent of schools in the state offer fruit in their lunches every day. This implies that 52% do not. 
+
+What would a "success" be in this case?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+A school that offers fruit in their lunch every day.
+:::
+
+::: {#exr-try-4-10}
+
+A trainer is teaching a rescued dolphin to catch live fish before returning it to the wild. The probability that the dolphin successfully catches a fish is 35%, and the probability that the dolphin does not successfully catch a fish is 65%. Out of 20 attempts, you want to find the probability that the dolphin succeeds 12 times. State the probability question mathematically.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x = 12)
+:::
+
+::: {#exr-try-4-11}
+#### Rolling a Die
+A fair, six-sided die is rolled ten times. Each roll is independent. You want to find the probability of rolling a one more than three times. State the probability question mathematically.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x > 3)
+:::
+
+::: {#exr-try-4-12}
+#### Driver’s Exam
+Sixty-five percent of people pass the state driver’s exam on the first try. A group of 50 individuals who have taken the driver’s exam is randomly selected. Give two reasons why this is a binomial problem.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+This is a binomial problem because there is only a success or a failure, and there are a definite number of trials. The probability of a success stays the same for each trial.
+:::
+
+::: {#exr-try-4-13}
+#### Community Volunteer Participation
+About 32% of students participate in a community volunteer program outside of school. If 30 students are selected at random, find the probability that at most 14 of them participate in a community volunteer program outside of school. 
+
+Use the TI-83+ or TI-84 calculator to find the answer.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x ≤ 14) = 0.9695
+:::
+
+::: {#exr-try-4-14}
+
+According to a Gallup poll, 60% of American adults prefer saving over spending. Let X = the number of American adults out of a random sample of 50 who prefer saving to spending.
+
+a. What is the probability distribution for X?
+b. Use your calculator to find the following probabilities:
+   i. the probability that 25 adults in the sample prefer saving over spending
+   ii. the probability that at most 20 adults prefer saving
+   iii. the probability that more than 30 adults prefer saving
+c. Using the formulas, calculate the (i) mean and (ii) standard deviation of X.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. X ∼ B(50, 0.6)
+b. Using the TI-83, 83+, 84 calculator with instructions as provided in Example:
+    i. P(x = 25) = binompdf(50, 0.6, 25) = 0.0405
+    ii. P(x ≤ 20) = binomcdf(50, 0.6, 20) = 0.0034
+    iii. P(x > 30) = 1 - binomcdf(50, 0.6, 30) = 1 – 0.5535 = 0.4465
+c. 
+    i. Mean = np = 50(0.6) = 30
+    ii. Standard Deviation =  ≈ 3.4641
+
+:::
+
+::: {#exr-try-4-15}
+
+During a certain NBA season, a player for the Los Angeles Clippers had the highest field goal completion rate in the league. This player scored with 61.3% of his shots. Suppose you choose a random sample of 80 shots made by this player during the season. Let X = the number of shots that scored points.
+
+a. What is the probability distribution for X?
+b. Using the formulas, calculate the (i) mean and (ii) standard deviation of X.
+c. Use your calculator to find the probability that this player scored with 60 of these shots.
+d. Find the probability that this player scored with more than 50 of these shots.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. X ~ B(80, 0.613)
+b. 
+    i. Mean = np = 80(0.613) = 49.04
+    ii. Standard Deviation =  4.3564
+c. Using the TI-83, 83+, 84 calculator with instructions as provided in Example: 
+P(x = 60) = binompdf(80, 0.613, 60) = 0.0036
+d. P(x > 50) = 1 – P(x ≤ 50) = 1 – binomcdf(80, 0.613, 50) = 1 – 0.6282 = 0.3718
+
+:::
+
+::: {#exr-try-4-16}
+
+A lacrosse team is selecting a captain. The names of all the seniors are put into a hat, and the first three that are drawn will be the captains. The names are not replaced once they are drawn (one person cannot be two captains). You want to see if the captains all play the same position. State whether this is binomial or not and state why.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+:::
+
+### Section 4. Geometric Distribution
+
+::: {#exr-try-4-17}
+You throw darts at a board until you hit the center area. Your probability of hitting the center area is p = 0.17. You want to find the probability that it takes eight throws until you hit the center. What values does X take on?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+1, 2, 3, 4, … n. It can go on indefinitely.
+:::
+
+::: {#exr-try-4-18}
+An instructor feels that 15% of students get below a C on their final exam. They decide to look at final exams (selected randomly and replaced in the pile after reading) until they find one that shows a grade below a C. We want to know the probability that the instructor will have to examine at least ten exams until they find one with a grade below a C. What is the probability question stated mathematically?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+$P(x \ge 10)$
+:::
+
+::: {#exr-try-4-19}
+You need to find a store that carries a special printer ink. You know that of the stores that carry printer ink, 10% of them carry the special ink. You randomly call each store until one has the ink you need. What are p and q?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+p = 0.1
+q = 0.9
+:::
+
+::: {#exr-try-4-20}
+The probability of a defective steel rod is 0.01. Steel rods are selected at random. Find the probability that the first defect occurs on the ninth steel rod. Use the TI-83+ or TI-84 calculator to find the answer.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x = 9) = 0.0092
+:::
+
+::: {#exr-try-4-21}
+The literacy rate for a nation measures the proportion of people age 15 and over who can read and write. The literacy rate for women in Afghanistan is 12%. Let X = the number of Afghani women you ask until one says that she is literate.
+
+a. What is the probability distribution of X?
+b. What is the probability that you ask five women before one says she is literate?
+c. What is the probability that you must ask ten women?
+d. Find the (i) mean and (ii) standard deviation of X.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. $X \sim G(0.12)$
+b. $P(x = 5) = geometpdf(0.12, 5) = 0.0720$
+c. $P(x = 10) = geometpdf(0.12, 10) = 0.0380$
+d.
+   - Mean ≈ 8.333
+   - Standard deviation ≈ 7.8174
+:::
+
+::: {#exr-try-4-22}
+A bag contains letter tiles. Forty-four of the tiles are vowels, and 56 are consonants. Seven tiles are picked at random. You want to know the probability that four of the seven tiles are vowels. What is the group of interest, the size of the group of interest, and the size of the sample?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+The group of interest is the vowel letter tiles. The size of the group of interest is 44. The size of the sample is seven.
+:::
+
+::: {#exr-try-4-23}
+A gross of eggs contains 144 eggs. A particular gross is known to have 12 cracked eggs. An inspector randomly chooses 15 for inspection. She wants to know the probability that, among the 15, at most three are cracked. What is X, and what values does it take on?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Let $X =$ the number of cracked eggs in the sample of 15. $X$ takes on the values $0, 1, 2, …, 12$.
+:::
+
+::: {#exr-try-4-24}
+A palette has 200 milk cartons. Of the 200 cartons, it is known that ten of them have leaked and cannot be sold. A stock clerk randomly chooses 18 for inspection. He wants to know the probability that among the 18, no more than two are leaking. Give five reasons why this is a hypergeometric problem.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+1. There are two groups.
+2. You are concerned with a group of interest.
+3. You sample without replacement.
+4. Each pick is not independent.
+5. You are not dealing with Bernoulli trials.
+:::
+
+::: {#exr-try-4-25}
+An intramural basketball team is to be chosen randomly from 15 boys and 12 girls. The team has ten slots. 
+You want to know the probability that eight of the players will be boys. 
+What is the group of interest and the sample?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+The group of interest is the 15 boys. The sample consists of the ten slots on the intramural basketball team.
+:::
+
+::: {#exr-try-4-26}
+The average number of fish caught in an hour is eight. 
+Of interest is the number of fish caught in 15 minutes. 
+The time interval of interest is 15 minutes. 
+What is the average number of fish caught in 15 minutes?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+(15/60)(8) = 2 fish
+:::
+
+::: {#exr-try-4-27}
+An electronics store expects to have ten returns per day on average. 
+The manager wants to know the probability of the store getting fewer than eight returns on any given day. 
+State the probability question mathematically.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x < 8)
+:::
+
+::: {#exr-try-4-28}
+An emergency room at a particular hospital gets an average of five patients per hour. 
+A doctor wants to know the probability that the ER gets more than five patients per hour. 
+Give the reason why this would be a Poisson distribution.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+This problem wants to find the probability of events occurring in a fixed interval of time with a known average rate. The events are independent.
+:::
+
+::: {#exr-try-4-29}
+A customer service center receives about ten emails every half-hour. 
+What is the probability that the customer service center receives more than four emails in the next six minutes?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x > 4) = 0.0527
+:::
+
+::: {#exr-try-4-30}
+According to a recent poll by the Pew Internet Project, people between the ages of 14 and 17 send an average of 187 text messages each day. 
+Let X = the number of texts that a girl aged 14 to 17 sends per day. 
+The discrete random variable X takes on the values x = 0, 1, 2, ….
+
+The random variable X has a Poisson distribution: X ~ P(187). 
+The mean is 187 text messages.
+
+a. What is the probability that a person sends exactly 175 texts per day?
+b. What is the probability that a person sends at most 150 texts per day?
+c. What is the standard deviation?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. P(x = 175) = poissonpdf(187, 175) ≈ 0.0203
+b. P(x ≤ 150) = poissoncdf(187, 150) ≈ 0.0030
+c. Standard deviation ≈ 13.6748
+:::
+
+::: {#exr-try-4-31}
+Atlanta's Hartsfield-Jackson International Airport is the busiest airport in the world. On average there are 2,700 arrivals and departures each day.
+
+a. How many airplanes arrive and depart the airport per hour?
+b. What is the probability that there are exactly 100 arrivals and departures in one hour?
+c. What is the probability that there are at most 100 arrivals and departures in one hour?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. Let X = the number of airplanes arriving and departing from Hartsfield-Jackson in one hour. The average number of arrivals and departures per hour is 2,700/24 ≈ 112.5.
+b. $X ~ P(112.5)$, so $P(x = 100) = poissonpdf(112.5, 100) ≈ 0.0194$.
+c. $P(x \leq 100) = poissoncdf(112.5, 100) ≈ 0.1279$.
+:::
+
+::: {#exr-try-4-32}
+On a certain day in May, starting at 4:30 PM, the probability of moderate seismic activity for the next 48 hours in the Kuril Islands off the coast of Japan was reported at about 1.43%. Use this information for the next 100 days to find the probability that there will be low seismic activity in five of the next 100 days. Use both the binomial and Poisson distributions to calculate the probabilities. Are they close?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Let X = the number of days with moderate seismic activity.
+Using the binomial distribution: P(x = 5) = binompdf(100, 0.0143, 5) ≈ 0.0115
+Using the Poisson distribution:
+
+- Calculate μ = np = 100(0.0143) = 1.43
+- P(x = 5) = poissonpdf(1.43, 5) = 0.0119
+
+We expect the approximation to be good because n is large (greater than 20) and p is small (less than 0.05). The results are close—the difference between the values is 0.0004.
+:::
+

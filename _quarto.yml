@@ -1,25 +1,83 @@
 project:
   type: book
+  preview:
+    port: 4302 # increment port number for each course
+
+google-analytics: 
+  tracking-id: "G-GYZ17VPVEJ"
+  anonymize-ip: true
 
 book:
-  title: "c2-statistical-inference-for-estimation-in-data-science"
-  author: "Norah Jones"
-  date: "12/4/2025"
+  title: "Statistical Estimation for Data Science & AI"
+  author: "Oren Bochman"
+  date: "12/4/2025"  
+  page-footer: 
+    left: "Copyright 2026, Oren Bochman" 
+    right: 
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/OrenBochman/c2-statistical-inference--for-estimation-in-data-science
+          - text: Report a Bug
+            url: https://github.com/OrenBochman/c2-statistical-inference--for-estimation-in-data-science/issues
+      - icon: twitter 
+        href: https://twitter.com/orenbochman 
+      - icon: bi-house
+        href: https://orenbochman.github.io/blog/
+      - icon: linkedin 
+        href: https://www.linkedin.com/li/orenbochman/
+
   chapters:
     - index.qmd
     - notes/intro.qmd
     - notes/summary.qmd
+    - notes/01_welcome-to-the-course/index.qmd
+    - part: "Module 2 Point Estimation"
+      chapters:
+      - notes/02_point-estimation/01_lesson-1-review-of-discrete-and-continuous-random-variables/index.qmd
+      - notes/02_point-estimation/02_lesson-2-joint-distributions/index.qmd
+      - notes/02_point-estimation/03_lesson-3-the-gamma-distribution/index.qmd
+      - notes/02_point-estimation/04_lesson-4-transformations-of-distributions/index.qmd
+      - notes/02_point-estimation/05_lesson-5-expectation-and-properties-of-expectation/index.qmd
+      - notes/02_point-estimation/06_lesson-6-variance-and-covariance/index.qmd
+      - notes/02_point-estimation/07_lesson-7-estimators-and-sampling-distributions/index.qmd
+      - notes/02_point-estimation/08_lesson-8-distributions-of-sums/index.qmd
+      - notes/02_point-estimation/09_lesson-9-method-of-moments-estimators/index.qmd
+      - notes/02_point-estimation/_the-shape-of-data.qmd
+    - part: "Module 3 Maximum Likelihood Estimation"
+      chapters:
+      - notes/03_maximum-likelihood-estimation/index.qmd
+    - notes/04_large-sample-properties-of-maximum-likelihood-estimators/index.qmd
     - notes/references.qmd
 
 bibliography: references.bib
 
 format:
   html:
+    from: markdown+emoji
     theme:
       - cosmo
       - brand
+      - custom.scss
+    lightbox: true
+    html-math-method: 
+      method: katex
+      options:
+        fleqn: true
+
+    toc: true
+    toc-location: left
+
   pdf:
     documentclass: scrreprt
+    lof: true
+    lot: true
+    include-in-header:
+      - text: |
+          \usepackage{cancel}
+  epub:
+    cover-image: cover.png
 
-
-
+execute: 
+  freeze: auto
+  cache: true

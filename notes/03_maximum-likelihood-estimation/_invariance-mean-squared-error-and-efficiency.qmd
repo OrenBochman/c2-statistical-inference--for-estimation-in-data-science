@@ -1,0 +1,118 @@
+#### Invariance, Mean-Squared Error, and Efficiency
+
+
+::: {#exr-01-MLE-invariance-exponential-probability }
+## MLE Invariance for Exponential Distribution Probability
+
+Suppose that $X_{1}, X_{2}, \ldots, X_{n}$ is a random sample from the exponential distribution with rate $\lambda>0$. Find the MLE for $P(X>1)$ where $X$ is a future sampled value.
+
+- [ ] $\sum_{i=1}^{n} \ln (X_{i}/\overline{X})$
+- [ ] $e^{-1/\overline{X}}$
+- [ ] $1-e^{-\overline{X}}$
+- [x] $\frac{1}{n} \sum_{i=1}^{n} \ln X_{i}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::
+
+::: {#exr-02-MLE-efficiency }
+## MLE Efficiency of Mean Estimators
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from any distribution with mean $\mu$ and variance $\sigma^2$.
+
+Consider the following two unbiased estimators of $\mu$.
+
+$$
+\widehat{\mu}_{1} = \overline{X}
+$$
+
+and 
+
+$$
+\widehat{\mu}_{2} = \frac{X_{1}}{3} + \frac{2(X_{2}+ X_{3}+ \cdots +X_{n})}{3(n-1)}
+$$
+
+Find the efficiency of $\widehat{\mu}_{1}$ relative to $\widehat{\mu}_{2}$.
+
+- [ ] $\frac{2(n-1)}{3n^{2}}$
+- [ ] $\frac{n^{2}+3n}{9(n-1)}$
+- [ ] $\frac{2n^{2}-3n}{8}$
+- [ ] $\frac{n-1}{3n}$
+
+:::
+
+
+
+::: {.callout-tip}
+## Solution
+
+:::
+
+::: {#exr-03-MLE-bias-variance }
+## MLE Bias of Variance
+
+Suppose $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from any distribution with mean $\mu$ and variance $\sigma^2$.
+
+Consider the following two unbiased estimators of $\sigma*2$.
+
+$$
+\widehat{\sigma^{2}} = \frac{\sum_{i=1}^{n} (X_{i}-\overline{X})^2}{n}
+$$
+
+what is the bias of this estimator?
+
+- [ ] $S^{2}$
+- [ ] $-\frac{\sigma^{2}}{n}$
+- [ ] $0$
+- [ ] $\frac{\mu^{2}}{\sigma^{2}}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::
+
+::: {#exr-04-mle-estimator-median }
+## MLE Estimator for the Median
+
+The *median* of a continuous distribution corresponding to a rnadom variable $X$,  is a number $\xi$ such that $P(X \leq \xi)=\frac{1}{2}$.
+
+If $X_{1}, X_{2}, \ldots, X_{n}$ is a random sample from the distribution with pdf 
+
+$$
+f(x)= \begin{cases}\frac{3x^{2}}{\theta^{3}} ,& 0<x<\theta\\ 0,&\text{otherwise,} \end{cases}
+$$
+
+find the MLE for the median of the distribution.
+
+- [ ] $\sqrt{2/3} \cdot  \min(X_{1}, X_{2}, \ldots, X_{n})$
+- [ ] $\overline{X}^{1/3}/\theta^{3}$
+- [ ] $\xi^{3}/\theta^{3}$
+- [ ] $\sqrt[3]{1/2} \cdot  \max(X_{1}, X_{2}, \ldots, X_{n})$
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::
+
+::: {#exr-05-mle-estimator-poisson-mse }
+## MLE Mean Squared Error for Poisson Distribution
+Let $X_{1},X_{2}, \ldots, X_{n}$ be a random sample from the Poisson distribution with parameter $\lambda>0$. Let $\widehat{\theta}$ be the MLE for $\lambda$.
+
+What is the mean-squared error of $\widehat{\lambda}$ as an estimator of $\lambda$?
+
+- [ ] $0$
+- [ ] $\lambda/n$
+- [ ] $\lambda^{2}/n$
+- [ ] $\lambda^{2}/\sqrt{n}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+:::

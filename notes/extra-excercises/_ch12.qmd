@@ -1,0 +1,136 @@
+
+## Chapter 12. Linear Regression and Correlation
+
+### Section 1. Linear Equations
+
+TRY IT 12.1
+Is the following an example of a linear equation?
+y = –0.125 – 3.5x
+Solution:
+Yes
+TRY IT 12.2
+Is the following an example of a linear equation? Why or why not?
+
+                            Figure 12.3
+Solution:
+No, the graph is not a straight line; therefore, it is not a linear equation.
+TRY IT 12.3
+Emma’s Extreme Sports hires hang-gliding instructors and pays them a fee of $50 per class as well as $20 per student in the class. The total cost Emma pays depends on the number of students in a class. Find the equation that expresses the total cost in terms of the number of students in a class.
+Solution:
+y = 50 + 20x
+TRY IT 12.4
+Ethan repairs household appliances like dishwashers and refrigerators. For each visit, he charges $25 plus $20 per hour of work. A linear equation that expresses the total amount of money Ethan earns per visit is y = 25 + 20x.
+What are the independent and dependent variables? What is the y-intercept and what is the slope? Interpret them using complete sentences.
+Solution:
+The independent variable (x) is the number of hours Ethan works each visit. The dependent variable (y) is the amount, in dollars, Ethan earns for each visit.
+The y-intercept is 25 (a = 25). At the start of a visit, Ethan charges a one-time fee of $25 (this is when x = 0). The slope is 20 (b = 20). For each visit, Ethan earns $20 for each hour he works.
+Section 2. Scatter Plots
+
+TRY IT 12.5
+Amelia plays basketball for her high school. She wants to improve to play at the college level. She notices that the number of points she scores in a game goes up in response to the number of hours she practices her jump shot each week. She records the following data:
+
+| X (hours practicing jump shot) | Y (points scored in a game) |
+|---:|---:|
+| 5 | 15 |
+| 7 | 22 |
+| 9 | 28 |
+| 10 | 31 |
+| 11 | 33 |
+| 12 | 36 |
+
+: Table 12.2
+
+Construct a scatter plot and state if what Amelia thinks appears to be true.
+Solution:
+
+Yes, Amelia’s assumption appears to be correct. The number of points Amelia scores per game goes up when she practices her jump shot more.
+Section 3. The Regression Equation
+
+TRY IT 12.6
+SCUBA divers have maximum dive times they cannot exceed when going to different depths. The data in Table 12.4 show different depths with the maximum dive times in minutes. Use your calculator to find the least squares regression line and predict the maximum dive time for 110 feet.
+
+| X (depth in feet) | Y (maximum dive time) |
+|---:|---:|
+| 50 | 80 |
+| 60 | 55 |
+| 70 | 45 |
+| 80 | 35 |
+| 90 | 25 |
+| 100 | 22 |
+
+: Table 12.4
+
+Solution:
+ŷ = 127.24 – 1.11x
+At 110 feet, a diver could dive for only five minutes.
+Section 4. Testing the Significance of the Correlation Coefficent
+
+TRY IT 12.7
+For a given line of best fit, you computed that r = 0.6501 using n = 12 data points and the critical value is 0.576. Can the line be used for prediction? Why or why not?
+Solution:
+If the scatter plot looks linear then, yes, the line can be used for prediction, because r > the positive critical value.
+TRY IT 12.8
+For a given line of best fit, you compute that r = 0.5204 using n = 9 data points, and the critical value is 0.666. Can the line be used for prediction? Why or why not?
+Solution:
+No, the line cannot be used for prediction, because r < the positive critical value.
+TRY IT 12.9
+For a given line of best fit, you compute that r = –0.7204 using n = 8 data points, and the critical value is = 0.707. Can the line be used for prediction? Why or why not?
+Solution:
+Yes, the line can be used for prediction, because r < the negative critical value.
+TRY IT 12.10
+For a given line of best fit, you compute that r = 0 using n = 100 data points. Can the line be used for prediction? Why or why not?
+Solution:
+No, the line cannot be used for prediction no matter what the sample size is.
+Section 5. Prediction
+
+TRY IT 12.11
+Data are collected on the relationship between the number of hours per week practicing a musical instrument and scores on a math test. The line of best fit is as follows:
+ŷ = 72.5 + 2.8x 
+What would you predict the score on a math test would be for a student who practices a musical instrument for five hours a week?
+Solution:
+86.5
+Section 6. Outliers
+
+TRY IT 12.12
+Identify the potential outlier in the scatter plot. The standard deviation of the residuals or errors is approximately 8.6.
+
+Figure 12.19
+Solution:
+The outlier appears to be at (6, 58). The expected y value on the line for the point (6, 58) is approximately 82. Fifty-eight is 24 units from 82. Twenty-four is more than two standard deviations (2s = (2)(8.6) = 17.2 ). So 82 is more than two standard deviations from 58, which makes (6, 58) a potential outlier.
+TRY IT 12.13
+The data points for the graph from the third exam/final exam example are as follows: (1, 5), (2, 7), (2, 6), (3, 9), (4, 12), (4, 13), (5, 18), (6, 19), (7, 12), and (7, 21). Remove the outlier and recalculate the line of best fit. Find the value of ŷ when x = 10.
+Solution:
+ŷ = 1.04 + 2.96x; 30.64
+TRY IT 12.14
+The following table shows economic development measured in per capita income PCINC.
+
+| Year | PCINC | Year | PCINC |
+|---:|---:|---:|---:|
+| 1870 | 340 | 1920 | 1050 |
+| 1880 | 499 | 1930 | 1170 |
+| 1890 | 592 | 1940 | 1364 |
+| 1900 | 757 | 1950 | 1836 |
+| 1910 | 927 | 1960 | 2132 |
+
+: Table 12.7
+
+    a. What are the independent and dependent variables?
+    b. Draw a scatter plot.
+    c. Use regression to find the line of best fit and the correlation coefficient.
+    d. Interpret the significance of the correlation coefficient.
+    e. Is there a linear relationship between the variables?
+    f. Find the coefficient of determination and interpret it.
+    g. What is the slope of the regression equation? What does it mean?
+    h. Use the line of best fit to estimate PCINC for 1900, for 2000.
+    i. Determine if there are any outliers.
+Solution:
+a. The independent variable (x) is the year and the dependent variable (y) is the per capita income.
+b.
+
+				               Figure 27
+c. ŷ = 18.61x – 34574; r = 0.9732
+d. At df = 8, the critical value is 0.632. The r value is significant because it is greater than the critical value.
+e. There does appear to be a linear relationship between the variables.
+f. The coefficient of determination is 0.947, which means that 94.7% of the variation in PCINC is explained by the variation in the years.
+g. and h. The slope of the regression equation is 18.61, and it means that per capita income increases by $18.61 for each passing year. ŷ = 785 when the year is 1900, and ŷ = 2,646 when the year is 2000.
+i. There do not appear to be any outliers.

@@ -1,0 +1,185 @@
+
+## Chapter 11. The Chi-Square Distribution
+
+### Section 2. Goodness-of-Fit Test
+
+TRY IT 11.1
+A factory manager needs to understand how many products are defective versus how many are produced. The number of expected defects is listed in Table 11.5.
+
+| Number produced | Number defective |
+|---|---:|
+| 0–100 | 5 |
+| 101–200 | 6 |
+| 201–300 | 7 |
+| 301–400 | 8 |
+| 401–500 | 10 |
+
+: Table 11.5
+
+A random sample was taken to determine the actual number of defects. Table 11.6 shows the results of the survey.
+
+| Number produced | Number defective |
+|---|---:|
+| 0–100 | 5 |
+| 101–200 | 7 |
+| 201–300 | 8 |
+| 301–400 | 9 |
+| 401–500 | 11 |
+
+: Table 11.6
+
+State the null and alternative hypotheses needed to conduct a goodness-of-fit test, and state the degrees of freedom.
+Solution:
+H0:The number of defaults fits expectations.
+Ha:The number of defaults does not fit expectations.
+df = 4
+TRY IT 11.2
+Teachers want to know which night each week their students are doing most of their homework. Most teachers think that students do homework equally throughout the week. Suppose a random sample of 56 students were asked on which night of the week they did the most homework. The results were distributed as in Table 11.8.
+
+| | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Number of Students | 11 | 8 | 10 | 7 | 10 | 5 | 5 |
+
+: Table 11.8
+
+From the population of students, do the nights for the highest number of students doing the majority of their homework occur with equal frequencies during a week? What type of hypothesis test should you use?
+Solution:
+df = 6
+p-value = 0.6093 
+We decline to reject the null hypothesis. There is not enough evidence to support that students do not do the majority of their homework equally throughout the week.
+TRY IT 11.3
+The expected percentage of the number of pets students have in their homes is distributed (this is the given distribution for the student population of the United States) as in Table 11.12.
+
+| Number of Pets | Percent |
+|---|---:|
+| 0 | 18 |
+| 1 | 25 |
+| 2 | 30 |
+| 3 | 18 |
+| 4+ | 9 |
+
+: Table 11.12
+
+A random sample of 1,000 students from the Eastern United States resulted in the data in Table 11.13.
+
+| Number of Pets | Frequency |
+|---|---:|
+| 0 | 210 |
+| 1 | 240 |
+| 2 | 320 |
+| 3 | 140 |
+| 4+ | 90 |
+
+: Table 11.13
+
+At the 1% significance level, does it appear that the distribution “number of pets” of students in the Eastern United States is different from the distribution for the United States student population as a whole? What is the p-value?
+Solution:
+p-value = 0.0036
+We reject the null hypothesis that the distributions are the same. There is sufficient evidence to conclude that the distribution “number of pets” of students in the Eastern United States is different from the distribution for the United States student population as a whole.
+TRY IT 11.4
+Students in a social studies class hypothesize that the literacy rates across the world for every region are 82%. Table 11.14 shows the actual literacy rates across the world broken down by region. What are the test statistic and the degrees of freedom?
+
+| MDG Region | Adult Literacy Rate (%) |
+|---|---:|
+| Developed Regions | 99.0 |
+| Commonwealth of Independent States | 99.5 |
+| Northern Africa | 67.3 |
+| Sub-Saharan Africa | 62.5 |
+| Latin America and the Caribbean | 91.0 |
+| Eastern Asia | 93.8 |
+| Southern Asia | 61.9 |
+| South-Eastern Asia | 91.9 |
+| Western Asia | 84.5 |
+| Oceania | 66.4 |
+
+: Table 11.14
+
+Solution:
+degrees of freedom = 9
+chi2 test statistic = 26.38
+
+Figure 25
+Press STAT and ENTER. Make sure you clear lists L1, L2, and L3 if they have data in them. Into L1, put the observed frequencies 99, 99.5, 67.3, 62.5, 91, 93.8, 61.9, 91.9, 84.5, 66.4. Into L2, put the expected frequencies 82, 82, 82, 82, 82, 82, 82, 82, 82, 82. Arrow over to list L3 and up to the name area "L3". Enter (L1-L2)^2/L2and ENTER. Press 2nd QUIT. Press 2nd LIST and arrow over to MATH. Press 5. You should see "sum". Enter L3. Rounded to two decimal places, you should see 26.38. Press 2nd DISTR. Arrow down to 7:χ2cdf (or press 7). Press ENTER. Enter 26.38,1E99,9). Rounded to four places, you should see .0018, which is the p-value.
+The newer TI-84 calculators have in STAT TESTS the test Chi2 GOF. To run the test, put the observed values (the data) into a first list and the expected values (the values you expect if the null hypothesis is true) into a second list. Press STAT TESTS and Chi2 GOF. Enter the list names for the Observed list and the Expected list. Enter the degrees of freedom and press calculate or draw. Make sure you clear any lists before you start.
+Section 3. Test of Independence
+
+TRY IT 11.5
+A sample of 300 students is taken. Of the students surveyed, 50 were music students, while 250 were not. Ninety-seven were on the honor roll, while 203 were not. If we assume being a music student and being on the honor roll are independent events, what is the expected number of music students who are also on the honor roll?
+Solution:
+About 16 students are expected to be music students and on the honor roll.
+TRY IT 11.6
+The Bureau of Labor Statistics gathers data about employment in the United States. A sample is taken to calculate the number of U.S. citizens working in one of several industry sectors over time. Table 11.17 shows the results:
+
+| Industry Sector | 2000 | 2010 | 2020 | Total |
+|--------------------|---:|---:|---:|---:|
+| Nonagriculture wage and salary | 13,243 | 13,044 | 15,018 | 41,305 |
+| Goods-producing, excluding agriculture | 2,457 | 1,771 | 1,950 | 6,178 |
+| Services-providing | 10,786 | 11,273 | 13,068 | 35,127 |
+| Agriculture, forestry, fishing, and hunting | 240 | 214 | 201 | 655 |
+| Nonagriculture self-employed and unpaid family worker | 931 | 894 | 972 | 2,797 |
+| Secondary wage and salary jobs in agriculture and private household industries | 14 | 11 | 11 | 36 |
+| Secondary jobs as a self-employed or unpaid family worker | 196 | 144 | 152 | 492 |
+| Total | 27,867 | 27,351 | 31,372 | 86,590 |
+
+: Table 11.17
+
+We want to know if the change in the number of jobs is independent of the change in years. State the null and alternative hypotheses and the degrees of freedom.
+
+Solution:
+H0 : The number of jobs is independent of the year.
+Ha : The number of jobs is dependent on the year.
+df = 12
+
+Press the MATRX key and arrow over to EDIT. Press 1:[A]. Press 3 ENTER 3 ENTER. Enter the table values by row. Press ENTER after each. Press 2nd QUIT. Press STATand arrow over to TESTS. Arrow down to C:χ2-TEST. Press ENTER. You should see Observed:[A] and Expected:[B]. Arrow down to Calculate. Press ENTER. The test statistic is 227.73 and the p−value = 5.90E - 42 = 0. Do the procedure a second time but arrow down to Draw instead of calculate.
+TRY IT 11.7
+Refer back to the information in Try It 11.6. How many service providing jobs are there expected to be in 2020? How many nonagriculture wage and salary jobs are there expected to be in 2020?
+Solution:
+12,727, 14,965
+TRY IT 11.8
+Do families and singles have the same distribution of cars? Use a level of significance of 0.05. Suppose that 100 randomly selected families and 200 randomly selected singles were asked what type of car they drove: sport, sedan, hatchback, truck, van/SUV. The results are shown in Table 11.20. Do families and singles have the same distribution of cars? Test at a level of significance of 0.05.
+
+| | Sport | Sedan | Hatchback | Truck | Van/SUV |
+|---|---:|---:|---:|---:|---:|
+| Family | 5 | 15 | 35 | 17 | 28 |
+| Single | 45 | 65 | 37 | 46 | 7 |
+
+: Table 11.20
+
+Solution:
+With a p-value of almost zero, we reject the null hypothesis. The data show that the distribution of cars is not the same for families and singles.
+TRY IT 11.9
+Ivy League schools receive many applications, but only some can be accepted. At the schools listed in Table 11.22, two types of applications are accepted: regular and early decision.
+
+| Application Type Accepted | Brown | Columbia | Cornell | Dartmouth | Penn | Yale |
+|---|---:|---:|---:|---:|---:|---:|
+| Regular | 2,115 | 1,792 | 5,306 | 1,734 | 2,685 | 1,245 |
+| Early Decision | 577 | 627 | 1,228 | 444 | 1,195 | 761 |
+
+: Table 11.22
+
+We want to know if the number of regular applications accepted follows the same distribution as the number of early applications accepted. State the null and alternative hypotheses, the degrees of freedom and the test statistic, sketch the graph of the p-value, and draw a conclusion about the test of homogeneity.
+Solution:
+H0 : The distribution of regular applications accepted is the same as the distribution of early applications accepted.
+Ha : The distribution of regular applications accepted is not the same as the distribution of early applications accepted. 
+df = 5 
+χ2 test statistic = 430.06
+
+Figure 26
+Press the MATRX key and arrow over to EDIT. Press 1:[A]. Press 3 ENTER 3 ENTER. Enter the table values by row. Press ENTER after each. Press 2nd QUIT. Press STAT and arrow over to TESTS. Arrow down toC:χ2-TEST. Press ENTER. You should see Observed:[A] and Expected:[B]. Arrow down to Calculate. Press ENTER. The test statistic is 430.06 and the p-value = 9.80E-91. Do the procedure a second time but arrow down to Draw instead of calculate.
+Section 6. Test of a Single Variance
+
+TRY IT 11.10
+A SCUBA instructor wants to record the collective depths each of his students dives during their checkout. He is interested in how the depths vary, even though everyone should have been at the same depth. He believes the standard deviation is three feet. His assistant thinks the standard deviation is less than three feet. If the instructor were to conduct a test, what would the null and alternative hypotheses be?
+Solution:
+H0: σ2 = 32
+Ha: σ2 < 32
+TRY IT 11.11
+The FCC conducts broadband speed tests to measure how much data per second passes between a consumer’s computer and the internet. At a certain point in time, the standard deviation of Internet speeds across Internet Service Providers (ISPs) was 12.2 percent. Suppose a sample of 15 ISPs is taken, and the standard deviation is 13.2. An analyst claims that the standard deviation of speeds is more than what was reported. State the null and alternative hypotheses, compute the degrees of freedom, the test statistic, sketch the graph of the p-value, and draw a conclusion. Test at the 1% significance level.
+Solution:
+H0: σ2 = 12.22
+Ha: σ2 > 12.22 
+df = 14 
+chi2 test statistic = 16.39
+
+The p-value is 0.2902, so we decline to reject the null hypothesis. There is not enough evidence to suggest that the variance is greater than 12.22.
+In 2nd DISTR, use7:χ2cdf. The syntax is (lower, upper, df) for the parameter list. χ2cdf(16.39,10^99,14). The p-value = 0.2902.

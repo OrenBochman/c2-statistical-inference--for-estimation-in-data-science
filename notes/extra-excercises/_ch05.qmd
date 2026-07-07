@@ -1,0 +1,224 @@
+
+## Chapter 5. Continuous Random Variables
+
+### Section 1. Continuous Probability Functions
+
+::: {#exr-try-5-1}
+Consider the function $f(x) =  for 0 ≤ x ≤ 8$. Draw the graph of f(x) and find $P(2.5 < x < 7.5)$.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Figure 16
+$P (2.5 < x < 7.5) = 0.625$
+:::
+
+### Section 2. The Uniform Distribution
+
+::: {#exr-try-5-2}
+#### Uni
+The data that follow record the total weight, to the nearest pound, of fish caught by passengers on 35 different charter fishing boats on one summer day. 
+
+The sample mean = 7.9 and 
+the sample standard deviation = 4.33. 
+
+The data follow a uniform distribution where all values between and including zero and 14 are equally likely. 
+
+State the values of a and b. Write the distribution in proper notation, and calculate the theoretical mean and standard deviation.
+
+| A | B  | C | D  | E | F  | G  |
+|---|----|---|----|---|----|----|
+| 1 | 12 | 4 | 10 | 4 | 14 | 11 |
+| 7 | 11 | 4 | 13 | 2 | 4  | 6  |
+| 3 | 10 | 0 | 12 | 6 | 9  | 10 |
+| 5 | 13 | 4 | 10 | 14| 12 | 11 |
+| 6 | 10 | 11| 0  | 11| 13 | 2  |
+
+: Table 5.2
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a is zero; b is 14; X ~ U (0, 14); μ = 7 pounds; σ = 4.04 pounds
+:::
+
+::: {#exr-try-5-3}
+A distribution is given as X ~ U (0, 20). What is P(2 < x < 18)? Find the 90th percentile.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(2 < x < 18) = 0.8; 90th percentile = 18
+:::
+
+::: {#exr-try-5-4}
+The total duration of baseball games in the major league in a typical season is uniformly distributed between 447 hours and 521 hours inclusive.
+a. Find a and b and describe what they represent.
+b. Write the distribution.
+c. Find the mean and the standard deviation.
+d. What is the probability that the duration of games for a team for a single season is between 480 and 500 hours?
+e. What is the 65th percentile for the duration of games for a team in a single season?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. a is 447, and b is 521. a is the minimum duration of games for a team for the 2011 season, and b is the maximum duration of games for a team for the 2011 season.
+b. X ~ U (447, 521).
+c. μ = 484, and σ = 21.36
+d. P(480 < x < 500) = 0.2703
+e. 65th percentile is 495.1 hours.
+:::
+
+::: {#exr-try-5-5}
+Suppose the time it takes a student to finish a quiz is uniformly distributed between six and 15 minutes, inclusive. Let X = the time, in minutes, it takes a student to finish a quiz. Then X ~ U(6, 15).
+Find the probability that a randomly selected student needs at least eight minutes to complete the quiz. Then find the probability that a different student needs at least eight minutes to finish the quiz given that she has already taken more than seven minutes.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P (x > 8) = 0.7778
+
+P (x > 8 | x > 7) = 0.875
+:::
+
+::: {#exr-try-5-6}
+The amount of time a service technician needs to change the oil in a car is uniformly distributed between 11 and 21 minutes. Let X = the time needed to change the oil on a car.
+
+a. Write the random variable X in words. X = __________________.
+b. Write the distribution.
+c. Graph the distribution.
+d. Find P (x > 19).
+e. Find the 50th percentile.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+-   a. Let X = the time needed to change the oil in a car.
+-   b. X ~ U (11, 21).
+-   c.
+-   d. P (x > 19) = 0.2
+-   e. the 50th percentile is 16 minutes.
+:::
+
+### Section 3. The Exponential Distribution
+
+::: {#exr-try-5-7}
+The amount of time spouses shop for anniversary cards can be modeled by an exponential distribution with the average amount of time equal to eight minutes. Write the distribution, state the probability density function, and graph the distribution.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+X ~ Exp(0.125); f(x) = 0.125e–0.125x;
+
+Figure 17
+:::
+
+::: {#exr-try-5-8}
+The number of days ahead travelers purchase their airline tickets can be modeled by an exponential distribution with the average amount of time equal to 15 days. Find the probability that a traveler will purchase a ticket fewer than ten days in advance. How many days do half of all travelers wait?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x < 10) = 0.4866
+
+50th percentile = 10.40
+:::
+
+::: {#exr-try-5-9}
+On average, a pair of running shoes can last 18 months if used every day. The length of time running shoes last is exponentially distributed. What is the probability that a pair of running shoes last more than 15 months? On average, how long would six pairs of running shoes last if they are used one after the other? Eighty percent of running shoes last at most how long if used every day?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+P(x > 15) = 0.4346
+
+Six pairs of running shoes would last 108 months on average.
+
+80th percentile = 28.97 months
+:::
+
+::: {#exr-try-5-10}
+Suppose that the distance, in miles, that people are willing to commute to work is an exponential random variable with a decay parameter . Let X = the distance people are willing to commute in miles. What is m, μ, and σ? What is the probability that a person is willing to commute more than 25 miles?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+m = ; μ = 20; σ = 20; P(x > 25) = 0.2865
+:::
+
+::: {#exr-try-5-11}
+#### Cars on a Highway
+Suppose that on a certain stretch of highway, cars pass at an average rate of five cars per minute. Assume that the duration of time between successive cars follows the exponential distribution.
+a. On average, how many seconds elapse between two successive cars?
+b. After a car passes by, how long on average will it take for another seven cars to pass by?
+c. Find the probability that after a car passes by, the next car will pass within the next 20 seconds.
+d. Find the probability that after a car passes by, the next car will not pass for at least another 15 seconds.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+a. At a rate of five cars per minute, we expect  = 12 seconds to pass between successive cars on average.
+b. Using the answer from part a, we see that it takes $(12)(7) = 84$ seconds for the next seven cars to pass by.
+c. Let T = the time (in seconds) between successive cars.
+   The mean of T is 12 seconds, so the decay parameter is  and T ∼ Exp. The cumulative distribution function of T is P(T < t) = 1 – e-t/12. Then P(T < 20) = 1 –e-20/12 ≈ 0.8111.
+d. P(T > 15) = 1 – P(T < 15) = 1 – (1 – e-15/12) = e-15/12 ≈ 0.2865.
+:::
+
+::: {#exr-try-5-12}
+#### Light bulb Longevity
+Suppose that the longevity of a light bulb is exponential with a mean lifetime of eight years. If a bulb has already lasted 12 years, find the probability that it will last a total of over 19 years.
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+Let T = the lifetime of the light bulb. Then T ∼ Exp(1/8).
+
+The cumulative distribution function is P (T < t) = 1 – e-t/s
+
+We need to find P(T > 19|T = 12). By the memoryless property,
+
+P(T>19|T = 12) = P(T > 7) = 1 – P(T < 7) = 1 – (1 – e–7/8)= e-7/8 ≈ 0.4169.
+:::
+
+::: {#exr-try-5-13}
+In a small city, the number of automobile accidents occur with a Poisson distribution at an average of three per week.
+
+a. Calculate the probability that there are at most 2 accidents occur in any given week.
+b. What is the probability that there is at least two weeks between any 2 accidents?
+:::
+
+::: {.callout-tip collapse="true"}
+#### Solution
+
+a. Let $X =$ the number of accidents per week, so that $X \sim Poisson(3)$. 
+   We need to find $P(X ≤ 2) ≈ 0.4232$
+    
+```{r}
+round(ppois(2, 3), 4)
+```
+b. Let T = the time (in weeks) between successive accidents.
+
+Since the number of accidents occurs with a Poisson distribution, the time between accidents follows the exponential distribution.
+
+If there are an average of three per week, then on average there is $μ = 1/3$ of a week between accidents, and the decay parameter is $m = \frac{1}{\frac{1}{3}} = 3$.
+
+To find the probability that there are at least two weeks between two accidents, 
+
+$P(T > 2) = 1 – P(T < 2) = 1 – (1 – e^{(–3)(2)}) = e^{–6} ≈ 0.0025$.
+
+```{r}
+#e^{-3*2}
+round(exp(-3*2), 4)
+```
+:::

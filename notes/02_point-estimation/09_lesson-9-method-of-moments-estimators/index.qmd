@@ -1,0 +1,91 @@
+---
+title: "Module 2: Point Estimation"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+## Method of Moments Estimators 
+
+### (Video)
+
+::: {.column-margin}
+{{< video 01_method-of-moments-estimators.mp4 >}}
+
+[transcript](01_method-of-moments-estimators.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-method-of-moments-estimators_module1_lesson8.pdf){width=700 height=700}
+
+### Graded Quiz
+
+{{< include ../_method-of-moments-estimation.qmd >}}
+
+
+### Historical Note:
+
+> How is the method of moments in statistics related to moments in physics?
+
+The method of moments in statistics and the concept of moments in physics are related through the underlying mathematical idea of "moments," but they are applied in different contexts.
+
+Key connections include: 
+
+- Historical Origin: Statistical moments were adapted from mechanics by Karl Pearson, who used them to characterize frequency curves, equating the "center of gravity" of a curve with the mean.
+- Shared Concept: In both fields, a moment is a weighted average calculated by summing or integrating a quantity (mass or probability) multiplied by a distance (\(x-c\))\({}^{n}\).
+- Physical Analogs:
+  - 0th Moment: Represents total mass in physics or total probability (1) in statistics.
+  - 1st Moment: Represents the center of mass in physics or the mean (expected value) in statistics.
+  - 2nd Moment: Represents the moment of inertia in physics or variance/spread in statistics. 
+
+The method of moments is a technique used for parameter estimation by equating sample moments (e.g., sample mean) to theoretical moments
+
+### Reflection
+
+The method of moments in statistics is directly related to the concept of moments in physics and mechanics. Both concepts arise from the same mathematical foundation of weighted averages, where statistical moments (mean, variance) represent distribution properties, while physical moments represent mass, center of gravity, or torque.
+
+Casella and Berger [@CasellaBerger2002] describe the method of moments as a "general purpose" method for deriving estimators even when the model is so complicated that it becomes unclear how to proceed (with MLE and Bayesian estimation). 
+
+I would however start with pointing out that when we have data from an experiment and if we have also arrived at a model based on PDF or CDF for the data generating process then we would generally want to estimate the parameters of said model. This is the parameter estimation problem. 
+
+The method of moments (MoM) is a simple and intuitive method for estimating the parameters of a probability distribution based on simple (to compute) functions of the data like the mean and variance. It isn't pointed out explicitly but MLE and other methods can give us better estimators (unbiased and with minimal variance for example) but they may be harder to compute or derive. Once we learn MoM and MLE we will dive deeper into estimation theory which exploits what makes one estimator better than others.
+
+
+One issue I see with the method of moments is that we need to be told the distribution family. Another is that we need to rewrite the PDF in terms of the parameter and this is not always easy. 
+
+Another issue according to wikipedia is that the MoM can yield nonlinear equations that may not be solvable or tractable.
+
+It turns out that we have some variation of the Moment we can pick and choose from.
+
+- There is the classical MoM which uses the raw moments (i.e. moments about zero) 
+- There is the central MoM which uses the central moments (i.e. moments about the mean)
+- There is the standardized MoM which uses the standardized moments (i.e. moments about the mean divided by the standard deviation)
+
+
+Variants of the MoM:
+
+1. Taking the moments about a point = 0 
+2. taking the central moments about the mean
+3. GMoM = generalized method of moments = used in econometrics where there are more moment conditions than parameters to estimate. This uses an optimization approach to minimize the distance between sample moments and population moments.
+4. Bayesian method of moments c.f. https://cyclostationarity.com/wp-content/uploads/2024/02/jem_01jan2024.pdf This is a bayesian variant of the method of moments that is both more flexible and gives linear equations to solve.
+
+I had high hopes for using the method of moments to coax estimators out of limited data for elasticity modeling, but it seems that this is not going to be practical as this is a latent variable problem and the method of moments estimators are likely to be challenging to derive as this is not a standard distribution.
+
+It looks like it might be worthwhile to do further exercises for more distributions to get a better feel for the method of moments and when it can be appropriately applied. Also I think it might be useful when working with the Metalog distribution and might be an alternative approach to inferring the parameters.
+
+MoM is also mentioned the use in terms of Processes and Time series analysis.
+
+2. The Method of Moments can be related to the moment generating function (MGF) of a distribution. The MGF is a function that encodes all the moments of a random variable. By taking derivatives of the MGF at zero, we can obtain the moments of the distribution. This connection can sometimes simplify the process of finding method of moments estimators, especially for more complex distributions. The only problem with the MGF is that not all distributions have moments so there is no mgf defined for them. This is the case for example for the Cauchy distribution where the mean and variance are undefined.
+
+3. Since the characteristic function (CF) however always exists for any probability distribution. I wonder if :
+
+    - there is a method to a proximate a distribution using an "Empirical  characteristic function"?
+    - Can we use it to derive MOM estimators for the parameters?
+    - Can we use in the linear bayesian method above?
+    - Can we use fast fourier transforms to speed up the calculations as this seems to be closely related?
+
+### Additional Resources
+
+- [The Method of Moments](https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/07%3A_Point_Estimation/7.02%3A_The_Method_of_Moments) article by Kyle Siegrist
+
+
+{{< include ../_point-estimation-lab.qmd >}}

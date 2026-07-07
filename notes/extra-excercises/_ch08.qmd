@@ -1,0 +1,166 @@
+
+## Chapter 8. Confidence Intervals
+
+### Section 1. A Single Population Mean using the Normal Distribution
+
+TRY IT 8.1
+Suppose we have data from a sample. The sample mean is 15, and the error bound for the mean is 3.2.
+What is the confidence interval estimate for the population mean?
+Solution:
+(11.8, 18.2)
+TRY IT 8.2
+Suppose average pizza delivery times are normally distributed with an unknown population mean and a population standard deviation of six minutes. A random sample of 28 pizza delivery restaurants is taken and has a sample mean delivery time of 36 minutes.
+Find a 90% confidence interval estimate for the population mean delivery time.
+Solution:
+(34.1347, 37.8653)
+TRY IT 8.3
+Table 8.2 shows a different random sampling of 20 cell phone models. Use this data to calculate a 93% confidence interval for the true mean SAR for cell phones certified for use in the United States. As previously, assume that the population standard deviation is σ = 0.337.
+| SAR  | SAR  |
+|------|------|
+| 1.48 | 1.53 |
+| 0.8  | 0.68 |
+| 1.15 | 1.4  |
+| 1.36 | 1.24 |
+| 0.77 | 0.57 |
+| 0.462| 0.2  |
+| 1.36 | 0.51 |
+| 1.39 | 0.3  |
+| 1.3  | 0.73 |
+| 0.7  | 0.869|
+
+: Table 8.2
+Solution:
+x̄ =0.940 x̄ =0.940
+ =  = =0.035 
+Z0.035 = 1.812
+EBM=(Z0.035)(  )=(1.812)(  )=0.1365
+x̄ – EBM = 0.940 – 0.1365 = 0.8035
+x̄ + EBM = 0.940 + 0.1365 = 1.0765
+We estimate with 93% confidence that the true SAR mean for the population of cell phones in the United States is between 0.8035 and 1.0765 watts per kilogram.
+TRY IT 8.4
+Refer back to the pizza-delivery Try It exercise. The population standard deviation is six minutes and the sample mean deliver time is 36 minutes. Use a sample size of 20. Find a 95% confidence interval estimate for the true mean pizza delivery time.
+Solution:
+(33.37, 38.63)
+TRY IT 8.5
+Refer back to the pizza-delivery Try It 8.2 exercise. The mean delivery time is 36 minutes and the population standard deviation is six minutes. Assume the sample size is changed to 50 restaurants with the same sample mean. Find a 90% confidence interval estimate for the population mean delivery time.
+Solution:
+(34.6041, 37.3958)
+TRY IT 8.6
+Suppose we know that a confidence interval is (42.12, 47.88). Find the error bound and the sample mean.
+Solution:
+Sample mean is 45, error bound is 2.88
+TRY IT 8.7
+The population standard deviation for the height of high school basketball players is three inches. If we want to be 95% confident that the sample mean height is within one inch of the true population mean height, how many randomly selected students must be surveyed?
+Solution:
+35 Students
+Section 2. Single Population Mean using the Student t Distribution
+
+TRY IT 8.8
+You do a study of hypnotherapy to determine how effective it is in increasing the number of hours of sleep subjects get each night. You measure hours of sleep for 12 subjects with the following results. Construct a 95% confidence interval for the mean number of hours slept for the population (assumed normal) from which you took the data.
+8.2; 9.1; 7.7; 8.6; 6.9; 11.2; 10.1; 9.9; 8.9; 9.2; 7.5; 10.5
+Solution:
+(8.1634, 9.8032)
+TRY IT 8.9
+A random sample of statistics students were asked to estimate the total number of hours they spend watching television in an average week. The responses are recorded in Table 8.4. Use this sample data to construct a 98% confidence interval for the mean number of hours statistics students will spend watching television in one week.
+| A  | B  | C | D  | E |
+|----|----|---|----|---|
+| 0  | 3  | 1 | 20 | 9 |
+| 5  | 10 | 1 | 10 | 4 |
+| 14 | 2  | 4 | 4  | 5 |
+
+: Table 8.4
+Solution:
+Solution A
+x̄ = 6.133, s = 5.514, n = 15, and df = 15 – 1 = 14
+CL = 0.98, so α = 1 - CL = 1 - 0.98 = 0.02
+α/2=0.01tα/2=t0.01=2.624
+EBM=tα/2()=2.624(~3.736
+x̄ – EBM = 6.133 – 3.736 = 2.397
+x̄ + EBM = 6.133 + 3.736 = 9.869
+We estimate with 98% confidence that the mean number of all hours that statistics students spend watching television in one week is between 2.397 and 9.869.
+
+Solution B
+Enter the data as a list.
+Press STAT and arrow over to TESTS.
+Arrow down to 8:TInterval.
+Press ENTER.
+Arrow to Data and press ENTER.
+Arrow down and enter the name of the list where the data is stored.
+Enter Freq: 1
+Enter C-Level: 0.98
+Arrow down to Calculate and press Enter.
+The 98% confidence interval is (2.3965, 9.8702).
+Section 3. A Population Proportion
+
+TRY IT 8.10
+Suppose 250 randomly selected people are surveyed to determine if they own a tablet. Of the 250 surveyed, 98 reported owning a tablet. Using a 95% confidence level, compute a confidence interval estimate for the true proportion of people who own tablets.
+Solution:
+(0.3315,0.4525)
+TRY IT 8.11
+A student polls their school to see if students in the school district are for or against the new legislation regarding school uniforms. They survey 600 students and finds that 480 are against the new legislation.
+a. Compute a 90% confidence interval for the true percent of students who are against the new legislation, and interpret the confidence interval.
+b. In a sample of 300 students, 68% said they own an iPod and a smart phone. Compute a 97% confidence interval for the true percent of students who own an iPod and a smartphone.
+Solution:
+a. (0.7731, 0.8269); We estimate with 90% confidence that the true percent of all students in the district who are against the new legislation is between 77.31% and 82.69%.
+b. 
+Solution A;
+Sixty-eight percent (68%) of students own an iPod and a smart phone.
+p′=0.68
+q′=1–p′=1–0.68=0.32
+Since CL = 0.97, we know α = 1 – 0.97 = 0.03 and α/2 = 0.015.
+The area to the left of z0.015 is 0.015, and the area to the right of z0.015 is 1 – 0.015 = 0.985.
+Using the TI 83, 83+, or 84+ calculator function InvNorm(.985,0,1),
+z0.015=2.17
+EPB = (zα/2) = 2.17 ≈ 0.0584
+p′ – EPB = 0.68 – 0.0584 = 0.6216
+p′ + EPB = 0.68 + 0.0584 = 0.7384
+We are 97% confident that the true proportion of all students who own an iPod and a smart phone is between 0.6216 and 0.7384.
+Solution B:
+Press STAT and arrow over to TESTS.
+Arrow down to A:1-PropZint. Press ENTER.
+Arrow down to x and enter 300*0.68. 
+Arrow down to n and enter 300.
+Arrow down to C-Level and enter 0.97.
+Arrow down to Calculate and press ENTER.
+The confidence interval is (0.6216, 0.7384).
+TRY IT 8.12
+Out of a random sample of 65 first-year students at State University, 31 students have declared a major. Use the “plus-four” method to find a 96% confidence interval for the true proportion of first-year students at State University who have declared a major.
+Solution:
+Solution A
+Using “plus four,” we have x = 31 + 2 = 33 and n = 65 + 4 = 69.
+p′=33/69≈0.478
+q′=1–p′=1–0.478=0.522
+Since CL = 0.96, we know α = 1 – 0.96 = 0.04 and α/2 = 0.02.
+z0.02=2.054z0.02=2.054
+EPB = (zα/2) = 2.054 ≈ 0.124
+p′ – EPB = 0.478 – 0.124 = 0.354
+p′ + EPB = 0.478 + 0.124 = 0.602
+We are 96% confident that between 35.4% and 60.2% of all freshmen at State U have declared a major.
+Solution B
+Press STAT and arrow over to TESTS.
+Arrow down to A:1-PropZint. Press ENTER.
+Arrow down to x and enter 33.
+Arrow down to n and enter 69.
+Arrow down to C-Level and enter 0.96.
+Arrow down to Calculate and press ENTER.
+The confidence interval is (0.355, 0.602).
+TRY IT 8.13
+The survey referenced in Example 8.13 talked to adults aged 18–29 in smaller focus groups, but also interviewed additional individuals  over the phone. When the study was complete, 588 adults aged 18–29 had answered the question about their potential purchase of an electric vehicle with 159 saying that they would consider such a purchase. Use the “plus-four” method to find a 90% confidence interval for the true proportion of adults who would consider such a purchase based on this larger sample. Compare the results to those in Example 8.13.
+
+Solution:
+
+Solution A
+Using “plus four,” we have x = 159 + 2 = 161 and n = 588 + 4 = 592.
+p′=161/592 ≈ 0.272
+q′=1–p′=1–0.272=0.728
+Since CL = 0.90, we know α = 1 – 0.90 = 0.10 and α/2 = 0.05.
+EPB = (zα/2) = 1.645 ≈ 0.030
+p′ – EPB = 0.272 – 0.030 = 0.242
+p′ + EPB = 0.272 + 0.034 = 0.302
+We are 96% confident that between 24.2% and 30.2% of all adults aged 18–29 would report considering the purchase of an electric vehicle.
+
+TRY IT 8.14
+Suppose an internet marketing company wants to determine the current percentage of customers who click on ads on their smartphones. How many customers should the company survey in order to be 90% confident that the estimated proportion is within five percentage points of the true population proportion of customers who click on ads on their smartphones?
+
+Solution:
+271 customers should be surveyed.

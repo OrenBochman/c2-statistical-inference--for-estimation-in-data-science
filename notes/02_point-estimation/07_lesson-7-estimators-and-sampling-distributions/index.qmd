@@ -1,0 +1,155 @@
+---
+title: "Module 2: Point Estimation"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+## Estimators and Sampling Distributions 
+
+
+::: {.column-margin}
+{{< video 01_estimators-and-sampling-distributions.mp4 >}}
+
+[transcript](01_estimators-and-sampling-distributions.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-for-estimators-and-sampling-distributions_module1_lesson6.pdf){width=700 height=700}
+
+
+### Glossary
+
+Estimation is a fundamental task in statistics and data science. It involves using data to make inferences about unknown parameters or quantities of interest. We may at times wish to be very precise when discussing estimation which is why there it has a rich terminology. However this can also make the subject more difficult to approach so let's unpack some of the key terms related to estimation that we will be using in this and the next few modules.
+
+A good starting point is to think about what we want to estimate:
+
+Population parameter
+: is a parameter that describes a characteristic of the entire population. (Not to be confused with the parameter of a distribution). In reality we don't know the population parameter and we want to estimate it using data. For example, the population mean $\mu$ is a parameter that describes the average value of a characteristic in the entire population.
+
+Sample statistic
+: is a function of the observed data. 
+
+Sampling Distribution
+: is the probability distribution of a given statistic based on a random sample. It describes how the statistic would vary if we were to take many samples from the same population.
+
+Empirical Distribution
+: is the distribution of observed data points. It can be represented as a histogram or a kernel density estimate.
+
+Estimator
+: is a rule for calculating an estimate of a given quantity based on observed data. If the parameter is denoted ${\displaystyle \theta }$ then the estimator is traditionally written by adding a circumflex over the symbol: ${\displaystyle {\widehat {\theta }}}$. 
+The estimator is a function of the data thus a random variable. As such a particular realization of this random variable is called the "estimate". c.f. [statproofbook](https://statproofbook.github.io/D/est)
+
+Point Estimator
+: is a function that provides a single value^[but does not necessarily mean "single number", but includes vector valued or function valued estimators] as an estimate of an unknown parameter. This is the default type of estimator we consider in this course. E.g. the sample mean is a point estimator for the population mean.
+
+Interval Estimator
+: provides a range of values (an interval) within which the parameter is expected to lie with a certain level of confidence. E.g. a 95% confidence interval for the population mean.
+
+Estimand
+: is the quantity or parameter that we are trying to estimate. c.f. [statproofbook](https://statproofbook.github.io/D/est). This usually refers to a population parameter. It is denoted by a greek symbol like $\theta$ (generic) or $\mu$ and $\sigma$ (specific for mean and standard deviation).
+
+Estimate
+: is the specific value obtained from applying the estimator to a particular set of data. c.f.[statproofbook](https://statproofbook.github.io/D/est)
+
+Next we can talk about the properties of estimators - we will talk about these properties in more detail in the next few modules but it can be helfpful to have a quick overview of the key properties of estimators
+
+Point estimator
+: is a single value that serves as an estimate of the parameter of interest.
+
+Unbiased Estimator
+: is an estimator whose expected value equals the true value of the parameter being estimated. c.f. [statproofbook](https://statproofbook.github.io/D/est-bias)
+
+Sufficient Statistic
+: is a statistic that captures all the information about a parameter contained in the data.
+
+Consistent Estimator
+: is an estimator that converges in probability to the true parameter value as the sample size increases.
+
+Fisher Information
+: is a measure of the amount of information that an observable random variable carries about an unknown parameter upon which the probability of the random variable depends.
+
+Asymptotically Normal Estimator
+: is an estimator whose distribution approaches a normal distribution as the sample size increases.
+
+Efficiency
+: is a measure of the quality of an estimator, often defined in terms of its variance relative to the Cramer-Rao lower bound.
+
+Robust Estimator
+: is an estimator that is not unduly affected by small departures from model assumptions, such as outliers in the data.
+
+Shrinkage Estimator
+: is an estimator that "shrinks" estimates towards a central value or target to improve estimation accuracy, especially in high-dimensional settings. Shrinkage is *implicit* in Bayesian inference and penalized likelihood inference, and *explicit* in [James–Stein](https://en.wikipedia.org/wiki/James%E2%80%93Stein_estimator)-type inference. In contrast, simple types of MLE and least-squares estimation procedures do not include shrinkage effects.
+
+UMVUE
+: stands for Uniformly Minimum Variance Unbiased Estimator. It is an unbiased estimator that has the lowest variance among all unbiased estimators for a given parameter. [UMVUE](https://en.wikipedia.org/wiki/Uniformly_minimum_variance_unbiased_estimator) is also known as the [Lehmann–Scheffé estimator](https://en.wikipedia.org/wiki/Lehmann%E2%80%93Scheff%C3%A9_theorem).
+
+
+### Theorems
+
+The following theorems are useful to characterize a "best unbiased estimators".
+
+Gauss–Markov theorem
+: The ordinary least squares (OLS) estimator has the lowest sampling variance (variance of the estimator across samples) within the class of linear unbiased estimators, if the errors in the linear regression model are uncorrelated, have equal variances and expectation value of zero. see [Gauss–Markov theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). 
+
+Cramér–Rao bound
+: If an unbiased estimator exists for a parameter, then the variance of the estimator is at least as high as the inverse of the Fisher information. see [Cramér–Rao bound](https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound). 
+
+<!-- 
+TODO: we could add a shiny widget of a radar that uses different estimators to locate a moving target and we can see how the different properties of the estimators affect the performance of the radar. 
+-->
+
+::: {.callout-note}
+## Cramér–Rao, Bhattacharyya and Chapman-Robbins bounds
+Although the Cramér–Rao bound sounds like the "Final word" on the subject, it is perhaps just the stating point. I think that the if we find a criterion for the best unbiased estimator that is general there might be other bounds that are tighter for specific problems.
+There are also the [Bhattacharyya bound](https://en.wikipedia.org/wiki/Anil_Kumar_Bhattacharyya#Bhattacharyya_bound) and [Chapman-Robbins bound](https://en.wikipedia.org/wiki/Chapman%E2%80%93Robbins_bound) which can be tighter or applicable in cases where the Cramér–Rao bound does not apply e.g. when the Fisher information is not defined.
+:::
+
+Rao-Blackwell Theorem
+: If you have an unbiased estimator, you can create a new estimator that is at least as good (in terms of variance) by conditioning on a sufficient statistic. This process is known as Rao-Blackwellization.
+
+Lehmann-Scheffé Theorem
+: If you have a complete sufficient statistic, then any unbiased estimator that is a function of this statistic is the UMVUE. c.f. [Lehmann-Scheffé theorem](https://en.wikipedia.org/wiki/Lehmann%E2%80%93Scheff%C3%A9_theorem).
+
+Additional Results in Estimation Theory
+
+: The mean squared error can be partitioned into variance and squared bias. c.f. [statproofbook](https://statproofbook.github.io/P/mse-bnv)
+
+
+### Reflection
+
+Sampling distributions and the empirical distribution are two very different concepts. 
+
+The **empirical distribution**  is based on the observed data and represents the distribution of the data points themselves. 
+This is what we have access to in practice and is what we use to make inferences about the population parameter. 
+One way to think about this is that it comes from a experiment that samples a part of the distribution of a population and as the sample size increases the empirical distribution will get closer and closer to the true distribution of that population.
+But in reality collecting data is a costly and after a certain point we get diminishing returns in terms of how much closer the empirical distribution gets to the true distribution. 
+This notion of diminishing returns is what motivates us to ask the question "is my sample size large enough?" and to think about the sampling distribution of our estimator.
+
+The **sampling distribution**, is a theoretical construct that describes how a statistic might vary across different samples drawn from the same population. 
+
+This is an abstraction of what different empirical distributions might look like if we were to take many samples from the population. 
+
+It will allow us to develop the notion of how typical or how extreme an empirical distribution 
+is and to make probabilistic statements about the parameter we are trying to estimate. 
+
+We will develop this concept in more detail to answer a number of important questions in estimation and inference. e.g.
+
+- How typical or how extreme is our empirical distribution?
+- Is our sample size large enough to make inferences about the population parameter?
+- Does our experiment have sufficient power to detect an effect if it exists?
+- Can we be 95% certain that an outcome we observed is an effect of the phenomenon we are studying and not just an artifact of random sampling error?
+- Can we be 95% certain that a confidence interval we constructed contains the true parameter value?
+- Can we be 95% certain that a hypothesis test we conducted correctly rejected the null hypothesis?
+
+When we think if our sample size is large enough we are really asking if the sampling distribution of our estimator is close enough to a normal distribution (or some other well-known distribution) that we can use it to make inferences about the population parameter.
+
+There are many analogs for this question with respect to different estimators like order statistics, interval statistics etc.
+For instance in hypothesis testing we use an interval estimator to construct a 99% confidence interval. 
+We are asking can we be certain that in 99% of repeated experiments this confidence interval contains the true parameter value. 
+(So that if our own empirical distribution is only 1% likely to be observed under the sampling distribution of the estimator then we can reject the null hypothesis -- i.e. we only have 1 in 100 chance of being wrong due to random sampling error).
+
+<!-- nice to have a visual of the sampling distribution and the empirical distribution side by side to see the difference. -->
+ 
+
+

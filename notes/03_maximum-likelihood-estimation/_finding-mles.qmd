@@ -1,0 +1,363 @@
+#### Finding MLEs 
+
+
+
+
+
+::: {#exr-01-mle-estimator-poisson }
+## Poisson MLE
+[Poisson MLE]{.column-margin}
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the Poisson distribution with parameter $\lambda$.
+Which of the following is the maximum likelihood estimator for $\lambda$?
+
+- [x] The The sample mean $\overline{X}$
+- [ ] The maximum value in the sample $\max(X_{1}, X_{2}, \ldots, X_{n})$
+- [ ] The sample variance $S^2$
+- [ ] The sample standard deviation $S$
+:::
+
+::: {.callout-tip}
+## Solution
+
+we actually went over the Poisson MLE as one of the examples in the lesson videos. Though we looked at the MLE that there was more than zero counts in the data.
+
+lets quickly write the log likelihood function for the Poisson 
+distribution.
+
+the PMF or rather based on the handout is:
+
+$$
+f(x;\lambda) = \frac{e^{-\lambda} \lambda^{x}}{x!} I_{(x=0,1,2,\ldots)}(x)
+$$
+
+where the parameter is $\lambda >0$ and the indicator function ensures that the PMF is only defined for non-zero for non-negative integers since x is a count variable. 
+
+So the likelihood function for a random sample $X_{1}, X_{2}, \ldots, X_{n}$ is
+
+$$
+L(x_{i};\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda} \lambda^{x_{i}}}{x_{i}!} I_{(x_{i\in\mathbb{Z}^+})}(x_{i})
+$$  
+
+we can 
+
+1. drop the indicators since they do not depend on $\lambda$ and 
+2. drop the factorials since they also do not depend on $\lambda$. 
+3. combine the power for exponent ie.  $\prod^N e^{-\lambda} = e^{-N\lambda}$
+4. combine the powers for the powers of lambda into a sum ie.  $\prod^N \lambda^{x_{i}} = \lambda^{\sum x_{i}}$
+
+So we have that the simplified likelihood function 
+
+$$
+L( x_{i};\lambda) \propto e^{-n\lambda} \lambda^{\sum_{i=1}^{n} x_{i}}
+$$
+
+
+5. take logs, rewrite the products as sums and move powers down as multipliers to get the log-likelihood function:
+
+$$
+\ell(x_{i};\lambda) = ln(L(x_{i},\lambda)) = -n\lambda + \left(\sum_{i=1}^{n} x_{i}\right) \ln(\lambda)
+$$
+
+6. take the derivative with respect to $\lambda$ and set it equal to zero to find the critical points:
+
+$$
+\frac{\partial \ell(x_{i};\lambda)}{\partial \lambda} = -n + \frac{\sum_{i=1}^{n} x_{i}}{\lambda} = 0
+$$
+
+rearranging for $\lambda$ we get that
+
+$$
+\widehat{\lambda} = \frac{\sum_{i=1}^{n} x_{i}}{n} = \overline{X}     
+$$
+
+so the answer is $\overline{X}$ the sample mean.
+
+:::
+
+---
+
+
+::: {#exr-02-mle-estimator-gamma }
+## Gamma MLE with known shape
+[Gamma MLE]{.column-margin}
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the Gamma distribution $\Gamma(\alpha,\beta)$  distribution where $\alpha$ is known. 
+
+Which is the maximum likelihood estimator for $\beta$?
+
+- [x] $\frac{\alpha}{\overline{X}}$
+- [ ] $\sum_{i=1}^{n} \frac{X_{i}^{2}}{\alpha}$
+- [ ] $\sum_{i=1}^{n} (\frac{X_{i}}{\alpha})$
+- [ ] ${\overline{X}}^{\alpha-1}$
+:::
+
+::: {.callout-tip}
+## Solution
+
+We did not cover the Gamma MLE in the videos so lets try to derive it here.
+
+Recall that we use the parameterization where beta is the **rate parameter**, so that PDF for the Gamma distribution is given by:
+
+
+
+$$
+f(x;\alpha,\beta) = \frac{1}{\Gamma(\alpha)} \beta^{\alpha} x^{\alpha -1} e^{-\beta x} I_{(x>0)}(x)
+$$
+
+This looks pretty bad for us since we have two parameters and they are also in the gamma function and in exponents. I don't think I even know the derivative of the gamma function.
+
+However we are told that $\alpha$ is known so we can treat it as a constant. That leaves us with just one parameter to estimate $\beta$. So not all it lost.
+
+Let's derive the MLE. We start by writing a likelihood as the product of the PMF function 
+
+$$
+\begin{aligned}
+L(X_{i};\beta) &= \prod _{i=1}^{n} \frac{1}{\cancel{\Gamma(\alpha)}} \beta^{\alpha} \cancel{X_{i}^{\alpha -1}} e^{-\beta X_{i}} \cancel{I_{(X_{i}>0)}(X_{i})} && (\text{dropping constants}) \\
+&\propto \prod _{i=1}^{n} \beta^{\alpha} e^{-\beta X_{i}} && (\text{combining powers})\\
+&= \beta^{n\alpha} \quad e^{-\beta \sum_{i=1}^{n} X_{i}} && (\text{taking logs})\\
+\ell(X_{i};\beta) &= n\alpha \ln(\beta) - \beta \sum_{i=1}^{n} X_{i}
+&& (\text{derivative w.r.t } \beta) \\
+\frac {\partial \ell(X_{i};\beta)}{\partial \beta} &= \frac{n\alpha}{\beta} - \sum_{i=1}^{n} X_{i} = 0 && (\text{solving for }\beta) \\
+\widehat{\beta} &= \frac{n\alpha}{\sum_{i=1}^{n} X_{i}} = \frac{\alpha}{\overline{X}}
+\end{aligned}
+$$
+:::
+
+
+::: {.callout-note}
+## The full case gamma MLE
+If we did not know $\alpha$ we would be able to write cancel the constants and substitute the value of $\beta$ back into the log-likelihood function. This would give us a function of alpha only. So we don't really have to be so worried about solving simultaneous non-linear equations.
+
+Let's go ahead and find the MLE for $\alpha$ when $\beta$ is known.
+
+
+We start with the likelihood function again:
+
+$$
+\begin{aligned}
+L(X_{i};\alpha) &= \prod _{i=1}^{n} \frac{1}{\Gamma(\alpha)} {\beta^{\alpha}} X_{i}^{\alpha -1} e^{-\cancel{\beta X_{i}}} && (\text{dropping constants}) \\
+&\propto \prod _{i=1}^{n} \frac{1}{\Gamma(\alpha)} \beta^{\alpha} X_{i}^{\alpha -1} && (\text{combining powers})\\
+&= \frac{1}{\Gamma(\alpha)^{n}} \beta^{n\alpha} \prod_{i=1}^{n} X_{i}^{\alpha -1} && (\text{taking logs})\\
+\ell(X_{i};\alpha) &= -n \ln(\Gamma(\alpha)) + n\alpha \ln(\beta) + (\alpha -1) \sum_{i=    1}^{n} \ln(X_{i})
+&& (\text{derivative w.r.t } \alpha) \\
+\frac {\partial \ell(X_{i};\alpha)}{\partial \alpha} &= -n \frac{\Gamma'(\alpha)}{\Gamma(\alpha)} + n \ln(\beta) + \sum_{i=1}^{n} \ln(X_{i}) = 0 && (\text{solving for }\alpha) \\
+\Rightarrow \quad n \frac{\Gamma'(\alpha)}{\Gamma(\alpha)} &= n \ln(\beta) + \sum_{i=1}^{n} \ln(X_{i})
+\end{aligned}
+$$
+
+So this looks like we have to solve a non-linear equation in $\alpha$. 
+
+Note that the term $\frac{\Gamma'(\alpha)}{\Gamma(\alpha)}$ is called the [digamma function](https://en.wikipedia.org/wiki/Digamma_function) and is often denoted as $\psi(\alpha)$. So we can rewrite the equation as:    
+
+$$
+n \psi(\alpha) = n \ln(\beta) + \sum_{i=1}^{n} \ln(X_{i})
+$$  
+
+Unfortunately this equation does not have a closed form solution so we would have to solve it numerically. 
+
+---
+
+According to [SO](https://math.stackexchange.com/questions/3104688/method-of-moments-with-a-gamma-distribution) we can use MoM to get closed form estimator for $\alpha$ and $\beta$. This demonstrates the fact that MLE and MoM estimators do not always coincide and the advantage of knowing about both methods!
+
+
+the MoM estimators are given by:
+
+$$
+\widehat{\alpha}_{MoM} = \frac{\overline{X}^{2}}{S^{2}} \quad , \quad \widehat{\beta}_{MoM} = \frac{\overline{X}}{S}
+$$
+
+where $S^{2}$ is the sample variance.
+
+When we use a numeric algorithm like Expectation-Maximization (EM) to solve the numeric MLEs we can use the MoM estimators as initial guesses for the parameters. This can help the numeric algorithm converge faster.
+:::
+
+---
+
+::: {#exr-03-mle-estimator-shifted-exponential }
+## Shifted Exponential MLE
+[Shifted Exponential MLE]{.column-margin}
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the **shifted exponential** distribution with pdf
+
+$$
+\begin{cases} e^{-(x-\theta)} ,& x \geq\theta\\0 ,& x< \theta\end{cases}
+$$
+
+Which of the following is the maximum likelihood estimator for $\theta$?
+
+- [ ] $1/ \, \overline{X}$
+- [ ] $\max (X_{1}, X_{2}, \ldots, X_{n})$
+- [x] $\min (X_{1}, X_{2}, \ldots, X_{n})$
+- [ ] $\overline{X}$
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+We can see that in this PDF there should be an indicator function $I_{x>\theta}$, which suggests that the minimum or maximum value in the data might be required to specify the MLE. Thinking back on the lesson we examined the case of the uniform distribution where the MLE for the parameter in the support was the maximum value in the data. This seems to suggest that if the PDF is increasing we need to use the minimum value in the data and if it is decreasing we need to use the maximum value in the data.
+
+
+However it seems that otherwise the PDF is similar to the standard exponential distribution with rate parameter $\lambda =1$. And that this is perhaps one of the simplest MLE problems we might encounter.
+
+
+Let's plot the PDF
+
+```{r}
+library(ggplot2)
+
+theta <- 1
+df <- data.frame(
+  x = seq(theta, theta + 5, length.out = 500)
+)
+
+df$y <- exp(-(df$x - theta))
+
+ggplot(df, aes(x, y)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "x",
+    y = expression(e^{-(x-theta)}),
+    title = expression(paste("Shifted exponential: ", e^{-(x-theta)}))
+  ) +
+  theme_minimal()
+```
+
+This suggest that we want the minimum value for X in the data since the PDF is decreasing in X. 
+
+
+
+:::
+
+---
+
+::: {#exr-04-mle-estimator-pareto }
+## Pareto MLE
+[Pareto MLE]{.column-margin}
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the **continuous Pareto** distribution with pdf 
+$$
+f(x;γ)=
+\begin{cases} \frac{\gamma}{(1+x)^{\gamma+1}},& x \geq 0\\ 0,& x<0 \end{cases}
+$$
+
+Here $\gamma>0$ is a parameter to be estimated.
+
+Which of the following is the maximum likelihood estimator for $\gamma$?
+
+- [ ] $\max(X_{1}, X_{2}, \ldots, X_{n})$
+- [x] $\frac{n}{\sum_{i=1}^{n} \ln (1+X_{i})}$
+- [ ] $\prod_{i=1}^{n} \frac{1}{1+X_{i}}$
+- [ ] $\overline{X}$
+
+:::
+
+
+::: {.callout-tip}
+## Solution
+
+This is another example we did not cover in the videos. Also I couldn't find it at first. This is a variant of the Lomax distribution which is a Pareto distribution shifted by 1 unit to the left. Also the Lomax distribution has the following PDF:
+
+$$
+p(x) = \frac{\alpha \gamma^ \alpha}{(x+\gamma)^{\alpha +1}} \quad , \quad x \geq 0 \qquad (\text{Lomax Distribution})
+$$
+
+Here $\alpha$ is the shape parameter and $\gamma$ is the scale parameter.
+
+Setting $\gamma =1$  we get 
+
+$$
+p(x) = \frac{\alpha }{(x+1)^{\alpha +1}} \quad , \quad x \geq 0 \qquad (\text{Lomax Distribution with scale } \gamma =1)
+$$
+
+I'm not sure why Jem swapped the parameter letters. But at least I am now certain we are dealing with an actual PDF and we have some context.
+
+Now let's derive the MLE for $\alpha$ in the Lomax distribution with scale parameter $\gamma =1$.
+
+
+The likelihood function is given by:
+$$
+\begin{aligned}
+L(X_{i};\alpha) &= \prod _{i=1}^{n} \frac{\alpha }{(X_{i}+1)^{\alpha +1}} && (\text{multiplying pdfs}) \\
+&\propto \prod _{i=1}^{n} \alpha (X_{i}+1)^{-(\alpha +1)} && (\text{combining powers})\\
+&= \alpha^{n} \prod_{i=1}^{n} (X_{i}+1)^{-(\alpha +1)} && (\text{taking logs})\\
+\ell(X_{i};\alpha) &= n \ln(\alpha) - (\alpha +1) \sum_{i=1}^{n} \ln(X_{i}+1)
+&& (\text{derivative w.r.t } \alpha) \\
+\frac {\partial \ell(X_{i};\alpha)}{\partial \alpha} &= \frac{n}{\alpha} - \sum_{i=1}^{n} \ln(X_{i}+1) = 0 && (\text{solving for }\alpha) \\
+ \widehat{\alpha} &= \boxed{ \frac{n}{\sum_{i=1}^{n} \ln (1+X_{i})}     }
+\end{aligned}
+$$
+
+:::
+
+
+
+---
+
+::: {.callout-tip}
+
+Lets examine the MLEs for the Lomax distribution with both parameters unknown.
+
+$$ 
+\begin{aligned}
+L(X_{i};\alpha,\gamma) &= \prod _{i=1}^{n} \frac{\alpha \gamma^{\alpha}}{(X_{i}+\gamma)^{\alpha +1}} && (\text{taking logs}) \\
+\ell(X_{i};\alpha,\gamma) &= n \ln(\alpha) + n \alpha \ln(\gamma) - (\alpha +1) \sum_{i=1}^{n} \ln(X_{i}+\gamma) && (\text{derivative w.r.t } \alpha) \\
+\frac {\partial \ell(X_{i};\alpha,\gamma)}{\partial \alpha} &= \frac{n}{\alpha} + n \ln(\gamma) - \sum_{i=1}^{n} \ln(X_{i}+\gamma) = 0 && (\text{solving for }\alpha) \\
+\Rightarrow \quad \widehat{\alpha} &= \frac{n}{\sum_{i=1}^{n} \ln(X_{i}+\gamma) - n \ln(\gamma)} && (\text{derivative w.r.t } \gamma) \\ 
+\frac {\partial \ell(X_{i};\alpha,\gamma)}{\partial \gamma} &= \frac{n \alpha}{\gamma} - (\alpha +1) \sum_{i=1}^{n} \frac{1}{X_{i}+\gamma} = 0 && (\text{solving for }\gamma) \\
+\Rightarrow \quad n \alpha \sum_{i=1}^{n} (X_{i}+\gamma) &= (\alpha +1) \gamma \sum_{i=1}^{n} 1 && \\
+\Rightarrow \quad \widehat{\gamma} &= \frac{n \widehat{\alpha} \overline{X}}{(\widehat{\alpha} +1)} &&
+\end{aligned}
+$$
+:::
+
+
+---
+
+
+::: {#exr-05-mle-estimator-shifted-exponential-rate }
+## Shifted Exponential Rate MLE
+[Shifted Exponential Rate MLE]{.column-margin}
+
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the the **shifted exponential** distribution with rate $\lambda$ which has pdf
+$$
+f(x;\lambda,\theta) = \begin{cases} \lambda e^{-\lambda (x-\theta)} ,& x \geq \theta\\ 0,& x<\theta\end{cases}
+$$
+
+Which of the following are the MLEs for $\lambda$ and $\theta$?
+
+ - [x] $\widehat{\lambda} = \frac{n}{\sum_{i=1}^{n} (X_{i}-X_{(1)})}$ and $\widehat{\theta} = X_{(1)}$ where $X_{(1)}= \min (X_{1}, X_{2}, \ldots, X_{n})$
+ - [ ] $\widehat{\lambda} = \overline{X}-X_{(1)}$ and $\widehat{\theta} = X_{(1)}$ where $X_{(1)}= \min (X_{1}, X_{2}, \ldots, X_{n})$
+ - [ ] $\widehat{\lambda} = \overline{X}$ and $\widehat{\theta} = X_{(1)}$ where $X_{(1)}= \min (X_{1}, X_{2}, \ldots, X_{n})$
+ - [ ] $\widehat{\lambda} = \frac{n}{\sum_{i=1}^{n} (X_{i}-X_{(n)})}$ and $\widehat{\theta} = X_{(n)}$ where $X_{(n)}= \max (X_{1}, X_{2}, \ldots, X_{n})$
+
+:::
+
+
+::: {.callout-tip}
+## Solution
+
+This looks similar to the previous shifted exponential MLE problem but now we have to estimate both the rate parameter $\lambda$ and the shift parameter $\theta$.
+
+lets derive the MLEs.
+
+Since we already worked out the MLE for $theta$ earlier and the same logic applies we can focus on $lambda$. That is why I can treat the indicator function as a constant since it does not depend on $\lambda$. 
+$$
+\begin{aligned}
+L(X_{i};\lambda,\theta) &= \prod _{i=1}^{n} \lambda e^{-\lambda (X_{i}-\theta)} I_{(X_{i}>\theta)}(X_{i}) && (\text{dropping constants}) \\
+&\propto \prod _{i=1}^{n} \lambda e^{-\lambda (X_{i}-\theta)} && (\text{combining powers})\\
+&= \lambda^{n} e^{-\lambda \sum_{i=1}^{n} (X_{i}-\theta)} && (\text{taking logs})\\
+\ell(X_{i};\lambda,\theta) &= n \ln(\lambda) - \lambda \sum_{i=1}^{n} (X_{i}-\theta)
+&& (\text{derivative w.r.t } \lambda) \\
+\frac {\partial \ell(X_{i};\lambda,\theta)}{\partial \lambda} &= \frac{n}{\lambda} - \sum_{i=1}^{n} (X_{i}-\theta) = 0 && (\text{solving for }\lambda) \\
+ \widehat{\lambda} &= \frac{n}{\sum_{i=1}^{n} (X_{i}-\theta)}  && (\text{derivative w.r.t } \theta) \\
+\frac {\partial \ell(X_{i};\lambda,\theta)}{\partial \theta} &= \lambda n = 0 && (\text{solving for }\theta) \\
+\Rightarrow \quad \widehat{\theta} &= X_{(1)} = \min (X_{1}, X_{2}, \ldots, X_{n})
+\end{aligned}
+$$
+
+:::
+
+---
+

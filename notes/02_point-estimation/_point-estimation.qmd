@@ -1,0 +1,100 @@
+---
+title: "Point Estimation - (Programming Assignment)"
+---
+
+```{r}
+p1.a.ex = NA
+p1.a.ey = NA
+
+
+# your code here
+# to estimate E[X] we need to margenelize y.
+# to estimate E[Y] we need to margenelize x.
+# the data should be in a matrix or a df or a tibble
+library(tidyverse)
+#library(dplyr)
+
+my_data <- tribble(
+   ~x,  ~y,  ~p,
+    2,  -1,  0.1,
+    3,  -1,  0.1,
+    4,  -1,    0,    
+    2,   0,  0,
+    3,   0,  0.1,
+    4,   0,  0.05,    
+    2,   1,  0.15,
+    3,   1,  0.05,
+    4,   1,  0.15,    
+    2,   2,  0,
+    3,   2,  0.05,
+    4,   2,  0.25
+)
+
+## I created the long form of the table above as I had no idea how to create it in wide form which requires a row of y values and a column of x values with the p values in the middle). Probably one would need two or more matrices to do that sensibly. Using the long form keeps everything orgenised and tidy but with duplication or the x and y values.)
+
+## can we stack it to see it in wide form?
+#library(tidyr)
+my_data_wide <- my_data %>%
+  pivot_wider(names_from = y, values_from = p, names_prefix = "y=")
+my_data_wide
+
+## this doesn't have the y values
+## this shows the main difference between df or tibbles and spreadsheet style data
+## in spreadsheets the row and column headers are part of the data
+## in df or tibbles the row and column headers are meta data
+
+my_data %>% 
+    group_by(x) %>% # to mararginalize out y we need to sum y by X=x
+    summarize(marginal_px = sum(p)) %>% # df for marginal X dist
+    mutate(E_X_component = x * marginal_px) %>% # col for x * marginal_px
+    summarize(E_X = sum(E_X_component)) %>% # df for agg E[X]
+    pull(E_X) -> p1.a.ex # extact the result
+
+pp <- function(x) {
+  cat(substitute(x),"=",x)
+}
+
+#cat(substitute(p1.a.ex),"=",p1.a.ex)
+pp(p1.a.ex)
+
+my_data %>%
+  group_by(y) %>% # to mararginalize out x we need to sum y by X=x
+  summarize(marginal_py = sum(p)) %>% # df for marginal Y dist
+  mutate(E_Y_component = y * marginal_py) %>% # col for y * marginal_py
+  summarize(E_Y = sum(E_Y_component)) %>% # df for agg E[Y]
+  pull(E_Y) -> p1.a.ey # extact the result
+
+pp(p1.a.ey)
+```
+
+::: {#exr-01-joint-expectations }
+## Joint expectations
+find $E[XY]$
+:::
+
+::: {.callout-tip}
+## Solution
+
+```{r}
+p1.b.exy = NA
+## for E[XY]
+my_data %>%
+  mutate(XY_component = x * y * p) %>%
+  summarize(E_XY = sum(XY_component)) %>%
+  pull(E_XY) -> p1.b.exy
+
+pp(p1.b.exy)
+
+
+```
+for $U = x+y$ what is $p(u \geq 4)$
+```{r}
+p1.c.pu4 = NA
+my_data %>%
+  mutate(u = x + y) %>%
+  filter(u >= 4) %>%
+  summarize(probability = sum(p)) %>%
+  pull(probability) -> p1.c.pu4
+p1.c.pu4
+```
+:::

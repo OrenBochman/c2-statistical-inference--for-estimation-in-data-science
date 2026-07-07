@@ -1,0 +1,147 @@
+---
+title: "Lesson 3: The Gamma Distribution"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_the-gamma-distribution.mp4 >}}
+
+[transcript](01_the-gamma-distribution.en.txt){target="_blank"}
+:::
+
+### Handout
+
+[Handout](02_video-slides-the-gamma-distribution_Gamma_Distribution_Slides.pdf){target="_blank"}
+
+
+::: {#def-gamma-distribution}
+## Gamma Distribution
+The continuous random variable $X$ is said to have a gamma distribution with parameters $\alpha$ and $\beta$ if $X$ has pdf
+
+$$
+f(x) = \frac{1}{\Gamma(\alpha)} \beta^\alpha x^{\alpha-1} e^{-\beta x} \mathbf{1}_{(0,\infty)}(x)
+$$ {#eq-gamma-pdf}
+
+- with: 
+    - $\alpha > 0$ is the *shape* parameter and 
+    - $\beta > 0$ is the *inverse scale* or *rate* parameter. 
+- which we denote with $X \sim \Gamma(\alpha, \beta)$.
+:::
+
+Not surprisingly, different values of the shape parameter lead to different shapes of the distribution.
+
+```{r}
+#| label: fig-gamma-shapes
+#| fig-cap: "Gamma distributions with different shape parameters"
+#| fig-subcap:
+#|   - "Shape = 0.5 - assymptotic at 0"
+#|   - "Shape = 1 - exponential"
+#|   - "Shape = 5 - hump-shaped"
+#| layout-ncol: 3
+#| warning: false
+#| message: false
+
+library(ggplot2)
+
+x <- seq(0.001, 12, length.out = 1000)
+
+gamma_plot <- function(shape, rate = 1) {
+  data.frame(
+    x = x,
+    density = dgamma(x, shape = shape, rate = rate)
+  ) |>
+    ggplot(aes(x, density)) +
+    geom_line(linewidth = 1) +
+    labs(
+      title = paste0("Gamma(shape = ", shape, ", rate = ", rate, ")"),
+      x = "x",
+      y = "Density"
+    ) +
+    theme_minimal()
+}
+
+gamma_plot(shape = 0.5)
+gamma_plot(shape = 1)
+gamma_plot(shape = 5)
+```
+
+
+### Reflections
+
+::: {.callout-tip}
+## Learn to :heart: the $\Beta(\alpha, \beta)$ distribution.
+
+- Beta
+    - is an enhanced version of the Binomial Distribution that works for continuous data on the interval [0,1], 
+    - has a uniform parameterization option,
+    - Is the conjugate prior for the Bernoulli and Binomial distributions in Bayesian statistics. 
+    - It is thus useful for counting problems where we want to estimate proportions of successes to failures like in A/B testing.
+    - Beta is also the building block for the Dirichlet distribution which is used in many non-parametric models based on the Dirichlet process.
+:::
+
+
+::: {.callout-tip}
+## Learn to :heart: the $\Gamma(a,b)$ distribution.
+
+- $\Gamma(a,b)$ has positive values and is thus useful for modeling waiting times, lifetimes, and other positive-valued quantities. For this reason it is often seen as the prior for an unknown variance in the Normal distribution when the mean is known.
+- Gamma can be transformed into a Chi-Squared distribution which is used in many statistical tests used in hypothesis testing and model evaluation.
+- It is also the conjugate prior for the Exponential distribution in Bayesian statistics.
+- It is also used as a prior for Normal variance when the mean is known.
+- If you are lucky You will also get to make use of it for non-parametric models based on the  dirichlet process where it is used as a building block for the stick-breaking construction of the dirichlet process.
+:::
+
+In my notes on the gamma distribution from a previous course I got confused between the `Gamma function` and the `Gamma distribution`. The professor kindly clarified the difference for us:
+
+- **one parameter** indicates the *function* that generalizes the factorial function to non-integer values.
+- **two parameters** indicates the *distribution* defined by two parameters, often denoted as $\alpha$ (shape) and $\beta$ (rate or scale).
+
+
+
+Also The **beta** and **gamma** distributions are closely related through normalization.
+
+If
+
+$$
+X \sim \mathrm{Gamma}(\alpha,\lambda), \qquad
+Y \sim \mathrm{Gamma}(\beta,\lambda)
+$$
+
+independently, with the **same rate** (\lambda), then
+
+$$
+\frac{X}{X+Y} \sim \mathrm{Beta}(\alpha,\beta).
+$$
+
+So a beta-distributed random variable can be constructed as the **proportion** of one gamma random variable in the sum of two independent gamma random variables.
+
+Moreover,
+
+$$
+X+Y \sim \mathrm{Gamma}(\alpha+\beta,\lambda),
+$$
+
+and the ratio
+
+$$
+\frac{X}{X+Y}
+$$
+
+is independent of the sum (X+Y).
+
+This generalizes: if
+
+$$
+X_i \sim \mathrm{Gamma}(\alpha_i,\lambda)
+$$
+
+independently for (i=1,\dots,k), then
+
+$$
+\left(\frac{X_1}{\sum_j X_j},\dots,\frac{X_k}{\sum_j X_j}\right)
+\sim \mathrm{Dirichlet}(\alpha_1,\dots,\alpha_k).
+$$
+The beta distribution is therefore the two-dimensional case of a normalized gamma construction; the Dirichlet distribution is the multivariate version.
+
+This relationship is central in Bayesian modeling: gamma variables model positive masses or intensities, while beta and Dirichlet variables model normalized proportions.
+
+
