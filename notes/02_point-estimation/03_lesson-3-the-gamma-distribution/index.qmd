@@ -6,17 +6,15 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_the-gamma-distribution.mp4 >}}
 
-[transcript](01_the-gamma-distribution.en.txt){target="_blank"}
+- [Handout](02_video-slides-the-gamma-distribution_Gamma_Distribution_Slides.pdf){target="_blank"}
+- [Transcript](01_the-gamma-distribution.en.txt){target="_blank"} 
 :::
 
-### Handout
-
-[Handout](02_video-slides-the-gamma-distribution_Gamma_Distribution_Slides.pdf){target="_blank"}
-
+## Notes
 
 ::: {#def-gamma-distribution}
-## Gamma Distribution
-The continuous random variable $X$ is said to have a gamma distribution with parameters $\alpha$ and $\beta$ if $X$ has pdf
+### Gamma Distribution
+The continuous random variable $X$ is said to have a $\mathcal{\Gamma}$ distribution with parameters $\alpha$ and $\beta$ if $X$ has pdf
 
 $$
 f(x) = \frac{1}{\Gamma(\alpha)} \beta^\alpha x^{\alpha-1} e^{-\beta x} \mathbf{1}_{(0,\infty)}(x)
@@ -25,7 +23,8 @@ $$ {#eq-gamma-pdf}
 - with: 
     - $\alpha > 0$ is the *shape* parameter and 
     - $\beta > 0$ is the *inverse scale* or *rate* parameter. 
-- which we denote with $X \sim \Gamma(\alpha, \beta)$.
+    - $\Gamma(\alpha)$ is the gamma function evaluated at $\alpha$ which for integer values of $\alpha$ is equal to $(\alpha-1)!$ and which we will define bellow
+- we denote this as $X \sim \mathcal{\Gamma}(\alpha, \beta)$.
 :::
 
 Not surprisingly, different values of the shape parameter lead to different shapes of the distribution.
@@ -34,10 +33,10 @@ Not surprisingly, different values of the shape parameter lead to different shap
 #| label: fig-gamma-shapes
 #| fig-cap: "Gamma distributions with different shape parameters"
 #| fig-subcap:
-#|   - "Shape = 0.5 - assymptotic at 0"
+#|   - "Shape < 1 - assymptotic at 0"
 #|   - "Shape = 1 - exponential"
-#|   - "Shape = 5 - hump-shaped"
-#| layout-ncol: 3
+#|   - "Shape > 1 - hump-shaped"
+#| layout-nrows: 3
 #| warning: false
 #| message: false
 
@@ -65,6 +64,47 @@ gamma_plot(shape = 1)
 gamma_plot(shape = 5)
 ```
 
+What we immediarly get from these charts is that the $\mathcal{\Gamma}$ distribution is an generalization of the exponential distribution since we get it as a special case when the shape parameter is equal to 1.
+Recal that the exponential distribution is the continuous analogue of the geometric distribution and is used to model waiting times between events in a Poisson process.
+
+
+### Two origine stories
+
+Delving deeper into the history of the $\mathcal{\Gamma}$ distribution, we find two different origin stories:
+
+The first seems to be that starting from the bernoulli RV by combing $N$ and $p$ and taking a limit on the rate, we get to the poisson distribution. The time to first event in a Poisson process is exponentially distributed. 
+
+But what if we want to model the waiting time until the $k$-th event in a Poisson process? 
+We need to sum $k$ independent exponential RVs and that us how we get a $\mathcal{\Gamma}$ distribution with shape parameter equal to $k$ and rate parameter equal to the rate of the Poisson process.
+
+For the special case of k here being an integer, then the $\mathcal{\Gamma}$ distribution is also known as the Erlang distribution.
+
+The the $\mathcal{\Gamma}$ distribution - started as the Pearson type III distribution - was first introduced by Karl Pearson in 1895 as a continuous probability distribution that could model skewed data. It was later generalized to the $\mathcal{\Gamma}$ distribution by Ronald Fisher in 1922, who recognized its flexibility and usefulness in statistical modeling. The name gamma was chosen because the distribution's normalizing constant in the probability density function is the gamma function, which is a generalization of the factorial function to non-integer values.
+
+The second origin story is that the $\mathcal{\Gamma}$ distribution is a generalization of the $\chi^2$ distribution since we get it as a special case when the shape parameter is equal to $k/2$ and the rate parameter is equal to $1/2$.
+
+
+
+
+The $\mathcal{\Gamma}$ distribution is also a generalization of the $\chi^2$ distribution since we get it as a special case when the shape parameter is equal to $k/2$ and the rate parameter is equal to $1/2$.
+
+
+### The Gamma Function
+
+Note that the $\mathcal{\Gamma}{\alpha, \beta}$ distribution is different from the $\Gamma(\alpha)$  function which we will now define:
+
+::: {#def-gamma-function}
+### Gamma Function
+The gamma function is defined as follows:
+
+$$
+\Gamma(\alpha) = \int_0^\infty x^{\alpha-1} e^{-x} dx
+$$ {#eq-gamma-function}
+:::
+
+
+
+
 
 ### Reflections
 
@@ -80,11 +120,14 @@ gamma_plot(shape = 5)
 :::
 
 
-::: {.callout-tip}
-## Learn to :heart: the $\Gamma(a,b)$ distribution.
 
-- $\Gamma(a,b)$ has positive values and is thus useful for modeling waiting times, lifetimes, and other positive-valued quantities. For this reason it is often seen as the prior for an unknown variance in the Normal distribution when the mean is known.
-- Gamma can be transformed into a Chi-Squared distribution which is used in many statistical tests used in hypothesis testing and model evaluation.
+
+
+::: {.callout-tip}
+## Learn to :heart: the $\mathcal{\Gamma}(a,b)$ distribution.
+
+- $\mathcal{\Gamma}(a,b)$ has positive values and is thus useful for modeling waiting times, lifetimes, and other positive-valued quantities. For this reason it is often seen as the prior for an unknown variance in the Normal distribution when the mean is known.
+- $\mathcal{\Gamma}(a,b)$  can be transformed into a Chi-Squared distribution which is used in many statistical tests used in hypothesis testing and model evaluation.
 - It is also the conjugate prior for the Exponential distribution in Bayesian statistics.
 - It is also used as a prior for Normal variance when the mean is known.
 - If you are lucky You will also get to make use of it for non-parametric models based on the  dirichlet process where it is used as a building block for the stick-breaking construction of the dirichlet process.
