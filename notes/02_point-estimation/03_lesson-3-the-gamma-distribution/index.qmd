@@ -84,8 +84,6 @@ The the $\mathcal{\Gamma}$ distribution - started as the Pearson type III distri
 The second origin story is that the $\mathcal{\Gamma}$ distribution is a generalization of the $\chi^2$ distribution since we get it as a special case when the shape parameter is equal to $k/2$ and the rate parameter is equal to $1/2$.
 
 
-
-
 The $\mathcal{\Gamma}$ distribution is also a generalization of the $\chi^2$ distribution since we get it as a special case when the shape parameter is equal to $k/2$ and the rate parameter is equal to $1/2$.
 
 
@@ -103,6 +101,272 @@ $$ {#eq-gamma-function}
 :::
 
 
+## The Gamma Distribution {#sec-gamma-distribution}
+
+::: {#def-gamma-distribution .definition}
+## Gamma distribution
+
+A continuous random variable $X$ has a gamma distribution with shape parameter $\alpha>0$ and rate parameter $\beta>0$ if its probability density function is
+
+$$
+f_X(x)
+=
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+ x^{\alpha-1}e^{-\beta x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+We write
+
+$$
+X\sim\Gamma(\alpha,\beta).
+$$
+:::
+
+Here $\mathbf{1}_{(0,\infty)}(x)$ is the indicator function restricting the support to $x>0$.
+
+::: {#ntn-gamma-parameterization .callout-note}
+## Parameterization convention
+
+In these notes, $\beta$ is a **rate**, or inverse-scale, parameter:
+
+$$
+f_X(x)
+=
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+ x^{\alpha-1}e^{-\beta x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+Some authors instead use $\beta$ as a **scale** parameter:
+
+$$
+f_X(x)
+=
+\frac{1}{\Gamma(\alpha)\beta^\alpha}
+ x^{\alpha-1}e^{-x/\beta}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+Thus, the scale is the reciprocal of the rate.
+:::
+
+## The Shape Parameter {#sec-gamma-shape-parameter}
+
+Ignoring the normalizing constant, the shape of the density is governed by
+
+$$
+x^{\alpha-1}e^{-\beta x}.
+$$
+
+The qualitative form changes with $\alpha$:
+
+| Shape parameter | Qualitative form of the density |
+|---:|:---|
+| $\alpha>1$ | Starts at zero, rises to an interior peak, and then decreases toward zero. |
+| $\alpha=1$ | Reduces to a decreasing exponential density. |
+| $0<\alpha<1$ | Diverges as $x\downarrow0$ and then decreases toward zero. |
+
+## The Gamma Function {#sec-gamma-function}
+
+::: {#def-gamma-function .definition}
+## Gamma function
+
+For $\alpha>0$, the gamma function is defined by
+
+$$
+\Gamma(\alpha)
+=
+\int_0^\infty
+x^{\alpha-1}e^{-x}\,dx.
+$$
+:::
+
+The gamma function $\Gamma(\alpha)$ is different from the notation $\Gamma(\alpha,\beta)$ used for the gamma distribution.
+
+For any $\beta>0$, the substitution $u=\beta x$ gives
+
+$$
+\begin{aligned}
+\Gamma(\alpha)
+&=
+\int_0^\infty
+u^{\alpha-1}e^{-u}\,du \\
+&=
+\int_0^\infty
+\beta^\alpha x^{\alpha-1}e^{-\beta x}\,dx.
+\end{aligned}
+$$
+
+This identity supplies the normalizing constant in the gamma density.
+
+## Properties of the Gamma Function {#sec-gamma-function-properties}
+
+### The value at one {#sec-gamma-one}
+
+$$
+\begin{aligned}
+\Gamma(1)
+&=
+\int_0^\infty e^{-x}\,dx \\
+&=
+\left[-e^{-x}\right]_0^\infty \\
+&=
+1.
+\end{aligned}
+$$
+
+::: {#thm-gamma-recurrence .theorem}
+## Gamma recurrence
+
+For $\alpha>1$,
+
+$$
+\Gamma(\alpha)
+=
+(\alpha-1)\Gamma(\alpha-1).
+$$
+:::
+
+::: {#prf-gamma-recurrence .proof}
+## Proof
+
+Starting from the definition,
+
+$$
+\Gamma(\alpha)
+=
+\int_0^\infty
+x^{\alpha-1}e^{-x}\,dx.
+$$
+
+Use integration by parts with
+
+$$
+u=x^{\alpha-1},
+\qquad
+\mathrm{d}v=e^{-x}\,dx,
+$$
+
+so that
+
+$$
+\mathrm{d}u
+=
+(\alpha-1)x^{\alpha-2}\,dx,
+\qquad
+v=-e^{-x}.
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\Gamma(\alpha)
+&=
+\left[-x^{\alpha-1}e^{-x}\right]_0^\infty
++
+(\alpha-1)
+\int_0^\infty
+x^{\alpha-2}e^{-x}\,dx \\
+&=
+0
++
+(\alpha-1)\Gamma(\alpha-1) \\
+&=
+(\alpha-1)\Gamma(\alpha-1).
+\end{aligned}
+$$
+:::
+
+### Relation to the factorial {#sec-gamma-factorial}
+
+For a positive integer $n$,
+
+$$
+\begin{aligned}
+\Gamma(n)
+&=
+(n-1)\Gamma(n-1) \\
+&=
+(n-1)(n-2)\Gamma(n-2) \\
+&\ \vdots \\
+&=
+(n-1)(n-2)\cdots 2\cdot1\,\Gamma(1) \\
+&=
+(n-1)!.
+\end{aligned}
+$$
+
+Thus, the gamma function extends the factorial from positive integers to positive real arguments.
+
+## Scaling a Gamma Random Variable {#sec-gamma-scaling}
+
+::: {#thm-gamma-scaling .theorem}
+## Positive scaling
+
+Suppose
+
+$$
+X\sim\Gamma(\alpha,\beta)
+$$
+
+under the shape-rate parameterization. For a constant $c>0$, define
+
+$$
+Y=cX.
+$$
+
+Then
+
+$$
+Y\sim\Gamma\!\left(\alpha,\frac{\beta}{c}\right).
+$$
+:::
+
+## The Chi-Squared Distribution {#sec-chi-squared-distribution}
+
+::: {#def-chi-squared .definition}
+## Chi-squared distribution
+
+Suppose
+
+$$
+X\sim\Gamma\!\left(\frac{n}{2},\frac12\right).
+$$
+
+Then $X$ has a chi-squared distribution with $n$ degrees of freedom. We write
+
+$$
+X\sim\chi^2(n),
+$$
+
+or equivalently $X\sim\chi_n^2$.
+:::
+
+## Turning a Gamma Variable into a Chi-Squared Variable {#sec-gamma-to-chi-squared}
+
+Suppose
+
+$$
+X\sim\Gamma(n,\beta).
+$$
+
+Using the scaling result with $c=2\beta$,
+
+$$
+\begin{aligned}
+2\beta X
+&\sim
+\Gamma\!\left(n,\frac{\beta}{2\beta}\right) \\
+&=
+\Gamma\!\left(n,\frac12\right) \\
+&=
+\Gamma\!\left(\frac{2n}{2},\frac12\right) \\
+&=
+\chi^2(2n).
+\end{aligned}
+$$
 
 
 

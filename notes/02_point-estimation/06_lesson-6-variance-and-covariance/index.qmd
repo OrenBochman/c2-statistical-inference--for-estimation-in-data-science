@@ -1,17 +1,468 @@
 ---
-title: "Module 2: Point Estimation"
+title: "Lesson 6: Variance and Covariance"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
-## Variance and Covariance  {#sec-variance-and-covariance}
+
 
 ::: {.column-margin}
 {{< video 01_variance-and-covariance.mp4 >}}
 
-[transcript](01_variance-and-covariance.en.txt){target="_blank"}
+[Transcript](01_variance-and-covariance.en.txt){target="_blank"}
+[Handout](02_video-slides-for-variance-and-covariance_module1_lesson5.pdf){width=700 height=700}
 :::
 
-### Handout
+## Variance {#sec-variance}
 
-[Handout](02_video-slides-for-variance-and-covariance_module1_lesson5.pdf){width=700 height=700}
+::: {#def-variance .definition}
+## Variance
 
-### Reflection
+Let $X$ be a random variable with mean
+
+$$
+\mu_X = \mathbb{E}[X].
+$$
+
+The variance of $X$ is
+
+$$
+\operatorname{Var}(X) = \mathbb{E}\!\left[(X-\mu_X)^2\right].
+$$
+
+Variance is also denoted by $\sigma_X^2$, or simply $\sigma^2$ when the random variable is clear from context.
+:::
+
+Variance measures the spread of a distribution around its mean.
+
+The unsquared deviation does not provide a measure of spread because
+
+$$
+\begin{aligned}
+\mathbb{E}[X-\mu_X]
+&= \mathbb{E}[X]-\mu_X \\
+&= \mu_X-\mu_X \\
+&= 0
+\end{aligned}
+$$
+
+Positive and negative deviations cancel. The mean absolute deviation
+
+$$
+\mathbb{E}\!\left[|X-\mu_X|\right]
+$$
+
+is a valid measure of spread, but squared deviations are generally more convenient algebraically.
+
+## Standard Deviation {#sec-standard-deviation}
+
+::: {#def-standard-deviation .definition}
+## Standard deviation
+
+The standard deviation of $X$ is the nonnegative square root of its variance:
+
+$$
+\operatorname{SD}(X)
+= \sqrt{\operatorname{Var}(X)}
+= \sqrt{\sigma_X^2}
+= \sigma_X.
+$$
+:::
+
+Unlike variance, standard deviation has the same physical units as $X$.
+
+For example, if
+
+$$
+X \sim \mathcal{N}(\mu,\sigma^2),
+$$
+
+then $\mu$ is the center of the distribution and $\sigma$ measures its spread. The points $\mu-\sigma$ and $\mu+\sigma$ lie one standard deviation from the mean.
+
+## An Alternative Formula for Variance {#sec-variance-alternative}
+
+::: {#prp-variance-computational .proposition}
+## Computational formula for variance
+
+For any random variable $X$ with finite second moment,
+
+$$
+\operatorname{Var}(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2.
+$$
+:::
+
+::: {#prf-variance-computational .proof}
+## Derivation
+
+Let $\mu_X=\mathbb{E}[X]$. Then
+
+$$
+\begin{aligned}
+\operatorname{Var}(X)
+&= \mathbb{E}\!\left[(X-\mu_X)^2\right] \\
+&= \mathbb{E}\!\left[X^2-2\mu_X X+\mu_X^2\right] \\
+&= \mathbb{E}[X^2] -2\mu_X\mathbb{E}[X] +\mu_X^2 \\
+&= \mathbb{E}[X^2] -2\mu_X^2 +\mu_X^2 \\
+&= \mathbb{E}[X^2] -\mu_X^2 \\
+&= \mathbb{E}[X^2] -\left(\mathbb{E}[X]\right)^2
+\end{aligned}
+$$
+:::
+
+## Scaling a Random Variable {#sec-variance-scaling}
+
+::: {#prp-variance-scaling .proposition}
+## Variance under scaling
+
+For any constant $a$,
+
+$$
+\operatorname{Var}(aX) = a^2\operatorname{Var}(X).
+$$
+:::
+
+::: {#prf-variance-scaling .proof}
+## Derivation
+
+Let $Y=aX$ its mean is
+
+$$
+\begin{aligned}
+\mu_Y
+&= \mathbb{E}[Y] \\ 
+&= \mathbb{E}[aX] \\
+&= a\mathbb{E}[X] \\
+&= a\mu_X.
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\operatorname{Var}(aX)
+&= \operatorname{Var}(Y) \\
+&= \mathbb{E}\!\left[(Y-\mu_Y)^2\right] \\
+&= \mathbb{E}\!\left[(aX-a\mu_X)^2\right] \\
+&= \mathbb{E}\!\left[a^2(X-\mu_X)^2\right] \\
+&= a^2\mathbb{E}\!\left[(X-\mu_X)^2\right] \\
+&= a^2\operatorname{Var}(X).
+\end{aligned}
+$$
+:::
+
+## Why Variances Do Not Always Add {#sec-variance-sum-question}
+
+In general,
+
+$$
+\operatorname{Var}(X+Y) \neq \operatorname{Var}(X) + \operatorname{Var}(Y).
+$$
+
+The missing term describes how $X$ and $Y$ vary together. This leads to covariance.
+
+## Covariance {#sec-covariance}
+
+::: {#def-covariance .definition}
+## Covariance
+
+Let $X$ and $Y$ be random variables with means
+
+$$
+\mu_X=\mathbb{E}[X],
+\qquad
+\mu_Y=\mathbb{E}[Y].
+$$
+
+Their covariance is
+
+$$
+\operatorname{Cov}(X,Y) = \mathbb{E}\!\left[ (X-\mu_X)(Y-\mu_Y) \right].
+$$
+
+Covariance is also denoted by $\sigma_{X,Y}$.
+:::
+
+Variance is a special case of covariance:
+
+$$
+\operatorname{Cov}(X,X) = \operatorname{Var}(X).
+$$
+
+## Interpreting Covariance {#sec-covariance-interpretation}
+
+The product
+
+$$
+(X-\mu_X)(Y-\mu_Y)
+$$
+
+is positive when $X$ and $Y$ lie on the same side of their respective means, and negative when they lie on opposite sides.
+
+::: {#exm-positive-covariance .example}
+## Positive covariance
+
+A scatterplot with an upward trend has positive covariance. Most observations satisfy either
+
+$$
+X-\mu_X>0 \quad\text{and}\quad  Y-\mu_Y>0
+$$
+
+or
+
+$$
+X-\mu_X<0 \quad\text{and}\quad  Y-\mu_Y<0
+$$
+
+In both cases,
+
+$$
+(X-\mu_X)(Y-\mu_Y)>0
+$$
+:::
+
+::: {#exm-negative-covariance .example}
+## Negative covariance
+
+A scatterplot with a downward trend has negative covariance. Large values of $X$ tend to occur with small values of $Y$, and small values of $X$ tend to occur with large values of $Y$. Thus the centered deviations generally have opposite signs.
+:::
+
+::: {#exm-zero-covariance .example}
+## Covariance close to zero
+
+When a scatterplot has no clear linear upward or downward tendency, positive and negative products of centered deviations tend to cancel, producing covariance close to zero.
+:::
+
+## Covariance Depends on Scale {#sec-covariance-scale}
+
+Covariance has no fixed upper or lower bound, and its units are the product of the units of $X$ and $Y$.
+
+Rescaling the variables changes the magnitude of covariance:
+
+$$
+\operatorname{Cov}(aX,bY) = ab\operatorname{Cov}(X,Y)
+$$
+
+Consequently, two scatterplots can show essentially the same linear pattern but have different covariance magnitudes merely because their variables are measured on different scales.
+
+## Correlation {#sec-correlation}
+
+::: {#def-correlation .definition}
+## Correlation
+
+For random variables with positive finite variances, their correlation is
+
+$$
+\operatorname{Corr}(X,Y) := \frac{ \operatorname{Cov}(X,Y) }{ \sqrt{\operatorname{Var}(X)\operatorname{Var}(Y)} }.
+$$
+
+Equivalently,
+
+$$
+\rho_{X,Y} = \frac{\sigma_{X,Y}}{\sigma_X\sigma_Y}
+$$
+:::
+
+Correlation is dimensionless and satisfies
+
+$$
+-1
+\leq
+\rho_{X,Y}
+\leq
+1
+$$
+
+It retains the sign of covariance while removing its dependence on measurement units.
+
+## An Alternative Formula for Covariance {#sec-covariance-alternative}
+
+::: {#prp-covariance-computational .proposition}
+## Computational formula for covariance
+
+For random variables $X$ and $Y$ with finite second moments,
+
+$$
+\operatorname{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+$$
+:::
+
+::: {#prf-covariance-computational .proof}
+## Derivation
+
+$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&= \mathbb{E}\!\left[ (X-\mu_X)(Y-\mu_Y) \right] \\
+&= \mathbb{E}\!\left[ XY-\mu_YX-\mu_XY+\mu_X\mu_Y \right] \\
+&= \mathbb{E}[XY] -\mu_Y\mathbb{E}[X] -\mu_X\mathbb{E}[Y] +\mu_X\mu_Y \\
+&= \mathbb{E}[XY] -\mu_X\mu_Y \\
+&= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\end{aligned}
+$$
+:::
+
+## Independence and Zero Covariance {#sec-independence-zero-covariance}
+
+::: {#prp-independence-uncorrelated .proposition}
+## Independence implies zero covariance
+
+If $X$ and $Y$ are independent and have finite second moments, then
+
+$$
+\operatorname{Cov}(X,Y)=0.
+$$
+:::
+
+Independence gives
+
+$$
+\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]
+$$
+
+so the alternative covariance formula yields zero.
+
+The converse is false: zero covariance does not generally imply independence.
+
+Moreover, when $\operatorname{Var}(X)>0$ and $\operatorname{Var}(Y)>0$,
+
+$$
+\operatorname{Corr}(X,Y)=0 \quad \Longleftrightarrow \quad \operatorname{Cov}(X,Y)=0.
+$$
+
+Random variables with zero covariance are called **uncorrelated**.
+
+## Example: Uncorrelated but Dependent {#sec-uncorrelated-dependent-example}
+
+::: {#exm-uncorrelated-dependent .example}
+## A nonlinear dependence
+
+Let $X$ have distribution
+
+| $x$ | $-1$ | $0$ | $1$ |
+|---:|---:|---:|---:|
+| $P(X=x)$ | $\frac14$ | $\frac12$ | $\frac14$ |
+
+Define
+
+$$
+Y=X^2.
+$$
+
+First,
+
+$$
+\begin{aligned}
+\mathbb{E}[X] 
+&= (-1)\left(\frac14\right) + 0\left(\frac12\right) + 1\left(\frac14\right) \\
+&= 0
+\end{aligned}
+$$
+
+Also,
+
+$$
+\begin{aligned}
+\mathbb{E}[XY]
+&= \mathbb{E}[X^3] \\
+&= (-1)^3\left(\frac14\right) + 0^3\left(\frac12\right) + 1^3\left(\frac14\right) \\
+&= 0
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \\
+&= 0-0\cdot\mathbb{E}[Y] \\
+&= 0
+\end{aligned}
+$$
+
+Nevertheless, $X$ and $Y$ are not independent because $Y$ is determined by $X$. For example,
+
+$$
+P(Y=0\mid X=0)=1
+$$
+
+whereas
+
+$$
+P(Y=0)=\frac12
+$$
+
+Thus,
+
+$$
+\text{independence} \implies \text{uncorrelated}
+$$
+
+but
+
+$$
+\text{uncorrelated} \centernot\implies \text{independence}.
+$$
+:::
+
+## Variance of a Sum {#sec-variance-of-sum}
+
+::: {#prp-variance-sum .proposition}
+## Variance of two-variable sum
+
+For random variables $X$ and $Y$ with finite second moments,
+
+$$
+\operatorname{Var}(X+Y) = \operatorname{Var}(X) + 2\operatorname{Cov}(X,Y) + \operatorname{Var}(Y).
+$$
+:::
+
+::: {#prf-variance-sum .proof}
+## Derivation
+
+Let
+
+$$
+Z=X+Y.
+$$
+
+Then
+
+$$
+\begin{aligned}
+\mu_Z
+&= \mathbb{E}[Z] \\
+&= \mathbb{E}[X+Y] \\
+&= \mathbb{E}[X]+ \mathbb{E}[Y] \\
+&= \mu_X+\mu_Y.
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\operatorname{Var}(X+Y)
+&= \operatorname{Var}(Z) \\
+&= \mathbb{E}\!\left[(Z-\mu_Z)^2\right] \\
+&= \mathbb{E}\!\left[ \left((X+Y)-(\mu_X+\mu_Y)\right)^2 \right] \\
+&= \mathbb{E}\!\left[ \left((X-\mu_X)+(Y-\mu_Y)\right)^2 \right] \\
+&= \mathbb{E}\!\left[(X-\mu_X)^2\right] \\
+&\quad + 2\mathbb{E}\!\left[(X-\mu_X)(Y-\mu_Y)\right] \\
+&\quad + \mathbb{E}\!\left[(Y-\mu_Y)^2\right] \\
+&= \operatorname{Var}(X) + 2\operatorname{Cov}(X,Y) + \operatorname{Var}(Y).
+\end{aligned}
+$$
+:::
+
+If $X$ and $Y$ are independent, then $\operatorname{Cov}(X,Y)=0$, so
+
+$$
+\operatorname{Var}(X+Y)
+=
+\operatorname{Var}(X)
++
+\operatorname{Var}(Y).
+$$
+
+
+## Reflection

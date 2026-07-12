@@ -1,20 +1,567 @@
 ---
-title: "Module 2: Point Estimation"
+title: "Lesson 8: Distributions of Sums"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
-
-
-## Distributions of Sums 
 
 ::: {.column-margin}
 {{< video 01_distributions-of-sums.mp4 >}}
 
 [transcript](01_distributions-of-sums.en.txt){target="_blank"}
+[Handout](02_video-slides-for-distributions-of-sums_module1_lesson7.pdf){width=700 height=400}
 :::
 
-### Handout
+## Distributions of Sums {#sec-distributions-of-sums}
 
-[Handout](02_video-slides-for-distributions-of-sums_module1_lesson7.pdf){width=700 height=400}
+Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Bernoulli}(p),$ and define $Y=\sum_{i=1}^n X_i.$
+
+Each $X_i$ equals $1$ with probability $p$ and $0$ with probability $1-p$. 
+
+Therefore, $Y$ counts the total number of successes in $n$ independent trials, so $Y \sim \operatorname{Binomial}(n,p)$
+
+Not every sum of random variables has such an immediate interpretation. 
+
+Moment generating functions provide a systematic method for identifying their distributions.
+
+## Moment Generating Functions {#sec-moment-generating-functions}
+
+::: {#def-moment-generating-function .definition}
+## Moment generating function
+
+The moment generating function [moment generating function]{.aside} (MGF) of a random variable $X$ is
+
+$$
+M_X(t) = \mathbb{E}\!\left[e^{tX}\right] \qquad
+$$ {#eq-mgf-definition}
+
+for values of $t$ at which the expectation exists.
+
+For a continuous random variable,
+
+$$
+M_X(t)
+=
+\int_{-\infty}^{\infty}
+e^{tx}f_X(x)\,dx,
+$$
+
+whereas for a discrete random variable,
+
+$$
+M_X(t)
+=
+\sum_x e^{tx}P(X=x).
+$$
+:::
+
+The MGF generates the raw moments of $X$. When differentiation under the expectation is valid,
+
+$$
+M_X^{(k)}(0)
+=
+\mathbb{E}[X^k],
+\qquad
+k=1,2,3,\ldots.
+$$
+
+::: {#thm-mgf-uniqueness .theorem}
+## Uniqueness of moment generating functions
+
+Suppose the MGFs of $X$ and $Y$ exist on an open interval containing $0$. If
+
+$$
+M_X(t)
+=
+M_Y(t)
+$$
+
+throughout that interval, then $X$ and $Y$ have the same distribution.
+:::
+
+Thus, once the MGF of a sum is recognized as the MGF of a known distribution, the distribution of the sum is identified.
+
+## Example: Bernoulli MGF {#sec-bernoulli-mgf}
+
+::: {#exm-bernoulli-mgf .example}
+## Bernoulli distribution
+
+Let
+
+$$
+X
+\sim
+\operatorname{Bernoulli}(p).
+$$
+
+Since $X\in\{0,1\}$,
+
+$$
+\begin{aligned}
+M_X(t)
+&=
+\mathbb{E}\!\left[e^{tX}\right] \\
+&=
+\sum_x e^{tx}P(X=x) \\
+&=
+e^{0t}P(X=0)
++
+e^{1t}P(X=1) \\
+&=
+1\cdot(1-p)
++
+e^t p \\
+&=
+1-p+pe^t.
+\end{aligned}
+$$
+:::
+
+## Example: Binomial MGF {#sec-binomial-mgf}
+
+::: {#exm-binomial-mgf .example}
+## Binomial distribution
+
+Let
+
+$$
+X
+\sim
+\operatorname{Binomial}(n,p).
+$$
+
+Then
+
+$$
+\begin{aligned}
+M_X(t)
+&=
+\sum_{x=0}^n
+e^{tx}P(X=x) \\
+&=
+\sum_{x=0}^n
+e^{tx}
+\binom{n}{x}
+p^x(1-p)^{n-x} \\
+&=
+\sum_{x=0}^n
+\binom{n}{x}
+\left(pe^t\right)^x
+(1-p)^{n-x} \\
+&=
+\left(pe^t+1-p\right)^n
+\qquad \text{by the binomial theorem}.
+\end{aligned}
+$$
+:::
+
+The binomial theorem used here is
+
+$$
+(a+b)^n
+=
+\sum_{k=0}^n
+\binom{n}{k}
+a^k b^{n-k}.
+$$
+
+## MGF of a Sum of Independent Random Variables {#sec-mgf-independent-sum}
+
+::: {#thm-mgf-independent-sum .theorem}
+## MGF of an independent sum
+
+Let $X_1,\ldots,X_n$ be independent random variables and define
+
+$$
+Y
+=
+\sum_{i=1}^n X_i.
+$$
+
+Then
+
+$$
+M_Y(t)
+=
+\prod_{i=1}^n M_{X_i}(t),
+$$
+
+for values of $t$ at which the MGFs exist.
+:::
+
+::: {#prf-mgf-independent-sum .proof}
+## Proof
+
+$$
+\begin{aligned}
+M_Y(t)
+&=
+\mathbb{E}\!\left[e^{tY}\right] \\
+&=
+\mathbb{E}\!\left[
+e^{t\sum_{i=1}^n X_i}
+\right] \\
+&=
+\mathbb{E}\!\left[
+\prod_{i=1}^n e^{tX_i}
+\right] \\
+&=
+\prod_{i=1}^n
+\mathbb{E}\!\left[e^{tX_i}\right]
+\qquad \text{by independence} \\
+&=
+\prod_{i=1}^n M_{X_i}(t).
+\end{aligned}
+$$
+:::
+
+In particular, if
+
+$$
+X_1,\ldots,X_n
+\overset{\mathrm{iid}}{\sim} X,
+$$
+
+then
+
+$$
+M_Y(t)
+=
+\left[M_X(t)\right]^n.
+$$
+
+## Example: Sum of Bernoulli Random Variables {#sec-sum-bernoulli}
+
+::: {#exm-sum-bernoulli .example}
+## Bernoulli sum
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Bernoulli}(p),
+$$
+
+and let
+
+$$
+Y
+=
+\sum_{i=1}^n X_i.
+$$
+
+The MGF of each summand is
+
+$$
+M_{X_i}(t)
+=
+1-p+pe^t.
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+M_Y(t)
+&=
+\left[M_{X_1}(t)\right]^n \\
+&=
+\left(1-p+pe^t\right)^n.
+\end{aligned}
+$$
+
+This is the MGF of a $\operatorname{Binomial}(n,p)$ random variable. Hence
+
+$$
+Y
+\sim
+\operatorname{Binomial}(n,p).
+$$
+:::
+
+## Example: Exponential MGF {#sec-exponential-mgf}
+
+::: {#exm-exponential-mgf .example}
+## Exponential distribution
+
+Let
+
+$$
+X
+\sim
+\operatorname{Exp}(\text{rate}=\lambda),
+$$
+
+with density
+
+$$
+f_X(x)
+=
+\lambda e^{-\lambda x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+For $t<\lambda$,
+
+$$
+\begin{aligned}
+M_X(t)
+&=
+\mathbb{E}\!\left[e^{tX}\right] \\
+&=
+\int_0^\infty
+e^{tx}\lambda e^{-\lambda x}\,dx \\
+&=
+\int_0^\infty
+\lambda e^{-(\lambda-t)x}\,dx \\
+&=
+\frac{\lambda}{\lambda-t}
+\int_0^\infty
+(\lambda-t)e^{-(\lambda-t)x}\,dx \\
+&=
+\frac{\lambda}{\lambda-t}.
+\end{aligned}
+$$
+
+The integral in the penultimate line equals $1$ because its integrand is an exponential density with rate $\lambda-t$.
+:::
+
+## Example: Gamma MGF {#sec-gamma-mgf}
+
+::: {#exm-gamma-mgf .example}
+## Gamma distribution
+
+Let
+
+$$
+X
+\sim
+\Gamma(\alpha,\beta),
+$$
+
+where $\alpha$ is the shape parameter and $\beta$ is the rate parameter. Its density is
+
+$$
+f_X(x)
+=
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-\beta x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+For $t<\beta$,
+
+$$
+\begin{aligned}
+M_X(t)
+&=
+\mathbb{E}\!\left[e^{tX}\right] \\
+&=
+\int_0^\infty
+e^{tx}
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-\beta x}\,dx \\
+&=
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+\int_0^\infty
+x^{\alpha-1}e^{-(\beta-t)x}\,dx \\
+&=
+\frac{\beta^\alpha}{(\beta-t)^\alpha}
+\int_0^\infty
+\frac{(\beta-t)^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-(\beta-t)x}\,dx \\
+&=
+\left(
+\frac{\beta}{\beta-t}
+\right)^\alpha.
+\end{aligned}
+$$
+
+The final integral equals $1$ because its integrand is the density of a $\Gamma(\alpha,\beta-t)$ random variable.
+:::
+
+## Example: Sum of Exponential Random Variables {#sec-sum-exponential}
+
+::: {#exm-sum-exponential .example}
+## Exponential sum
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda),
+$$
+
+and define
+
+$$
+Y
+=
+\sum_{i=1}^n X_i.
+$$
+
+Since
+
+$$
+M_{X_i}(t)
+=
+\frac{\lambda}{\lambda-t},
+$$
+
+we obtain
+
+$$
+\begin{aligned}
+M_Y(t)
+&=
+\left[M_{X_1}(t)\right]^n \\
+&=
+\left(
+\frac{\lambda}{\lambda-t}
+\right)^n.
+\end{aligned}
+$$
+
+This is the MGF of the $\Gamma(n,\lambda)$ distribution. Therefore,
+
+$$
+Y
+\sim
+\Gamma(n,\lambda).
+$$
+
+Thus, the sum of $n$ independent and identically distributed exponential random variables with rate $\lambda$ has a gamma distribution with shape $n$ and rate $\lambda$.
+:::
+
+## Common Distributions of Sums {#sec-common-distributions-of-sums}
+
+The preceding results and related closure properties can be summarized as follows.
+
+### Bernoulli and binomial sums {#sec-bernoulli-binomial-sums}
+
+If
+
+$$
+X_1,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Bernoulli}(p),
+$$
+
+then
+
+$$
+\sum_{i=1}^n X_i
+\sim
+\operatorname{Binomial}(n,p).
+$$
+
+If
+
+$$
+X_1,\ldots,X_m
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Binomial}(n,p),
+$$
+
+then
+
+$$
+\sum_{i=1}^m X_i
+\sim
+\operatorname{Binomial}(mn,p).
+$$
+
+### Exponential and gamma sums {#sec-exponential-gamma-sums}
+
+If
+
+$$
+X_1,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda),
+$$
+
+then
+
+$$
+\sum_{i=1}^n X_i
+\sim
+\Gamma(n,\lambda).
+$$
+
+If
+
+$$
+X_1,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\Gamma(\alpha,\beta),
+$$
+
+with a common rate $\beta$, then
+
+$$
+\sum_{i=1}^n X_i
+\sim
+\Gamma(n\alpha,\beta).
+$$
+
+### Normal sums {#sec-normal-sums}
+
+If
+
+$$
+X_1,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu,\sigma^2),
+$$
+
+then
+
+$$
+\sum_{i=1}^n X_i
+\sim
+\mathcal{N}(n\mu,n\sigma^2).
+$$
+
+More generally, if $X_1,\ldots,X_n$ are independent and
+
+$$
+X_i
+\sim
+\mathcal{N}(\mu_i,\sigma_i^2),
+$$
+
+then
+
+$$
+\sum_{i=1}^n X_i
+\sim
+\mathcal{N}\!\left(
+\sum_{i=1}^n \mu_i,
+\sum_{i=1}^n \sigma_i^2
+\right).
+$$
+
+For constants $a_1,\ldots,a_n$, the weighted sum
+
+$$
+Y
+=
+\sum_{i=1}^n a_iX_i
+$$
+
+satisfies
+
+$$
+Y
+\sim
+\mathcal{N}\!\left(
+\sum_{i=1}^n a_i\mu_i,
+\sum_{i=1}^n a_i^2\sigma_i^2
+\right).
+$$
+
+
 
 ### Reflection
 

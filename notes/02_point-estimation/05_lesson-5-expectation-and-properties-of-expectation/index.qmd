@@ -3,7 +3,6 @@ title: "Lesson 5: Expectation and Properties of Expectation"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
-
 ::: {.column-margin}
 {{< video 01_expectation-and-properties-of-expectation.mp4 >}}
 
@@ -12,8 +11,8 @@ subtitle: "Statistical Estimation for Data Science and AI"
 :::
 
 
-## Notes
-
+::: {#exm-expectation-discrete}
+### Expectation of a Tabular RV
 Consider the discrete random variable $X$:
 
 | $x$ | $1$ | $2$ | $3$ |
@@ -22,49 +21,44 @@ Consider the discrete random variable $X$:
 
 Its expectation is
 
-$$
-\begin{aligned}
-\mathbb{E}[X]
-&= (1)\left(\frac14\right)
- + (2)\left(\frac14\right)
- + (3)\left(\frac12\right) \\
-&= \frac94
- = 2.25 .
+$$\begin{aligned}
+\mathbb{E}[X] 
+&= (1)\left(\frac14\right) + (2)\left(\frac14\right) + (3)\left(\frac12\right) \\
+&= \frac94 \\
+&= 2.25
 \end{aligned}
-$$
+$$ 
+:::
 
-::: {#def-expectation-discrete .definition}
+::: {#def-expectation-discrete}
 ### Expectation: discrete case
 
 For a discrete random variable $X$,
 
-$$
-\mathbb{E}[X]
+$$\mathbb{E}[X]
 = \sum_x x\,P(X=x).
 $$
 :::
 
-::: {#def-expectation-continuous .definition}
-### Expectation: continuous analogue
+::: {#def-expectation-continuous}
+### Expectation: continuous case
 
 For a continuous random variable $X$ with density $f_X(x)$,
 
 $$
-\mathbb{E}[X]
-=
-\int_{-\infty}^{\infty} x\,f_X(x)\,dx .
-$$
+\mathbb{E}[X] = \int_{-\infty}^{\infty} x f_X(x) dx \qquad
+$$ {#eq-expectation-continuous}
 :::
 
 ---
 
-::: {#def-expectation-mean }
+::: {#def-expectation-mean}
 ## Notation for Expectation
 
 The expectation of $X$ is often denoted by
 
 $$
-\mu = \mathbb{E}[X],
+\mu = \mathbb{E}[X]
 $$
 
 or, when several random variables are present,
@@ -76,23 +70,17 @@ $$
 $$
 :::
 
-### Example: Normal Distribution
 
-Let
+::: {#exm-normal-expectation}
+### Expectation for a Normal RV
 
-$$
-X \sim N(\mu,\sigma^2).
-$$
-
-Then
+Let $X \sim N(\mu,\sigma^2)$ then
 
 $$
 \begin{aligned}
 \mathbb{E}[X]
-&=
-\int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
-&=
-\int_{-\infty}^{\infty}
+&= \int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
+&= \int_{-\infty}^{\infty}
 x\,
 \frac{1}{\sqrt{2\pi\sigma^2}}
 \exp\!\left\{
@@ -100,103 +88,69 @@ x\,
 \right\}
 \,dx \\
 &= \cdots \\
-&= \mu .
+&= \mu
 \end{aligned}
-$$
-
-### Example: Exponential Distribution
-
-Let
-
-$$
-X \sim \operatorname{Exp}(\lambda),
-\qquad
-\lambda > 0,
-$$
-
-where $\lambda$ is the rate parameter. Then
-
-$$
-\begin{aligned}
-\mathbb{E}[X]
-&=
-\int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
-&=
-\int_{-\infty}^{0} x\cdot 0\,dx
-+
-\int_{0}^{\infty} x\,\lambda e^{-\lambda x}\,dx \\
-&= \frac{1}{\lambda}.
-\end{aligned}
-$$
-
-An example: if $X$ is the interarrival time and the arrival rate is $2$ per hour, then $\lambda=2$, so the average time between arrivals is
-
-$$
-\mathbb{E}[X]
-=
-\frac12
-\text{ hour}.
-$$
-
-### Rate Versus Mean Parameterization of the Exponential Distribution
-
-The notation $X \sim \operatorname{Exp}(\lambda)$ is ambiguous unless the parameterization is specified.
-
-::: {#def-exponential-rate .definition}
-### Exponential distribution: rate parameterization
-
-If
-
-$$
-X \sim \operatorname{Exp}(\lambda)
-$$
-
-means that $\lambda$ is a rate parameter, then
-
-$$
-f_X(x)
-=
-\lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x),
-$$
-
-and
-
-$$
-\mathbb{E}[X]
-=
-\frac{1}{\lambda}.
-$$
-
-Equivalently, one may write
-
-$$
-X \sim \operatorname{Exp}(\operatorname{rate}=\lambda).
 $$
 :::
 
-::: {#def-exponential-mean .definition}
-### Exponential distribution: mean parameterization
+::: {#exm-exponential-expectation}
+### Exponential Distribution
 
-If
+Let $X \sim \operatorname{Exp}(\lambda), \qquad \lambda > 0$ where $\lambda$ is the rate parameter. Then
+
+$$\begin{aligned}
+\mathbb{E}[X] 
+    &= \int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
+    &= \int_{-\infty}^{0} x\cdot 0\,dx + \int_{0}^{\infty} x\,\lambda e^{-\lambda x}\,dx \\
+    &= \frac{1}{\lambda}
+\end{aligned}
+$$
+:::
+
+::: {#exm-exponential-expectation-2}
+### Train interarrival times
+
+If $X$ is the train interarrival time and the arrival rate is $2$ per hour, then $\lambda=2$, so the average time between arrivals is
 
 $$
-X \sim \operatorname{Exp}(\lambda)
+\mathbb{E}[X]  = \frac12 \text{ hour}.
 $$
+:::
 
-means that $\lambda$ is a mean parameter, then
+### Rate Versus Mean Parameterization of the Exponential Distribution {#sec-exponential-parameterization}
+
+The notation $X \sim \operatorname{Exp}(\lambda)$ is ambiguous unless the parameterization is specified.
+
+::: {#def-exponential-rate}
+### Exponential distribution: rate parameterization
+
+If $X \sim \operatorname{Exp}(\lambda)$ means that $\lambda$ is a rate parameter, then
 
 $$
-f_X(x)
-=
-\frac{1}{\lambda}e^{-x/\lambda}\mathbf{1}_{(0,\infty)}(x),
+f_X(x) = \lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x),
 $$
 
 and
 
 $$
-\mathbb{E}[X]
-=
-\lambda.
+\mathbb{E}[X] = \frac{1}{\lambda}
+$$
+
+Equivalently, one may write $X \sim \operatorname{Exp}(\operatorname{rate}=\lambda).$
+:::
+
+::: {#def-exponential-mean}
+### Exponential distribution: mean parameterization
+
+If $X \sim \operatorname{Exp}(\lambda)$ means that $\lambda$ is a mean parameter, then
+
+$$
+f_X(x) = \frac{1}{\lambda}e^{-x/\lambda}\mathbf{1}_{(0,\infty)}(x),
+$$
+
+and
+
+$$\mathbb{E}[X] = \lambda.
 $$
 
 Equivalently, one may write
@@ -206,47 +160,28 @@ X \sim \operatorname{Exp}(\operatorname{mean}=\lambda).
 $$
 :::
 
-### Expectation of a Function of a Random Variable
+### Expectation of a Function of a Random Variable {#sec-expectation-function}
 
 Suppose
 
 - $X$ has probability density function $f_X(x)$;
 - $g$ is a function.
 
-We want to find
+We want to find $\mathbb{E}[g(X)]$ 
+
+Let $Y = g(X)$ if $g$ is one-to-one and differentiable, then the density of $Y$ is
 
 $$
-\mathbb{E}[g(X)].
-$$
-
-Let
-
-$$
-Y = g(X).
-$$
-
-If $g$ is one-to-one and differentiable, then the density of $Y$ is
-
-$$
-f_Y(y)
-=
-f_X \left(g^{-1}(y)\right)
-\left|
-\frac{d}{dy}g^{-1}(y)
-\right|.
-$$
+f_Y(y) = f_X \left(g^{-1}(y)\right) \left| \frac{d}{dy}g^{-1}(y) \right|.
+$$ 
 
 Therefore,
 
 $$
-\mathbb{E}[g(X)]
-=
-\mathbb{E}[Y]
-=
-\int_{-\infty}^{\infty} y\,f_Y(y)\,dy.
+\mathbb{E}[g(X)] =  \mathbb{E}[Y] = \int_{-\infty}^{\infty} y\,f_Y(y)\,dy.
 $$
 
-### Law of the Unconscious Statistician
+### Law of the Unconscious Statistician {#sec-lotus}
 
 Continuing with $Y=g(X)$,
 
@@ -264,43 +199,29 @@ f_X\!\left(g^{-1}(y)\right)
 \left|
 \frac{d}{dy}g^{-1}(y)
 \right|
-\,dy .
+\,dy
 \end{aligned}
 $$
 
-Let
+Let $x = g^{-1}(y)$ then
 
 $$
-x = g^{-1}(y).
-$$
-
-Then
-
-$$
-dx
-=
-\frac{d}{dy}g^{-1}(y)\,dy.
+dx = \frac{d}{dy}g^{-1}(y)\,dy.
 $$
 
 Substituting back gives
 
 $$
-\mathbb{E}[g(X)]
-=
-\int_{-\infty}^{\infty}
-g(x)f_X(x)\,dx.
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x)\,dx.
 $$
 
-::: {#thm-lotus .theorem}
+::: {#thm-lotus}
 ### Law of the Unconscious Statistician
 
 For a continuous random variable $X$ with density $f_X(x)$,
 
 $$
-\mathbb{E}[g(X)]
-=
-\int_{-\infty}^{\infty}
-g(x)f_X(x)\,dx.
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x)\,dx.
 $$
 
 Thus, to compute $\mathbb{E}[g(X)]$, one does not need to first derive the distribution of $Y=g(X)$.
@@ -313,38 +234,27 @@ The same result is emphasized again:
 $$
 \begin{aligned}
 \mathbb{E}[g(X)]
-&=
-\mathbb{E}[Y] \\
-&=
-\int_{-\infty}^{\infty} y\,f_Y(y)\,dy \\
-&=
-\int_{-\infty}^{\infty}
-y\,
-f_X\!\left(g^{-1}(y)\right)
-\left|
-\frac{d}{dy}g^{-1}(y)
-\right|
-\,dy.
+&= \mathbb{E}[Y] \\
+&= \int_{-\infty}^{\infty} y\,f_Y(y)\,dy \\
+&= \int_{-\infty}^{\infty} y\, f_X\!\left(g^{-1}(y)\right) \left|
+\frac{d}{dy}g^{-1}(y) \right| \,dy.
 \end{aligned}
 $$
 
 With
 
 $$
-x = g^{-1}(y),
-\qquad
-dx = \frac{d}{dy}g^{-1}(y)\,dy,
+x = g^{-1}(y), \qquad dx = \frac{d}{dy}g^{-1}(y)\,dy,
 $$
 
 we get
 
 $$
-\mathbb{E}[g(X)]
-=
-\int_{-\infty}^{\infty}
-g(x)f_X(x)\,dx.
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x)\,dx.
 $$
 
+
+::: {#exm-expectation-discrete-function}
 ### Discrete Example Revisited
 
 Again let $X$ be given by
@@ -358,16 +268,8 @@ Then
 $$
 \begin{aligned}
 \mathbb{E}[X]
-&=
-(1)\left(\frac14\right)
-+
-(2)\left(\frac14\right)
-+
-(3)\left(\frac12\right) \\
-&=
-\frac94
-=
-2.25.
+&= (1)\left(\frac14\right) + (2)\left(\frac14\right) + (3)\left(\frac12\right) \\
+&= \frac94 = 2.25.
 \end{aligned}
 $$ 
 
@@ -376,9 +278,7 @@ $$
 For a continuous random variable,
 
 $$
-\mathbb{E}[X] =
-\int_{-\infty}^{\infty}
-x\,f_X(x)\,dx.
+\mathbb{E}[X] = \int_{-\infty}^{\infty} x\,f_X(x)\,dx.
 $$ {#eq-expectation-continuous}
 
 If
@@ -390,9 +290,7 @@ $$
 under the rate parameterization, then
 
 $$
-f_X(x)
-=
-\lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x).
+f_X(x) = \lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x).
 $$
 
 Hence
@@ -400,11 +298,8 @@ Hence
 $$
 \begin{aligned}
 \mathbb{E}[X]
-&=
-\int_0^\infty
-x\lambda e^{-\lambda x}\,dx \\
-&=
-\frac{1}{\lambda}.
+&= \int_0^\infty x\lambda e^{-\lambda x}\,dx \\
+&= \frac{1}{\lambda}
 \end{aligned}
 $$
 
@@ -414,25 +309,18 @@ Let $(X,Y)$ have joint density $f_{X,Y}(x,y)$. Then
 
 $$
 \mathbb{E}[g(X,Y)]
-=
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-g(x,y)f_{X,Y}(x,y)\,dx\,dy.
+= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f_{X,Y}(x,y)\,dx\,dy
 $$
 
 ### Expectation is a Linear Operator
 
-::: {#thm-linearity-expectation .theorem}
+::: {#thm-linearity-expectation }
 ### Linearity of expectation
 
 For random variables $X$ and $Y$,
 
 $$
-\mathbb{E}[X+Y]
-=
-\mathbb{E}[X]
-+
-\mathbb{E}[Y].
+\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]
 $$ {#eq-linearity-expectation}
 :::
 
@@ -442,27 +330,17 @@ $$
 \begin{aligned}
 \mathbb{E}[X+Y]
 &=
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-(x+y)f_{X,Y}(x,y)\,dx\,dy \\
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x+y)f_{X,Y}(x,y)\,dx\,dy \\
 &=
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-x f_{X,Y}(x,y)\,dx\,dy
-+
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-y f_{X,Y}(x,y)\,dx\,dy.
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f_{X,Y}(x,y)\,dx\,dy
++ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{X,Y}(x,y)\,dx\,dy
 \end{aligned}
 $$
 
 For the first term,
 
 $$
-\int_{-\infty}^{\infty}
-f_{X,Y}(x,y)\,dy
-=
-f_X(x),
+\int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dy = f_X(x),
 $$
 
 so
@@ -483,8 +361,9 @@ $$
 Similarly, the second term is $\mathbb{E}[Y]$. Therefore,
 
 $$
-\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y] 
-\blacksquare
+\begin{aligned}
+\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y] \blacksquare
+\end{aligned}
 $$
 :::
 
@@ -496,39 +375,22 @@ $$
 If $X$ and $Y$ are independent, then
 
 $$
-\mathbb{E}[XY]
-=
-\mathbb{E}[X]\mathbb{E}[Y].
+\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y].
 $$
 :::
 
-::: { .proof}
+::: {.proof}
 
 $$
 \begin{aligned}
 \mathbb{E}[XY]
-&=
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-xy\,f_{X,Y}(x,y)\,dx\,dy \\
-&=
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-xy\,f_X(x)f_Y(y)\,dx\,dy
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\,f_{X,Y}(x,y)\,dx\,dy \\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\,f_X(x)f_Y(y)\,dx\,dy
 \qquad \text{(by independence)} \\
-&=
-\left(
-\int_{-\infty}^{\infty}
-x f_X(x)\,dx
-\right)
-\left(
-\int_{-\infty}^{\infty}
-y f_Y(y)\,dy
-\right) \\
-&=
-\mathbb{E}[X]\mathbb{E}[Y].
-\end{aligned}
+&= \left( \int_{-\infty}^{\infty} x f_X(x)\,dx \right) \left( \int_{-\infty}^{\infty} y f_Y(y)\,dy \right) \\
+&= \mathbb{E}[X]\mathbb{E}[Y] \\
 \blacksquare
+\end{aligned}
 $$
 :::
 
@@ -537,9 +399,7 @@ $$
 If $X$ and $Y$ are independent, then for suitable functions $g$ and $h$,
 
 $$
-\mathbb{E}[g(X)h(Y)]
-=
-\mathbb{E}[g(X)]\mathbb{E}[h(Y)].
+\mathbb{E}[g(X)h(Y)] = \mathbb{E}[g(X)]\mathbb{E}[h(Y)].
 $$
 
 However,
@@ -564,62 +424,37 @@ Then
 
 $$
 \mathbb{E}[X]
-=
-(-1)\left(\frac14\right)
-+
-0\left(\frac12\right)
-+
-1\left(\frac14\right)
-=
-0.
+= (-1)\left(\frac14\right) + 0\left(\frac12\right) + 1\left(\frac14\right)
+= 0
 $$
 
 Therefore,
 
 $$
-\mathbb{E}[X]\mathbb{E}[Y]
-=
-0
+\mathbb{E}[X]\mathbb{E}[Y] = 0
 $$
 
 for any random variable $Y$ with finite expectation.
 
-Define
-
-$$
-Y = X^2.
-$$
-
-Then $Y$ is dependent on $X$, since $Y$ is determined by $X$. Yet
+Define $Y = X^2$. Then $Y$ is dependent on $X$, since $Y$ is determined by $X$. Yet
 
 $$
 \begin{aligned}
 \mathbb{E}[XY]
-&=
-\mathbb{E}[X^3] \\
-&=
-(-1)^3\left(\frac14\right)
-+
-0^3\left(\frac12\right)
-+
-1^3\left(\frac14\right) \\
-&=
--\frac14 + 0 + \frac14 \\
-&=
-0.
+&= \mathbb{E}[X^3] \\
+&= (-1)^3\left(\frac14\right) + 0^3\left(\frac12\right) + 1^3\left(\frac14\right) \\
+&= -\frac14 + 0 + \frac14 \\
+&= 0
 \end{aligned}
 $$
 
 Thus
 
 $$
-\mathbb{E}[XY] =
-\mathbb{E}[X]\mathbb{E}[Y],
+\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]
 $$ 
 
 even though $X$ and $Y$ are not independent.
-
-
 
 ### Quiz (Graded)
 
@@ -638,4 +473,3 @@ even though $X$ and $Y$ are not independent.
     - It is very likely that different parameterizations are due to different generative stories and these allow a deeper understanding of the underlying process that generates the data.
     - In my experience parameterization is often a real source of confusion for practitioners as well as student. I've wasted time trying get the poissone and exponential distributions to match up due to bad parameterization.
 6. In the section on the law of the unconscious statistician, we saw that without the theorem, the correct way to compute the expectation of a function of a random variable is to first derive the distribution of the new random variable and then compute its expectation. However, we showed that the  [law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician) allows us to use the same form of expectation as we used  i.e. @eq-expectation-continuous bur replacing X with g(X). This seems like a tautology, but it is actually a very powerful result that allows us to compute the expectation of a function of a random variable without having to derive the distribution of that function. This is especially useful when the function is complicated or when the distribution of the function is not known.
-

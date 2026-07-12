@@ -46,8 +46,18 @@ book:
       - notes/02_point-estimation/_the-shape-of-data.qmd
     - part: "Module 3 Maximum Likelihood Estimation"
       chapters:
-      - notes/03_maximum-likelihood-estimation/index.qmd
-    - notes/04_large-sample-properties-of-maximum-likelihood-estimators/index.qmd
+      - notes/03_maximum-likelihood-estimation/01_lesson-1-a-motivating-example/index.qmd      
+      - notes/03_maximum-likelihood-estimation/02_lesson-2-notation-terminology-and-first-complete-examples/index.qmd
+      - notes/03_maximum-likelihood-estimation/03_lesson-3-multiple-parameters-and-parameters-in-the-support-of-a-distribution/index.qmd
+      - notes/03_maximum-likelihood-estimation/_finding-mles.qmd
+      - notes/03_maximum-likelihood-estimation/04_lesson-4-the-invariance-property-of-maximum-likelihood-estimators/index.qmd
+      - notes/03_maximum-likelihood-estimation/SamplingDistributions.ipynb
+      - notes/03_maximum-likelihood-estimation/05_lesson-5-mean-squared-error-bias-and-relative-efficiency/index.qmd
+      - notes/03_maximum-likelihood-estimation/_invariance-mean-squared-error-and-efficiency.qmd
+    - part: "Module 4 Large Sample Properties of Maximum Likelihood Estimators"
+      chapters: 
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/index.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/_the-cramer-rao-lower-bound.qmd
     - notes/references.qmd
 
 bibliography: references.bib
@@ -56,9 +66,8 @@ format:
   html:
     from: markdown+emoji
     theme:
-      - cosmo
-      - brand
-      - custom.scss
+      light: [cosmo, theme.scss, custom.scss]
+      dark: [cosmo, theme-dark.scss, custom.scss]
     lightbox: true
     html-math-method: 
       method: katex

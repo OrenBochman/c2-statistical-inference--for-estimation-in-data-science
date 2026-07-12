@@ -1,24 +1,288 @@
 ---
-title: "Module 2: Point Estimation"
+title: "Lesson 7: Estimators and Sampling Distributions"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
-
-
-## Estimators and Sampling Distributions 
-
 
 ::: {.column-margin}
 {{< video 01_estimators-and-sampling-distributions.mp4 >}}
 
-[transcript](01_estimators-and-sampling-distributions.en.txt){target="_blank"}
+[Transcript](01_estimators-and-sampling-distributions.en.txt){target="_blank"}
+[Handout](02_video-slides-for-estimators-and-sampling-distributions_module1_lesson6.pdf){width=700 height=700}
 :::
 
-### Handout
+## Random Samples {#sec-random-samples}
 
-[Handout](02_video-slides-for-estimators-and-sampling-distributions_module1_lesson6.pdf){width=700 height=700}
+::: {#def-random-sample .definition}
+## Random sample
+
+A **random sample** consists of random variables $X_1,X_2,\ldots,X_n$
+
+before their values have been sampled, observed, and fixed.
+
+The variables are assumed to be **independent and identically distributed** (iid). Thus, in this setting, $\text{random sample} = \text{iid sample}$
+:::
+
+For example, if the common distribution is gamma with shape parameter $\alpha$ and rate parameter $\beta$, we write
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\Gamma(\alpha,\beta).
+$$
+
+## Parameters, Estimators, and Estimates {#sec-parameters-estimators-estimates}
+
+::: {#ntn-generic-parameter .callout-note}
+## Parameter notation
+
+The symbol $\theta$ denotes a generic model parameter. Depending on the model, it may represent
+
+$$
+\theta=\mu,
+\qquad
+\theta=p,
+\qquad
+\theta=\lambda,
+\qquad
+\text{or}
+\qquad
+\theta=(\alpha,\beta).
+$$
+:::
+
+::: {#def-estimator .definition}
+## Estimator
+
+An **estimator** $\widehat{\theta}$ is a random variable computed from the random sample:
+
+$$
+\widehat{\theta}
+=
+g(X_1,\ldots,X_n).
+$$
+
+For example, the sample mean
+
+$$
+\widehat{\theta}
+=
+\overline{X}
+=
+\frac{1}{n}
+\sum_{i=1}^n X_i
+$$
+
+may be used to estimate a population mean.
+:::
+
+::: {#def-estimate .definition}
+## Estimate
+
+An **estimate** is the observed numerical value of an estimator after the sample has been observed. For example,
+
+$$
+\widehat{\theta}
+=
+\overline{x}
+=
+42.8.
+$$
+:::
+
+## Sampling Distributions {#sec-sampling-distributions}
+
+Because an estimator is a function of random variables, it is itself a random variable. Different random samples generally produce different values of $\widehat{\theta}$.
+
+::: {#def-sampling-distribution .definition}
+## Sampling distribution
+
+The **sampling distribution** of an estimator $\widehat{\theta}$ is the probability distribution of the estimator over repeated random samples of the same size from the population.
+:::
+
+The sampling distribution has its own expected value and variance. These describe, respectively, where estimates tend to be centered and how much they vary across repeated samples.
+
+## Unbiased Estimators {#sec-unbiased-estimators}
+
+We would like an estimator to be correct **on average**.
+
+::: {#def-unbiased-estimator .definition}
+## Unbiased estimator
+
+An estimator $\widehat{\theta}$ is an unbiased estimator of $\theta$ when
+
+$$
+\mathbb{E}\!\left[\widehat{\theta}\right]
+=
+\theta.
+$$
+
+Its sampling distribution is therefore centered at the true parameter value.
+:::
+
+For the population mean $\mu$, we would like
+
+$$
+\mathbb{E}[\overline{X}]
+=
+\mu.
+$$
+
+## The Sample Mean Is Unbiased {#sec-sample-mean-unbiased}
+
+::: {#thm-sample-mean-unbiased .theorem}
+## Unbiasedness of the sample mean
+
+Let $X_1,X_2,\ldots,X_n$ be a random sample from any distribution with finite mean $\mu$. Then
+
+$$
+\overline{X}
+=
+\frac{1}{n}
+\sum_{i=1}^n X_i
+$$
+
+is an unbiased estimator of $\mu$.
+:::
+
+Since $\mathbb{E}[X_i]=\mu$ for every $i$,
+
+$$
+\begin{aligned}
+\mathbb{E}[\overline{X}]
+&=
+\mathbb{E}\!\left[
+\frac{1}{n}
+\sum_{i=1}^n X_i
+\right] \\
+&=
+\frac{1}{n}
+\sum_{i=1}^n
+\mathbb{E}[X_i]
+\qquad \text{by linearity of expectation} \\
+&=
+\frac{1}{n}
+\sum_{i=1}^n \mu \\
+&=
+\frac{1}{n}(n\mu) \\
+&=
+\mu.
+\end{aligned}
+$$
+
+Thus, regardless of the underlying distribution, the sample mean is unbiased for the population mean whenever that mean exists.
+
+## Example: Exponential Random Sample {#sec-exponential-sample-mean}
+
+::: {#exm-exponential-sample-mean .example}
+## Exponential distribution
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda).
+$$
+
+For an exponential random variable,
+
+$$
+\mathbb{E}[X_i]
+=
+\frac{1}{\lambda}.
+$$
+
+Therefore,
+
+$$
+\mathbb{E}[\overline{X}]
+=
+\frac{1}{\lambda}.
+$$
+
+Hence, $\overline{X}$ is an unbiased estimator of the exponential mean $1/\lambda$.
+:::
+
+## Unbiasedness and Sampling Variability {#sec-unbiasedness-variance}
+
+Unbiasedness concerns the center of a sampling distribution. It does not determine how dispersed the estimator is around the true parameter.
+
+Two estimators may both be unbiased while having very different variances. The estimator with the narrower sampling distribution produces estimates that are more tightly concentrated around $\theta$.
+
+::: {#ntn-desirable-estimator-properties .callout-note}
+## Two desirable properties
+
+A useful estimator should ideally have both:
+
+1. **Unbiasedness:** its sampling distribution is centered at $\theta$.
+2. **Small variance:** repeated estimates are tightly concentrated around $\theta$.
+:::
+
+## Variance of the Sample Mean {#sec-variance-sample-mean}
+
+Let $X_1,X_2,\ldots,X_n$ be a random sample from a distribution with
+
+$$
+\mathbb{E}[X_i]=\mu
+\qquad \text{and} \qquad
+\operatorname{Var}(X_i)=\sigma^2.
+$$
+
+Because the observations are independent,
+
+$$
+\begin{aligned}
+\operatorname{Var}(\overline{X})
+&=
+\operatorname{Var}\!\left(
+\frac{1}{n}
+\sum_{i=1}^n X_i
+\right) \\
+&=
+\frac{1}{n^2}
+\operatorname{Var}\!\left(
+\sum_{i=1}^n X_i
+\right) \\
+&=
+\frac{1}{n^2}
+\sum_{i=1}^n
+\operatorname{Var}(X_i)
+\qquad \text{by independence} \\
+&=
+\frac{1}{n^2}
+\sum_{i=1}^n \sigma^2 \\
+&=
+\frac{1}{n^2}(n\sigma^2) \\
+&=
+\frac{\sigma^2}{n}.
+\end{aligned}
+$$
+
+::: {#thm-sample-mean-properties .theorem}
+## Sampling properties of the sample mean
+
+For an iid sample with finite mean $\mu$ and variance $\sigma^2$,
+
+$$
+\mathbb{E}[\overline{X}]
+=
+\mu
+$$
+
+and
+
+$$
+\operatorname{Var}(\overline{X})
+=
+\frac{\sigma^2}{n}.
+$$
+
+Thus, $\overline{X}$ remains centered at $\mu$, while its sampling variance decreases as the sample size increases.
+:::
 
 
-### Glossary
+
+## Glossary
 
 Estimation is a fundamental task in statistics and data science. It involves using data to make inferences about unknown parameters or quantities of interest. We may at times wish to be very precise when discussing estimation which is why there it has a rich terminology. However this can also make the subject more difficult to approach so let's unpack some of the key terms related to estimation that we will be using in this and the next few modules.
 
@@ -85,7 +349,7 @@ UMVUE
 : stands for Uniformly Minimum Variance Unbiased Estimator. It is an unbiased estimator that has the lowest variance among all unbiased estimators for a given parameter. [UMVUE](https://en.wikipedia.org/wiki/Uniformly_minimum_variance_unbiased_estimator) is also known as the [Lehmann–Scheffé estimator](https://en.wikipedia.org/wiki/Lehmann%E2%80%93Scheff%C3%A9_theorem).
 
 
-### Theorems
+## Theorems
 
 The following theorems are useful to characterize a "best unbiased estimators".
 
@@ -116,7 +380,7 @@ Additional Results in Estimation Theory
 : The mean squared error can be partitioned into variance and squared bias. c.f. [statproofbook](https://statproofbook.github.io/P/mse-bnv)
 
 
-### Reflection
+## Reflection
 
 Sampling distributions and the empirical distribution are two very different concepts. 
 

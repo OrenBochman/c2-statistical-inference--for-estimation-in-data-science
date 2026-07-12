@@ -1,0 +1,427 @@
+---
+title: "Lesson 2: Notation, Terminology, and First Complete Examples"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_notation-terminology-and-first-complete-examples.mp4 >}}
+
+[Transcript](01_notation-terminology-and-first-complete-examples.en.txt)
+[Handout](02_video-slides-for-notation-terminology-and-first-complete-examples_module2_lesson2.pdf){width=700 height=980}
+:::
+
+## Slides {#sec-maximum-likelihood-estimation}
+
+Suppose that $X_1,X_2,\ldots,X_n$ is a random sample from a distribution with unknown parameter $\theta$ and parameter space $\Theta$.
+
+Given observed data $x_1,x_2,\ldots,x_n,$ maximum likelihood estimation chooses the value of $\theta$ that makes the observed data most plausible under the model.
+
+::: {#def-maximum-likelihood-estimation}
+## Maximum likelihood estimation
+
+For discrete random variables, maximize the joint probability mass function
+
+$$
+P_\theta \left( X_1=x_1, X_2=x_2, \ldots, X_n=x_n \right)
+$$
+
+over $\theta\in\Theta$.
+
+For continuous random variables, maximize the joint probability density function evaluated at the observed data.
+:::
+
+## Density and Likelihood Notation {#sec-density-likelihood-notation}
+
+The probability mass function or probability density function of one observation is written as $f(x;\theta).$
+
+The notation emphasizes that $x$ is the possible observation and $\theta$ is the model parameter.
+
+Because the sample is independent and identically distributed,
+
+$$
+\begin{aligned}
+f(\mathbf{x};\theta)
+&=
+f(x_1,x_2,\ldots,x_n;\theta) \\
+&=
+\prod_{i=1}^{n} f(x_i;\theta).
+\end{aligned}
+$$
+
+Once the data $\mathbf{x}=(x_1,\ldots,x_n)$ have been observed, they are treated as fixed. The joint mass or density is then viewed as a function of $\theta$.
+
+::: {#def-likelihood-function .definition}
+## Likelihood function
+
+The likelihood function is
+
+$$
+L(\theta;\mathbf{x})
+\propto
+f(\mathbf{x};\theta),
+$$
+
+where the omitted proportionality factor may depend on the observed data but must be positive and independent of $\theta$.
+:::
+
+Multiplying a likelihood by a positive factor that does not depend on $\theta$ does not change its maximizer. For example,
+
+$$
+L(\theta),
+\qquad
+\frac13 L(\theta),
+\qquad
+3L(\theta)
+$$
+
+all attain their maxima at the same value of $\theta$.
+
+::: {#def-maximum-likelihood-estimator .definition}
+## Maximum likelihood estimator
+
+The maximum likelihood estimator is
+
+$$
+\hat{\theta}
+=
+\underset{\theta\in\Theta}{\operatorname{arg\,max}}
+\;
+L(\theta;\mathbf{X}).
+$$
+
+After observing $\mathbf{X}=\mathbf{x}$, the corresponding maximum likelihood estimate is
+
+$$
+\hat{\theta}(\mathbf{x})
+=
+\underset{\theta\in\Theta}{\operatorname{arg\,max}}
+\;
+L(\theta;\mathbf{x}).
+$$
+:::
+
+## Bernoulli Example {#sec-bernoulli-mle}
+
+::: {#exm-bernoulli-mle .example}
+## Bernoulli model
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Bernoulli}(p),
+$$
+
+where the parameter space is
+
+$$
+\Theta=[0,1].
+$$
+
+The probability mass function of one observation is
+
+$$
+f(x;p)
+=
+p^x(1-p)^{1-x}
+\mathbf{1}_{\{0,1\}}(x).
+$$
+:::
+
+The joint probability mass function is
+
+$$
+\begin{aligned}
+f(\mathbf{x};p)
+&=
+\prod_{i=1}^{n} f(x_i;p) \\
+&=
+\prod_{i=1}^{n}
+p^{x_i}(1-p)^{1-x_i}
+\mathbf{1}_{\{0,1\}}(x_i) \\
+&=
+p^{\sum_{i=1}^{n}x_i}
+(1-p)^{n-\sum_{i=1}^{n}x_i}
+\prod_{i=1}^{n}
+\mathbf{1}_{\{0,1\}}(x_i).
+\end{aligned}
+$$
+
+For observed Bernoulli data, the indicator term is constant with respect to $p$. A likelihood is therefore
+
+$$
+L(p)
+=
+p^{\sum_{i=1}^{n}x_i}
+(1-p)^{n-\sum_{i=1}^{n}x_i}.
+$$
+
+## Log-Likelihood {#sec-bernoulli-log-likelihood}
+
+Because the logarithm is strictly increasing, maximizing $L(p)$ is equivalent to maximizing the log-likelihood
+
+$$
+\ell(p)
+=
+\log L(p).
+$$
+
+For the Bernoulli sample,
+
+$$
+\begin{aligned}
+\ell(p)
+&=
+\log
+\left[
+p^{\sum_{i=1}^{n}x_i}
+(1-p)^{n-\sum_{i=1}^{n}x_i}
+\right] \\
+&=
+\left(\sum_{i=1}^{n}x_i\right)\log p
++
+\left(
+n-\sum_{i=1}^{n}x_i
+\right)
+\log(1-p).
+\end{aligned}
+$$
+
+::: {.callout-note}
+The slides say to minimize the log-likelihood. The equivalent correct procedures are to maximize the log-likelihood or minimize the negative log-likelihood.
+:::
+
+## Bernoulli Maximum Likelihood Estimator {#sec-bernoulli-mle-derivation}
+
+For an interior maximizer $0<p<1$,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial p}\ell(p)
+&=
+\frac{\sum_{i=1}^{n}x_i}{p}
+-
+\frac{n-\sum_{i=1}^{n}x_i}{1-p}.
+\end{aligned}
+$$
+
+Set the derivative equal to zero:
+
+$$
+\begin{aligned}
+0
+&=
+\frac{\sum_{i=1}^{n}x_i}{p}
+-
+\frac{n-\sum_{i=1}^{n}x_i}{1-p} \\
+0
+&=
+(1-p)\sum_{i=1}^{n}x_i
+-
+p\left(
+n-\sum_{i=1}^{n}x_i
+\right)
+\qquad
+\text{multiply by }p(1-p) \\
+&=
+\sum_{i=1}^{n}x_i
+-
+p\sum_{i=1}^{n}x_i
+-
+np
++
+p\sum_{i=1}^{n}x_i \\
+&=
+\sum_{i=1}^{n}x_i-np.
+\end{aligned}
+$$
+
+Hence,
+
+$$
+p
+=
+\frac{1}{n}
+\sum_{i=1}^{n}x_i.
+$$
+
+The same expression also gives the boundary maximizers when all observations are $0$ or all observations are $1$.
+
+::: {#thm-bernoulli-mle .theorem}
+## Bernoulli maximum likelihood estimator
+
+For an independent and identically distributed Bernoulli sample,
+
+$$
+\boxed{
+\hat{p}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}X_i
+=
+\overline{X}
+}
+$$
+
+is the maximum likelihood estimator of $p$.
+:::
+
+The estimator uses uppercase $X_i$ because it is a random variable. For observed values $x_i$, the numerical estimate is
+
+$$
+\hat{p}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}x_i
+=
+\overline{x}.
+$$
+
+## Exponential Example {#sec-exponential-mle}
+
+::: {#exm-exponential-mle .example}
+## Exponential rate model
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exponential}(\operatorname{rate}=\lambda),
+$$
+
+where
+
+$$
+\lambda\in(0,\infty).
+$$
+
+The density of one observation is
+
+$$
+f(x;\lambda)
+=
+\lambda e^{-\lambda x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+:::
+
+The joint density is
+
+$$
+\begin{aligned}
+f(\boldsymbol{x};\lambda)
+&=
+\prod_{i=1}^{n}
+f(x_i;\lambda) \\
+&=
+\prod_{i=1}^{n}
+\lambda e^{-\lambda x_i}
+\mathbf{1}_{(0,\infty)}(x_i) \\
+&=
+\lambda^n
+\exp\left\{
+-\lambda\sum_{i=1}^{n}x_i
+\right\}
+\prod_{i=1}^{n}
+\mathbf{1}_{(0,\infty)}(x_i).
+\end{aligned}
+$$
+
+For observed positive data, a likelihood is
+
+$$
+L(\lambda)
+=
+\lambda^n
+\exp\left\{
+-\lambda\sum_{i=1}^{n}x_i
+\right\}.
+$$
+
+The log-likelihood is
+
+$$
+\begin{aligned}
+\ell(\lambda)
+&= \log L(\lambda) \\
+&= n\log\lambda - \lambda\sum_{i=1}^{n}x_i.
+\end{aligned}
+$$
+
+## Exponential Maximum Likelihood Estimator {#sec-exponential-mle-derivation}
+
+Differentiate and set the derivative equal to zero:
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\lambda}
+\ell(\lambda)
+&= \frac{n}{\lambda} - \sum_{i=1}^{n}x_i \\
+&=0
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\lambda
+&= \frac{n}{\sum_{i=1}^{n}x_i} \\
+&= \frac{1}{\overline{x}}.
+\end{aligned}
+$$
+
+Moreover,
+
+$$
+\frac{\partial^2}{\partial\lambda^2} \ell(\lambda) 
+= -\frac{n}{\lambda^2} <0
+$$
+
+so the stationary point is a maximum.
+
+::: {#thm-exponential-mle .theorem}
+## Exponential-rate maximum likelihood estimator
+
+For an independent and identically distributed exponential sample parameterized by its rate,
+
+$$
+\boxed{
+\hat{\lambda}
+= \frac{n}{\sum_{i=1}^{n}X_i}
+= \frac{1}{\overline{X}}
+}
+$$
+
+is the maximum likelihood estimator of $\lambda$.
+:::
+
+This is the same estimator obtained by the method of moments. It is biased.
+
+
+
+## Reflection
+
+Again once we learn measure theory we can unify the treatment of discrete and continuous random variables. For now, we treat them separately.
+
+Recall the main difference between probability and statistics, is that in probability we take a view of what might happen in some future experiment. While in statistics we want to use what we learned about probability to explain the outcome of data we have observed, and we are trying to make inferences about the data generating process. 
+
+This leads to two roles of RV's. Once version represents unseen data that we might draw in the future $X_1\sim \mathcal N(\mu,\sigma)$. On the other hand we also use RV's to represent the data we have observed e.g. $X_1=x_1,X_2=x_2,...X_n=x_n$. In this lesson we keep stressing how the data is fixed and the parameter is unknown. It must also be fixed since the data is from the same distribution thus the same parameters.
+
+Jen keeps stressing
+
+1. Random Sample is i.i.d from the distribution.
+2. The data $(X_i)$ in the experiment is fixed - this is one of the key ideas of frequentist statistics. 
+3. We can write the joint pdf for the data as a function of the parameter $\theta$ simply by multiplying the individual pdfs or pmfs together.
+
+
+> "The shape of the likelihood can be anything."
+
+Actually I would dare to say that the a likelihood function is just a pdf whose are is not normalized to 1. We can in fact usually normalize it by dividing by a constant that does not depend on the parameters (the integral over the data space).
+
+One other point is that PDF might not have multiple maximum. (It could be bi-modal)
+
+
+

@@ -1,11 +1,7 @@
 ---
-title: "Module 2: Point Estimation"
+title: "Lesson 9: Method of Moments Estimators"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
-
-## Method of Moments Estimators 
-
-### (Video)
 
 ::: {.column-margin}
 {{< video 01_method-of-moments-estimators.mp4 >}}
@@ -17,10 +13,327 @@ subtitle: "Statistical Estimation for Data Science and AI"
 
 [Handout](02_video-slides-for-method-of-moments-estimators_module1_lesson8.pdf){width=700 height=700}
 
+## Motivation: Estimating a Gamma Shape Parameter {#sec-mme-motivation}
+
+Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \Gamma(\alpha,\beta)$ where $\beta$ is the rate parameter. Since $\mathbb{E}[X_1]=\frac{\alpha}{\beta}$ the sample mean can estimate the ratio $\alpha/\beta$. It cannot identify $\alpha$ by itself when $\beta$ is also unknown.
+
+[One way to estimate both parameters is the **method of moments**.]{.marked}
+
+## Population and Sample Moments {#sec-population-sample-moments}
+
+::: {#def-population-moments .definition}
+## Population moments
+
+The $k$^th^ population moment, or raw moment, of a random variable $X$ is
+
+$$
+\mu_k = \mathbb{E}[X^k], \qquad k=1,2,3,\ldots
+$$
+
+Thus, the sequence of population moments begins with
+
+$$ 
+\mathbb{E}[X], \quad \mathbb{E}[X^2], \quad \mathbb{E}[X^3], \quad\ldots
+$$
+:::
+
+The first population moment,
+
+$$
+\mu_1=\mu=\mathbb{E}[X],
+$$
+
+is a probability-weighted average of the values in the population. Its natural sample analogue is the sample mean,
+
+$$
+\overline{X}=\frac{1}{n}\sum_{i=1}^n X_i
+$$
+
+Similarly, $\mathbb{E}[X^2]$ is a probability-weighted average of the squared population values. Its sample analogue is
+
+$$
+\frac{1}{n} \sum_{i=1}^n X_i^2
+$$
+
+::: {#def-sample-moments .definition}
+## Sample moments
+
+The $k$th sample moment is
+
+$$
+M_k = \frac{1}{n} \sum_{i=1}^n X_i^k, \qquad k=1,2,3,\ldots
+$$
+:::
+
+## Method of Moments Estimation {#sec-method-of-moments-estimation}
+
+::: {#def-method-of-moments .definition}
+## Method of moments estimators
+
+The method of moments equates population moments to their corresponding sample moments and solves the resulting equations for the unknown parameters:
+
+$$
+\mu_k(\mathbf{\theta}) = M_k
+$$
+
+For a model with several unknown parameters, use enough moment equations to solve for them.
+:::
+
+## Example: Exponential Rate {#sec-mme-exponential}
+
+::: {#exm-exponential-mme .example}
+## Exponential distribution
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda)
+$$
+
+The first population moment is
+
+$$
+\mu_1 = \mathbb{E}[X] = \frac{1}{\lambda}
+$$
+
+and the first sample moment is
+
+$$
+M_1 = \frac{1}{n} \sum_{i=1}^n X_i = \overline{X}
+$$
+
+Equating these moments and solving for $\lambda$ gives
+
+$$
+\begin{aligned}
+\frac{1}{\lambda} &= \overline{X} \\ 
+\lambda &= \frac{1}{\overline{X}}
+\end{aligned}
+$$
+
+Therefore, the method of moments estimator is
+
+$$
+\widehat{\lambda}_{\mathrm{MME}} = \frac{1}{\overline{X}} = \frac{n}{\sum_{i=1}^n X_i}.
+$$
+:::
+
+::: {#ntn-moment-equations .callout-warning}
+## Moment equations are algebraic devices
+
+The intermediate equation
+
+$$
+\frac{1}{\lambda} = \overline{X}
+$$
+
+formally places a fixed parameter on one side and a random variable on the other. It is an algebraic device used to construct the estimator. Technically, the estimator notation could be introduced from the start.
+:::
+
+## Is the Exponential MME Unbiased? {#sec-exponential-mme-bias}
+
+To test unbiasedness, consider
+
+$$
+\mathbb{E}\!\left[
+\widehat{\lambda}_{\mathrm{MME}}
+\right]
+=
+\mathbb{E}\!\left[
+\frac{1}{\overline{X}}
+\right]
+=
+\mathbb{E}\!\left[
+\frac{n}{\sum_{i=1}^n X_i}
+\right].
+$$
+
+::: {.callout-warning}
+## Expectations do not commute with nonlinear transformations
+
+In general,
+
+$$
+\mathbb{E}[g(X)] \ne g\!\left(\mathbb{E}[X]\right).
+$$
+
+In particular,
+
+$$
+\mathbb{E}\!\left[\frac{1}{X}\right] \ne \frac{1}{\mathbb{E}[X]}
+$$
+
+because
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[\frac{1}{X}\right] &= \int_{-\infty}^{\infty} \frac{1}{x}f_X(x)\,dx \\
+&\ne \frac{1}{ \int_{-\infty}^{\infty}xf_X(x)\,dx}
+\end{aligned}
+$$
+
+Likewise,
+
+$$
+\frac{1}{\sum_{i=1}^n X_i}
+\ne
+\sum_{i=1}^n \frac{1}{X_i}.
+$$
+:::
+
+Let
+
+$$
+Y = \sum_{i=1}^n X_i.
+$$
+
+The sum of $n$ independent exponential random variables with rate $\lambda$ satisfies
+
+$$
+Y \sim \Gamma(n,\lambda).
+$$
+
+For $n>1$,
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[ \widehat{\lambda}_{\mathrm{MME}} \right]
+&= \mathbb{E}\!\left[ \frac{n}{Y} \right] \\ 
+&= n \int_0^\infty \frac{1}{y} \frac{\lambda^n}{\Gamma(n)} y^{n-1}e^{-\lambda y} \,dy \\
+&= n \frac{\lambda^n}{\Gamma(n)} \int_0^\infty y^{n-2}e^{-\lambda y} \,dy \\
+&= n \lambda \frac{\Gamma(n-1)}{\Gamma(n)} \int_0^\infty \frac{\lambda^{n-1}}{\Gamma(n-1)} y^{n-2}e^{-\lambda y} \,dy \qquad \text{gamma density} \\
+&= n\lambda \frac{\Gamma(n-1)}{\Gamma(n)} \\
+&= n\lambda \frac{\Gamma(n-1)}{(n-1)\Gamma(n-1)} \\
+&= \frac{n}{n-1}\lambda \\
+&\ne \lambda.
+\end{aligned}
+$$
+
+Thus, the method of moments estimator $1/\overline{X}$ is biased upward.
+
+Since
+
+$$
+\mathbb{E}\!\left[
+\frac{1}{\overline{X}}
+\right]
+=
+\frac{n}{n-1}\lambda,
+$$
+
+multiplying by $(n-1)/n$ removes the bias:
+
+$$
+\begin{aligned}
+\widetilde{\lambda} &= \frac{n-1}{n} \frac{1}{\overline{X}} \\
+&= \frac{n-1}{\sum_{i=1}^n X_i}, 
+\end{aligned}
+$$
+
+with
+
+$$
+\mathbb{E}[\widetilde{\lambda}] = \lambda.
+$$
+
+::: {#ntn-mme-unbiasedness .callout-note}
+## Method of moments and unbiasedness
+
+Method of moments estimators are not necessarily unbiased.
+:::
+
+## Example: Gamma Shape and Rate {#sec-mme-gamma}
+
+::: {#exm-gamma-mme .example}
+## Gamma distribution
+
+Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \Gamma(\alpha,\beta),$ where $\beta$ is the rate parameter. There are two unknown parameters, so use the first two moments.
+
+### First moment {#sec-gamma-mme-first-moment}
+
+The first population moment is $\mu_1 = \mathbb{E}[X] = \frac{\alpha}{\beta},$
+
+and the first sample moment is $M_1 = \frac{1}{n} \sum_{i=1}^n X_i = \overline{X}.$
+
+Equating them gives 
+
+$$
+\frac{\alpha}{\beta} = \overline{X}.
+$$
+
+This is one equation in two unknowns, so a second moment equation is required.
+
+### Second moment {#sec-gamma-mme-second-moment}
+
+Using $\mathbb{E}[X^2] = \operatorname{Var}(X) + \left(\mathbb{E}[X]\right)^2,$
+
+the second population moment is
+
+$$
+\begin{aligned}
+\mu_2 &= \mathbb{E}[X^2] \\
+      &= \operatorname{Var}(X) + \left(\mathbb{E}[X]\right)^2 \\
+      &= \frac{\alpha}{\beta^2} + \left(\frac{\alpha}{\beta}\right)^2.
+\end{aligned}
+$$
+
+The second sample moment is $M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2.$
+
+Equating the second moments gives
+
+$$
+\frac{\alpha}{\beta^2} + \left(\frac{\alpha}{\beta}\right)^2 =
+\frac{1}{n} \sum_{i=1}^n X_i^2.
+$$
+
+### Solving the moment equations {#sec-gamma-mme-solving}
+
+The two equations are
+
+$$
+\begin{aligned}
+\frac{\alpha}{\beta} &= \overline{X}, \\
+\frac{\alpha}{\beta^2} + \left(\frac{\alpha}{\beta}\right)^2 &= M_2.
+\end{aligned}
+$$
+
+From the first equation, $\alpha=\beta\overline{X}$. Therefore,
+
+$$
+\begin{aligned}
+M_2 &= \frac{\alpha}{\beta^2} + \left(\frac{\alpha}{\beta}\right)^2 \\
+    &= \frac{\overline{X}}{\beta} + \overline{X}^{\,2}, \\
+M_2-\overline{X}^{\,2} &= \frac{\overline{X}}{\beta}, \\
+\widehat{\beta}_{\mathrm{MME}} &= \frac{\overline{X}} {M_2-\overline{X}^{\,2}} \\
+&= \frac{\overline{X}} { \frac{1}{n}\sum_{i=1}^n X_i^2 - \overline{X}^{\,2} }
+\end{aligned}
+$$
+
+Then
+
+$$
+\begin{aligned}
+\widehat{\alpha}_{\mathrm{MME}}
+&= \widehat{\beta}_{\mathrm{MME}}\,\overline{X} \\
+&= \frac{\overline{X}^{\,2}} {M_2-\overline{X}^{\,2}} \\
+&= \frac{\overline{X}^{\,2}} { \frac{1}{n}\sum_{i=1}^n X_i^2 -\overline{X}^{\,2}}.
+\end{aligned}
+$$
+:::
+
+The common denominator can also be written as
+
+$$
+M_2-\overline{X}^{\,2} = \frac{1}{n} \sum_{i=1}^n \left(X_i-\overline{X}\right)^2,
+$$
+
+which is the sample variance computed with divisor $n$.
+
 ### Graded Quiz
 
 {{< include ../_method-of-moments-estimation.qmd >}}
-
 
 ### Historical Note:
 
@@ -76,8 +389,8 @@ MoM is also mentioned the use in terms of Processes and Time series analysis.
 
 2. The Method of Moments can be related to the moment generating function (MGF) of a distribution. The MGF is a function that encodes all the moments of a random variable. By taking derivatives of the MGF at zero, we can obtain the moments of the distribution. This connection can sometimes simplify the process of finding method of moments estimators, especially for more complex distributions. The only problem with the MGF is that not all distributions have moments so there is no mgf defined for them. This is the case for example for the Cauchy distribution where the mean and variance are undefined.
 
-3. Since the characteristic function (CF) however always exists for any probability distribution. I wonder if :
-
+3. Since the characteristic function (CF) however always exists for any probability distribution. 
+   I wonder if :
     - there is a method to a proximate a distribution using an "Empirical  characteristic function"?
     - Can we use it to derive MOM estimators for the parameters?
     - Can we use in the linear bayesian method above?

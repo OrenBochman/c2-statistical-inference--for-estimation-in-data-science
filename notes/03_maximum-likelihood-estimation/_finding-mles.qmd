@@ -1,8 +1,7 @@
-#### Finding MLEs 
-
-
-
-
+---
+title: "Graded Assignment: Finding MLEs"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
 
 ::: {#exr-01-mle-estimator-poisson }
 ## Poisson MLE
@@ -359,5 +358,4 @@ $$
 
 :::
 
----
 

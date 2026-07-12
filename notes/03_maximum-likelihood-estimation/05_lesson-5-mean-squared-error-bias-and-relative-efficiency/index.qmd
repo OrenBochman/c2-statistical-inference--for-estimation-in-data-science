@@ -1,0 +1,25 @@
+---
+title: "Lesson 5:  Mean Squared Error, Bias, and Relative Efficiency"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_mean-squared-error-bias-and-relative-efficiency.mp4 >}}
+
+[Transcript](01_mean-squared-error-bias-and-relative-efficiency.en.txt)
+[Handout](02_video-slides-for-mean-squared-error-bias-and-relative-efficiency_module2_lesson5.pdf){width=700 height=980}
+:::
+
+## Reflection
+
+## Invariance, Mean-Squared Error, and Efficiency (Graded Quiz)
+
+## Quiz Graded
+
+<!-- TODO: include lab -->
+
+## Maximum Likelihood Estimation (Programming Assignment)
+
+## Lab
+
+<!-- TODO: include lab -->

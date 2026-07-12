@@ -1,5 +1,7 @@
-#### The Cramer-Rao Lower Bound
-
+---
+title: "The Cramer-Rao Lower Bound"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
 
 ::: {#exr-01-CRLB-known-variance }
 ## Cramer-Rao Lower Bound for the mean with known variance

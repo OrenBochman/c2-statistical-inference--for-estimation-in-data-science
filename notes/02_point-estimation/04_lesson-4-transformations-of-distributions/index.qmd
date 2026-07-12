@@ -3,25 +3,369 @@ title: "Lesson 4: Transformations of Distributions"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
-## Transformations of Distributions {#sec-transformations-of-distributions}
-
 ::: {.column-margin}
 {{< video 01_transformations-of-distributions.mp4 >}}
 
 [transcript](01_transformations-of-distributions.en.txt){target="_blank"}
+[Handout](02_video-slides-for-transformations-of-distributions_module1_lesson3.pdf){target="_blank"}
 :::
 
-### Handout
+## Slides {#sec-slides-transformations-of-distributions}
 
-[Handout](02_video-slides-for-transformations-of-distributions_module1_lesson3.pdf){target="_blank"}
+### Lesson outline:
+
+- We start with a binomial RV for number of successes. 
+- We transform it to an RV for number of failures.
+- We massage it with some algebra to get it into a canonical form - another binomial distribution with a different parameter.
+- For Discreate RVs 
+    - we can "just do it" i.e. apply the transformation to the PMF and get the PMF of the transformed RV.
+- For Continuous RVs
+    - we can't "just do it" i.e. apply the transformation to the PDF but we can apply the transformation to its CDF. We can use the fundamental theorem of calculus to differentiate the CDF to recover the PDF of the transformed RV.
+    - this means that we get to play with integrals and derivatives which is so much fun.
+    - also we will need to make use of some algebra to recover our "canonical" form of the CDF/PDF from the integral.
 
 
+### The Binomial Distribution {#sec-binomial-distribution}
 
-### Reflection
+::: {#def-binomial-distribution .definition}
+## Binomial distribution
 
-We want to do transformations of RVs to get new RVs. 
+Consider a sequence of $n$ independent trials of an experiment. 
+Each trial has two possible outcomes, called **success** and **failure**, with $p = \mathbb{P}(\text{success on any one trial}).$
+
+Let the random variable (RV) $X$ be the number of successes in the $n$ trials. 
+We denote this as $X \sim \mathcal{Bin}(n,p).$  [Binomial notaion]{.aside}
+:::
+
+::: {#exm-four-binomial-trials .example}
+## Four trials and three successes
+
+Suppose $n=4$. The event $X=3$ can occur through any of the four mutually exclusive sequences
+
+$$
+SSSF, \qquad SSFS, \qquad SFSS, \qquad FSSS.
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+P(X=3)
+&= P(SSSF \text{ or } SSFS \text{ or } SFSS \text{ or } FSSS) \\
+&= P(SSSF)+P(SSFS)+P(SFSS)+P(FSSS) && \text{disjoint events} \\
+&= p^3(1-p)+p^3(1-p)+p^3(1-p)+p^3(1-p) && \text{independence} \\
+&= 4p^3(1-p) && \text{counting}.
+\end{aligned}
+$$
+:::
+
+For $n$ trials and $x$ successes, there are $\binom{n}{x} = \frac{n!}{x!(n-x)!}$ different ways to arrange the $x$ successes among the $n$ positions.
+
+::: {#def-binomial-pmf}
+## Binomial PMF
+
+Let $X\sim\mathcal{Bin}(n,p)$, then
+
+$$
+P(X=x) = \binom{n}{x} p^x(1-p)^{n-x} \mathbf{1}_{\{0,1,\ldots,n\}}(x)
+$$
+
+Equivalently, for $x\in\{0,1,\ldots,n\}$,
+
+$$
+P(X=x) = \binom{n}{x} p^x(1-p)^{n-x}.
+$$
+:::
+
+### Transforming the Number of Successes {#sec-transforming-binomial-successes}
+
+::: {#exm-binomial-failures}
+## Number of failures
+
+Let $X\sim\mathcal{Bin}(n,p)$ we define $Y=n-X$
+
+Thus, the RV $Y$ gives the number of failures. $Y$'s probability mass function is:
+
+$$
+\begin{aligned}
+P(Y=y)  &= P(n-X=y) \\
+        &= P(X=n-y) \\
+        &= \binom{n}{n-y} p^{n-y}(1-p)^y \mathbb{I}_{\{0,1,\ldots,n\}}(n-y)
+\end{aligned}
+$$ {#eq-binomial-failures-pmf}
+
+The support transforms as:
+
+$$
+n-y\in\{0,1,\ldots,n\} \iff y\in\{0,1,\ldots,n\} \qquad
+$$ {#eq-binomial-failures-support}
+
+Also we can use the symmetry of the binomial coefficient,
+
+$$
+\binom{n}{n-y} =
+\frac{n!}{(n-y)!y!} =
+\frac{n!}{y!(n-y)!} =
+\binom{n}{y}
+$$
+
+to obtain
+
+$$
+\begin{aligned}
+P(Y=y)
+&=
+\binom{n}{y}
+(1-p)^y p^{n-y}
+\mathbb{I}_{\{0,1,\ldots,n\}}(y) \\
+&=
+\binom{n}{y}
+(1-p)^y
+\left[1-(1-p)\right]^{n-y}
+\mathbb{I}_{\{0,1,\ldots,n\}}(y).
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+Y\sim\operatorname{Bin}(n,1-p).
+$$
+:::
+
+### Continuous Transformations {#sec-continuous-transformations}
+
+#### The Cumulative Distribution Function {#sec-cumulative-distribution-function}
+
+::: {#def-cumulative-distribution-function .definition}
+## Cumulative distribution function
+
+For a discrete or continuous random variable $X$, the cumulative distribution function (CDF) is
+
+$$
+F_X(x)
+=
+P(X\le x).
+$$
+:::
+
+If $X$ is discrete with probability mass function $f_X$, then
+
+$$
+F_X(x)
+=
+\sum_{u\le x}P(X=u)
+=
+\sum_{u\le x}f_X(u),
+$$
+
+where the sum is taken over the support points of $X$.
+
+If $X$ is continuous with probability density function $f_X$, then
+
+$$
+F_X(x)
+=
+\int_{-\infty}^{x} f_X(u)\,du.
+$$
+
+::: {#thm-density-from-cdf .theorem}
+## Density as the derivative of the CDF
+
+For a continuous random variable, wherever $F_X$ is differentiable, the Fundamental Theorem of Calculus gives
+
+$$
+f_X(x)
+=
+\frac{d}{dx}F_X(x).
+$$
+:::
+
+### Invertible Transformations {#sec-invertible-transformations}
+
+Suppose $X$ is continuous with density $f_X(x)$, and let
+
+$$
+Y=g(X),
+$$
+
+where $g$ is continuous, differentiable, and invertible. Such a function is either strictly increasing or strictly decreasing on the support of $X$.
+
+::: {#ntn-monotonicity-inverse .callout-note}
+## Monotonicity of the inverse
+
+The inverse of a strictly increasing function is strictly increasing. The inverse of a strictly decreasing function is strictly decreasing. Geometrically, the graphs of $g$ and $g^{-1}$ are reflections across the line $y=x$.
+:::
+
+### Increasing Transformation {#sec-increasing-transformation}
+
+If $g$ is strictly increasing, then applying $g^{-1}$ preserves inequalities:
+
+$$
+\begin{aligned}
+F_Y(y) &= P(Y\le y) \\
+&= P(g(X)\le y) \\
+&= P\!\left(g^{-1}(g(X))\le g^{-1}(y)\right) \\
+&= P\!\left(X\le g^{-1}(y)\right) \\
+&= F_X\!\left(g^{-1}(y)\right).
+\end{aligned}
+$$
+
+Differentiating,
+
+$$
+\begin{aligned}
+f_Y(y)
+&=
+\frac{d}{dy}F_Y(y) \\
+&=
+\frac{d}{dy}F_X\!\left(g^{-1}(y)\right) \\
+&=
+f_X\!\left(g^{-1}(y)\right)
+\frac{d}{dy}g^{-1}(y).
+\end{aligned}
+$$
+
+### Decreasing Transformation {#sec-decreasing-transformation}
+
+If $g$ is strictly decreasing, then applying $g^{-1}$ reverses inequalities:
+
+$$
+\begin{aligned}
+F_Y(y)  &= P(Y\le y) \\
+        &= P(g(X)\le y) \\
+        &= P\!\left(g^{-1}(g(X))\ge g^{-1}(y)\right) \\
+        &= P\!\left(X\ge g^{-1}(y)\right) \\
+        &= 1-P\!\left(X<g^{-1}(y)\right) \\
+        &= 1-F_X\!\left(g^{-1}(y)\right).
+\end{aligned}
+$$
+
+For a continuous random variable, the distinction between $<$ and $\le$ at one point does not affect the probability. Differentiating gives
+
+$$
+\begin{aligned}
+f_Y(y)  &= \frac{d}{dy}F_Y(y) \\
+        &= \frac{d}{dy} \left[1-F_X\!\left(g^{-1}(y)\right)\right] \\
+        &= -f_X\!\left(g^{-1}(y)\right) \frac{d}{dy}g^{-1}(y).
+\end{aligned}
+$$
+
+Because $g^{-1}$ is decreasing,
+
+$$
+\frac{d}{dy}g^{-1}(y)<0,
+$$
+
+so the resulting density is nonnegative.
+
+::: {#thm-change-of-variables-one-dimensional .theorem}
+## One-dimensional change-of-variables formula
+
+Let $Y=g(X)$, where $g$ is differentiable and invertible on the support of $X$. Whether $g$ is increasing or decreasing,
+
+$$
+f_Y(y)
+=
+f_X\!\left(g^{-1}(y)\right)
+\left|
+\frac{d}{dy}g^{-1}(y)
+\right|,
+$$
+
+for $y$ in the image of the support of $X$ under $g$.
+:::
+
+#### Scaling a Gamma Random Variable {#sec-scaling-gamma-random-variable}
+
+::: {#def-gamma-rate-parameterization .definition}
+## Gamma distribution with rate parameter
+
+Suppose $X$ has a gamma distribution with shape parameter $\alpha>0$ and rate parameter $\beta>0$, also called the inverse scale parameter. Its density is
+
+$$
+f_X(x) = \frac{\beta^\alpha}{\Gamma(\alpha)}
+ x^{\alpha-1}e^{-\beta x}
+ \mathbf{1}_{(0,\infty)}(x),
+$$
+
+and we write
+
+$$
+X\sim\operatorname{Gamma}(\alpha,\beta).
+$$
+:::
+
+::: {#exm-scaled-gamma-variable .example}
+## Distribution of $Y=cX$
+
+Let $Y=cX, \qquad c>0.$
+
+Here
+
+$$
+g(x)=cx,
+\qquad
+g^{-1}(y)=\frac{y}{c},
+\qquad
+\frac{d}{dy}g^{-1}(y)=\frac{1}{c}.
+$$
+
+Applying the change-of-variables formula,
+
+$$
+\begin{aligned}
+f_Y(y) &= f_X\!\left(g^{-1}(y)\right) \left| \frac{d}{dy}g^{-1}(y) \right| \\
+&= f_X\!\left(\frac{y}{c}\right) \left|\frac{1}{c}\right| \\
+&= \frac{\beta^\alpha}{\Gamma(\alpha)} \left(\frac{y}{c}\right)^{\alpha-1}
+\exp\!\left(-\frac{\beta y}{c}\right)
+\mathbf{1}_{(0,\infty)}\!\left(\frac{y}{c}\right)
+\frac{1}{c}
+\end{aligned}
+$$
+
+Because $c>0$, the support transforms according to
+
+$$
+0<\frac{y}{c}<\infty
+\quad\Longleftrightarrow\quad
+0<y<\infty.
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+f_Y(y)
+&=
+\frac{\beta^\alpha}{\Gamma(\alpha)}
+\frac{y^{\alpha-1}}{c^{\alpha-1}}
+\exp\!\left(-\frac{\beta y}{c}\right)
+\frac{1}{c}
+\mathbf{1}_{(0,\infty)}(y) \\
+&=
+\frac{1}{\Gamma(\alpha)}
+\left(\frac{\beta}{c}\right)^\alpha
+ y^{\alpha-1}
+\exp\!\left[-\left(\frac{\beta}{c}\right)y\right]
+\mathbf{1}_{(0,\infty)}(y).
+\end{aligned}
+$$
+
+But this is a $\mathcal{\Gamma}(a,b)$ density with shape $a=\alpha$ and rate $b=\beta/c$. Hence,
+
+$$
+Y\sim\mathcal{\Gamma}\!\left(\alpha,\frac{\beta}{c}\right).
+$$
+:::
+
+## Reflection {#sec-reflection-transformations-of-distributions}
+
+Most of the time we start with a RV from some distribution but we generally are interested in some function or transformation of that RV. The transformations of an RVs generaly gives us a new RVs. 
 
 - For PMF the advice is: "just do it".
 - For PDF, we can't apply the transformation to the PDF but we can apply the transformation to its CDF and then differentiate to get the PDF of the transformed RV.
     - this means that we get to play with integrals and derivatives which is so much fun.
     - also we will need to make use of some algebra to recover our "canonical" form of the CDF/PDF from the integral
+
+Transformation help to illustrate the main difference between discrete and continuous RVs. For discrete RVs the PMF is a function that gives the probability of each possible value of the RV. For continuous RVs the PDF is a function that gives the density of the RV at each point, but the probability of the RV taking on any specific value is zero. This leads us to a pattern where we work with the CDF for continuous RVs, which gives the probability of the RV being less than or equal to a certain value.

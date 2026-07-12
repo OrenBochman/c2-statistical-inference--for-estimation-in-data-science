@@ -1,0 +1,17 @@
+---
+title: "Lesson 4: The Invariance Property of MLE"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_the-invariance-property.mp4 >}}
+
+[Transcript](01_the-invariance-property.en.txt)
+[Handout](02_video-slides-for-the-invariance-property_module2_lesson4.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+
+
