@@ -7,13 +7,388 @@ subtitle: "Statistical Estimation for Data Science and AI"
 {{< video 01_joint-distributions-and-independence.mp4 >}}
 
 [transcript](01_joint-distributions-and-independence.en.txt){target="_blank"}
+[Handout](02_joint-distributions_c2_m1l2.pdf){width=700 height=980}
 :::
 
-### Handout
+Note: the handout isn't the slides but a reading I've added its contents below.
+I might add the slides later - but I cover thier gist in the reflection.
 
-[Handout](02_joint-distributions_c2_m1l2.pdf){width=700 height=980}
 
-### Reflection {.active}
+## Joint Distributions Handout {#sec-joint-distributions}
+
+::: {#def-joint-probability .definition}
+## Joint Probability
+
+Let $X$ and $Y$ be discrete random variables. The probability that $X=x$ and $Y=y$ occur at the same time is the **joint probability**
+
+$$
+P(X=x, Y=y).
+$$
+
+The comma here is read as “and”
+:::
+
+## Event-Based Probability Rules {#sec-event-based-probability-rules}
+
+Joint probabilities obey the usual probability rules for events. In particular, $P(X=x,Y=y)$ can be viewed as $P(A\cap B)$, where
+
+$$
+\begin{aligned}
+A &= \{X=x\}, \\
+B &= \{Y=y\}.
+\end{aligned}
+$$
+
+::: {#exm-die-events .example}
+## Events from a Die Roll
+
+Suppose a fair six-sided die is rolled. Let
+
+$$
+\begin{aligned}
+A &= \{2,4,6\}, &&\text{the outcome is even}, \\
+B &= \{4,5,6\}, &&\text{the outcome is at least }4.
+\end{aligned}
+$$
+
+Then
+
+$$
+\begin{aligned}
+A\cup B &= \{2,4,5,6\}, \\
+A\cap B &= \{4,6\}.
+\end{aligned}
+$$
+:::
+
+For any two events $A$ and $B$,
+
+$$
+P(A\cup B)
+=
+P(A)+P(B)-P(A\cap B).
+$$ {#eq-inclusion-exclusion}
+
+The intersection is subtracted because it is counted once in $P(A)$ and once in $P(B)$.
+
+![The union $A\cup B$ is the total shaded area of the two circles.](joint-distributions-venn.svg){#fig-venn-union fig-alt="A Venn diagram with two overlapping circles labeled A and B; both circles are shaded to represent their union." width="45%"}
+
+## Discrete Joint Distributions {#sec-discrete-joint-distributions}
+
+Relatively few discrete joint distributions have standard names. They are often specified directly by a table of probabilities.
+
+::: {#def-joint-pmf}
+## Joint Probability Mass Function
+
+The **joint probability mass function** (joint PMF) of discrete random variables $X$ and $Y$ is
+
+$$
+f(x,y)
+=
+P(X=x,Y=y).
+$$
+:::
+
+::: {#exm-discrete-joint-table .example}
+## A Discrete Joint Distribution
+
+Consider the following joint distribution:
+
+| $y \backslash x$ | $1$ | $2$ | $3$ |
+|---:|---:|---:|---:|
+| $-5$ | $0.20$ | $0.10$ | $0.05$ |
+| $6$  | $0.15$ | $0.30$ | $0.20$ |
+
+Each entry gives the probability associated with its row and column values. For example,
+
+$$
+P(X=2,Y=6)=0.30.
+$$
+:::
+
+### Summing Out a Variable {#sec-discrete-summing-out}
+
+To find the probability of $X=2$ without restricting $Y$, add the probabilities of all disjoint outcomes having $X=2$:
+
+$$
+\begin{aligned}
+P(X=2)
+&= P(X=2,Y=-5) + P(X=2,Y=6) \\
+&= 0.10+0.30 \\
+&= 0.40.
+\end{aligned}
+$$
+
+Adding row and column sums places the one-variable distributions in the margins:
+
+| $y \backslash x$ | $1$ | $2$ | $3$ | $P(Y=y)$ |
+|---:|---:|---:|---:|---:|
+| $-5$ | $0.20$ | $0.10$ | $0.05$ | $0.35$ |
+| $6$  | $0.15$ | $0.30$ | $0.20$ | $0.65$ |
+| $P(X=x)$ | $0.35$ | $0.40$ | $0.25$ | $1.00$ |
+
+Thus the marginal distribution of $X$ is
+
+| $x$ | $1$ | $2$ | $3$ |
+|---:|---:|---:|---:|
+| $P(X=x)$ | $0.35$ | $0.40$ | $0.25$ |
+
+and the marginal distribution of $Y$ is
+
+| $y$ | $-5$ | $6$ |
+|---:|---:|---:|
+| $P(Y=y)$ | $0.35$ | $0.65$ |
+
+::: {#def-discrete-marginals .definition}
+## Marginal Probability Mass Functions
+
+The marginal PMF of $X$ is obtained by summing the joint PMF over all possible values of $Y$:
+
+$$
+f_X(x)
+=
+\sum_y f(x,y).
+$$
+
+Similarly, the marginal PMF of $Y$ is obtained by summing over all possible values of $X$:
+
+$$
+f_Y(y)
+=
+\sum_x f(x,y).
+$$
+:::
+
+The subscript distinguishes the two marginal PMFs while retaining $f(x,y)$ for the joint PMF.
+
+## Continuous Joint Distributions {#sec-continuous-joint-distributions}
+
+Suppose now that $X$ and $Y$ are continuous random variables. As in the univariate continuous case,
+
+$$
+P(X=x,Y=y)=0
+$$
+
+for every particular pair $(x,y)$.
+
+::: {#def-joint-pdf .definition}
+## Joint Probability Density Function
+
+A joint probability density function (joint PDF) $f(x,y)$ is a surface whose volume over a region represents probability. It must satisfy
+
+$$
+f(x,y)\geq 0
+$$
+
+and
+
+$$
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty}
+f(x,y)\,dy\,dx
+=
+1.
+$$
+:::
+
+Probabilities involving $X$ and $Y$ are obtained by integrating the joint density over the corresponding region in the $xy$-plane.
+
+::: {#exm-rectangular-region .example}
+## Probability over a Rectangular Region
+
+For the event $X\leq 1$ and $2<Y<6$,
+
+$$
+P(X\leq 1,2<Y<6)
+=
+\int_{-\infty}^{1}
+\int_{2}^{6}
+f(x,y)\,dy\,dx.
+$$
+:::
+
+::: {#exm-ordering-region .example}
+## Probability That $X\leq Y$
+
+The event $X\leq Y$ is the half-plane on or above the line $y=x$. Integrating first with respect to $y$ gives
+
+$$
+P(X\leq Y)
+=
+\int_{-\infty}^{\infty}
+\int_{x}^{\infty}
+f(x,y)\,dy\,dx.
+$$
+
+Equivalently, integrating first with respect to $x$ gives
+
+$$
+P(X\leq Y)
+=
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{y}
+f(x,y)\,dx\,dy.
+$$
+
+Drawing the region $x\leq y$ in the $xy$-plane helps determine the integration limits.
+:::
+
+::: {#def-continuous-marginals .definition}
+## Marginal Probability Density Functions
+
+The marginal PDF of $X$ is obtained by integrating out $Y$:
+
+$$
+f_X(x)
+=
+\int_{-\infty}^{\infty}
+f(x,y)\,dy.
+$$
+
+The marginal PDF of $Y$ is obtained by integrating out $X$:
+
+$$
+f_Y(y)
+=
+\int_{-\infty}^{\infty}
+f(x,y)\,dx.
+$$
+:::
+
+If the joint density is zero outside a restricted support, the integrals over $(-\infty,\infty)$ can be replaced by integrals over the corresponding finite region. Examples are developed in the video associated with this lesson.
+The indicator functions specify the support, but they are not by themselves sufficient. The factors must also be nonnegative, integrable, and jointly normalized.
+
+## Independence for Continuous Random Variables {#sec-independent-continuous}
+
+::: {#def-independent-continuous .definition}
+## Independence for Continuous Random Variables
+
+Continuous random variables $X$ and $Y$ are independent if and only if their joint probability density function factors as
+
+$$
+f_{X,Y}(x,y)=f_X(x)f_Y(y)
+$$
+
+for all $(x,y)$, except possibly on a set of measure zero.
+:::
+
+This is analogous to independence for discrete random variables: the joint density factors into the product of the marginal densities.
+
+::: {#exm-independent-continuous .example}
+## Independent Continuous Random Variables
+
+Consider the joint density
+
+$$
+f_{X,Y}(x,y) = xy,\mathbb{I}_{(0,1)}(x)\mathbb{I}_{(0,2)}(y)
+$$
+
+The marginal density of $X$ is
+
+$$
+\begin{aligned}
+f_X(x)
+&= \int_{-\infty}^{\infty} f_{X,Y}(x,y),dy \\
+&= x\mathbb{I}_{(0,1)}(x) \int_0^2 y,dy \\
+&= x\mathbb{I}_{(0,1)}(x) \left[\frac{y^2}{2}\right]_0^2 \\
+&= 2x\mathbb{I}_{(0,1)}(x)
+\end{aligned}
+$$
+
+Similarly, the marginal density of $Y$ is
+
+$$
+\begin{aligned}
+f_Y(y)
+&= \int_{-\infty}^{\infty} f_{X,Y}(x,y),dx \\
+&= y\mathbb{I}_{(0,2)}(y) \int_0^1 x,dx \\
+&=  y\mathbb{I}_{(0,2)}(y) \left[\frac{x^2}{2}\right]_0^1 \\
+&= \frac{y}{2}\mathbb{I}_{(0,2)}(y)
+\end{aligned}
+$$
+
+Their product is
+
+$$
+\begin{aligned}
+f_X(x)f_Y(y)
+&= \left[ 2x\mathbb{I}_{(0,1)}(x) \right] \left[ \frac{y}{2}\mathbb{I}_{(0,2)}(y) \right] \\
+&= xy, \mathbb{I}_{(0,1)}(x) \mathbb{I}_{(0,2)}(y) \\
+&= f_{X,Y}(x,y)
+\end{aligned}
+$$
+
+Therefore, $X$ and $Y$ are independent.
+:::
+
+::: {.callout-tip}
+## Factorization Shortcut
+
+It is not necessary to calculate both marginal densities explicitly whenever the joint density has the form
+
+$$
+f_{X,Y}(x,y) = g(x)h(y)
+$$
+
+on a Cartesian product support.
+
+Let
+
+$$
+G = \int_{-\infty}^{\infty} g(x),dx, \qquad H = \int_{-\infty}^{\infty} h(y),dy.
+$$
+
+Because $f_{X,Y}$ is a normalized joint density,
+
+$$
+GH= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x)h(y),dy,dx = 1
+$$
+
+The marginal densities are therefore
+
+$$
+f_X(x)=H g(x), \qquad f_Y(y)=G h(y),
+$$
+
+and hence
+
+$$
+f_X(x)f_Y(y)= GH g(x)h(y) = g(x)h(y) = f_{X,Y}(x,y)
+$$
+
+Thus, factorization into nonnegative, integrable functions on a product support is sufficient to establish independence. 
+:::
+
+
+The factors $g$ and $h$ need not themselves be normalized marginal densities.
+
+In this example,
+
+$$
+g(x)=x\mathbb{I}_{(0,1)}(x),
+\qquad
+h(y)=y\mathbb{I}_{(0,2)}(y),
+$$
+
+with
+
+$$
+G=\frac12, \qquad H=2.
+$$
+
+Consequently,
+
+$$
+f_X(x)=2g(x) \qquad f_Y(y)=\frac12 h(y)
+$$
+
+---
+
+Quesion: can we just show that the joint PDF factors into the product and let someone else show that the marginals are correct?
+
+The answer is yes so long as the marginals have well defined indicator functions. 
+
+### Reflection 
 
 1. **Joint distributions** are what we usually think about in multivariate statistics. Univariate distributions are very useful models but I consider them as the first step in building blocks for more complex statistical models that capture relationships between multiple variables.
 

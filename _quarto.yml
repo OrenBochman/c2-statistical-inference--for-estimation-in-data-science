@@ -39,6 +39,7 @@ book:
       - notes/02_point-estimation/03_lesson-3-the-gamma-distribution/index.qmd
       - notes/02_point-estimation/04_lesson-4-transformations-of-distributions/index.qmd
       - notes/02_point-estimation/05_lesson-5-expectation-and-properties-of-expectation/index.qmd
+      - notes/02_point-estimation/_probability-expectation-and-variance.qmd
       - notes/02_point-estimation/06_lesson-6-variance-and-covariance/index.qmd
       - notes/02_point-estimation/07_lesson-7-estimators-and-sampling-distributions/index.qmd
       - notes/02_point-estimation/08_lesson-8-distributions-of-sums/index.qmd
@@ -54,17 +55,39 @@ book:
       - notes/03_maximum-likelihood-estimation/SamplingDistributions.ipynb
       - notes/03_maximum-likelihood-estimation/05_lesson-5-mean-squared-error-bias-and-relative-efficiency/index.qmd
       - notes/03_maximum-likelihood-estimation/_invariance-mean-squared-error-and-efficiency.qmd
+      - notes/03_maximum-likelihood-estimation/SamplingDistributions.ipynb
     - part: "Module 4 Large Sample Properties of Maximum Likelihood Estimators"
       chapters: 
-      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/index.qmd
-      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/_the-cramer-rao-lower-bound.qmd
-    - notes/references.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/01_lesson-1-fisher-information-and-the-cramer-rao-lower-bound/index.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/02_lesson-2-computational-simplifications-for-the-cramer-rao-lower-bound/index.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/03_lesson-3-convergence-for-sequences-of-random-variables/index.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/04_lesson-4-the-central-limit-theorem/index.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/05_lesson-5-properties-of-maximum-likelihood-estimators/index.qmd
 
+    - part: "Module 5 Large Sample Properties of Maximum Likelihood Estimators"
+      chapters: 
+      - notes/05_confidence-intervals-involving-the-normal-distribution/01_lesson-1-a-normal-introduction-to-confidence-intervals/index.qmd
+      - notes/05_confidence-intervals-involving-the-normal-distribution/02_lesson-2-the-t-and-chi-squared-distributions-and-the-sample-variance/index.qmd
+      - notes/05_confidence-intervals-involving-the-normal-distribution/03_lesson-3-one-sample-confidence-intervals-based-on-the-t-distribution/index.qmd
+      - notes/05_confidence-intervals-involving-the-normal-distribution/04_lesson-4-two-sample-confidence-intervals-for-means/index.qmd
+      - notes/05_confidence-intervals-involving-the-normal-distribution/05_lesson-5-small-population-confidence-intervals-for-differences-in-means/index.qmd
+
+    - part: "Module 6 beyond normality confidence intervals unleashed"
+      chapters: 
+      - notes/06_beyond-normality-confidence-intervals-unleashed/01_lesson-1-a-confidence-interval-for-proportions/index.qmd
+      - notes/06_beyond-normality-confidence-intervals-unleashed/02_lesson-2-confidence-intervals-for-variances-and-a-difference-of-propoertions/index.qmd
+      - notes/06_beyond-normality-confidence-intervals-unleashed/03_lesson-3-a-confidence-interval-for-a-ratio-of-variances/index.qmd
+      - notes/06_beyond-normality-confidence-intervals-unleashed/04_lesson-4-general-confidence-intervals/index.qmd
+      - notes/06_beyond-normality-confidence-intervals-unleashed/05_lesson-5-general-confidence-intervals-2/index.qmd
+
+
+    - notes/references.qmd
 bibliography: references.bib
 
 format:
   html:
     from: markdown+emoji
+    css: styles.css
     theme:
       light: [cosmo, theme.scss, custom.scss]
       dark: [cosmo, theme-dark.scss, custom.scss]

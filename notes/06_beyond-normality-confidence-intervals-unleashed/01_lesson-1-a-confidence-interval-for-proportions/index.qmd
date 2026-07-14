@@ -1,0 +1,16 @@
+---
+title: "Lesson 1: A Confidence Interval for Proportions"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_a-confidence-interval-for-proportions.mp4 >}}
+
+[Transcript](01_a-confidence-interval-for-proportions.en.txt)
+[Handout](02_video-slides-for-a-confidence-interval-for-proportions_module5_lesson1.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

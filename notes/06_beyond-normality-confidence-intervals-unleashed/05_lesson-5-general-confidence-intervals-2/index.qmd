@@ -1,0 +1,17 @@
+---
+title: "Lesson 5: General Confidence Intervals 2"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+::: {.column-margin}
+{{< video 01_general-confidence-intervals-2.mp4 >}}
+
+[Transcript](01_general-confidence-intervals-2.en.txt)
+[Handout](02_video-slides-for-general-confidence-intervals-2_module5_lesson5.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

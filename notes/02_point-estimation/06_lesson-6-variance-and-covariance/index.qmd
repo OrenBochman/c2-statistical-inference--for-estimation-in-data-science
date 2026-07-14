@@ -213,10 +213,7 @@ X-\mu_X<0 \quad\text{and}\quad  Y-\mu_Y<0
 $$
 
 In both cases,
-
-$$
-(X-\mu_X)(Y-\mu_Y)>0
-$$
+$(X-\mu_X)(Y-\mu_Y)>0$
 :::
 
 ::: {#exm-negative-covariance .example}
@@ -262,14 +259,7 @@ $$
 :::
 
 Correlation is dimensionless and satisfies
-
-$$
--1
-\leq
-\rho_{X,Y}
-\leq
-1
-$$
+$-1 \leq \rho_{X,Y} \leq 1$
 
 It retains the sign of covariance while removing its dependence on measurement units.
 
@@ -386,13 +376,8 @@ P(Y=0\mid X=0)=1
 $$
 
 whereas
-
-$$
-P(Y=0)=\frac12
-$$
-
+$P(Y=0)=\frac12$
 Thus,
-
 $$
 \text{independence} \implies \text{uncorrelated}
 $$
@@ -400,7 +385,7 @@ $$
 but
 
 $$
-\text{uncorrelated} \centernot\implies \text{independence}.
+\text{uncorrelated} \nRightarrow \text{independence}.
 $$
 :::
 
@@ -420,11 +405,7 @@ $$
 ## Derivation
 
 Let
-
-$$
-Z=X+Y.
-$$
-
+$Z=X+Y$
 Then
 
 $$
@@ -457,11 +438,7 @@ $$
 If $X$ and $Y$ are independent, then $\operatorname{Cov}(X,Y)=0$, so
 
 $$
-\operatorname{Var}(X+Y)
-=
-\operatorname{Var}(X)
-+
-\operatorname{Var}(Y).
+\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y).
 $$
 
 

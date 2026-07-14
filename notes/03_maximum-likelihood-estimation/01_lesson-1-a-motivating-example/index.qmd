@@ -21,9 +21,7 @@ The [maximum likelihood principle](https://en.wikipedia.org/wiki/Maximum_likelih
 For observed data $\mathbf{x}$ and parameter space $\Theta$, the maximum likelihood estimate is
 
 $$
-\hat{\theta}
-=
-\underset{\theta\in\Theta}{\operatorname{arg\,max}}
+\hat{\theta} = \underset{\theta\in\Theta}{\operatorname{arg\,max}}
 \;L(\theta;\mathbf{x}),
 $$
 
@@ -32,7 +30,7 @@ where $L(\theta;\mathbf{x})$ is the likelihood of $\theta$ given the observed da
 
 ## A Motivating Coin-Flipping Example {#sec-motivating-coin-example}
 
-::: {#exm-twenty-coin-flips .example}
+::: {#exm-twenty-coin-flips}
 ## Twenty coin flips
 
 Suppose a biased coin has probability of heads
@@ -57,8 +55,7 @@ To see the maximum likelihood procedure explicitly, consider only two coin flips
 For $i=1,2$, define
 
 $$
-X_i
-=
+X_i =
 \begin{cases}
 1, & \text{if the }i\text{th flip is heads}, \\
 0, & \text{if the }i\text{th flip is tails}.
@@ -68,9 +65,7 @@ $$
 Let
 
 $$
-p
-=
-P(\text{heads on any one flip}).
+p = P(\text{heads on any one flip}).
 $$
 
 The model is
@@ -90,30 +85,17 @@ Because the two flips are independent,
 $$
 \begin{aligned}
 f_p(x_1,x_2)
-&=
-P_p(X_1=x_1,X_2=x_2) \\
-&=
-P_p(X_1=x_1)\,
-P_p(X_2=x_2) \\
-&=
-p^{x_1}(1-p)^{1-x_1}
-\mathbf{1}_{\{0,1\}}(x_1)
-\;
-p^{x_2}(1-p)^{1-x_2}
-\mathbf{1}_{\{0,1\}}(x_2) \\
-&=
-p^{x_1+x_2}
-(1-p)^{2-x_1-x_2}
-\mathbf{1}_{\{0,1\}^2}(x_1,x_2).
+&= P_p(X_1=x_1,X_2=x_2) \\
+&= P_p(X_1=x_1)\, P_p(X_2=x_2) \\
+&= p^{x_1}(1-p)^{1-x_1} \mathbf{1}_{\{0,1\}}(x_1) \; p^{x_2}(1-p)^{1-x_2} \mathbf{1}_{\{0,1\}}(x_2) \\
+&= p^{x_1+x_2} (1-p)^{2-x_1-x_2} \mathbf{1}_{\{0,1\}^2}(x_1,x_2)
 \end{aligned}
 $$
 
 For a fixed observed pair $(x_1,x_2)$, the likelihood is the same expression viewed as a function of $p$:
 
 $$
-L(p;x_1,x_2)
-=
-f_p(x_1,x_2).
+L(p;x_1,x_2) = f_p(x_1,x_2).
 $$
 
 The joint probabilities are
@@ -130,7 +112,7 @@ The source slide reports $0.06$ in the final entry of the $p=0.3$ row. The corre
 
 ## Selecting the Most Likely Parameter {#sec-selecting-most-likely-p}
 
-::: {#exm-two-tails .example}
+::: {#exm-two-tails}
 ## Two tails
 
 When the observed data are
@@ -156,7 +138,7 @@ $$
 $$
 :::
 
-::: {#exm-one-head-one-tail .example}
+::: {#exm-one-head-one-tail}
 ## One head and one tail
 
 When the observed data are either
@@ -184,7 +166,7 @@ $$
 $$
 :::
 
-::: {#exm-two-heads .example}
+::: {#exm-two-heads}
 ## Two heads
 
 When the observed data are
@@ -212,7 +194,7 @@ $$
 
 ## The Maximum Likelihood Estimator {#sec-mle-discrete-coin}
 
-::: {#def-mle-discrete-coin .definition}
+::: {#def-mle-discrete-coin}
 ## Maximum likelihood estimator
 The maximum likelihood estimator is the function of the random sample that selects the likelihood-maximizing candidate:
 
@@ -277,8 +259,6 @@ It seems like the Professor is skirting though these issues by changing the nota
 3. At some level she realized this but seems to be waving the confused student off - you will understand it all by the time you get your PHD.
 4. She spends more time on the broken notation than on the actual idea of MLE.
 
-
-
 ### Whats the MLE story, morning glory?
 
 Say we have a good idea about the distribution that generated our data but we don't know its parameters. We want to infer the parameters based on N IID samples from the distribution.
@@ -301,7 +281,6 @@ However we are getting very close to a circular definition once we use probabili
 
 I came back to this after I did the quiz and saw the next few videos. While I stand by the criticism above, I think that the following points summarize the key ideas behind MLE in a more complete way:
 
-
 - MLE is the main **inference** method in the frequentist paradigm. That means it is an approach to the following problem: 
 - **The problem**: Lets suppose we know this much about the data generating process - we have seen enough (i.e. N IID) samples and perhaps some other information to recognize its PDF^[in other courses we might learn about QMLEs that deal with picking the wrong PDF]. Given that we know distribution and we have , but we don't know its parameters. How can we infer some settings for the parameters that are as plausible as any other setting for the parameters? 
 - The **big idea of inference** is that we want to reinterpret the PDF as a function of the parameters with the sample data as being fixed. Then we want play a statistical Sherlock holmes and infer the most plausible parameter settings given the data we have observed. We do this by looking for the maximum of the PDF reinterpreted as a function of the parameters.
@@ -317,18 +296,12 @@ I came back to this after I did the quiz and saw the next few videos. While I st
     - The MLEs might be intractable in closed form and require numerical methods to compute.
     - In practice we might use optimization algorithms like Gradient Descent, Newton-Raphson, or Expectation-Maximization to find the MLEs numerically.
 
----
-
 ### Reflections  II: 
-
 
 1. Does the MLE make more sense more Bayesian statistics where parameters are random variables? [the bayesian view]{.column-margin}
      - In Bayesian statistics we treat parameters as random variables with prior distributions.  In that context, the MLE can be seen as a special case of the Maximum A Posteriori (MAP) estimation when we assume a uniform prior over the parameters. 
     We are essentially using minimal prior information about the parameters and letting the data drive the estimation entirely.
      - In Bayesian statistics we don't like point estimates and learn to work with full posterior distributions over parameters which we can then interpret in terms of credible intervals and highest posterior density regions. This is more like a zone of high credibility surrounded by region of increasing uncertainty
-
----
-
 
 2. Besides MOM and MLE what would be the next estimators we would learn about in a frequentist stats course? [the view from 2000 ft]{.column-margin}
      - In a standard frequentist statistics curriculum, after mastering MOM and MLE, you typically transition from "how to find an estimator" to "how to find the best estimator."
@@ -341,4 +314,4 @@ I came back to this after I did the quiz and saw the next few videos. While I st
      - **Estimating Equations & [M-Estimators](https://en.wikipedia.org/wiki/M-estimator)** - which generalize MLE. These estimators minimize a specific "loss function" (like absolute error instead of squared error) to make the estimate less sensitive to outliers (robustness). 
      - **[Quasi-Maximum Likelihood](https://en.wikipedia.org/wiki/Quasi-maximum_likelihood_estimate) (QMLE)** - You use this when you suspect your assumed distribution (like "Normal") is wrong, but you still want to use the MLE formula. QMLE remains consistent even if the model is misspecified, provided the mean structure is correct. This addresses the reality that we often don't know the true data-generating distribution.
 
-:::
+

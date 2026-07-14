@@ -98,16 +98,12 @@ Alternative notations are $\mathbb{1}_A(x)$ or $\mathcal{X}_A(x)$
 
 Consider an experiment consisting of a sequence of independent trials of something where each trial can have only two possible outcomes, usually labeled as “success” and “failure”.
 
-We will denote success and failure by $\mathbf{S}$ and $\mathbb{F}$, respectively.
+We will denote success and failure by $\mathbf{S}$ and $\mathbf{F}$, respectively.
 
 Let $p$ be the probability of “success” on any one trial. 
 Here, $p$ must live in the interval $[0, 1]$.
 
-Let 
-
-$$
-X = \text{number of trials until the first success}
-$$
+Let $X = \text{number of trials until the first success}$
 
 Then the possible values for $X$ are $1, 2, 3, \ldots$
 
@@ -117,7 +113,6 @@ For example, in an idealized world, you might imagine someone shooting baskets i
 
 Note that 
 
-
 $$
 \begin{aligned}
 P(X = 1) &= P(\text{S on first trial}) \\
@@ -126,7 +121,6 @@ P(X = 1) &= P(\text{S on first trial}) \\
 $$
 
 Further, note that 
-
 
 $$
 \begin{aligned}
@@ -156,7 +150,8 @@ Since $P(X = x) = 0$ for $x$ not in $\{1, 2, 3, ...\}$, we conclude that the PMF
 
 $$
 f(x) = \begin{cases} 
-(1 − p)^{x−1} \cdot p , & x = 1, 2, 3, ... \\ 0 , & \text{otherwise} 
+(1 − p)^{x−1} \cdot p , & x = 1, 2, 3, ... \\ 
+0 ,                       & \text{otherwise} 
 \end{cases}
 $$ 
 
@@ -166,7 +161,7 @@ $$
 f(x) = (1 − p)^{x−1} \cdot p \cdot I_{\{1,2,3,...\}}(x)
 $$
 
-$X$ is said to have a geometric distribution with parameter $p$. We write $X \sim \text{geom}(p)$. 
+$X$ is said to have a geometric distribution with parameter $p$. We write $X \sim \mathcal{geom}(p)$. 
 
 Note: The geometric random variable can also be defined as $X = \# \text{failures before the first success}$. 
 
@@ -190,7 +185,7 @@ In this case, $X$ is said to have a binomial distribution with parameters $n$ an
 
 We write
 $$
-X \sim \text{bin}(n, p)
+X \sim \mathcal{Bin}(n, p)
 $$
 
 As the number of successes in n trials, $X$ can take on values in $\{0, 1, 2, \ldots, n\}$.

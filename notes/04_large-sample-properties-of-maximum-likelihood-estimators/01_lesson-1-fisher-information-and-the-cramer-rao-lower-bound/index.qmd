@@ -1,0 +1,16 @@
+---
+title: "Lesson 1:  The Cramér-Rao Lower Bound"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_fisher-information-and-the-cramer-rao-lower-bound.mp4 >}}
+
+[Transcript](01_mean-squared-error-bias-and-relative-efficiency.en.txt)
+[Handout](02_video-slides-for-fisher-information-and-the-cramer-rao-lower-bound_module3_lesson1.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

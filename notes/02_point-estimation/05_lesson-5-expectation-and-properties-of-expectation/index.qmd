@@ -272,6 +272,7 @@ $$
 &= \frac94 = 2.25.
 \end{aligned}
 $$ 
+:::
 
 ### Continuous Example
 
@@ -455,11 +456,6 @@ $$
 $$ 
 
 even though $X$ and $Y$ are not independent.
-
-### Quiz (Graded)
-
-{{< include ../_probability-expectation-and-variance.qmd >}}
-
 
 ### Reflection
 

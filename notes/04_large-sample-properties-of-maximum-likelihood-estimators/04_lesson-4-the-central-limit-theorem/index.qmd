@@ -1,0 +1,16 @@
+---
+title: "Lesson 4:  The Central Limit Theorem"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_the-central-limit-theorem.mp4 >}}
+
+[Transcript](01_the-central-limit-theorem.en.txt)
+[Handout](02_video-slides-for-the-central-limit-theorem_module_3_lesson4.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

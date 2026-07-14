@@ -1,0 +1,17 @@
+---
+title: "Lesson 3: A Confidence Interval for a Ratio of Variances"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+::: {.column-margin}
+{{< video 01_a-confidence-interval-for-a-ratio-of-variances.mp4 >}}
+
+[Transcript](01_a-confidence-interval-for-a-ratio-of-variances.en.txt)
+[Handout](02_video-slides-for-a-confidence-interval-for-a-ratio-of-variances_module5_lesson3.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

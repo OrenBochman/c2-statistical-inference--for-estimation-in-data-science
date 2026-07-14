@@ -3,9 +3,10 @@ title: "Graded Assignment: Finding MLEs"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
-::: {#exr-01-mle-estimator-poisson }
-## Poisson MLE
 [Poisson MLE]{.column-margin}
+
+::: {#exr-01-mle-estimator-poisson}
+## Poisson MLE
 
 Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the Poisson distribution with parameter $\lambda$.
 Which of the following is the maximum likelihood estimator for $\lambda$?
@@ -71,15 +72,12 @@ $$
 $$
 
 so the answer is $\overline{X}$ the sample mean.
-
 :::
 
----
-
+[Gamma MLE]{.column-margin}
 
 ::: {#exr-02-mle-estimator-gamma }
 ## Gamma MLE with known shape
-[Gamma MLE]{.column-margin}
 
 Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the Gamma distribution $\Gamma(\alpha,\beta)$  distribution where $\alpha$ is known. 
 
@@ -130,7 +128,6 @@ If we did not know $\alpha$ we would be able to write cancel the constants and s
 
 Let's go ahead and find the MLE for $\alpha$ when $\beta$ is known.
 
-
 We start with the likelihood function again:
 
 $$
@@ -171,11 +168,10 @@ where $S^{2}$ is the sample variance.
 When we use a numeric algorithm like Expectation-Maximization (EM) to solve the numeric MLEs we can use the MoM estimators as initial guesses for the parameters. This can help the numeric algorithm converge faster.
 :::
 
----
+[Shifted Exponential MLE]{.column-margin}
 
 ::: {#exr-03-mle-estimator-shifted-exponential }
 ## Shifted Exponential MLE
-[Shifted Exponential MLE]{.column-margin}
 
 Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the **shifted exponential** distribution with pdf
 
@@ -189,7 +185,6 @@ Which of the following is the maximum likelihood estimator for $\theta$?
 - [ ] $\max (X_{1}, X_{2}, \ldots, X_{n})$
 - [x] $\min (X_{1}, X_{2}, \ldots, X_{n})$
 - [ ] $\overline{X}$
-
 :::
 
 ::: {.callout-tip}
@@ -224,16 +219,13 @@ ggplot(df, aes(x, y)) +
 ```
 
 This suggest that we want the minimum value for X in the data since the PDF is decreasing in X. 
-
-
-
 :::
 
----
+
+[Pareto MLE]{.column-margin}
 
 ::: {#exr-04-mle-estimator-pareto }
 ## Pareto MLE
-[Pareto MLE]{.column-margin}
 
 Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the **continuous Pareto** distribution with pdf 
 $$
@@ -249,9 +241,7 @@ Which of the following is the maximum likelihood estimator for $\gamma$?
 - [x] $\frac{n}{\sum_{i=1}^{n} \ln (1+X_{i})}$
 - [ ] $\prod_{i=1}^{n} \frac{1}{1+X_{i}}$
 - [ ] $\overline{X}$
-
 :::
-
 
 ::: {.callout-tip}
 ## Solution
@@ -312,12 +302,10 @@ $$
 :::
 
 
----
-
+[Shifted Exponential Rate MLE]{.column-margin}
 
 ::: {#exr-05-mle-estimator-shifted-exponential-rate }
 ## Shifted Exponential Rate MLE
-[Shifted Exponential Rate MLE]{.column-margin}
 
 Let $X_{1}, X_{2}, \ldots, X_{n}$ be a random sample from the the **shifted exponential** distribution with rate $\lambda$ which has pdf
 $$

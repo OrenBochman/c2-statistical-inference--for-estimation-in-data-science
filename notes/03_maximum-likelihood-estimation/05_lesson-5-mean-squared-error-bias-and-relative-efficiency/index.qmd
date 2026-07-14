@@ -10,6 +10,234 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-mean-squared-error-bias-and-relative-efficiency_module2_lesson5.pdf){width=700 height=980}
 :::
 
+## Comparing Estimators {#sec-comparing-estimators}
+
+Suppose several estimators are available for the same parameter $\theta$.
+
+If two estimators are both centered at $\theta$, the estimator with the smaller variance is preferable because its sampling distribution is more concentrated around the true parameter.
+
+A biased estimator can have very small variance while remaining systematically displaced from $\theta$. Variance alone therefore does not measure closeness to the true parameter when bias is present.
+
+## Mean Squared Error {#sec-mean-squared-error}
+
+::: {#def-mean-squared-error .definition}
+## Mean squared error
+
+Let $\hat{\theta}$ be an estimator of the parameter $\theta$. The **mean squared error** of $\hat{\theta}$ is
+
+$$
+\operatorname{MSE}(\hat{\theta})
+=
+\mathbb{E}\left[
+(\hat{\theta}-\theta)^2
+\right].
+$$
+
+The quantity $\hat{\theta}-\theta$ is the estimation error, and mean squared error is its expected squared magnitude.
+:::
+
+If $\hat{\theta}$ is unbiased, then
+
+$$
+\operatorname{MSE}(\hat{\theta})
+=
+\operatorname{Var}(\hat{\theta}).
+$$
+
+## Bias {#sec-estimator-bias}
+
+::: {#def-estimator-bias .definition}
+## Bias
+
+The **bias** of an estimator $\hat{\theta}$ is
+
+$$
+\operatorname{Bias}(\hat{\theta})
+=
+\mathbb{E}[\hat{\theta}]
+-
+\theta.
+$$
+:::
+
+An estimator is unbiased when
+
+$$
+\operatorname{Bias}(\hat{\theta})
+=
+0.
+$$
+
+## Variance, Mean Squared Error, and Bias {#sec-mse-bias-variance-decomposition}
+
+Write the estimation error as
+
+$$
+\hat{\theta}-\theta
+=
+\left(
+\hat{\theta}-\mathbb{E}[\hat{\theta}]
+\right)
++
+\left(
+\mathbb{E}[\hat{\theta}]-\theta
+\right).
+$$
+
+Then
+
+$$
+\begin{aligned}
+\operatorname{MSE}(\hat{\theta})
+&=
+\mathbb{E}\left[
+(\hat{\theta}-\theta)^2
+\right] \\
+&=
+\mathbb{E}\left[
+\left\{
+\left(
+\hat{\theta}-\mathbb{E}[\hat{\theta}]
+\right)
++
+\left(
+\mathbb{E}[\hat{\theta}]-\theta
+\right)
+\right\}^2
+\right] \\
+&=
+\mathbb{E}\left[
+\left(
+\hat{\theta}-\mathbb{E}[\hat{\theta}]
+\right)^2
+\right] \\
+&\quad
++
+2
+\left(
+\mathbb{E}[\hat{\theta}]-\theta
+\right)
+\mathbb{E}\left[
+\hat{\theta}-\mathbb{E}[\hat{\theta}]
+\right] \\
+&\quad
++
+\left(
+\mathbb{E}[\hat{\theta}]-\theta
+\right)^2 \\
+&=
+\operatorname{Var}(\hat{\theta})
++
+2
+\operatorname{Bias}(\hat{\theta})
+\left(
+\mathbb{E}[\hat{\theta}]
+-
+\mathbb{E}[\hat{\theta}]
+\right) \\
+&\quad
++
+\left(
+\operatorname{Bias}(\hat{\theta})
+\right)^2 \\
+&=
+\operatorname{Var}(\hat{\theta})
++
+\left(
+\operatorname{Bias}(\hat{\theta})
+\right)^2.
+\end{aligned}
+$$
+
+::: {#thm-bias-variance-decomposition .theorem}
+## Bias-variance decomposition
+
+For any estimator $\hat{\theta}$,
+
+$$
+\boxed{
+\operatorname{MSE}(\hat{\theta})
+=
+\operatorname{Var}(\hat{\theta})
++
+\left(
+\operatorname{Bias}(\hat{\theta})
+\right)^2
+}
+$$
+:::
+
+Thus mean squared error combines two distinct sources of estimation error:
+
+- variability around the estimator's own mean;
+- systematic displacement of that mean from $\theta$.
+
+When comparing estimators and at least one is biased, compare their mean squared errors rather than their variances alone.
+
+## Relative Efficiency {#sec-relative-efficiency}
+
+Suppose $\hat{\theta}_1$ and $\hat{\theta}_2$ are two unbiased estimators of $\theta$.
+
+::: {#def-estimator-efficiency .definition}
+## Efficiency
+
+The estimator $\hat{\theta}_1$ is more efficient than $\hat{\theta}_2$ when
+
+$$
+\operatorname{Var}(\hat{\theta}_1)
+<
+\operatorname{Var}(\hat{\theta}_2).
+$$
+:::
+
+::: {#def-relative-efficiency .definition}
+## Relative efficiency
+
+The relative efficiency of $\hat{\theta}_1$ relative to $\hat{\theta}_2$ is
+
+$$
+\operatorname{Eff}
+\left(
+\hat{\theta}_1,
+\hat{\theta}_2
+\right)
+=
+\frac{
+\operatorname{Var}(\hat{\theta}_2)
+}{
+\operatorname{Var}(\hat{\theta}_1)
+}.
+$$
+:::
+
+Therefore,
+
+$$
+\operatorname{Eff}
+\left(
+\hat{\theta}_1,
+\hat{\theta}_2
+\right)
+>
+1
+$$
+
+implies that $\hat{\theta}_1$ is more efficient than $\hat{\theta}_2$.
+
+Similarly,
+
+$$
+\operatorname{Eff}
+\left(
+\hat{\theta}_1,
+\hat{\theta}_2
+\right)
+=
+1
+$$
+
+means that the two unbiased estimators have equal variance.
+
 ## Reflection
 
 ## Invariance, Mean-Squared Error, and Efficiency (Graded Quiz)

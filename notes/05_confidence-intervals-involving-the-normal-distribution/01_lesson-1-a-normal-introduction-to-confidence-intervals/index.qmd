@@ -1,0 +1,18 @@
+---
+title: "Lesson 1: Introduction to Confidence Intervals"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+::: {.column-margin}
+{{< video 01_lets-build-a-confidence-interval.mp4 >}}
+
+[Transcript](01_lets-build-a-confidence-interval.en.txt)
+[Handout](02_video-slides-for-lets-build-a-confidence-interval_module4_lesson1.pdf){width=700 height=980}
+:::
+
+
+## Slides
+
+## Reflection
+

@@ -1,0 +1,16 @@
+---
+title: "Lesson 2: Introduction to Confidence Intervals"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_confidence-intervals-for-variances.mp4 >}}
+
+[Transcript](01_confidence-intervals-for-variances.en.txt)
+[Handout](02_video-slides-for-confidence-intervals-for-variances_module5_lesson2.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

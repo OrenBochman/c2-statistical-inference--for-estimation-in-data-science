@@ -16,7 +16,7 @@ Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Bernoulli}(p),$ an
 
 Each $X_i$ equals $1$ with probability $p$ and $0$ with probability $1-p$. 
 
-Therefore, $Y$ counts the total number of successes in $n$ independent trials, so $Y \sim \operatorname{Binomial}(n,p)$
+Therefore, $Y$ counts the total number of successes in $n$ independent trials, so $Y \sim \mathcal{Binomial}(n,p)$
 
 Not every sum of random variables has such an immediate interpretation. 
 
@@ -24,10 +24,12 @@ Moment generating functions provide a systematic method for identifying their di
 
 ## Moment Generating Functions {#sec-moment-generating-functions}
 
-::: {#def-moment-generating-function .definition}
+[Moment Generating Function (MGF)]{.aside}
+
+::: {#def-moment-generating-function}
 ## Moment generating function
 
-The moment generating function [moment generating function]{.aside} (MGF) of a random variable $X$ is
+The moment generating function (MGF) of a random variable $X$ is
 
 $$
 M_X(t) = \mathbb{E}\!\left[e^{tX}\right] \qquad
@@ -56,99 +58,53 @@ $$
 The MGF generates the raw moments of $X$. When differentiation under the expectation is valid,
 
 $$
-M_X^{(k)}(0)
-=
-\mathbb{E}[X^k],
-\qquad
-k=1,2,3,\ldots.
+M_X^{(k)}(0) = \mathbb{E}[X^k], \qquad k=1,2,3,\ldots.
 $$
 
-::: {#thm-mgf-uniqueness .theorem}
+::: {#thm-mgf-uniqueness}
 ## Uniqueness of moment generating functions
 
-Suppose the MGFs of $X$ and $Y$ exist on an open interval containing $0$. If
-
-$$
-M_X(t)
-=
-M_Y(t)
-$$
-
-throughout that interval, then $X$ and $Y$ have the same distribution.
+Suppose the MGFs of $X$ and $Y$ exist on an open interval containing $0$. If $M_X(t) = M_Y(t)$ throughout that interval, then $X$ and $Y$ have the same distribution.
 :::
 
 Thus, once the MGF of a sum is recognized as the MGF of a known distribution, the distribution of the sum is identified.
 
 ## Example: Bernoulli MGF {#sec-bernoulli-mgf}
 
-::: {#exm-bernoulli-mgf .example}
+::: {#exm-bernoulli-mgf}
 ## Bernoulli distribution
 
-Let
-
-$$
-X
-\sim
-\operatorname{Bernoulli}(p).
-$$
-
-Since $X\in\{0,1\}$,
+Let $X \sim \mathcal{Bernoulli}(p).$
+Since $X \in \{0,1\}$,
 
 $$
 \begin{aligned}
 M_X(t)
-&=
-\mathbb{E}\!\left[e^{tX}\right] \\
-&=
-\sum_x e^{tx}P(X=x) \\
-&=
-e^{0t}P(X=0)
-+
-e^{1t}P(X=1) \\
-&=
-1\cdot(1-p)
-+
-e^t p \\
-&=
-1-p+pe^t.
+&= \mathbb{E}\!\left[e^{tX}\right] \\
+&= \sum_x e^{tx}P(X=x) \\
+&= e^{0t}P(X=0) + e^{1t}P(X=1) \\
+&= 1\cdot(1-p) + e^t p \\
+&= 1-p+pe^t.
 \end{aligned}
 $$
 :::
 
 ## Example: Binomial MGF {#sec-binomial-mgf}
 
-::: {#exm-binomial-mgf .example}
+::: {#exm-binomial-mgf}
 ## Binomial distribution
 
-Let
-
-$$
-X
-\sim
-\operatorname{Binomial}(n,p).
-$$
-
+Let $X \sim \mathcal{Binomial}(n,p).$ 
 Then
 
 $$
 \begin{aligned}
 M_X(t)
-&=
-\sum_{x=0}^n
-e^{tx}P(X=x) \\
-&=
-\sum_{x=0}^n
-e^{tx}
-\binom{n}{x}
+&= \sum_{x=0}^n e^{tx}P(X=x) \\
+&=\sum_{x=0}^n e^{tx} \binom{n}{x}
 p^x(1-p)^{n-x} \\
-&=
-\sum_{x=0}^n
-\binom{n}{x}
-\left(pe^t\right)^x
-(1-p)^{n-x} \\
-&=
-\left(pe^t+1-p\right)^n
-\qquad \text{by the binomial theorem}.
+&= \sum_{x=0}^n \binom{n}{x} \left(pe^t\right)^x (1-p)^{n-x} \\
+&= \left(pe^t+1-p\right)^n \qquad \text{by the binomial theorem}.
 \end{aligned}
 $$
 :::
@@ -161,11 +117,11 @@ $$
 \sum_{k=0}^n
 \binom{n}{k}
 a^k b^{n-k}.
-$$
+$$ {#eq-binomial-theorem}
 
 ## MGF of a Sum of Independent Random Variables {#sec-mgf-independent-sum}
 
-::: {#thm-mgf-independent-sum .theorem}
+::: {#thm-mgf-independent-sum}
 ## MGF of an independent sum
 
 Let $X_1,\ldots,X_n$ be independent random variables and define
@@ -238,23 +194,15 @@ Suppose
 $$
 X_1,X_2,\ldots,X_n
 \overset{\mathrm{iid}}{\sim}
-\operatorname{Bernoulli}(p),
+\mathcal{Bernoulli}(p),
 $$
 
-and let
-
-$$
-Y
-=
-\sum_{i=1}^n X_i.
-$$
+and let $Y=\sum_{i=1}^n X_i.$
 
 The MGF of each summand is
 
 $$
-M_{X_i}(t)
-=
-1-p+pe^t.
+M_{X_i}(t) = 1-p+pe^t.
 $$
 
 Therefore,
@@ -262,25 +210,18 @@ Therefore,
 $$
 \begin{aligned}
 M_Y(t)
-&=
-\left[M_{X_1}(t)\right]^n \\
-&=
-\left(1-p+pe^t\right)^n.
+&= \left[M_{X_1}(t)\right]^n \\
+&= \left(1-p+pe^t\right)^n.
 \end{aligned}
 $$
 
-This is the MGF of a $\operatorname{Binomial}(n,p)$ random variable. Hence
-
-$$
-Y
-\sim
-\operatorname{Binomial}(n,p).
-$$
+This is the MGF of a $\operatorname{Binomial}(n,p)$ random variable.
+Hence $Y \sim \mathcal{Binomial}(n,p).$
 :::
 
 ## Example: Exponential MGF {#sec-exponential-mgf}
 
-::: {#exm-exponential-mgf .example}
+::: {#exm-exponential-mgf}
 ## Exponential distribution
 
 Let
@@ -288,7 +229,7 @@ Let
 $$
 X
 \sim
-\operatorname{Exp}(\text{rate}=\lambda),
+\mathcal{Exp}(\text{rate}=\lambda),
 $$
 
 with density
@@ -327,7 +268,7 @@ The integral in the penultimate line equals $1$ because its integrand is an expo
 
 ## Example: Gamma MGF {#sec-gamma-mgf}
 
-::: {#exm-gamma-mgf .example}
+::: {#exm-gamma-mgf}
 ## Gamma distribution
 
 Let
@@ -381,33 +322,15 @@ The final integral equals $1$ because its integrand is the density of a $\Gamma(
 
 ## Example: Sum of Exponential Random Variables {#sec-sum-exponential}
 
-::: {#exm-sum-exponential .example}
+::: {#exm-sum-exponential}
 ## Exponential sum
 
 Suppose
-
-$$
-X_1,X_2,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\operatorname{Exp}(\text{rate}=\lambda),
-$$
-
+$X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Exp}(\text{rate}=\lambda)$
 and define
-
-$$
-Y
-=
-\sum_{i=1}^n X_i.
-$$
-
+$Y=\sum_{i=1}^n X_i.$
 Since
-
-$$
-M_{X_i}(t)
-=
-\frac{\lambda}{\lambda-t},
-$$
-
+$M_{X_i}(t)=\frac{\lambda}{\lambda-t}$
 we obtain
 
 $$
@@ -422,15 +345,13 @@ M_Y(t)
 \end{aligned}
 $$
 
-This is the MGF of the $\Gamma(n,\lambda)$ distribution. Therefore,
+But this is the MGF of the $\Gamma(n,\lambda)$ distribution. 
+Therefore,
+$Y \sim \Gamma(n,\lambda)$
 
-$$
-Y
-\sim
-\Gamma(n,\lambda).
-$$
-
-Thus, the sum of $n$ independent and identically distributed exponential random variables with rate $\lambda$ has a gamma distribution with shape $n$ and rate $\lambda$.
+Thus, the sum of $n$ IID exponential RVs with rate $\lambda$ has a 
+$\Gamma(\text{shape}= n, \text{rate}=\lambda)$ 
+distribution.
 :::
 
 ## Common Distributions of Sums {#sec-common-distributions-of-sums}
@@ -440,116 +361,41 @@ The preceding results and related closure properties can be summarized as follow
 ### Bernoulli and binomial sums {#sec-bernoulli-binomial-sums}
 
 If
-
-$$
-X_1,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\operatorname{Bernoulli}(p),
-$$
-
+$X_1,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Bernoulli}(p)$
 then
+$\sum_{i=1}^n X_i \sim \mathcal{Binomial}(n,p)$
 
-$$
-\sum_{i=1}^n X_i
-\sim
-\operatorname{Binomial}(n,p).
-$$
-
-If
-
-$$
-X_1,\ldots,X_m
-\overset{\mathrm{iid}}{\sim}
-\operatorname{Binomial}(n,p),
-$$
-
+If $X_1,\ldots,X_m \overset{\mathrm{iid}}{\sim} \mathcal{Binomial}(n,p)$
 then
+$\sum_{i=1}^m X_i \sim \mathcal{Binomial}(mn,p)$
 
-$$
-\sum_{i=1}^m X_i
-\sim
-\operatorname{Binomial}(mn,p).
-$$
+### Exponential and Gamma sums {#sec-exponential-gamma-sums}
 
-### Exponential and gamma sums {#sec-exponential-gamma-sums}
+If $X_1,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Exp}(\text{rate}=\lambda),$ then $\sum_{i=1}^n X_i \sim \Gamma(n,\lambda)$
 
-If
-
-$$
-X_1,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\operatorname{Exp}(\text{rate}=\lambda),
-$$
-
-then
-
-$$
-\sum_{i=1}^n X_i
-\sim
-\Gamma(n,\lambda).
-$$
-
-If
-
-$$
-X_1,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\Gamma(\alpha,\beta),
-$$
-
-with a common rate $\beta$, then
-
-$$
-\sum_{i=1}^n X_i
-\sim
-\Gamma(n\alpha,\beta).
-$$
+If $X_1,\ldots,X_n \overset{\mathrm{iid}}{\sim} \Gamma(\alpha,\beta)$
+with a common rate $\beta$, then $\sum_{i=1}^n X_i \sim \Gamma(n\alpha,\beta)$
 
 ### Normal sums {#sec-normal-sums}
 
-If
+If $X_1,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu,\sigma^2),$
+then 
+$\sum_{i=1}^n X_i \sim \mathcal{N}(n\mu,n\sigma^2).$
 
-$$
-X_1,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\mathcal{N}(\mu,\sigma^2),
-$$
-
-then
-
-$$
-\sum_{i=1}^n X_i
-\sim
-\mathcal{N}(n\mu,n\sigma^2).
-$$
-
-More generally, if $X_1,\ldots,X_n$ are independent and
-
-$$
-X_i
-\sim
-\mathcal{N}(\mu_i,\sigma_i^2),
-$$
+More generally, if $X_1,\ldots,X_n$ are independent and 
+$X_i \sim \mathcal{N}(\mu_i,\sigma_i^2)$
 
 then
 
 $$
-\sum_{i=1}^n X_i
-\sim
-\mathcal{N}\!\left(
+\sum_{i=1}^n X_i \sim \mathcal{N}\!\left(
 \sum_{i=1}^n \mu_i,
 \sum_{i=1}^n \sigma_i^2
 \right).
 $$
 
 For constants $a_1,\ldots,a_n$, the weighted sum
-
-$$
-Y
-=
-\sum_{i=1}^n a_iX_i
-$$
-
+$Y = \sum_{i=1}^n a_iX_i$
 satisfies
 
 $$

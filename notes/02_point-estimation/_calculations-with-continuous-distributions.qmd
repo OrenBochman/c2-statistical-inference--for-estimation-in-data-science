@@ -1,9 +1,10 @@
 
 ## Calculations with Continuous Distributions (Graded Quiz)
 
+[Gamma RV]{.column-margin}
+
 ::: {#exr-01-calculations-with-continuous-distributions }
 ## Gamma distribution identification
-[Gamma RV]{.column-margin}
 
 Let $X$ be a random variable with pdf $f(x)=4 x^{2} e^{-2x} \, I_{(0,\infty)}(x)$ What is the distribution of $X$?
 
@@ -40,10 +41,10 @@ $$
 - [x] $\Gamma(3,2)$ since the pdf can be rewritten as 
 :::
 
+[Waiting time]{.column-margin}
 
 ::: {#exr-02-calculations-with-continuous-distributions }
 ## Total waiting time
-[Waiting time]{.column-margin}
 
 In commuting to work, George must get on a bus near his house and then transfer to a second bus. 
 If the waiting time (in minutes) at each stop has a uniform distribution on the interval from 0 to 5, it can be shown that George's total waiting time $X$ has the pdf:
@@ -76,10 +77,10 @@ P(X \leq 6) &= \int_{0}^{6} f(x) \, dx && \text{(breaking it up)}\\
 $$
 :::
 
+[Probability of and Exp RV]{.column-margin}
 
 ::: {#exr-03-calculations-with-continuous-distributions }
 ## Exponential distribution probability
-[Probability of and Exp RV]{.column-margin}
 
 Suppose that $X$ is a random variable with the exponential rate $\lambda$  distribution for some $λ>0$.  
 What is the probability that $X$ is [greater than 1}{.marked}
@@ -105,10 +106,10 @@ $$
 :::
 
 
+[Normal RV]{.column-margin}
 
 ::: {#exr-04-calculations-with-continuous-distributions }
 ## Normal distribution probability
-[Normal RV]{.column-margin}
 
 Let $X$ be a Normal random variable with mean 0 and variance 1.
 That is, $X \sim \mathcal{N}(0,1)$.
@@ -130,10 +131,10 @@ P(X>2) &= 1 - P(X \leq 2) \\
 $$
 :::
 
+[Normalizing constant]{.column-margin}
 
 ::: {#exr-05-calculations-with-continuous-distributions }
 ## Property of a PDF
-[Normalizing constant]{.column-margin}
 
 Let
 

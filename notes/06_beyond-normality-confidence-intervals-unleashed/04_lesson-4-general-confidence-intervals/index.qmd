@@ -1,0 +1,17 @@
+---
+title: "Lesson 4: General Confidence Intervals"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+
+::: {.column-margin}
+{{< video 01_who-needs-normality.mp4 >}}
+
+[Transcript](01_who-needs-normality.en.txt)
+[Handout](02_video-slides-for-who-needs-normality_module5_lesson4.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

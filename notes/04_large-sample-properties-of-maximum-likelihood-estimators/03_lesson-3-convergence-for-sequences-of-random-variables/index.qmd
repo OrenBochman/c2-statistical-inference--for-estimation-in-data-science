@@ -1,0 +1,16 @@
+---
+title: "Lesson 3:  Convergence for Sequences of Random Variables"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_the-weak-law-of-large-numbers.mp4 >}}
+
+[Transcript](01_the-weak-law-of-large-numbers.en.txt)
+[Handout](02_video-slides-for-the-weak-law-of-large-numbers_module3_lesson3.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

@@ -1,0 +1,17 @@
+---
+title: "Lesson 2:  Computational Simplifications for the CRLB"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_computational-simplifications-for-the-crlb.mp4 >}}
+
+[Transcript](01_computational-simplifications-for-the-crlb.en.txt)
+[Handout](02_video-slides-for-computational-simplifications-for-the-crlb_module3_lesson2.pdf){width=700 height=980}
+:::
+
+
+## Slides
+
+## Reflection
+

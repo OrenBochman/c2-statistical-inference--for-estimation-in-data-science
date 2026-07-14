@@ -1,0 +1,16 @@
+---
+title: "Lesson 5:  Properties of Maximum Likelihood Estimators"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+::: {.column-margin}
+{{< video 01_large-sample-properties-of-mles.mp4 >}}
+
+[Transcript](01_large-sample-properties-of-mles.en.txt)
+[Handout](02_video-slides-for-large-sample-properties-of-mles_module3_lesson5.pdf){width=700 height=980}
+:::
+
+## Slides
+
+## Reflection
+

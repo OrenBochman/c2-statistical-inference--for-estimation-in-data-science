@@ -10,7 +10,690 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-the-invariance-property_module2_lesson4.pdf){width=700 height=980}
 :::
 
-## Slides
+## Motivation: Transforming an Estimator {#sec-transforming-estimators}
+
+Suppose $X_1,X_2,\ldots,X_n$
+is a random sample from a distribution with mean $\mu$ and variance $\sigma^2$.
+
+The sample mean $\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$ is an unbiased estimator of $\mu$:
+
+$$
+\mathbb{E}[\overline{X}]
+=
+\mu.
+$$
+
+It does not follow that $\overline{X}^{\,2}$ is an unbiased estimator of $\mu^2$:
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[\overline{X}^{\,2}\right]
+&= \operatorname{Var}(\overline{X}) + \left(\mathbb{E}[\overline{X}]\right)^2 \\
+&= \frac{\sigma^2}{n} + \mu^2
+\end{aligned}
+$$
+
+::: {.callout-warning}
+Unbiasedness is generally not preserved by nonlinear transformations. Maximum likelihood estimators have a different property: invariance under transformations.
+:::
+
+## Exponential Example: Estimating $\lambda^2$ {#sec-exponential-lambda-squared}
+
+Suppose
+$X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Exp}(\operatorname{rate}=\lambda), \qquad \lambda>0.$
+
+The density of one observation is
+$f(x;\lambda) = \lambda e^{-\lambda x} \mathbf{1}_{(0,\infty)}(x)$
+
+We want the maximum likelihood estimator of
+$\tau = \lambda^2.$
+
+### Direct reparameterization {#sec-direct-reparameterization}
+
+Because $\lambda>0$,
+
+$\lambda = \sqrt{\tau}.$
+
+The density written in terms of $\tau$ is
+
+$$
+f(x;\tau)
+=
+\sqrt{\tau}\,
+e^{-\sqrt{\tau}\,x}
+\mathbf{1}_{(0,\infty)}(x).
+$$
+
+For observed data $x_1,\ldots,x_n$, the likelihood is
+
+$$
+\widetilde{L}(\tau)
+=
+\tau^{n/2}
+\exp\left\{
+-\sqrt{\tau}
+\sum_{i=1}^{n}x_i
+\right\}.
+$$
+
+The log-likelihood is
+
+$$
+\widetilde{\ell}(\tau)
+=
+\frac{n}{2}\log\tau
+-
+\sqrt{\tau}
+\sum_{i=1}^{n}x_i.
+$$
+
+Differentiate:
+
+$$
+\begin{aligned}
+\frac{d}{d\tau}
+\widetilde{\ell}(\tau)
+&=
+\frac{n}{2\tau}
+-
+\frac{1}{2\sqrt{\tau}}
+\sum_{i=1}^{n}x_i.
+\end{aligned}
+$$
+
+Set the derivative equal to zero:
+
+$$
+\begin{aligned}
+0
+&=
+\frac{n}{2\tau}
+-
+\frac{1}{2\sqrt{\tau}}
+\sum_{i=1}^{n}x_i \\
+n
+&=
+\sqrt{\tau}
+\sum_{i=1}^{n}x_i \\
+\sqrt{\tau}
+&=
+\frac{n}{\sum_{i=1}^{n}x_i}
+=
+\frac{1}{\overline{x}}.
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\hat{\tau}
+=
+\frac{1}{\overline{X}^{\,2}}.
+$$
+
+### Using the estimator of $\lambda$ {#sec-plug-in-lambda-mle}
+
+The maximum likelihood estimator of the exponential rate is
+
+$$
+\hat{\lambda}
+=
+\frac{1}{\overline{X}}.
+$$
+
+Hence,
+
+$$
+\hat{\tau}
+=
+\hat{\lambda}^{\,2}
+=
+\frac{1}{\overline{X}^{\,2}}.
+$$
+
+This agreement is an instance of the invariance property.
+
+## Invariance Theorem {#sec-invariance-theorem}
+
+::: {#thm-mle-invariance .theorem}
+## Invariance property of maximum likelihood estimators
+
+Let $\hat{\theta}$ be a maximum likelihood estimator of $\theta$, and let
+
+$$
+\tau
+=
+g(\theta).
+$$
+
+Then a maximum likelihood estimator of $\tau$ is
+
+$$
+\boxed{
+\hat{\tau}
+=
+g(\hat{\theta})
+}.
+$$
+:::
+
+For a one-to-one transformation, the transformed likelihood is obtained by rewriting the original likelihood in the new parameter.
+
+Suppose
+
+$$
+L(\theta)
+=
+\widetilde{L}\!\left(g(\theta)\right).
+$$
+
+If $g$ is invertible, then maximizing $L(\theta)$ over $\theta$ is equivalent to maximizing $\widetilde{L}(\tau)$ over $\tau=g(\theta)$. Therefore,
+
+$$
+\hat{\tau}
+=
+g(\hat{\theta}).
+$$
+
+### Derivative argument for an invertible transformation {#sec-invariance-derivative-proof}
+
+Assume that:
+
+- $g$ is differentiable and invertible;
+- $g'(\theta)\neq 0$;
+- the likelihood has a unique interior maximum.
+
+By the chain rule,
+
+$$
+\frac{d}{d\theta}L(\theta)
+=
+\frac{d}{d\tau}
+\widetilde{L}\!\left(g(\theta)\right)
+g'(\theta).
+$$
+
+At $\theta=\hat{\theta}$,
+
+$$
+\frac{d}{d\theta}L(\hat{\theta})
+=
+0.
+$$
+
+Since $g'(\hat{\theta})\neq 0$,
+
+$$
+\left.
+\frac{d}{d\tau}
+\widetilde{L}(\tau)
+\right|_{\tau=g(\hat{\theta})}
+=
+0.
+$$
+
+Thus $g(\hat{\theta})$ is the unique maximizer of the transformed likelihood:
+
+$$
+\hat{\tau}
+=
+g(\hat{\theta}).
+$$
+
+::: {.callout-note}
+The theorem is more general than this derivative proof. The proof above treats the one-to-one, differentiable case used in the exponential example.
+:::
+
+## Poisson Example: Estimating a Probability {#sec-poisson-positive-probability}
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Poisson}(\lambda),
+\qquad
+\lambda\geq 0.
+$$
+
+We want to estimate the probability that a typical observation is greater than zero:
+
+$$
+p
+=
+P_\lambda(X_i>0).
+$$
+
+For a Poisson random variable,
+
+$$
+\begin{aligned}
+p
+&=
+1-P_\lambda(X_i=0) \\
+&=
+1-\frac{e^{-\lambda}\lambda^0}{0!} \\
+&=
+1-e^{-\lambda}.
+\end{aligned}
+$$
+
+Thus
+
+$$
+p
+=
+\tau(\lambda),
+\qquad
+\tau(\lambda)
+=
+1-e^{-\lambda}.
+$$
+
+## Estimator 1: The Observed Proportion Above Zero {#sec-poisson-estimator-one}
+
+A direct estimator is
+
+$$
+\hat{p}_1
+=
+\frac{\#\{X_i>0\}}{n}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbf{1}_{\{X_i>0\}}.
+$$
+
+Its expectation is
+
+$$
+\begin{aligned}
+\mathbb{E}[\hat{p}_1]
+&=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbb{E}\!\left[
+\mathbf{1}_{\{X_i>0\}}
+\right] \\
+&=
+\mathbb{E}\!\left[
+\mathbf{1}_{\{X_1>0\}}
+\right] \\
+&=
+0\cdot P(X_1\leq 0)
++
+1\cdot P(X_1>0) \\
+&=
+P(X_1>0) \\
+&=
+1-e^{-\lambda} \\
+&=
+p.
+\end{aligned}
+$$
+
+Therefore, $\hat{p}_1$ is unbiased.
+
+## Estimator 2: The Invariance Estimator {#sec-poisson-invariance-estimator}
+
+The Poisson probability mass function is
+
+$$
+f(x;\lambda)
+=
+\frac{e^{-\lambda}\lambda^x}{x!}
+\mathbf{1}_{\{0,1,2,\ldots\}}(x).
+$$
+
+The joint probability mass function is
+
+$$
+\begin{aligned}
+f(\boldsymbol{x};\lambda)
+&=
+\prod_{i=1}^{n}
+\frac{e^{-\lambda}\lambda^{x_i}}{x_i!}
+\mathbf{1}_{\{0,1,2,\ldots\}}(x_i) \\
+&=
+e^{-n\lambda}
+\lambda^{\sum_{i=1}^{n}x_i}
+\frac{1}{\prod_{i=1}^{n}x_i!}
+\prod_{i=1}^{n}
+\mathbf{1}_{\{0,1,2,\ldots\}}(x_i).
+\end{aligned}
+$$
+
+A likelihood is
+
+$$
+L(\lambda)
+=
+e^{-n\lambda}
+\lambda^{\sum_{i=1}^{n}x_i}.
+$$
+
+The log-likelihood is
+
+$$
+\ell(\lambda)
+=
+-n\lambda
++
+\left(
+\sum_{i=1}^{n}x_i
+\right)
+\log\lambda.
+$$
+
+Differentiate:
+
+$$
+\begin{aligned}
+\frac{d}{d\lambda}
+\ell(\lambda)
+&=
+-n
++
+\frac{\sum_{i=1}^{n}x_i}{\lambda}.
+\end{aligned}
+$$
+
+Setting this equal to zero gives
+
+$$
+\hat{\lambda}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}X_i
+=
+\overline{X}.
+$$
+
+By invariance,
+
+$$
+\boxed{
+\hat{p}_2
+=
+1-e^{-\hat{\lambda}}
+=
+1-e^{-\overline{X}}
+}.
+$$
+
+## Bias of the Invariance Estimator {#sec-bias-poisson-invariance-estimator}
+
+We need
+
+$$
+\mathbb{E}[\hat{p}_2]
+=
+1-
+\mathbb{E}\!\left[e^{-\overline{X}}\right].
+$$
+
+Several direct approaches are possible but cumbersome.
+
+### Method 1: Sum over the complete sample space {#sec-bias-method-one}
+
+One could write
+
+$$
+\mathbb{E}\!\left[e^{-\overline{X}}\right]
+=
+\sum_{x_1=0}^{\infty}
+\cdots
+\sum_{x_n=0}^{\infty}
+e^{-\frac{1}{n}\sum_{i=1}^{n}x_i}
+\frac{
+e^{-n\lambda}
+\lambda^{\sum_{i=1}^{n}x_i}
+}{
+\prod_{i=1}^{n}x_i!
+}.
+$$
+
+This is correct but inconvenient.
+
+### Method 2: Sum over the total count {#sec-bias-method-two}
+
+Let
+
+$$
+Y
+=
+\sum_{i=1}^{n}X_i.
+$$
+
+Since sums of independent Poisson variables are Poisson,
+
+$$
+Y
+\sim
+\operatorname{Poisson}(n\lambda).
+$$
+
+Then
+
+$$
+\mathbb{E}\!\left[e^{-\overline{X}}\right]
+=
+\sum_{y=0}^{\infty}
+e^{-y/n}
+\frac{
+e^{-n\lambda}(n\lambda)^y
+}{
+y!
+}.
+$$
+
+This is simpler, but it still requires recognizing an exponential series.
+
+### Method 3: Find the distribution of $\overline{X}$ {#sec-bias-method-three}
+
+Since
+
+$$
+\overline{X}
+=
+\frac{Y}{n},
+$$
+
+its support is
+
+$$
+0,\frac1n,\frac2n,\frac3n,\ldots
+$$
+
+and
+
+$$
+P\left(
+\overline{X}=\frac{y}{n}
+\right)
+=
+\frac{
+e^{-n\lambda}(n\lambda)^y
+}{
+y!
+},
+\qquad
+y=0,1,2,\ldots
+$$
+
+One could then sum
+
+$$
+\mathbb{E}\!\left[e^{-\overline{X}}\right]
+=
+\sum_{y=0}^{\infty}
+e^{-y/n}
+P(Y=y),
+$$
+
+which is again cumbersome.
+
+### Method 4: Use the moment generating function {#sec-bias-method-four}
+
+The moment generating function of
+
+$$
+Y\sim\operatorname{Poisson}(n\lambda)
+$$
+
+is
+
+$$
+M_Y(t)
+=
+\mathbb{E}[e^{tY}]
+=
+\exp\left\{
+n\lambda(e^t-1)
+\right\}.
+$$
+
+Since $\overline{X}=Y/n$,
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[e^{-\overline{X}}\right]
+&=
+\mathbb{E}\!\left[e^{-Y/n}\right] \\
+&=
+M_Y\!\left(-\frac1n\right) \\
+&=
+\exp\left\{
+n\lambda
+\left(
+e^{-1/n}-1
+\right)
+\right\}.
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\boxed{
+\mathbb{E}[\hat{p}_2]
+=
+1-
+\exp\left\{
+n\lambda
+\left(
+e^{-1/n}-1
+\right)
+\right\}
+}.
+$$
+
+## Direction of the Bias {#sec-direction-poisson-bias}
+
+For finite $n$,
+
+$$
+e^{-1/n}
+>
+1-\frac1n.
+$$
+
+Hence,
+
+$$
+n\left(e^{-1/n}-1\right)
+>
+-1,
+$$
+
+so
+
+$$
+\exp\left\{
+n\lambda(e^{-1/n}-1)
+\right\}
+>
+e^{-\lambda}.
+$$
+
+It follows that
+
+$$
+\begin{aligned}
+\mathbb{E}[\hat{p}_2]
+&=
+1-
+\exp\left\{
+n\lambda(e^{-1/n}-1)
+\right\} \\
+&<
+1-e^{-\lambda} \\
+&=
+p.
+\end{aligned}
+$$
+
+Thus $\hat{p}_2$ has negative bias.
+
+As $n\to\infty$,
+
+$$
+n\left(e^{-1/n}-1\right)
+\longrightarrow
+-1,
+$$
+
+and therefore
+
+$$
+\mathbb{E}[\hat{p}_2]
+\longrightarrow
+1-e^{-\lambda}
+=
+p.
+$$
+
+The graphical comparison in the slides shows a visible downward bias for $n=5$, while for $n=20$ the expectation of $\hat{p}_2$ is already very close to $p$.
+
+## Summary {#sec-invariance-summary}
+
+For
+
+$$
+p
+=
+1-e^{-\lambda},
+$$
+
+the two estimators are
+
+$$
+\hat{p}_1
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbf{1}_{\{X_i>0\}}
+$$
+
+and
+
+$$
+\hat{p}_2
+=
+1-e^{-\overline{X}}.
+$$
+
+Their bias properties are:
+
+| Estimator | Construction | Bias |
+|---|---|---|
+| $\hat{p}_1$ | Sample proportion with $X_i>0$ | Unbiased |
+| $\hat{p}_2$ | Maximum likelihood estimator by invariance | Negatively biased for finite $n$ |
+
+::: {.callout-note}
+The remaining comparison is not determined by bias alone. A biased estimator can have smaller variance, so comparing estimators naturally leads to the bias-variance trade-off and mean squared error.
+:::
+
 
 ## Reflection
 
