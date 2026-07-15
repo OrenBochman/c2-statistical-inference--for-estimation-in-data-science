@@ -6,7 +6,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_transformations-of-distributions.mp4 >}}
 
-[transcript](01_transformations-of-distributions.en.txt){target="_blank"}
+[Transcript](01_transformations-of-distributions.en.txt){target="_blank"}
 [Handout](02_video-slides-for-transformations-of-distributions_module1_lesson3.pdf){target="_blank"}
 :::
 

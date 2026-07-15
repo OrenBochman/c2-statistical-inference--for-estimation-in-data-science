@@ -11,13 +11,13 @@ This book is:
 ## TODOS:
 
 1. add a nice cover (via gemeni prompt that will work for more books)
-2. make a quarto friendly videoplayer that shows the transcript. 
+2. make a quarto friendly videoplayer that shows the Transcript. 
    note: idealy a quarto extention with a web component that uses a similar syntax to
 
 ```
    {{< video-plus
     src="https://www.youtube.com/watch?v=0j6AZhZFb2M" 
-    transcript="file.txt"
+    Transcript="file.txt"
     slides="file.pdf"
     >}}
 ```

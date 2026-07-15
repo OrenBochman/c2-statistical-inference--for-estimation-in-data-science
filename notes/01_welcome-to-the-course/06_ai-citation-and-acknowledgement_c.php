@@ -1474,7 +1474,7 @@ li#s-lib-bc-site a:after {
 	<li>Cite the AI tool when you incorporate its output into your work. <strong>This includes direct quotations, images, and data, as well as paraphrased content.</strong></li>
 	<li>If you use an AI tool for some other purpose, such as <strong>translating, editing, or generating an outline,</strong> include a note about this somewhere in your paper.</li>
 	<li><strong>The MLA views AI-generated content as a source with no author,</strong> so you&#39;ll use the title of the source in your in-text citations, and in your reference list. The title you choose should be a brief description of the AI-generated content, such as an abbreviated version of the prompt you used.&nbsp;</li>
-	<li>If you create a <strong>shareable link to the chat transcript,</strong> include that instead of the tool&#39;s URL.</li>
+	<li>If you create a <strong>shareable link to the chat Transcript,</strong> include that instead of the tool&#39;s URL.</li>
 </ul>
 
 <p><strong>Format:</strong><br />

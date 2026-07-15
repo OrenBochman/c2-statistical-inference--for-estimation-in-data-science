@@ -6,7 +6,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_method-of-moments-estimators.mp4 >}}
 
-[transcript](01_method-of-moments-estimators.en.txt){target="_blank"}
+[Transcript](01_method-of-moments-estimators.en.txt){target="_blank"}
 :::
 
 ### Handout

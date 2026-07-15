@@ -6,7 +6,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_joint-distributions-and-independence.mp4 >}}
 
-[transcript](01_joint-distributions-and-independence.en.txt){target="_blank"}
+[Transcript](01_joint-distributions-and-independence.en.txt){target="_blank"}
 [Handout](02_joint-distributions_c2_m1l2.pdf){width=700 height=980}
 :::
 

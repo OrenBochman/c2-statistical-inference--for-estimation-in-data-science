@@ -6,7 +6,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_discrete-random-variables-and-probability-mass-functions.mp4 >}}
 
-[transcript](01_discrete-random-variables-and-probability-mass-functions.en.txt){target="_blank"}
+[Transcript](01_discrete-random-variables-and-probability-mass-functions.en.txt){target="_blank"}
 :::
 
 ### Handout
@@ -292,7 +292,7 @@ However I think that this is not the main result for this lesson - as it focuses
 ::: {.column-margin}
 {{< video 03_continuous-random-variables-and-probability-density-functions.mp4 >}}
 
-[transcript](03_continuous-random-variables-and-probability-density-functions.en.txt){target="_blank"}
+[Transcript](03_continuous-random-variables-and-probability-density-functions.en.txt){target="_blank"}
 :::
 
 ### Handout

@@ -6,7 +6,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ::: {.column-margin}
 {{< video 01_distributions-of-sums.mp4 >}}
 
-[transcript](01_distributions-of-sums.en.txt){target="_blank"}
+[Transcript](01_distributions-of-sums.en.txt){target="_blank"}
 [Handout](02_video-slides-for-distributions-of-sums_module1_lesson7.pdf){width=700 height=400}
 :::
 
