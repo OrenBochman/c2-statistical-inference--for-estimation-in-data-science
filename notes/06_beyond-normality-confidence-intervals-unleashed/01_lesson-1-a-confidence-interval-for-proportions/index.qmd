@@ -10,7 +10,247 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-a-confidence-interval-for-proportions_module5_lesson1.pdf){width=700 height=980}
 :::
 
-## Slides
+## A CI for a Proportion {#sec-ci-proportion}
+
+::: {.callout-note}
+## Critical-value notation
+
+Throughout these notes, $z_\gamma$ denotes the positive standard-normal critical value satisfying
+
+$$
+P(Z > z_\gamma)=\gamma
+$$
+
+Thus, for a 95% confidence interval, $z_{0.025}=1.96$
+:::
+
+::: {#exm-election-proportion}
+## Election Poll
+
+A random sample of 500 people in a country that is about to hold a national election were asked whether they preferred Candidate A or Candidate B. Of those sampled, 320 preferred Candidate A.
+
+Construct an approximate 95% confidence interval for the true proportion of people in the country who prefer Candidate A.
+:::
+
+Let $p$ be the true population proportion who prefer Candidate A. The sample proportion is
+
+$$
+\widehat{p}
+=
+\frac{320}{500}
+=
+\frac{16}{25}
+=
+0.64
+$$
+
+In general, the estimator is
+
+$$
+\widehat{p}
+=
+\frac{\text{number in the sample with the characteristic}}{\text{sample size}}
+$$
+
+### The Bernoulli Model {#sec-bernoulli-model-proportion}
+
+Take a random sample of size $n$ and define
+
+$$
+X_i
+=
+\begin{cases}
+1 & \text{person }i\text{ prefers Candidate A} \\
+0 & \text{person }i\text{ prefers Candidate B}
+\end{cases}
+$$
+
+Then
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\mathcal{Bern}(p)
+$$
+
+The sample proportion is the sample mean of these indicator variables:
+
+$$
+\widehat{p}
+=
+\frac{\sum_{i=1}^{n}X_i}{n}
+=
+\overline{X}
+$$
+
+Its expectation and variance are
+
+$$
+\begin{aligned}
+\mathbb{E}[\widehat{p}]
+&=
+\mathbb{E}[\overline{X}] \\
+&=
+\mathbb{E}[X_1] \\
+&=
+p
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\operatorname{Var}(\widehat{p})
+&=
+\operatorname{Var}(\overline{X}) \\
+&=
+\frac{\operatorname{Var}(X_1)}{n} \\
+&=
+\frac{p(1-p)}{n}
+\end{aligned}
+$$
+
+By the Central Limit Theorem,
+
+$$
+\widehat{p}
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}\!\left(
+ p,
+ \frac{p(1-p)}{n}
+\right)
+$$
+
+Equivalently, as $n$ becomes large,
+
+$$
+\frac{\widehat{p}-p}
+{\sqrt{p(1-p)/n}}
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}(0,1)
+$$
+
+### When Is the Normal Approximation Reasonable? {#sec-normal-approximation-proportion}
+
+The rule $n>30$ is a generic heuristic, but the Bernoulli model permits a more relevant check. The estimator $\widehat{p}$ must lie in $[0,1]$, whereas a normal random variable has support on the entire real line.
+
+Since approximately 99.7% of a normal distribution lies within three standard deviations of its mean, proceed with the normal approximation when
+
+$$
+\left(
+\widehat{p}
+-
+3\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}},
+\widehat{p}
++
+3\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}
+\right)
+\subseteq [0,1]
+$$
+
+The true standard deviation of $\widehat{p}$ is
+
+$$
+\sigma_{\widehat{p}}
+=
+\sqrt{\frac{p(1-p)}{n}}
+$$
+
+Because $p$ is unknown, estimate it by
+
+$$
+\widehat{\sigma}_{\widehat{p}}
+=
+\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}
+$$
+
+### Constructing the Confidence Interval {#sec-construct-ci-proportion}
+
+A central $100(1-\alpha)\%$ probability statement is
+
+$$
+-z_{\alpha/2}
+<
+\frac{\widehat{p}-p}
+{\sqrt{p(1-p)/n}}
+<
+z_{\alpha/2}
+$$
+
+Although $p$ can be isolated exactly, doing so requires solving the quadratic inequality
+
+$$
+(\widehat{p}-p)^2
+-
+z_{\alpha/2}^{2}\frac{p(1-p)}{n}
+<
+0
+$$
+
+The more common large-sample approximation replaces $p$ in the standard error by $\widehat{p}$.
+
+::: {#def-wald-ci-proportion}
+## Approximate Confidence Interval for a Proportion
+
+An approximate $100(1-\alpha)\%$ confidence interval for $p$ is
+
+$$
+\boxed{
+\widehat{p}
+\pm
+z_{\alpha/2}
+\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}
+}
+$$
+:::
+
+### Returning to the Election Poll {#sec-election-proportion-solution}
+
+Here,
+
+$$
+n=500
+\qquad
+\widehat{p}=\frac{16}{25}=0.64
+$$
+
+The three-standard-error check gives
+
+$$
+\begin{aligned}
+\widehat{p}
+\pm
+3\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}
+&=
+0.64
+\pm
+3\sqrt{\frac{0.64(0.36)}{500}} \\
+&=
+0.64\pm 0.0644 \\
+&=
+(0.5756,0.7044)
+\end{aligned}
+$$
+
+This interval is contained in $[0,1]$, so the normal approximation is reasonable.
+
+For a 95% confidence interval, $z_{0.025}=1.96$:
+
+$$
+\begin{aligned}
+\widehat{p}
+\pm
+z_{0.025}
+\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}
+&=
+0.64
+\pm
+1.96\sqrt{\frac{0.64(0.36)}{500}} \\
+&=
+0.64\pm 0.0421 \\
+&=
+\boxed{(0.5979,0.6821)}
+\end{aligned}
+$$
 
 ## Reflection
 

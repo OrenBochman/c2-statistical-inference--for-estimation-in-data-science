@@ -12,7 +12,296 @@ subtitle: "Statistical Estimation for Data Science and AI"
 :::
 
 
-## Slides
+## Slides on Introduction to Confidence Intervals {#sec-introduction-confidence-intervals}
+
+Suppose a reported interval is
+
+> A 95% confidence interval for the mean $\mu$ is $(-2.14, 3.07)$
+
+::: {.callout-warning}
+## What this does not mean
+
+This statement does **not** mean that
+
+1. we are 95% confident that the fixed parameter $\mu$ lies between $-2.14$ and $3.07$
+2. the probability that $\mu$ lies between $-2.14$ and $3.07$ is $0.95$
+
+Once the sample has been observed, both endpoints are fixed and the parameter $\mu$ is fixed
+:::
+
+The randomness lies in the sampling procedure:
+
+1. collect a random sample
+2. estimate the parameter
+3. construct a confidence interval
+
+Repeating this procedure with a new random sample generally produces a different interval.
+
+::: {#def-confidence-interval-coverage}
+## Confidence-Interval Coverage
+
+Repeated samples produce repeated confidence intervals. A 95% confidence-interval procedure is constructed so that, over repeated sampling, 95% of the resulting intervals contain the true parameter $\mu$
+:::
+
+## Building a Confidence Interval from the Ground Up {#sec-building-confidence-interval}
+
+Suppose that $X_1, X_2, \ldots, X_n \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu,\sigma^2)$ and assume that the population variance $\sigma^2$ is known.
+
+The sample mean $\overline{X}$ is an estimator of $\mu$, and
+
+$$
+\overline{X} \sim \mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right)
+$$
+
+Therefore, the standardized sample mean satisfies
+
+$$
+Z = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} \sim \mathcal{N}(0,1)
+$$
+
+## The Central 95% of the Standard Normal Distribution {#sec-central-95-standard-normal}
+
+For $Z\sim\mathcal{N}(0,1)$, the central 95% of the distribution lies between $-1.96$ and $1.96$:
+
+$$
+P(-1.96 < Z < 1.96)=0.95
+$$
+
+The upper endpoint is the $0.975$ quantile because the remaining probability $0.05$ is divided equally between the two tails:
+
+```{r}
+qnorm(0.975)
+```
+
+which gives approximately
+
+$$
+1.96
+$$
+
+## Deriving the 95% Confidence Interval {#sec-deriving-95-confidence-interval}
+
+Substitute the standardized sample mean for $Z$ and solve the probability statement for $\mu$:
+
+$$
+\begin{aligned}
+P(-1.96 < Z < 1.96)
+&= 0.95 \\
+P\!\left(
+-1.96
+<
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+<
+1.96
+\right)
+&= 0.95
+&& \text{substitute the standardized sample mean} \\
+P\!\left(
+-1.96\frac{\sigma}{\sqrt{n}}
+<
+\overline{X}-\mu
+<
+1.96\frac{\sigma}{\sqrt{n}}
+\right)
+&= 0.95
+&& \text{multiply by }\frac{\sigma}{\sqrt n} \\
+P\!\left(
+\overline{X}-1.96\frac{\sigma}{\sqrt{n}}
+<
+\mu
+<
+\overline{X}+1.96\frac{\sigma}{\sqrt{n}}
+\right)
+&= 0.95
+&& \text{solve the inequalities for }\mu
+\end{aligned}
+$$
+
+Thus, a 95% confidence interval for the mean $\mu$ is
+
+$$
+\left(
+\overline{X}-1.96\frac{\sigma}{\sqrt{n}},
+\overline{X}+1.96\frac{\sigma}{\sqrt{n}}
+\right)
+$$
+
+The same interval can be written as
+
+$$
+\overline{X} \pm \underbrace{1.96\frac{\sigma}{\sqrt{n}}}_{\text{margin of error}}
+$$
+
+## Critical Values {#sec-critical-values}
+
+::: {#def-critical-value}
+## Critical Value
+
+A critical value is a value that cuts off a specified area under a probability density function
+:::
+
+Let $Z\sim\mathcal{N}(0,1)$. The critical value $z_\alpha$ is defined so that an area $\alpha$ lies to its right:
+
+$$
+P(Z>z_\alpha)=\alpha
+$$
+
+Equivalently,
+
+$$
+P(Z\leq z_\alpha)=1-\alpha
+$$
+
+For a two-sided confidence interval with confidence coefficient $1-\alpha$, each tail contains probability $\alpha/2$:
+
+$$
+P\!\left(-z_{\alpha/2}< Z <z_{\alpha/2}\right)=1-\alpha
+$$
+
+By symmetry of the standard normal distribution,
+
+$$
+-z_{\alpha/2}=z_{1-\alpha/2}
+$$
+
+For a 95% confidence interval,
+
+$$
+\begin{aligned}
+1-\alpha &= 0.95 \\
+\alpha &= 0.05 \\
+\frac{\alpha}{2} &= 0.025 \\
+z_{\alpha/2} &= z_{0.025}=1.96
+\end{aligned}
+$$
+
+Here, the notation $z_{0.025}$ denotes the positive critical value that leaves area $0.025$ to its right.
+
+## Confidence Interval for a Normal Mean with Known Variance {#sec-normal-mean-known-variance}
+
+::: {#thm-normal-mean-confidence-interval}
+## Normal Mean with Known Variance
+
+Suppose that $X_1, X_2, \ldots, X_n \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu,\sigma^2)$ where $\sigma^2$ is known. 
+A $100(1-\alpha)\%$ confidence interval for $\mu$ is
+
+$$
+\boxed{ \overline{X} \pm \underbrace{z_{\alpha/2}\frac{\sigma}{\sqrt{n}}}_{\text{margin of error} } }
+$$
+
+Equivalently, the interval is
+
+$$
+\left(
+\overline{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}},
+\overline{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\right)
+$$
+:::
+
+## Extension Using the Central Limit Theorem {#sec-confidence-interval-clt}
+
+The exact derivation above depends on the sample coming from a normal distribution, because then $\overline{X}$ is exactly normally distributed.
+
+For a more general population distribution, the Central Limit Theorem implies that $\overline{X}$ is approximately normally distributed when the sample size is large. The slides use $n>30$ as a rule of thumb.
+
+::: {#thm-large-sample-confidence-interval}
+## Large-Sample Confidence Interval
+
+Suppose that
+
+$$
+X_1, X_2, \ldots, X_n
+$$
+
+is a random sample from any distribution with mean $\mu$ and finite variance
+
+$$
+\sigma^2<\infty
+$$
+
+For large $n$, an approximate $100(1-\alpha)\%$ confidence interval for $\mu$ is
+
+$$
+\boxed{
+\overline{X}
+\pm
+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+}
+$$
+:::
+
+## Example: Monthly Spending on Organic Produce {#sec-example-organic-produce}
+
+::: {#exm-organic-produce-confidence-interval}
+## Organic-Produce Spending
+
+A supermarket chain is considering adding more organic produce in a particular region. An external marketing company obtains a random sample of $200$ customers from the region.
+
+The observed average monthly spending on organic produce is $36$ dollars per person. Based on previous studies, the population variance of spending is taken to be $5$.
+
+Find a 90% confidence interval for the true mean monthly spending on organic produce among all customers in the region.
+
+The supplied values are
+
+$$
+\begin{aligned}
+n &= 200 \\
+\overline{x} &= 36 \\
+\sigma^2 &= 5 \\
+\sigma &= \sqrt{5}
+\end{aligned}
+$$
+
+For a 90% confidence interval,
+
+$$
+\begin{aligned}
+1-\alpha &= 0.90 \\
+\alpha &= 0.10 \\
+\frac{\alpha}{2} &= 0.05
+\end{aligned}
+$$
+
+The required critical value is
+
+```{r}
+qnorm(0.95)
+```
+
+which gives
+
+$$
+z_{\alpha/2}=z_{0.05}=1.645
+$$
+
+Substitute the values into the confidence-interval formula:
+
+$$
+\begin{aligned}
+\overline{x}
+\pm
+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+&=
+36
+\pm
+1.645\frac{\sqrt{5}}{\sqrt{200}} \\
+&=
+36
+\pm
+\underbrace{0.260}_{\text{margin of error}} \\
+&=
+(35.74,36.26)
+\end{aligned}
+$$
+
+Thus, the 90% confidence interval for the population mean monthly spending is
+
+$$
+\boxed{(35.74,36.26)}
+$$
+:::
+
 
 ## Reflection
 

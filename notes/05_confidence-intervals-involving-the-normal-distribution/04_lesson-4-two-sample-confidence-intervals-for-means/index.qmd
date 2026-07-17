@@ -1,17 +1,340 @@
 ---
-title: "Lesson 1: Introduction to Confidence Intervals"
+title: "Lesson 4: Two-Sample Confidence Intervals for Means"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
 
 ::: {.column-margin}
-{{< video 01_lets-build-a-confidence-interval.mp4 >}}
+{{< video 01_confidence-intervals-for-the-difference-between-population-means.mp4 >}}
 
-[Transcript](01_lets-build-a-confidence-interval.en.txt)
-[Handout](02_video-slides-for-lets-build-a-confidence-interval_module4_lesson1.pdf){width=700 height=980}
+[Transcript](01_confidence-intervals-for-the-difference-between-population-means.en.txt)
+[Handout](02_video-slides-for-confidence-intervals-for-the-difference-between-population_module4_lesson4.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on CIs for the Difference Between Population Means {#sec-confidence-interval-difference-means}
+
+Suppose that: 
+$X_{1,1},X_{1,2},\ldots,X_{1,n_1} \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu_1,\sigma_1^2)$
+and
+$X_{2,1},X_{2,2},\ldots,X_{2,n_2} \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu_2,\sigma_2^2)$
+Assume that $\sigma_1^2$ and $\sigma_2^2$ 
+are known and that the two samples are independent. 
+The goal is to construct a $100(1-\alpha)\%$ confidence interval for
+$\mu_1-\mu_2$
+
+### Step One: Choose an Estimator {#sec-difference-means-estimator}
+
+A natural estimator of $\mu_1-\mu_2$ is the difference between the sample means
+
+$$
+\widehat{\mu_1-\mu_2}=\overline{X}_1-\overline{X}_2
+$$
+
+### Step Two: Find the Distribution of the Estimator {#sec-difference-means-distribution}
+
+Because the observations are normally distributed,
+
+$$
+\overline{X}_1 \sim \mathcal{N}\!\left(\mu_1,\frac{\sigma_1^2}{n_1}\right)
+$$
+
+and
+
+$$
+\overline{X}_2 \sim \mathcal{N}\!\left(\mu_2,\frac{\sigma_2^2}{n_2}\right)
+$$
+
+The mean of the difference is
+
+$$
+\begin{aligned}
+\mathbb{E}[\overline{X}_1-\overline{X}_2]
+&=
+\mathbb{E}[\overline{X}_1]
+-
+\mathbb{E}[\overline{X}_2] \\
+&=
+\mu_1-\mu_2
+\end{aligned}
+$$
+
+Since the two samples are independent, the variance of the difference is
+
+$$
+\begin{aligned}
+\operatorname{Var}(\overline{X}_1-\overline{X}_2)
+&=
+\operatorname{Var}\!\left(\overline{X}_1+(-1)\overline{X}_2\right) \\
+&=
+\operatorname{Var}(\overline{X}_1)
++
+\operatorname{Var}\!\left((-1)\overline{X}_2\right)
+&& \text{independence} \\
+&=
+\operatorname{Var}(\overline{X}_1)
++
+(-1)^2\operatorname{Var}(\overline{X}_2) \\
+&=
+\operatorname{Var}(\overline{X}_1)
++
+\operatorname{Var}(\overline{X}_2) \\
+&=
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\overline{X}_1-\overline{X}_2
+\sim
+\mathcal{N}\!\left(
+\mu_1-\mu_2,
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+\right)
+$$
+
+Standardizing gives the pivotal quantity
+
+$$
+Z
+=
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+}
+\sim
+\mathcal{N}(0,1)
+$$
+
+### Step Three: Choose the Critical Values {#sec-difference-means-critical-values}
+
+Let $z_{\alpha/2}$ denote the positive standard-normal critical value satisfying
+
+$$
+P(Z>z_{\alpha/2})=\frac{\alpha}{2}
+$$
+
+Then
+
+$$
+P\!\left(
+-z_{\alpha/2}
+<
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+}
+<
+z_{\alpha/2}
+\right)
+=
+1-\alpha
+$$
+
+### Step Four: Isolate the Parameter {#sec-difference-means-isolate-parameter}
+
+Solving for $\mu_1-\mu_2$ gives
+
+$$
+\begin{aligned}
+-z_{\alpha/2}
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+&<
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+<
+z_{\alpha/2}
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+} \\
+\overline{X}_1-\overline{X}_2
+-
+z_{\alpha/2}
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+&<
+\mu_1-\mu_2 \\
+&<
+\overline{X}_1-\overline{X}_2
++
+z_{\alpha/2}
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+\end{aligned}
+$$
+
+::: {#thm-ci-difference-means-known-variances}
+## Confidence Interval with Known Population Variances
+
+For two independent normal samples with known population variances, a $100(1-\alpha)\%$ confidence interval for $\mu_1-\mu_2$ is
+
+$$
+\underbrace{
+\color{blue}{\overline{X}_1-\overline{X}_2}
+}_{\text{point estimate}}
+\;\pm\;
+z_{\alpha/2}
+\underbrace{
+\color{red}{
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+}
+}
+}_{\text{standard error}}
+$$
+:::
+
+::: {#exm-county-placement-scores}
+## County Placement Scores
+
+Fifth-grade students from two neighboring counties took a placement examination. Scores in both counties are assumed to be normally distributed. From previous years of data, the population variances for Counties A and B are believed to be $15.3$ and $19.7$, respectively.
+
+For County A,
+
+$$
+n_1=57,
+\qquad
+\overline{x}_1=77.2,
+\qquad
+\sigma_1^2=15.3
+$$
+
+For County B,
+
+$$
+n_2=63,
+\qquad
+\overline{x}_2=75.3,
+\qquad
+\sigma_2^2=19.7
+$$
+
+Find and interpret a $99\%$ confidence interval for $\mu_1-\mu_2$.
+
+Since $1-\alpha=0.99$,
+
+$$
+\alpha=0.01,
+\qquad
+\frac{\alpha}{2}=0.005
+$$
+
+The critical value is obtained from the standard normal distribution
+
+$$
+z_{0.005}
+=
+\Phi^{-1}(0.995)
+\approx
+2.56
+$$
+
+In R, this critical value is obtained using `qnorm(0.995)`.
+
+The confidence interval is
+
+$$
+\begin{aligned}
+(\overline{x}_1-\overline{x}_2)
+&\pm
+z_{0.005}
+\sqrt{
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+} \\
+&=
+(77.2-75.3)
+\pm
+2.56
+\sqrt{
+\frac{15.3}{57}
++
+\frac{19.7}{63}
+} \\
+&=
+1.9
+\pm
+1.9515 \\
+&=
+(-0.0515,\,3.8515)
+\end{aligned}
+$$
+
+This interval gives plausible values for the population mean difference $\mu_1-\mu_2$.
+
+Because the interval contains $0$, the data are compatible with
+
+$$
+\mu_1-\mu_2=0
+$$
+
+Equivalently, it is plausible that
+
+$$
+\mu_1=\mu_2
+$$
+:::
+
+::: {.callout-warning}
+## Data Snooping
+
+Do not change the confidence level after examining the interval merely to exclude $0$. Selecting the confidence level in response to the observed data invalidates the stated coverage interpretation.
+:::
+
+## Large-Sample Approximation {#sec-difference-means-large-sample}
+
+For large independent samples, with $n_1>30$ and $n_2>30$, the unknown population variances may be replaced by the sample variances.
+
+::: {#thm-ci-difference-means-large-samples}
+## Approximate Large-Sample Confidence Interval
+
+An approximate $100(1-\alpha)\%$ confidence interval for $\mu_1-\mu_2$ is
+
+$$
+\underbrace{
+\overline{X}_1-\overline{X}_2
+}_{\text{point estimate}}
+\;\pm\;
+z_{\alpha/2}
+\underbrace{
+\sqrt{
+\frac{S_1^2}{n_1}
++
+\frac{S_2^2}{n_2}
+}
+}_{\text{estimated standard error}}
+$$
+:::
+
 
 ## Reflection
 

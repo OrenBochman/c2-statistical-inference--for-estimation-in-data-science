@@ -1,17 +1,720 @@
 ---
-title: "Lesson 1: Introduction to Confidence Intervals"
+title: "Lesson 2: The t- and Chi-Squared Distributions and the Sample Variance"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
-
 ::: {.column-margin}
-{{< video 01_lets-build-a-confidence-interval.mp4 >}}
+{{< video 01_the-chi-squared-and-t-distributions.mp4 >}}
 
-[Transcript](01_lets-build-a-confidence-interval.en.txt)
-[Handout](02_video-slides-for-lets-build-a-confidence-interval_module4_lesson1.pdf){width=700 height=980}
+[Transcript](01_the-chi-squared-and-t-distributions.en.txt)
+[Handout](02_video-slides-for-the-chi-squared-and-t-distributions_4.2_Lesson_Slides.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on the Chi-Squared Distribution {#sec-chi-squared-distribution}
+
+::: {#def-chi-squared-distribution}
+## Chi-Squared Distribution
+
+A chi-squared RV with $n$ degrees of freedom is the special case of a gamma RV.
+$$
+X \sim \Gamma\!\left(\frac{n}{2},\frac{1}{2}\right)
+$$
+
+where the gamma distribution is parameterized by shape and rate
+
+Its probability density function is
+
+$$
+f_X(x) = \frac{1}{\Gamma(n/2)} \left(\frac{1}{2}\right)^{n/2}
+x^{n/2-1} e^{-x/2} \mathbb{I}_{(0,\infty)}(x)
+$$
+
+We write
+
+$$
+X \sim \chi^2(n)
+$$
+:::
+
+The parameter $n$ is called the number of degrees of freedom
+
+The mean and variance are
+
+$$
+\begin{aligned}
+\mathbb{E}[X] &= n \\
+\operatorname{Var}(X) &= 2n
+\end{aligned}
+$$
+
+### Shape of the Density {#sec-chi-squared-density}
+
+The chi-squared density is supported on the positive real line. 
+For small $n$ it is strongly right-skewed
+
+```{r}
+#| label: fig-chi-squared-density
+#| fig-cap: "Density of a chi-squared distribution with one degree of freedom"
+#| echo: false
+#| warning: false
+
+x <- seq(0.001, 1, length.out = 1000)
+plot(
+  x,
+  dchisq(x, df = 1),
+  type = "l",
+  xlab = "x",
+  ylab = expression(f[X](x)),
+  ylim = c(0, 12)
+)
+```
+
+## Things About the Chi-Squared Distribution {#sec-chi-squared-properties}
+
+### Moment-Generating Function {#sec-chi-squared-mgf}
+
+For a gamma random variable parameterized by shape $\alpha$ and rate $\beta$,
+
+$$
+X \sim \Gamma(\alpha,\beta)
+$$
+
+its moment-generating function is
+
+$$
+M_X(t)
+=
+\left(\frac{\beta}{\beta-t}\right)^\alpha
+\qquad t<\beta
+$$
+
+Since
+
+$$
+X \sim \chi^2(n)
+=
+\Gamma\!\left(\frac{n}{2},\frac{1}{2}\right)
+$$
+
+we obtain
+
+$$
+\begin{aligned}
+M_X(t)
+&=
+\left(
+\frac{1/2}{1/2-t}
+\right)^{n/2} \\
+&=
+(1-2t)^{-n/2}
+\qquad t<\frac12
+\end{aligned}
+$$
+
+::: {#thm-sum-independent-chi-squared}
+## Sum of Independent Chi-Squared Random Variables
+
+Suppose that $X_1,X_2,\ldots,X_k$ are independent and
+
+$$
+X_i \sim \chi^2(n_i)
+$$
+
+Then
+
+$$
+Y=\sum_{i=1}^k X_i
+$$
+
+has distribution
+
+$$
+Y \sim \chi^2\!\left(\sum_{i=1}^k n_i\right)
+$$
+:::
+
+The result follows from the moment-generating function
+
+$$
+\begin{aligned}
+M_Y(t)
+&=
+\mathbb{E}\!\left[e^{tY}\right] \\
+&=
+\mathbb{E}\!\left[
+ e^{t\sum_{i=1}^k X_i}
+\right] \\
+&=
+\mathbb{E}\!\left[
+ \prod_{i=1}^k e^{tX_i}
+\right] \\
+&=
+\prod_{i=1}^k
+\mathbb{E}\!\left[e^{tX_i}\right]
+&& \text{by independence} \\
+&=
+\prod_{i=1}^k M_{X_i}(t) \\
+&=
+\prod_{i=1}^k
+\left(
+\frac{1/2}{1/2-t}
+\right)^{n_i/2} \\
+&=
+\left(
+\frac{1/2}{1/2-t}
+\right)^{\frac12\sum_{i=1}^k n_i}
+\end{aligned}
+$$
+
+Thus the sum of independent chi-squared random variables is itself chi-squared, and their degrees of freedom add
+
+## The Chi-Squared--Normal Relationship {#sec-chi-squared-normal-relationship}
+
+::: {#thm-squared-standard-normal}
+## Square of a Standard Normal Random Variable
+
+Let
+
+$$
+X \sim \mathcal{N}(0,1)
+$$
+
+and define
+
+$$
+Y=X^2
+$$
+
+Then
+
+$$
+Y \sim \chi^2(1)
+$$
+:::
+
+This result can be shown either with moment-generating functions or by transforming the normal density
+
+For $y>0$, the transformation $y=x^2$ has the two inverse branches $x=\sqrt y$ and $x=-\sqrt y$. Therefore
+
+$$
+\begin{aligned}
+f_Y(y)
+&=
+f_X(\sqrt y)
+\left|\frac{d}{dy}\sqrt y\right|
++
+f_X(-\sqrt y)
+\left|\frac{d}{dy}(-\sqrt y)\right| \\
+&=
+\frac{f_X(\sqrt y)+f_X(-\sqrt y)}{2\sqrt y} \\
+&=
+\frac{1}{\sqrt{2\pi}}
+y^{-1/2}e^{-y/2}
+\mathbb{I}_{(0,\infty)}(y) \\
+&=
+\frac{1}{\Gamma(1/2)}
+\left(\frac12\right)^{1/2}
+y^{1/2-1}e^{-y/2}
+\mathbb{I}_{(0,\infty)}(y)
+\end{aligned}
+$$
+
+This is the density of $\chi^2(1)$
+
+### Transformation Formula {#sec-transformation-formula}
+
+For a one-to-one transformation $Y=g(X)$ with inverse $X=g^{-1}(Y)$,
+
+$$
+f_Y(y)
+=
+f_X\!\left(g^{-1}(y)\right)
+\left|
+\frac{d}{dy}g^{-1}(y)
+\right|
+$$
+
+For a bivariate transformation
+
+$$
+\begin{aligned}
+Y_1 &= g_1(X_1,X_2) \\
+Y_2 &= g_2(X_1,X_2)
+\end{aligned}
+$$
+
+write the inverse transformation as
+
+$$
+\begin{aligned}
+X_1 &= h_1(Y_1,Y_2) \\
+X_2 &= h_2(Y_1,Y_2)
+\end{aligned}
+$$
+
+Then
+
+$$
+f_{Y_1,Y_2}(y_1,y_2)
+=
+f_{X_1,X_2}\!\left(
+ h_1(y_1,y_2),
+ h_2(y_1,y_2)
+\right)
+\left|J\right|
+$$
+
+where
+
+$$
+J
+=
+\begin{vmatrix}
+\dfrac{\partial x_1}{\partial y_1}
+&
+\dfrac{\partial x_1}{\partial y_2}
+\\[6pt]
+\dfrac{\partial x_2}{\partial y_1}
+&
+\dfrac{\partial x_2}{\partial y_2}
+\end{vmatrix}
+$$
+
+## The t-Distribution {#sec-t-distribution}
+
+::: {#def-t-distribution}
+## t-Distribution
+
+Let
+
+$$
+Z \sim \mathcal{N}(0,1)
+$$
+
+and
+
+$$
+W \sim \chi^2(n)
+$$
+
+be independent random variables. Define
+
+$$
+T
+=
+\frac{Z}{\sqrt{W/n}}
+$$
+
+Then $T$ has a t-distribution with $n$ degrees of freedom, written
+
+$$
+T \sim t(n)
+$$
+:::
+
+### Density from a Jacobian Transformation {#sec-t-density-jacobian}
+
+Take
+
+$$
+\begin{aligned}
+Y_1
+&=
+\frac{X_1}{\sqrt{X_2/n}}
+=
+T \\
+Y_2
+&=
+X_2
+\end{aligned}
+$$
+
+where $X_1=Z$ and $X_2=W$. The inverse transformation is
+
+$$
+\begin{aligned}
+X_1
+&=
+y_1\sqrt{\frac{y_2}{n}} \\
+X_2
+&=
+y_2
+\end{aligned}
+$$
+
+with Jacobian
+
+$$
+\left|J\right|
+=
+\sqrt{\frac{y_2}{n}}
+$$
+
+Therefore
+
+$$
+\begin{aligned}
+f_T(t)
+&=
+\int_0^\infty
+f_Z\!\left(t\sqrt{\frac{w}{n}}\right)
+f_W(w)
+\sqrt{\frac{w}{n}}
+\,dw \\
+&=
+\frac{1}{\sqrt{2\pi}}
+\frac{1}{2^{n/2}\Gamma(n/2)}
+\frac{1}{\sqrt n}
+\int_0^\infty
+w^{(n+1)/2-1}
+\exp\!\left\{
+-\frac{w}{2}
+\left(1+\frac{t^2}{n}\right)
+\right\}
+\,dw \\
+&=
+\frac{\Gamma\!\left(\frac{n+1}{2}\right)}
+     {\Gamma\!\left(\frac n2\right)\sqrt{n\pi}}
+\left(1+\frac{t^2}{n}\right)^{-(n+1)/2}
+\end{aligned}
+$$
+
+Thus the t-density is
+
+$$
+f_T(t)
+=
+\frac{\Gamma\!\left(\frac{n+1}{2}\right)}
+     {\Gamma\!\left(\frac n2\right)\sqrt{n\pi}}
+\left(1+\frac{t^2}{n}\right)^{-(n+1)/2}
+\qquad -\infty<t<\infty
+$$
+
+Its mean and variance are
+
+$$
+\begin{aligned}
+\mathbb{E}[T] &= 0 && n>1 \\
+\operatorname{Var}(T) &= \frac{n}{n-2} && n>2
+\end{aligned}
+$$
+
+::: {.callout-note}
+## Moment Existence
+
+For $n\leq 1$, the mean does not exist. For $1<n\leq 2$, the mean exists but the variance is infinite
+:::
+
+### Comparison with the Standard Normal Distribution {#sec-t-normal-comparison}
+
+The t-distribution is symmetric about zero but has heavier tails than the standard normal distribution. As the degrees of freedom increase, it approaches $\mathcal{N}(0,1)$
+
+```{r}
+#| label: fig-t-normal-comparison
+#| fig-cap: "The t-distribution approaches the standard normal distribution as its degrees of freedom increase"
+#| echo: false
+#| warning: false
+
+x <- seq(-4, 4, length.out = 1000)
+plot(
+  x,
+  dnorm(x),
+  type = "l",
+  lwd = 2,
+  col = "navy",
+  xlab = "t",
+  ylab = "density",
+  ylim = c(0, 0.42)
+)
+lines(x, dt(x, df = 20), lwd = 2, col = "firebrick")
+lines(x, dt(x, df = 10), lwd = 2, col = "darkgreen")
+legend(
+  "topright",
+  legend = c("N(0,1)", "t(20)", "t(10)"),
+  col = c("navy", "firebrick", "darkgreen"),
+  lwd = 2,
+  bty = "n"
+)
+```
+
+## Why These Distributions Matter {#sec-why-chi-squared-and-t}
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\stackrel{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu,\sigma^2)
+$$
+
+Define the sample mean and sample variance by
+
+$$
+\bar X
+=
+\frac1n\sum_{i=1}^n X_i
+$$
+
+and
+
+$$
+S^2
+=
+\frac{1}{n-1}
+\sum_{i=1}^n
+(X_i-\bar X)^2
+$$
+
+### Decomposition of the Total Squared Deviation {#sec-squared-deviation-decomposition}
+
+Write
+
+$$
+X_i-\mu
+=
+(X_i-\bar X)+(\bar X-\mu)
+$$
+
+Then
+
+$$
+\begin{aligned}
+\sum_{i=1}^n (X_i-\mu)^2
+&=
+\sum_{i=1}^n
+\left[(X_i-\bar X)+(\bar X-\mu)\right]^2 \\
+&=
+\sum_{i=1}^n (X_i-\bar X)^2
++2(\bar X-\mu)
+\sum_{i=1}^n (X_i-\bar X)
++n(\bar X-\mu)^2 \\
+&=
+\sum_{i=1}^n (X_i-\bar X)^2
++n(\bar X-\mu)^2
+&& \sum_{i=1}^n(X_i-\bar X)=0
+\end{aligned}
+$$
+
+Indeed,
+
+$$
+\begin{aligned}
+\sum_{i=1}^n(X_i-\bar X)
+&=
+\sum_{i=1}^nX_i-n\bar X \\
+&=
+\sum_{i=1}^nX_i
+-n\left(\frac1n\sum_{i=1}^nX_i\right) \\
+&=0
+\end{aligned}
+$$
+
+Dividing the decomposition by $\sigma^2$ gives
+
+$$
+\underbrace{
+\sum_{i=1}^n
+\left(\frac{X_i-\mu}{\sigma}\right)^2
+}_{\color{blue}{Y_1}}
+=
+\underbrace{
+\frac{\sum_{i=1}^n(X_i-\bar X)^2}{\sigma^2}
+}_{\color{red}{Y_2}}
++
+\underbrace{
+\left(
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\right)^2
+}_{\color{green}{Y_3}}
+$$
+
+or equivalently
+
+$$
+Y_1=Y_2+Y_3
+$$
+
+where
+
+$$
+\begin{aligned}
+Y_1
+&=
+\sum_{i=1}^n
+\left(\frac{X_i-\mu}{\sigma}\right)^2 \\
+Y_2
+&=
+\frac{(n-1)S^2}{\sigma^2} \\
+Y_3
+&=
+\left(
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\right)^2
+\end{aligned}
+$$
+
+### Distribution of the Components {#sec-normal-sample-components}
+
+Since
+
+$$
+\frac{X_i-\mu}{\sigma}
+\sim
+\mathcal{N}(0,1)
+$$
+
+we have
+
+$$
+\left(
+\frac{X_i-\mu}{\sigma}
+\right)^2
+\sim
+\chi^2(1)
+$$
+
+and therefore
+
+$$
+Y_1
+=
+\sum_{i=1}^n
+\left(
+\frac{X_i-\mu}{\sigma}
+\right)^2
+\sim
+\chi^2(n)
+$$
+
+Also,
+
+$$
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\sim
+\mathcal{N}(0,1)
+$$
+
+so
+
+$$
+Y_3
+=
+\left(
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\right)^2
+\sim
+\chi^2(1)
+$$
+
+For a normal sample, $\bar X$ and $S^2$ are independent. Consequently, $Y_2$ and $Y_3$ are independent
+
+### Distribution of the Sample Variance {#sec-sample-variance-chi-squared}
+
+Because $Y_1=Y_2+Y_3$ and $Y_2$ and $Y_3$ are independent,
+
+$$
+\begin{aligned}
+M_{Y_1}(t)
+&=
+M_{Y_2+Y_3}(t) \\
+&=
+M_{Y_2}(t)M_{Y_3}(t)
+\end{aligned}
+$$
+
+Hence
+
+$$
+\begin{aligned}
+M_{Y_2}(t)
+&=
+\frac{M_{Y_1}(t)}{M_{Y_3}(t)} \\
+&=
+\frac{
+\left(\dfrac{1/2}{1/2-t}\right)^{n/2}
+}{
+\left(\dfrac{1/2}{1/2-t}\right)^{1/2}
+} \\
+&=
+\left(
+\frac{1/2}{1/2-t}
+\right)^{(n-1)/2}
+\end{aligned}
+$$
+
+This is the moment-generating function of a chi-squared random variable with $n-1$ degrees of freedom
+
+::: {#thm-sample-variance-chi-squared}
+## Chi-Squared Distribution of the Sample Variance
+
+For
+
+$$
+X_1,X_2,\ldots,X_n
+\stackrel{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu,\sigma^2)
+$$
+
+we have
+
+$$
+\frac{(n-1)S^2}{\sigma^2}
+\sim
+\chi^2(n-1)
+$$
+:::
+
+### The Studentized Sample Mean {#sec-studentized-sample-mean}
+
+Let
+
+$$
+Z
+=
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\sim
+\mathcal{N}(0,1)
+$$
+
+and
+
+$$
+W
+=
+\frac{(n-1)S^2}{\sigma^2}
+\sim
+\chi^2(n-1)
+$$
+
+Since $Z$ and $W$ are independent,
+
+$$
+\begin{aligned}
+\frac{Z}{\sqrt{W/(n-1)}}
+&=
+\frac{
+\dfrac{\bar X-\mu}{\sigma/\sqrt n}
+}{
+\sqrt{
+\dfrac{(n-1)S^2/\sigma^2}{n-1}
+}
+} \\
+&=
+\frac{
+\dfrac{\bar X-\mu}{\sigma/\sqrt n}
+}{S/\sigma} \\
+&=
+\frac{\bar X-\mu}{S/\sqrt n}
+\end{aligned}
+$$
+
+Therefore
+
+$$
+\frac{\bar X-\mu}{S/\sqrt n}
+\sim
+t(n-1)
+$$
 
 ## Reflection
 

@@ -1,17 +1,483 @@
 ---
-title: "Lesson 1: Introduction to Confidence Intervals"
+title: "Lesson 5: Small-Population Confidence Intervals for Differences in Means"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
 
 ::: {.column-margin}
-{{< video 01_lets-build-a-confidence-interval.mp4 >}}
+{{< video 01_small-sample-confidence-intervals-for-the-difference-between-population-means.mp4 >}}
 
-[Transcript](01_lets-build-a-confidence-interval.en.txt)
-[Handout](02_video-slides-for-lets-build-a-confidence-interval_module4_lesson1.pdf){width=700 height=980}
+[Transcript](01_small-sample-confidence-intervals-for-the-difference-between-population-means.en.en.txt)
+[Handout](02_video-slides-for-small-sample-confidence-intervals-for-the-difference-between_module4_lesson5.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on Small-Sample CI for the Difference Between Population Means {#sec-small-sample-ci-difference-means}
+
+### Setting and Assumptions {#sec-small-sample-ci-setting}
+
+Suppose that
+$X_{1,1},X_{1,2},\ldots,X_{1,n_1} \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu_1,\sigma_1^2)$
+and
+$X_{2,1},X_{2,2},\ldots,X_{2,n_2} \overset{\mathrm{iid}}{\sim} \mathcal{N}(\mu_2,\sigma_2^2)$
+The two samples are independent, both population variances are unknown, and one or both sample sizes are small:
+$n_1 \leq 30 \qquad \text{and/or} \qquad n_2 \leq 30$
+The goal is to construct a $100(1-\alpha)\%$ confidence interval for
+$\mu_1-\mu_2$
+
+::: {.callout-important}
+## Equal-Variance Assumption
+
+The pooled two-sample procedure requires the strong assumption
+
+$$
+\color{red}{\sigma_1^2=\sigma_2^2=\sigma^2}
+$$
+
+where $\sigma^2$ denotes the unknown common population variance
+:::
+
+## The Estimator {#sec-small-sample-ci-estimator}
+
+The natural estimator of the difference between the population means is
+
+$$
+\widehat{\mu_1-\mu_2}=\overline{X}_1-\overline{X}_2
+$$
+
+The two sample means have distributions
+
+$$
+\overline{X}_1
+\sim
+\mathcal{N}\!\left(\mu_1,\frac{\sigma_1^2}{n_1}\right)
+$$
+
+and
+
+$$
+\overline{X}_2
+\sim
+\mathcal{N}\!\left(\mu_2,\frac{\sigma_2^2}{n_2}\right)
+$$
+
+Because the samples are independent, $\overline{X}_1$ and $\overline{X}_2$ are independent
+
+### Mean of the Estimator {#sec-small-sample-ci-estimator-mean}
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[\overline{X}_1-\overline{X}_2\right]
+&=
+\mathbb{E}\!\left[\overline{X}_1\right]
+-
+\mathbb{E}\!\left[\overline{X}_2\right] \\
+&= \mu_1-\mu_2
+\end{aligned}
+$$
+
+Thus, $\overline{X}_1-\overline{X}_2$ is an unbiased estimator of $\mu_1-\mu_2$
+
+### Variance of the Estimator {#sec-small-sample-ci-estimator-variance}
+
+$$
+\begin{aligned}
+\operatorname{Var}\!\left(\overline{X}_1-\overline{X}_2\right)
+&=
+\operatorname{Var}\!\left(\overline{X}_1+(-1)\overline{X}_2\right) \\
+&=
+\operatorname{Var}\!\left(\overline{X}_1\right)
++
+\operatorname{Var}\!\left((-1)\overline{X}_2\right)
+&& \text{independence} \\
+&=
+\operatorname{Var}\!\left(\overline{X}_1\right)
++(-1)^2\operatorname{Var}\!\left(\overline{X}_2\right) \\
+&=
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\overline{X}_1-\overline{X}_2
+\sim
+\mathcal{N}\!\left(
+\mu_1-\mu_2,
+\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}
+\right)
+$$
+
+Under the equal-variance assumption,
+
+$$
+\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}
+=
+\sigma^2\!\left(\frac{1}{n_1}+\frac{1}{n_2}\right)
+$$
+
+Hence the standardized statistic is
+
+$$
+Z
+=
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sigma\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+}
+\sim
+\mathcal{N}(0,1)
+$$
+
+The difficulty is that the common variance $\sigma^2$ is unknown
+
+## The Pooled Variance {#sec-small-sample-ci-pooled-variance}
+
+The sample variances $S_1^2$ and $S_2^2$ are independent estimators of the common variance $\sigma^2$. They should not be combined using an unweighted average because the estimates may be based on different sample sizes
+
+::: {#def-pooled-variance}
+## Pooled Variance
+
+The pooled estimator of the common variance is the degrees-of-freedom-weighted average
+
+$$
+S_p^2
+=
+\frac{
+\underbrace{(n_1-1)S_1^2}_{\text{sample 1 sum of squares}}
++
+\underbrace{(n_2-1)S_2^2}_{\text{sample 2 sum of squares}}
+}{
+\underbrace{n_1+n_2-2}_{\text{total degrees of freedom}}
+}
+$$
+:::
+
+For independent normal samples,
+
+$$
+\frac{(n_1-1)S_1^2}{\sigma^2}
+\sim
+\chi^2_{n_1-1}
+$$
+
+and
+
+$$
+\frac{(n_2-1)S_2^2}{\sigma^2}
+\sim
+\chi^2_{n_2-1}
+$$
+
+These two chi-squared random variables are independent. Therefore,
+
+$$
+\begin{aligned}
+\frac{(n_1-1)S_1^2}{\sigma^2}
++
+\frac{(n_2-1)S_2^2}{\sigma^2}
+&\sim
+\chi^2_{(n_1-1)+(n_2-1)} \\
+&=
+\chi^2_{n_1+n_2-2}
+\end{aligned}
+$$
+
+From the definition of $S_p^2$,
+
+$$
+\begin{aligned}
+\frac{(n_1+n_2-2)S_p^2}{\sigma^2}
+&=
+\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{\sigma^2} \\
+&=
+\frac{(n_1-1)S_1^2}{\sigma^2}
++
+\frac{(n_2-1)S_2^2}{\sigma^2} \\
+&\sim
+\chi^2_{n_1+n_2-2}
+\end{aligned}
+$$
+
+## Constructing the Pivotal Quantity {#sec-small-sample-ci-pivotal-quantity}
+
+Let
+
+$$
+\nu=n_1+n_2-2
+$$
+
+The standardized normal statistic can be divided by the square root of an independent chi-squared statistic divided by its degrees of freedom:
+
+$$
+\begin{aligned}
+T
+&=
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+} \\
+&=
+\frac{
+\dfrac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sigma\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+}
+}{
+\sqrt{\dfrac{S_p^2}{\sigma^2}}
+} \\
+&=
+\frac{
+\underbrace{
+\dfrac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sigma\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+}
+}_{\displaystyle Z\sim\mathcal{N}(0,1)}
+}{
+\underbrace{
+\sqrt{
+\dfrac{
+\left((n_1+n_2-2)S_p^2\right)/\sigma^2
+}{
+ n_1+n_2-2
+}
+}
+}_{\displaystyle \sqrt{\chi_\nu^2/\nu}}
+}
+\end{aligned}
+$$
+
+For normal samples, the sample means are independent of the sample variances. Consequently, the numerator and denominator above are independent, and
+
+$$
+T
+=
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sqrt{S_p^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}
+}
+\sim
+t_{n_1+n_2-2}
+$$
+
+## Equal-Variance Confidence Interval {#sec-small-sample-ci-equal-variance-interval}
+
+Let $t_{\alpha/2,\nu}$ denote the upper $\alpha/2$ critical value of a Student's $t$ distribution with $\nu$ degrees of freedom. Then
+
+$$
+\mathbb{P}\!\left(
+-t_{\alpha/2,\nu}
+<
+T
+<
+t_{\alpha/2,\nu}
+\right)
+=1-\alpha
+$$
+
+Substituting the pivotal quantity gives
+
+$$
+-t_{\alpha/2,n_1+n_2-2}
+<
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+}
+<
+t_{\alpha/2,n_1+n_2-2}
+$$
+
+::: {#thm-small-sample-ci-equal-variance}
+## Small-Sample Confidence Interval for $\mu_1-\mu_2$
+
+For two independent normal samples with unknown but equal population variances, a $100(1-\alpha)\%$ confidence interval for $\mu_1-\mu_2$ is
+
+$$
+\boxed{
+(\overline{X}_1-\overline{X}_2)
+\pm
+t_{\alpha/2,n_1+n_2-2}
+S_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}
+}
+$$
+
+where
+
+$$
+S_p^2
+=
+\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}
+$$
+:::
+
+## Example: A 90% Confidence Interval {#sec-small-sample-ci-example}
+
+::: {#exm-small-sample-ci-difference}
+## Confidence Interval for $\mu_1-\mu_2$
+
+Suppose the two samples have summaries
+
+$$
+\begin{aligned}
+n_1 &= 9
+&\qquad \overline{x}_1 &= 23.2
+&\qquad s_1^2 &= 4.3 \\
+n_2 &= 8
+&\qquad \overline{x}_2 &= 24.7
+&\qquad s_2^2 &= 5.2
+\end{aligned}
+$$
+
+For a $90\%$ confidence interval,
+
+$$
+\alpha=0.10
+\qquad
+\frac{\alpha}{2}=0.05
+\qquad
+\nu=n_1+n_2-2=15
+$$
+
+First compute the pooled variance:
+
+$$
+\begin{aligned}
+s_p^2
+&=
+\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} \\
+&=
+\frac{(9-1)(4.3)+(8-1)(5.2)}{9+8-2} \\
+&=
+\frac{34.4+36.4}{15} \\
+&=
+4.72
+\end{aligned}
+$$
+
+The critical value is
+
+$$
+t_{0.05,15}=1.753
+$$
+
+The confidence interval is
+
+$$
+\begin{aligned}
+(\overline{x}_1-\overline{x}_2)
+&\pm
+t_{0.05,15}
+\sqrt{s_p^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)} \\
+&=
+23.2-24.7
+\pm
+1.753\sqrt{4.72\left(\frac{1}{9}+\frac{1}{8}\right)} \\
+&=
+-1.5\pm1.851 \\
+&=
+\boxed{(-3.351,\ 0.351)}
+\end{aligned}
+$$
+
+:::
+
+The critical value can be obtained in R with
+
+```{r}
+qt(0.95, df = 15)
+```
+
+## Unequal Population Variances {#sec-small-sample-ci-unequal-variances}
+
+When $\sigma_1^2$ and $\sigma_2^2$ cannot reasonably be assumed equal, there is no exact confidence interval of the same simple form. This is associated with the Behrens--Fisher problem
+
+### Welch's Approximation {#sec-small-sample-ci-welch}
+
+Welch's method replaces the pooled standard error with
+
+$$
+\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}
+$$
+
+and uses the approximate pivotal quantity
+
+$$
+T_W
+=
+\frac{
+\overline{X}_1-\overline{X}_2-(\mu_1-\mu_2)
+}{
+\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}
+}
+\overset{\mathrm{approx}}{\sim}
+t_\nu
+$$
+
+The Welch--Satterthwaite degrees of freedom are
+
+$$
+\nu
+=
+\frac{
+\left(\dfrac{S_1^2}{n_1}+\dfrac{S_2^2}{n_2}\right)^2
+}{
+\dfrac{\left(S_1^2/n_1\right)^2}{n_1-1}
++
+\dfrac{\left(S_2^2/n_2\right)^2}{n_2-1}
+}
+$$
+
+::: {#thm-small-sample-ci-welch}
+## Welch Confidence Interval
+
+An approximate $100(1-\alpha)\%$ confidence interval for $\mu_1-\mu_2$ is
+
+$$
+\boxed{
+(\overline{X}_1-\overline{X}_2)
+\pm
+t_{\alpha/2,\nu}
+\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}
+}
+$$
+
+where $\nu$ is given by the Welch--Satterthwaite approximation
+:::
+
+R uses Welch's procedure by default for a two-sample $t$ interval:
+
+```{r}
+x <- rnorm(10)
+y <- rnorm(14)
+
+t.test(x, y, conf.level = 0.90)
+```
+
+One run shown in the slides produced
+
+```text
+Welch Two Sample t-test
+
+data:  x and y
+t = 0.030583, df = 16.916, p-value = 0.976
+alternative hypothesis: true difference in means is not equal to 0
+90 percent confidence interval:
+ -0.6289463  0.6514495
+sample estimates:
+ mean of x   mean of y
+-0.2765715  -0.2878232
+```
+
 
 ## Reflection
 

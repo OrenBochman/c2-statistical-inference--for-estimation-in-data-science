@@ -1,17 +1,402 @@
 ---
-title: "Lesson 1: Introduction to Confidence Intervals"
+title: "Lesson 3: One-Sample Confidence Intervals Based on the t-Distribution"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
 
 ::: {.column-margin}
-{{< video 01_lets-build-a-confidence-interval.mp4 >}}
+{{< video 01_t-distribution-confidence-intervals.mp4 >}}
 
-[Transcript](01_lets-build-a-confidence-interval.en.txt)
-[Handout](02_video-slides-for-lets-build-a-confidence-interval_module4_lesson1.pdf){width=700 height=980}
+[Transcript](01_t-distribution-confidence-intervals.en.txt)
+[Handout](02_video-slides-for-t-distribution-confidence-intervals_module4_lesson3.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on Large-Sample Confidence Intervals with Unknown Variance {#sec-large-sample-confidence-intervals}
+
+Suppose that $X_1,X_2,\ldots,X_n$ is a random sample from a distribution with
+
+$$
+\mathbb{E}[X_i]=\mu
+\qquad\text{and}\qquad
+\operatorname{Var}(X_i)=\sigma^2
+$$
+
+Assume that
+
+- $n$ is large, using $n>30$ as a rule of thumb
+- both $\mu$ and $\sigma^2$ are unknown
+
+By the Central Limit Theorem (CLT), the sample mean is approximately normally distributed:
+
+$$
+\overline{X}
+\overset{\mathrm{asymp}}{\sim}
+\mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right)
+$$
+
+Equivalently,
+
+$$
+\begin{aligned}
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+&\xrightarrow{d}
+\mathcal{N}(0,1) \\
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+&\overset{\mathrm{approx}}{\sim}
+\mathcal{N}(0,1)
+&& \text{for large }n
+\end{aligned}
+$$
+
+To construct an approximate $100(1-\alpha)\%$ confidence interval for $\mu$, begin with
+
+$$
+-z_{1-\alpha/2}
+<
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+<
+z_{1-\alpha/2}
+$$
+
+Solving for $\mu$ would give
+
+$$
+\overline{X}
+\pm
+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}
+$$
+
+but $\sigma$ is unknown
+
+## Sample Variance {#sec-sample-variance}
+
+::: {#def-sample-variance}
+## Sample Variance
+
+The sample variance is
+
+$$
+S^2
+=
+\frac{1}{n-1}
+\sum_{i=1}^{n}
+\left(X_i-\overline{X}\right)^2
+$$
+
+An equivalent computational formula is
+
+$$
+\begin{aligned}
+S^2
+&=
+\frac{
+\displaystyle \sum_{i=1}^{n}X_i^2
+-
+\displaystyle \frac{\left(\sum_{i=1}^{n}X_i\right)^2}{n}
+}{n-1}
+\end{aligned}
+$$
+:::
+
+The sample variance is consistent for the population variance:
+
+$$
+S^2 \xrightarrow{P} \sigma^2
+$$
+
+Thus, for large $n$, $S^2$ is close to $\sigma^2$ and $S$ can replace $\sigma$ in the standardized sample mean:
+
+$$
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}(0,1)
+$$
+
+Solving
+
+$$
+-z_{1-\alpha/2}
+<
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+<
+z_{1-\alpha/2}
+$$
+
+for $\mu$ gives the large-sample confidence interval
+
+::: {#thm-large-sample-mean-ci}
+## Large-Sample Confidence Interval for a Mean
+
+Suppose that $X_1,X_2,\ldots,X_n$ is a random sample from any distribution with finite mean $\mu$ and finite variance $\sigma^2$. If $n$ is large and both $\mu$ and $\sigma^2$ are unknown, an approximate $100(1-\alpha)\%$ confidence interval for $\mu$ is
+
+$$
+\boxed{
+\overline{X}
+\pm
+z_{1-\alpha/2}\frac{S}{\sqrt{n}}
+}
+$$
+:::
+
+## Why Small Samples Require a Different Distribution {#sec-small-sample-problem}
+
+Suppose that $X_1,X_2,\ldots,X_n$ is a random sample from an arbitrary distribution with mean $\mu$ and variance $\sigma^2$, where
+
+- $n$ is small, using $n\leq 30$ as a rule of thumb
+- both $\mu$ and $\sigma^2$ are unknown
+
+In general, the Central Limit Theorem approximation may not be sufficiently accurate. Therefore, the preceding normal-based interval is not justified merely by replacing $\sigma$ with $S$
+
+Now impose the stronger assumption
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu,\sigma^2)
+$$
+
+Then
+
+$$
+\overline{X}
+\sim
+\mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right)
+$$
+
+but $\sigma^2$, and hence the standard error $\sigma/\sqrt{n}$, remain unknown. For a small sample, simply replacing $\sigma$ with $S$ does not produce a standard normal random variable
+
+## The Student t Pivot {#sec-student-t-pivot}
+
+::: {#def-student-t-distribution}
+## Student t Distribution
+
+Let
+
+$$
+Z\sim\mathcal{N}(0,1)
+\qquad\text{and}\qquad
+W\sim\chi^2_{\nu}
+$$
+
+where $Z$ and $W$ are independent. Then
+
+$$
+T
+=
+\frac{Z}{\sqrt{W/\nu}}
+\sim
+t_{\nu}
+$$
+
+The parameter $\nu$ is called the number of degrees of freedom
+:::
+
+For a random sample from a normal distribution,
+
+$$
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+\sim
+\mathcal{N}(0,1)
+$$
+
+and
+
+$$
+\frac{(n-1)S^2}{\sigma^2}
+\sim
+\chi^2_{n-1}
+$$
+
+These two random variables are independent. Therefore,
+
+$$
+\begin{aligned}
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+&=
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+\cdot
+\frac{\sigma}{S} \\
+&=
+\frac{
+\displaystyle \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+}{
+\displaystyle \sqrt{\frac{S^2}{\sigma^2}}
+} \\
+&=
+\frac{
+\underbrace{
+\displaystyle \frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+}_{\color{blue}{\displaystyle Z\sim\mathcal{N}(0,1)}}
+}{
+\displaystyle
+\sqrt{
+\frac{
+\underbrace{
+\displaystyle \frac{(n-1)S^2}{\sigma^2}
+}_{\color{red}{\displaystyle W\sim\chi^2_{n-1}}}
+}{n-1}
+}
+} \\
+&=
+\frac{Z}{\sqrt{W/(n-1)}} \\
+&\sim
+t_{n-1}
+\end{aligned}
+$$
+
+Thus, when the observations are normally distributed,
+
+$$
+\boxed{
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+\sim
+t_{n-1}
+}
+$$
+
+## t Critical Values {#sec-t-critical-values}
+
+Let $t_{1-\alpha/2,\nu}$ denote the $(1-\alpha/2)$ quantile of a Student $t$ distribution with $\nu$ degrees of freedom:
+
+$$
+P\!\left(
+T_{\nu}
+\leq
+t_{1-\alpha/2,\nu}
+\right)
+=
+1-\frac{\alpha}{2}
+$$
+
+By symmetry,
+
+$$
+P\!\left(
+-t_{1-\alpha/2,\nu}
+<
+T_{\nu}
+<
+t_{1-\alpha/2,\nu}
+\right)
+=
+1-\alpha
+$$
+
+For the statistic
+
+$$
+T
+=
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+\sim
+t_{n-1}
+$$
+
+we therefore have
+
+$$
+-t_{1-\alpha/2,n-1}
+<
+\frac{\overline{X}-\mu}{S/\sqrt{n}}
+<
+t_{1-\alpha/2,n-1}
+$$
+
+Solving for $\mu$ gives the confidence interval
+
+::: {#thm-small-sample-mean-ci}
+## Exact Confidence Interval for a Normal Mean
+
+Suppose that
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu,\sigma^2)
+$$
+
+and both $\mu$ and $\sigma^2$ are unknown. An exact $100(1-\alpha)\%$ confidence interval for $\mu$ is
+
+$$
+\boxed{
+\overline{X}
+\pm
+t_{1-\alpha/2,n-1}\frac{S}{\sqrt{n}}
+}
+$$
+:::
+
+## Example: Sensor Lifetime {#sec-example-sensor-lifetime}
+
+::: {#exm-sensor-lifetime}
+## Confidence Interval for Mean Sensor Lifetime
+
+A small study is conducted to test a new sensor for a continuous glucose monitoring system. Previous studies suggest that sensor lifetime, measured in days, is normally distributed
+
+A random sample of $20$ patients is fitted with the new sensor. The observed sample statistics are
+
+$$
+n=20
+\qquad
+\overline{x}=187
+\qquad
+s^2=16.2
+$$
+
+Find a $95\%$ confidence interval for the true mean sensor lifetime $\mu$
+
+For a $95\%$ confidence interval,
+
+$$
+\alpha=0.05
+\qquad\text{and}\qquad
+1-\frac{\alpha}{2}=0.975
+$$
+
+The number of degrees of freedom is
+
+$$
+\nu=n-1=19
+$$
+
+In R, the critical value is obtained with
+
+```{r}
+#| eval: false
+qt(0.975, df = 19)
+```
+
+which gives
+
+$$
+t_{0.975,19}=2.093024
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\overline{x}
+\pm
+t_{0.975,19}\frac{s}{\sqrt{n}}
+&=
+187
+\pm
+2.093024
+\frac{\sqrt{16.2}}{\sqrt{20}} \\
+&\approx
+187\pm1.88 \\
+&\approx
+\boxed{(185.11,188.88)}
+\end{aligned}
+$$
+
+The $95\%$ confidence interval for the true mean sensor lifetime is approximately
+
+$$
+(185.11,188.88)\text{ days}
+$$
+:::
 
 ## Reflection
 
