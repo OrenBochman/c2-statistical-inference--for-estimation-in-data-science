@@ -82,7 +82,6 @@ book:
       - notes/06_beyond-normality-confidence-intervals-unleashed/04_lesson-4-general-confidence-intervals/index.qmd
       - notes/06_beyond-normality-confidence-intervals-unleashed/05_lesson-5-general-confidence-intervals-2/index.qmd
 
-
     - notes/references.qmd
 bibliography: references.bib
 
