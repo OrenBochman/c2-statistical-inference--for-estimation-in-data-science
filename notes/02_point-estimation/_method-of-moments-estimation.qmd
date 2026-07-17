@@ -1,9 +1,9 @@
 ## Method of Moments Estimation (Graded Quiz)
 
+[Bernoulli MoM estimator]{.column-margin}
 
 ::: {#exr-01-method-of-moments-bernoulli }
 ## Bernoulli distribution
-[Bernoulli MoM estimator]{.column-margin}
 
 1. Let $X_1, X_2, \ldots, X_n$ be a random sample from the Bernoulli distribution with parameter $p$. Let $\widehat{p}$ be the method of moments estimator for 
 $p$.
@@ -21,10 +21,10 @@ Which of the following is true. (Check all that apply.)
 
 :::
 
+[MOM geometric distribution]{.column-margin}
 
 ::: {#exr-02-method-of-moments-geometric }
 ## geometric distribution
-[MOM geometric distribution]{.column-margin}
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from the geometric distribution with parameter $p$ that takes values in 
 $\{1, 2, 3, \ldots\}$. Let
@@ -65,10 +65,10 @@ $a$ and $b$?
 -  [x] $\widehat{a}=\frac{\overline{X}^{2}(1-\overline{X})}{\frac{1}{n} \sum_{i=1}^{n} X_{i}^{2}-\overline{X}^{2}}-\overline{X} \text{ and } \widehat{b}=\widehat{a} \,\frac{1-\overline{X}}{\overline{X}}$
 :::
 
+[MOM Pareto distribution]{.column-margin}
 
 ::: {#exr-04-method-of-moments-pareto }
 ## Pareto distribution
-[MOM Pareto distribution]{.column-margin}
 
 Let $X_1, X_2, \ldots, X_n$ be a random sample from the continuous Pareto distribution distribution as given in the table of distributions for this course.
 
@@ -85,10 +85,10 @@ Which of the following is the method of moments estimator for $\gamma$?
 - [x] $\frac{1}{\overline{X}}+1$
 :::
 
+[Unbiasedness of MoM estimators]{.column-margin}
 
 :::{#exr-05-method-of-moments}
 ## Are of method of moments estimators unbiased?
-[Unbiasedness of MoM estimators]{.column-margin}
 
 Method of moments estimators are guaranteed to be unbiased estimators.
 

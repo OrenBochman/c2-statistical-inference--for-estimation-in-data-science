@@ -10,7 +10,517 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-large-sample-properties-of-mles_module3_lesson5.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on Large-Sample Properties of Maximum Likelihood Estimators {#sec-large-sample-properties-mles}
+
+Let $X_1,X_2,\ldots,X_n$ be a random sample from a distribution with probability density function $f(x;\theta)$, and let $\widehat{\theta}_n$ be a maximum likelihood estimator (MLE) of $\theta$.
+
+Under suitable regularity conditions, such as those required for the Cramér--Rao lower bound (CRLB), maximum likelihood estimators have the following large-sample properties.
+
+::: {#thm-large-sample-properties-mles}
+## Large-Sample Properties of MLEs
+
+1. **Existence and uniqueness**
+
+   The maximum likelihood estimator $\widehat{\theta}_n$ exists and is unique.
+
+2. **Consistency**
+
+   $$
+   \widehat{\theta}_n \xrightarrow{P} \theta
+   $$
+
+   Thus, $\widehat{\theta}_n$ converges in probability to the true parameter $\theta$.
+
+3. **Asymptotic unbiasedness**
+
+   $$
+   \lim_{n\to\infty}\mathbb{E}[\widehat{\theta}_n]=\theta
+   $$
+
+4. **Asymptotic efficiency**
+
+   $$
+   \lim_{n\to\infty}
+   \frac{\mathrm{CRLB}_{\theta,n}}
+        {\operatorname{Var}[\widehat{\theta}_n]}
+   =1
+   $$
+
+5. **Asymptotic normality**
+
+   $$
+   \widehat{\theta}_n
+   \overset{\cdot}{\sim}
+   \mathcal{N}\!\left(\theta,\mathrm{CRLB}_{\theta,n}\right)
+   $$
+
+   Equivalently,
+
+   $$
+   \frac{\widehat{\theta}_n-\theta}
+        {\sqrt{\mathrm{CRLB}_{\theta,n}}}
+   \xrightarrow{d}
+   \mathcal{N}(0,1)
+   $$
+:::
+
+## Exponential-Rate Example {#sec-exponential-rate-mle-example}
+
+::: {#exm-exponential-rate-mle}
+## Maximum Likelihood Estimation of an Exponential Rate
+
+Let
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\lambda)
+$$
+
+where $\lambda>0$ is the rate parameter. The maximum likelihood estimator of $\lambda$ is
+
+$$
+\widehat{\lambda}
+=
+\frac{1}{\overline{X}}
+$$
+:::
+
+### Existence and Uniqueness {#sec-exponential-mle-existence-uniqueness}
+
+The log-likelihood is
+
+$$
+\ell(\lambda)
+=
+n\log(\lambda)-\lambda\sum_{i=1}^{n}X_i
+$$
+
+Its first and second derivatives are
+
+$$
+\begin{aligned}
+\frac{d\ell(\lambda)}{d\lambda}
+&=
+\frac{n}{\lambda}-\sum_{i=1}^{n}X_i \\
+\frac{d^2\ell(\lambda)}{d\lambda^2}
+&=
+-\frac{n}{\lambda^2}<0
+\end{aligned}
+$$
+
+Therefore, the unique maximizer is
+
+$$
+\widehat{\lambda}
+=
+\frac{n}{\sum_{i=1}^{n}X_i}
+=
+\frac{1}{\overline{X}}
+$$
+
+### Asymptotic Unbiasedness {#sec-exponential-mle-asymptotic-unbiasedness}
+
+Let
+
+$$
+Y=\sum_{i=1}^{n}X_i
+$$
+
+Then
+
+$$
+Y\sim\operatorname{Gamma}(n,\lambda)
+$$
+
+where the second parameter is the rate. For $n>1$, since $\widehat{\lambda}=n/Y$,
+
+$$
+\begin{aligned}
+\mathbb{E}[\widehat{\lambda}]
+&=
+n\mathbb{E}\!\left[\frac{1}{Y}\right] \\
+&=
+n\left(\frac{\lambda}{n-1}\right) \\
+&=
+\frac{n}{n-1}\lambda
+\end{aligned}
+$$
+
+Thus,
+
+$$
+\lim_{n\to\infty}\mathbb{E}[\widehat{\lambda}]
+=
+\lim_{n\to\infty}\frac{n}{n-1}\lambda
+=
+\lambda
+$$
+
+Therefore, $\widehat{\lambda}$ is asymptotically unbiased.
+
+## Probability Limits and the Continuous Mapping Theorem {#sec-probability-limits-continuous-mapping}
+
+To establish consistency, we use the algebra of probability limits.
+
+::: {#thm-algebra-probability-limits}
+## Algebra of Probability Limits
+
+Suppose that $\{X_n\}$ and $\{Y_n\}$ are sequences of random variables such that
+
+$$
+X_n\xrightarrow{P}X
+\qquad\text{and}\qquad
+Y_n\xrightarrow{P}Y
+$$
+
+Then
+
+$$
+\begin{aligned}
+X_n+Y_n
+&\xrightarrow{P}X+Y \\
+X_nY_n
+&\xrightarrow{P}XY \\
+\frac{X_n}{Y_n}
+&\xrightarrow{P}\frac{X}{Y}
+&& \text{provided }\Pr(Y\neq0)=1
+\end{aligned}
+$$
+
+Moreover, for every continuous function $g$,
+
+$$
+g(X_n)\xrightarrow{P}g(X)
+$$
+:::
+
+### Consistency of the Exponential-Rate MLE {#sec-exponential-mle-consistency}
+
+By the Weak Law of Large Numbers,
+
+$$
+\overline{X}
+\xrightarrow{P}
+\mathbb{E}[X_1]
+=
+\frac{1}{\lambda}
+$$
+
+The function $g(x)=1/x$ is continuous at $1/\lambda$. Therefore, by the continuous mapping theorem,
+
+$$
+\begin{aligned}
+\widehat{\lambda}
+&=
+g(\overline{X}) \\
+&=
+\frac{1}{\overline{X}} \\
+&\xrightarrow{P}
+\frac{1}{1/\lambda} \\
+&=
+\color{#C62828}{\lambda}
+\end{aligned}
+$$
+
+Hence, $\widehat{\lambda}$ is consistent.
+
+### Asymptotic Efficiency {#sec-exponential-mle-asymptotic-efficiency}
+
+For the exponential-rate model, the Cramér--Rao lower bound is
+
+$$
+\mathrm{CRLB}_{\lambda,n}
+=
+\frac{\lambda^2}{n}
+$$
+
+To calculate $\operatorname{Var}[\widehat{\lambda}]$, first calculate the second moment. For $n>2$, since $\widehat{\lambda}=n/Y$ and $Y\sim\operatorname{Gamma}(n,\lambda)$,
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[\widehat{\lambda}^{\,2}\right]
+&=
+\mathbb{E}\!\left[\frac{n^2}{Y^2}\right] \\
+&=
+n^2\int_{0}^{\infty}
+\frac{1}{y^2}
+\frac{\lambda^n}{\Gamma(n)}
+y^{n-1}e^{-\lambda y}\,dy \\
+&=
+n^2\int_{0}^{\infty}
+\frac{\lambda^n}{\Gamma(n)}
+y^{n-3}e^{-\lambda y}\,dy \\
+&=
+n^2\lambda^2
+\frac{\Gamma(n-2)}{\Gamma(n)}
+\underbrace{
+\int_{0}^{\infty}
+\frac{\lambda^{n-2}}{\Gamma(n-2)}
+y^{n-3}e^{-\lambda y}\,dy
+}_{\displaystyle =1\text{, the integral of a }\operatorname{Gamma}(n-2,\lambda)\text{ density}} \\
+&=
+n^2\lambda^2
+\frac{\Gamma(n-2)}{\Gamma(n)} \\
+&=
+\frac{n^2}{(n-1)(n-2)}\lambda^2
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\operatorname{Var}[\widehat{\lambda}]
+&=
+\mathbb{E}\!\left[\widehat{\lambda}^{\,2}\right]
+-
+\left(\mathbb{E}[\widehat{\lambda}]\right)^2 \\
+&=
+\frac{n^2}{(n-1)(n-2)}\lambda^2
+-
+\left(\frac{n}{n-1}\lambda\right)^2 \\
+&=
+\frac{n^2}{(n-1)^2(n-2)}\lambda^2
+\end{aligned}
+$$
+
+The ratio of the Cramér--Rao lower bound to the variance is
+
+$$
+\begin{aligned}
+\frac{\mathrm{CRLB}_{\lambda,n}}
+     {\operatorname{Var}[\widehat{\lambda}]}
+&=
+\frac{\lambda^2/n}
+     {\dfrac{n^2}{(n-1)^2(n-2)}\lambda^2} \\
+&=
+\frac{(n-1)^2(n-2)}{n^3} \\
+&\longrightarrow
+1
+\end{aligned}
+$$
+
+Hence, $\widehat{\lambda}$ is asymptotically efficient.
+
+## A General Consistency Criterion {#sec-general-consistency-criterion}
+
+Recall that the Weak Law of Large Numbers establishes
+
+$$
+\overline{X}\xrightarrow{P}\mu
+$$
+
+using Chebyshev's inequality together with
+
+$$
+\mathbb{E}[\overline{X}]=\mu
+\qquad\text{and}\qquad
+\operatorname{Var}[\overline{X}]\longrightarrow0
+$$
+
+The same argument gives a general consistency result.
+
+::: {#thm-asymptotic-unbiasedness-vanishing-variance}
+## Asymptotic Unbiasedness and Vanishing Variance Imply Consistency
+
+Let $\widehat{\theta}_n$ be an estimator of $\theta$. If
+
+$$
+\mathbb{E}[\widehat{\theta}_n]\longrightarrow\theta
+\qquad\text{and}\qquad
+\operatorname{Var}[\widehat{\theta}_n]\longrightarrow0
+$$
+
+then
+
+$$
+\widehat{\theta}_n\xrightarrow{P}\theta
+$$
+:::
+
+The result follows from the generalized Markov inequality because, for every $\varepsilon>0$,
+
+$$
+\begin{aligned}
+\Pr\!\left(
+|\widehat{\theta}_n-\theta|\geq\varepsilon
+\right)
+&\leq
+\frac{
+\mathbb{E}\!\left[(\widehat{\theta}_n-\theta)^2\right]
+}{\varepsilon^2} \\
+&=
+\frac{1}{\varepsilon^2}
+\left[
+\underbrace{
+\operatorname{Var}[\widehat{\theta}_n]
+}_{\displaystyle \longrightarrow 0}
++
+\underbrace{
+\left(\mathbb{E}[\widehat{\theta}_n]-\theta\right)^2
+}_{\displaystyle \longrightarrow 0}
+\right] \\
+&\longrightarrow
+0
+\end{aligned}
+$$
+
+The unbiased case is obtained by setting $\mathbb{E}[\widehat{\theta}_n]=\theta$ for every $n$.
+
+## Maximum of a Uniform Sample {#sec-maximum-uniform-sample}
+
+::: {#exm-uniform-maximum-consistency}
+## Maximum Likelihood Estimation for a Uniform Upper Bound
+
+Let
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Unif}(0,\theta)
+$$
+
+The maximum likelihood estimator of $\theta$ is the sample maximum
+
+$$
+Y_n
+=
+\max(X_1,X_2,\ldots,X_n)
+$$
+:::
+
+### Distribution of the Sample Maximum {#sec-distribution-sample-maximum}
+
+For $0\leq y\leq\theta$,
+
+$$
+\begin{aligned}
+F_{Y_n}(y)
+&=
+\Pr(Y_n\leq y) \\
+&=
+\Pr\!\left(
+\max(X_1,X_2,\ldots,X_n)\leq y
+\right) \\
+&=
+\Pr(X_1\leq y,X_2\leq y,\ldots,X_n\leq y) \\
+&=
+\Pr(X_1\leq y)\Pr(X_2\leq y)\cdots\Pr(X_n\leq y)
+&& \text{by independence} \\
+&=
+\left[\Pr(X_1\leq y)\right]^n \\
+&=
+\left(\frac{y}{\theta}\right)^n
+\end{aligned}
+$$
+
+Thus, the cumulative distribution function is
+
+$$
+F_{Y_n}(y)
+=
+\begin{cases}
+0, & y<0 \\
+\left(\dfrac{y}{\theta}\right)^n, & 0\leq y\leq\theta \\
+1, & y>\theta
+\end{cases}
+$$
+
+Differentiating gives the probability density function
+
+$$
+f_{Y_n}(y)
+=
+\begin{cases}
+\dfrac{n}{\theta^n}y^{n-1}, & 0\leq y\leq\theta \\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+### Expected Value of the Sample Maximum {#sec-expectation-sample-maximum}
+
+$$
+\begin{aligned}
+\mathbb{E}[Y_n]
+&=
+\int_{-\infty}^{\infty}y f_{Y_n}(y)\,dy \\
+&=
+\int_{0}^{\theta}
+y\frac{n}{\theta^n}y^{n-1}\,dy \\
+&=
+\frac{n}{\theta^n}
+\int_{0}^{\theta}y^n\,dy \\
+&=
+\frac{n}{\theta^n}
+\left[\frac{y^{n+1}}{n+1}\right]_{0}^{\theta} \\
+&=
+\frac{n}{n+1}\theta
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\mathbb{E}[Y_n]
+=
+\frac{n}{n+1}\theta
+\longrightarrow
+\theta
+$$
+
+so $Y_n$ is asymptotically unbiased.
+
+### Variance of the Sample Maximum {#sec-variance-sample-maximum}
+
+First,
+
+$$
+\begin{aligned}
+\mathbb{E}[Y_n^2]
+&=
+\int_{0}^{\theta}
+y^2\frac{n}{\theta^n}y^{n-1}\,dy \\
+&=
+\frac{n}{\theta^n}
+\int_{0}^{\theta}y^{n+1}\,dy \\
+&=
+\frac{n}{n+2}\theta^2
+\end{aligned}
+$$
+
+Hence,
+
+$$
+\begin{aligned}
+\operatorname{Var}[Y_n]
+&=
+\mathbb{E}[Y_n^2]
+-
+\left(\mathbb{E}[Y_n]\right)^2 \\
+&=
+\frac{n}{n+2}\theta^2
+-
+\left(\frac{n}{n+1}\theta\right)^2 \\
+&=
+\frac{n}{(n+1)^2(n+2)}\theta^2 \\
+&\longrightarrow
+0
+\end{aligned}
+$$
+
+Since $Y_n$ is asymptotically unbiased and its variance converges to zero,
+
+$$
+\boxed{
+\color{#C62828}{
+Y_n\xrightarrow{P}\theta
+}
+}
+$$
+
+Therefore, the sample maximum is a consistent estimator of $\theta$.
+
 
 ## Reflection
 

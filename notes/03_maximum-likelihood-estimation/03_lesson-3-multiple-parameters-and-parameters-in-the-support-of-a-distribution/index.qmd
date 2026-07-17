@@ -21,34 +21,16 @@ This section considers two complications:
 
 ## Multiple Parameters: The Normal Model {#sec-normal-mle-two-parameters}
 
-::: {#exm-normal-mle-two-parameters .example}
+::: {#exm-normal-mle-two-parameters}
 ## Normal model with unknown mean and variance
 
-Suppose
-
-$$
-X_1,X_2,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\mathcal{N}(\mu,\sigma^2),
-$$
-
-with parameter space
-
-$$
--\infty<\mu<\infty,
-\qquad
-\sigma^2>0.
-$$
+Suppose $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim}  \mathcal{N}(\mu,\sigma^2)$ with parameter space $-\infty<\mu<\infty,\qquad\sigma^2>0.$
 
 The density of one observation is
 
 $$
-f(x;\mu,\sigma^2)
-=
-\frac{1}{\sqrt{2\pi\sigma^2}}
-\exp\left\{
--\frac{(x-\mu)^2}{2\sigma^2}
-\right\}.
+f(x;\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} 
+                    \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2} \right\}.
 $$
 :::
 
@@ -56,35 +38,21 @@ The joint density is
 
 $$
 \begin{aligned}
-f(\boldsymbol{x};\mu,\sigma^2)
-&=
-\prod_{i=1}^{n}
-f(x_i;\mu,\sigma^2) \\
-&=
-\prod_{i=1}^{n}
-\frac{1}{\sqrt{2\pi\sigma^2}}
-\exp\left\{
--\frac{(x_i-\mu)^2}{2\sigma^2}
-\right\} \\
-&=
-(2\pi\sigma^2)^{-n/2}
-\exp\left\{
--\frac{1}{2\sigma^2}
-\sum_{i=1}^{n}(x_i-\mu)^2
-\right\}.
+f(\mathbf{x};\mu,\sigma^2)
+&= \prod_{i=1}^{n} f(x_i;\mu,\sigma^2) \\
+&= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\left\{ -\frac{(x_i-\mu)^2}{2\sigma^2} \right\} \\
+&= (2\pi\sigma^2)^{-n/2} 
+   \exp\left\{-\frac{1}{2\sigma^2} \sum_{i=1}^{n}(x_i-\mu)^2 \right\}
 \end{aligned}
 $$
 
 Thus the likelihood is
 
 $$
-L(\mu,\sigma^2)
-=
-(2\pi\sigma^2)^{-n/2}
-\exp\left\{
--\frac{1}{2\sigma^2}
-\sum_{i=1}^{n}(x_i-\mu)^2
-\right\},
+L(\mu,\sigma^2) 
+= (2\pi\sigma^2)^{-n/2}
+  \exp\left\{-\frac{1}{2\sigma^2} \sum_{i=1}^{n}(x_i-\mu)^2 \right\}
 $$
 
 and the log-likelihood is
@@ -103,13 +71,8 @@ $$
 \begin{aligned}
 \frac{\partial}{\partial\mu}
 \ell(\mu,\sigma^2)
-&=
--\frac{1}{2\sigma^2}
-\sum_{i=1}^{n}
-2(x_i-\mu)(-1) \\
-&=
-\frac{1}{\sigma^2}
-\sum_{i=1}^{n}(x_i-\mu).
+&= -\frac{1}{2\sigma^2} \sum_{i=1}^{n} 2(x_i-\mu)(-1) \\
+&= \frac{1}{\sigma^2} \sum_{i=1}^{n}(x_i-\mu)
 \end{aligned}
 $$
 
@@ -117,37 +80,22 @@ Set the derivative equal to zero:
 
 $$
 \begin{aligned}
-0
-&=
-\frac{1}{\sigma^2}
-\sum_{i=1}^{n}(x_i-\mu) \\
-0
-&=
-\sum_{i=1}^{n}(x_i-\mu) \\
-&=
-\sum_{i=1}^{n}x_i-n\mu.
+0 &= \frac{1}{\sigma^2} \sum_{i=1}^{n}(x_i-\mu) \\
+  &= \sum_{i=1}^{n}(x_i-\mu) \\
+  &= \sum_{i=1}^{n}x_i-n\mu.
 \end{aligned}
 $$
 
 Therefore,
 
 $$
-\mu
-=
-\frac{1}{n}
-\sum_{i=1}^{n}x_i
-=
-\overline{x}.
+\mu = \frac{1}{n} \sum_{i=1}^{n}x_i = \overline{x}.
 $$
 
 Hence the maximum likelihood estimator is
 
 $$
-\boxed{
-\hat{\mu}
-=
-\overline{X}
-}
+\boxed{\hat{\mu} =\overline{X}}
 $$
 
 ## Maximum Likelihood Estimator of the Variance {#sec-normal-mle-variance}
@@ -158,9 +106,8 @@ $$
 \begin{aligned}
 \frac{\partial}{\partial\sigma^2}
 \ell(\mu,\sigma^2)
-&=
--\frac{n}{2\sigma^2}
-+
+&= -\frac{n}{2\sigma^2}
+   +
 \frac{1}{2(\sigma^2)^2}
 \sum_{i=1}^{n}(x_i-\mu)^2.
 \end{aligned}
@@ -170,37 +117,20 @@ Set the derivative equal to zero:
 
 $$
 \begin{aligned}
-0
-&=
--\frac{n}{2\sigma^2}
-+
-\frac{1}{2(\sigma^2)^2}
-\sum_{i=1}^{n}(x_i-\mu)^2 \\
-0
-&=
--n\sigma^2
-+
-\sum_{i=1}^{n}(x_i-\mu)^2
-\qquad
-\text{multiply by }2(\sigma^2)^2 \\
-\sigma^2
-&=
-\frac{1}{n}
-\sum_{i=1}^{n}(x_i-\mu)^2.
+0 &= -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2} \sum_{i=1}^{n}(x_i-\mu)^2 \\
+  &= -n\sigma^2 + \sum_{i=1}^{n}(x_i-\mu)^2 
+  &&  \text{multiply by }2(\sigma^2)^2 \\
+\sigma^2 &= \frac{1}{n} \sum_{i=1}^{n}(x_i-\mu)^2. 
 \end{aligned}
 $$
 
 Substituting $\hat{\mu}=\overline{x}$ gives
 
 $$
-\hat{\sigma}^2
-=
-\frac{1}{n}
-\sum_{i=1}^{n}
-(x_i-\overline{x})^2.
+\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i-\overline{x})^2
 $$
 
-::: {#thm-normal-mles .theorem}
+::: {#thm-normal-mles}
 ## Maximum likelihood estimators for the normal model
 
 For
@@ -214,23 +144,13 @@ $$
 the maximum likelihood estimators are
 
 $$
-\boxed{
-\hat{\mu}
-=
-\overline{X}
-}
+\boxed{ \hat{\mu} = \overline{X} }
 $$
 
 and
 
 $$
-\boxed{
-\hat{\sigma}^2
-=
-\frac{1}{n}
-\sum_{i=1}^{n}
-(X_i-\overline{X})^2
-}.
+\boxed{ \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i-\overline{X})^2 }
 $$
 :::
 
@@ -239,19 +159,13 @@ $$
 Since
 
 $$
-\operatorname{Var}(X)
-=
-\mathbb{E}\left[(X-\mu)^2\right],
+\operatorname{Var}(X) = \mathbb{E}\left[(X-\mu)^2\right],
 $$
 
 a natural estimator of $\sigma^2$ is
 
 $$
-S_1^2
-:=
-\frac{1}{n}
-\sum_{i=1}^{n}
-(X_i-\overline{X})^2.
+S_1^2 := \frac{1}{n} \sum_{i=1}^{n} (X_i-\overline{X})^2
 $$
 
 This is exactly the maximum likelihood estimator $\hat{\sigma}^2$. However, it is biased.
@@ -260,10 +174,7 @@ To calculate its expectation, use the identity
 
 $$
 \sum_{i=1}^{n}(X_i-\overline{X})^2
-=
-\sum_{i=1}^{n}(X_i-\mu)^2
--
-n(\overline{X}-\mu)^2.
+= \sum_{i=1}^{n}(X_i-\mu)^2 - n(\overline{X}-\mu)^2
 $$
 
 Then
@@ -271,36 +182,12 @@ Then
 $$
 \begin{aligned}
 \mathbb{E}[S_1^2]
-&=
-\frac{1}{n}
-\mathbb{E}\left[
-\sum_{i=1}^{n}(X_i-\overline{X})^2
-\right] \\
-&=
-\frac{1}{n}
-\left\{
-\sum_{i=1}^{n}
-\mathbb{E}\left[(X_i-\mu)^2\right]
--
-n\,
-\mathbb{E}\left[(\overline{X}-\mu)^2\right]
-\right\} \\
-&=
-\frac{1}{n}
-\left\{
-n\sigma^2
--
-n\operatorname{Var}(\overline{X})
-\right\} \\
-&=
-\frac{1}{n}
-\left\{
-n\sigma^2-\sigma^2
-\right\}
-\qquad
-\text{since }\operatorname{Var}(\overline{X})=\frac{\sigma^2}{n} \\
-&=
-\frac{n-1}{n}\sigma^2.
+&= \frac{1}{n} \mathbb{E}\left[\sum_{i=1}^{n}(X_i-\overline{X})^2 \right] \\
+&= \frac{1}{n} \left\{ \sum_{i=1}^{n} \mathbb{E}\left[(X_i-\mu)^2\right]
+   - n \mathbb{E}\left[(\overline{X}-\mu)^2\right] \right\} \\
+&= \frac{1}{n} \left\{ n\sigma^2 - n\operatorname{Var}(\overline{X}) \right\} \\
+&= \frac{1}{n} \left\{ n\sigma^2-\sigma^2 \right\} \qquad \text{since }\operatorname{Var}(\overline{X})=\frac{\sigma^2}{n} \\
+&= \frac{n-1}{n}\sigma^2
 \end{aligned}
 $$
 
@@ -309,12 +196,8 @@ Thus an unbiased estimator is
 $$
 \begin{aligned}
 S^2
-&:=
-\frac{n}{n-1}S_1^2 \\
-&=
-\frac{1}{n-1}
-\sum_{i=1}^{n}
-(X_i-\overline{X})^2.
+&:= \frac{n}{n-1}S_1^2 \\
+&= \frac{1}{n-1} \sum_{i=1}^{n} (X_i-\overline{X})^2
 \end{aligned}
 $$
 
@@ -324,11 +207,7 @@ $$
 Unless otherwise specified, the notation $S^2$ refers to the unbiased sample variance
 
 $$
-S^2
-=
-\frac{1}{n-1}
-\sum_{i=1}^{n}
-(X_i-\overline{X})^2.
+S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i-\overline{X})^2
 $$
 
 The normal-model maximum likelihood estimator instead uses the denominator $n$ and is biased.
@@ -338,7 +217,7 @@ The normal-model maximum likelihood estimator instead uses the denominator $n$ a
 
 The second special case occurs when the unknown parameter determines the support of the distribution.
 
-::: {#exm-uniform-support-parameter .example}
+::: {#exm-uniform-support-parameter}
 ## Uniform distribution with unknown upper endpoint
 
 Suppose
@@ -357,7 +236,7 @@ $$
 f(x;\theta)
 =
 \frac{1}{\theta}
-\mathbf{1}_{(0,\theta]}(x).
+\mathbf{1}_{(0,\theta]}(x)
 $$
 :::
 
@@ -365,14 +244,9 @@ The joint density is
 
 $$
 \begin{aligned}
-f(\boldsymbol{x};\theta)
-&=
-\prod_{i=1}^{n}
-f(x_i;\theta) \\
-&=
-\frac{1}{\theta^n}
-\prod_{i=1}^{n}
-\mathbf{1}_{(0,\theta]}(x_i).
+f(\mathbf{x};\theta)
+&= \prod_{i=1}^{n} f(x_i;\theta) \\ 
+&= \frac{1}{\theta^n} \prod_{i=1}^{n} \mathbf{1}_{(0,\theta]}(x_i)
 \end{aligned}
 $$
 
@@ -407,8 +281,7 @@ The branch conditions are retained; they are not differentiated.
 Likewise,
 
 $$
-\log f(x)
-=
+\log f(x) =
 \begin{cases}
 \log(x^2), & 0<x\leq 1, \\
 \log(x+1), & x>1.
@@ -426,7 +299,7 @@ Let
 $$
 x_{(n)}
 =
-\max(x_1,x_2,\ldots,x_n).
+\max(x_1,x_2,\ldots,x_n)
 $$
 
 For observed positive data,
@@ -434,42 +307,38 @@ For observed positive data,
 $$
 \prod_{i=1}^{n}
 \mathbf{1}_{(0,\theta]}(x_i)
-=
-\mathbf{1}_{[x_{(n)},\infty)}(\theta).
+= \mathbf{1}_{[x_{(n)},\infty)}(\theta)
 $$
 
 Therefore the likelihood can be written as
 
 $$
 L(\theta)
-=
-\frac{1}{\theta^n}
-\mathbf{1}_{[x_{(n)},\infty)}(\theta).
+= \frac{1}{\theta^n}
+\mathbf{1}_{[x_{(n)},\infty)}(\theta)
 $$
 
 The indicator imposes the constraint
 
 $$
-\theta\geq x_{(n)}.
+\theta\geq x_{(n)}
 $$
 
 Within this feasible region,
 
 $$
 L(\theta)
-=
-\theta^{-n},
+= \theta^{-n}
 $$
 
 which is strictly decreasing in $\theta$. The likelihood is therefore maximized by choosing the smallest feasible value of $\theta$:
 
 $$
 \hat{\theta}
-=
-x_{(n)}.
+= x_{(n)}
 $$
 
-::: {#thm-uniform-endpoint-mle .theorem}
+::: {#thm-uniform-endpoint-mle}
 ## Maximum likelihood estimator of a uniform endpoint
 
 For
@@ -477,7 +346,7 @@ For
 $$
 X_1,\ldots,X_n
 \overset{\mathrm{iid}}{\sim}
-\operatorname{Uniform}(0,\theta),
+\mathcal{Uniform}(0,\theta)
 $$
 
 the maximum likelihood estimator of the upper endpoint is
@@ -485,11 +354,9 @@ the maximum likelihood estimator of the upper endpoint is
 $$
 \boxed{
 \hat{\theta}
-=
-X_{(n)}
-=
-\max(X_1,X_2,\ldots,X_n)
-}.
+= X_{(n)}
+= \max(X_1,X_2,\ldots,X_n)
+}
 $$
 :::
 

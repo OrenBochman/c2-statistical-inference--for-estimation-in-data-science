@@ -10,7 +10,503 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-the-central-limit-theorem_module_3_lesson4.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on CLT
+
+###Linear Combinations of Normal Random Variables {#sec-linear-combinations-normal}
+
+::: {#thm-linear-combinations-normal}
+## Linear Combinations of Normal Random Variables
+
+If $X_1,X_2,\ldots,X_n$ are jointly normal random variables, then every linear combination
+
+$$
+a + \sum_{i=1}^{n} a_iX_i
+$$
+
+is also normally distributed.
+:::
+
+This includes linear transformations of a single normal random variable. If
+
+$$
+X \sim \mathcal{N}(\mu,\sigma^2)
+$$
+
+then standardizing $X$ gives
+
+$$
+Z := \frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1)
+$$
+
+Conversely, if $Z \sim \mathcal{N}(0,1)$, then
+
+$$
+X := \sigma Z+\mu \sim \mathcal{N}(\mu,\sigma^2)
+$$
+
+### The Standard Normal Distribution {#sec-standard-normal}
+
+For a normal random variable 
+$X \sim \mathcal{N}(\mu,\sigma^2)$
+the probability density function is
+
+$$
+f_X(x)
+=
+\frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\!\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
+$$
+
+::: {#def-standard-normal}
+## Standard Normal Distribution
+
+A standard normal random variable has distribution
+
+$$
+Z \sim \mathcal{N}(0,1)
+$$
+
+and probability density function
+
+$$
+f_Z(z)
+=
+\frac{1}{\sqrt{2\pi}}
+\exp\!\left\{-\frac{z^2}{2}\right\}
+$$
+:::
+
+The normal cumulative distribution function cannot be written in elementary closed form, but it can be evaluated numerically.
+
+::: {.callout-note}
+## Notation
+
+For $Z \sim \mathcal{N}(0,1)$, the standard normal cumulative distribution function is
+
+$$
+\Phi(z) = P(Z \leq z)
+$$
+:::
+
+In R, standard normal probabilities are computed using `pnorm()`.
+
+```{r}
+pnorm(1.23)
+```
+
+This gives approximately $0.891$.
+
+::: {#exm-normal-probability}
+## Normal Probability
+
+Suppose that
+
+$$
+X \sim \mathcal{N}(1,4)
+$$
+
+Find $P(X \leq 2)$.
+
+Because $\mu=1$ and $\sigma=\sqrt{4}=2$,
+
+$$
+\begin{aligned}
+P(X \leq 2)
+&=
+P\!\left(
+\frac{X-\mu}{\sigma}
+\leq
+\frac{2-1}{\sqrt{4}}
+\right)
+&& \text{standardize }X \\
+&=
+P(Z \leq 0.5) \\
+&=
+\Phi(0.5) \\
+&\approx 0.6915
+\end{aligned}
+$$
+
+```{r}
+pnorm(0.5)
+```
+:::
+
+::: {#exm-normal-sample-mean}
+## Sample Mean of Normal Random Variables
+
+Suppose that $X_1,X_2,X_3$ are independent and
+
+$$
+X_i \sim \mathcal{N}(1,4)
+$$
+
+Find $P(\overline{X} \leq 2)$.
+
+Because a linear combination of independent normal random variables is normal, $\overline{X}$ is normally distributed. Its mean and variance are
+
+$$
+\begin{aligned}
+\mathbb{E}[\overline{X}]
+&= \mathbb{E}[X_1] \\
+&= 1 \\
+\operatorname{Var}(\overline{X})
+&= \frac{\operatorname{Var}(X_1)}{n} \\
+&= \frac{4}{3}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\overline{X} \sim \mathcal{N}\!\left(1,\frac{4}{3}\right)
+$$
+
+and
+
+$$
+\begin{aligned}
+P(\overline{X} \leq 2)
+&=
+P\!\left(
+\frac{\overline{X}-\mu_{\overline{X}}}
+{\sigma_{\overline{X}}}
+\leq
+\frac{2-1}{2/\sqrt{3}}
+\right)
+&& \text{standardize }\overline{X} \\
+&=
+P\!\left(Z \leq \frac{\sqrt{3}}{2}\right) \\
+&=
+\Phi\!\left(\frac{\sqrt{3}}{2}\right) \\
+&\approx 0.8068
+\end{aligned}
+$$
+
+```{r}
+pnorm(sqrt(3) / 2)
+```
+:::
+
+## Convergence in Distribution {#sec-convergence-distribution}
+
+::: {#def-convergence-distribution}
+## Convergence in Distribution
+
+Let $X_1,X_2,X_3,\ldots$ be a sequence of random variables, where $X_n$ has cumulative distribution function
+
+$$
+F_n(x) = P(X_n \leq x)
+$$
+
+Let $X$ be a random variable with cumulative distribution function
+
+$$
+F(x) = P(X \leq x)
+$$
+
+The sequence $X_1,X_2,X_3,\ldots$ converges in distribution to $X$ if
+
+$$
+\lim_{n\to\infty}F_n(x) = F(x)
+$$
+
+at every point $x$ at which $F$ is continuous.
+
+We write
+
+$$
+X_n \xrightarrow{d} X
+$$
+:::
+
+Convergence in distribution is a weak form of convergence. The random variables themselves need not become close to one another; rather, their distributions become close.
+
+For example, if
+
+$$
+X_n \sim \mathcal{N}\!\left(\frac{1}{n},\sigma^2\right)
+$$
+
+then
+
+$$
+X_n \xrightarrow{d} X
+\qquad
+\text{where}
+\qquad
+X \sim \mathcal{N}(0,\sigma^2)
+$$
+
+In particular, when $\sigma^2=1$,
+
+$$
+X_n \xrightarrow{d} Z
+\qquad
+\text{where}
+\qquad
+Z \sim \mathcal{N}(0,1)
+$$
+
+## Sampling Distributions of Exponential Sample Means {#sec-exponential-sample-means}
+
+Suppose that
+
+$$
+X \sim \operatorname{Exp}(\operatorname{rate}=\lambda)
+$$
+
+The slides compare $10{,}000$ sample means for sample sizes
+
+$$
+n \in \{1,2,3,4,5,10,100,1000,10000\}
+$$
+
+As $n$ increases, the sampling distribution of $\overline{X}_n$ becomes increasingly symmetric and concentrated around
+
+$$
+\mathbb{E}[X] = \frac{1}{\lambda}
+$$
+
+For exponential random variables,
+
+$$
+\sum_{i=1}^{n}X_i \sim \operatorname{Gamma}(n,\operatorname{rate}=\lambda)
+$$
+
+so the sample mean has the exact distribution
+
+$$
+\overline{X}_n
+\sim
+\operatorname{Gamma}(n,\operatorname{rate}=n\lambda)
+$$
+
+The following R code reproduces the sequence of histograms efficiently.
+
+```{r}
+#| fig-width: 12
+#| fig-height: 10
+#| fig-cap: "Sampling distributions of 10,000 exponential sample means"
+
+set.seed(123)
+
+B <- 10000
+lambda <- 1
+sample_sizes <- c(1, 2, 3, 4, 5, 10, 100, 1000, 10000)
+
+old_par <- par(mfrow = c(3, 3), mar = c(3, 3, 2, 1))
+
+for (n in sample_sizes) {
+  x_bar <- rgamma(B, shape = n, rate = n * lambda)
+
+  hist(
+    x_bar,
+    probability = TRUE,
+    breaks = 16,
+    main = paste("n =", n),
+    xlab = expression(bar(X)),
+    ylab = "Density"
+  )
+}
+
+par(old_par)
+```
+
+## The Central Limit Theorem {#sec-central-limit-theorem}
+
+::: {#thm-central-limit-theorem}
+## Central Limit Theorem
+
+Let $X_1,X_2,X_3,\ldots$ be independent and identically distributed random variables from any distribution with finite mean and variance
+
+$$
+\mathbb{E}[X_i] = \mu
+\qquad
+\operatorname{Var}(X_i) = \sigma^2 < \infty
+$$
+
+Define the sample mean
+
+$$
+\overline{X}_n
+=
+\frac{1}{n}\sum_{i=1}^{n}X_i
+$$
+
+Then
+
+$$
+\frac{\overline{X}_n-\mu}{\sigma/\sqrt{n}}
+\xrightarrow{d}
+\mathcal{N}(0,1)
+$$
+:::
+
+## Asymptotic Normality {#sec-asymptotic-normality}
+
+::: {#def-asymptotic-normality}
+## Asymptotically Normal Random Variables
+
+A sequence of random variables $X_n$ is asymptotically normal if there exist sequences of real numbers $\{a_n\}$ and positive real numbers $\{b_n\}$ such that
+
+$$
+\frac{X_n-a_n}{\sqrt{b_n}}
+\xrightarrow{d}
+\mathcal{N}(0,1)
+$$
+
+We write
+
+$$
+X_n
+\overset{\mathrm{asymp}}{\sim}
+\mathcal{N}(a_n,b_n)
+$$
+:::
+
+This notation does not mean that $X_n$ has an exact normal distribution. It means that its standardized distribution converges to the standard normal distribution.
+
+The Central Limit Theorem therefore states that the sample mean is asymptotically normal:
+
+$$
+\overline{X}_n
+\overset{\mathrm{asymp}}{\sim}
+\mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right)
+$$
+
+::: {#exm-clt-gamma-sample-mean}
+## Gamma Sample Mean
+
+Let $\overline{X}$ be the sample mean of a random sample of size $n=100$ from a gamma distribution with shape $3$ and rate $2$:
+
+$$
+X_i \sim \operatorname{Gamma}(3,\operatorname{rate}=2)
+$$
+
+The population mean and variance are
+
+$$
+\begin{aligned}
+\mathbb{E}[X_i]
+&=
+\frac{3}{2} \\
+\operatorname{Var}(X_i)
+&=
+\frac{3}{2^2} \\
+&=
+\frac{3}{4}
+\end{aligned}
+$$
+
+Therefore, the sample mean has
+
+$$
+\begin{aligned}
+\mathbb{E}[\overline{X}]
+&=
+\mathbb{E}[X_i] \\
+&=
+\frac{3}{2} \\
+\operatorname{Var}(\overline{X})
+&=
+\frac{\operatorname{Var}(X_i)}{n} \\
+&=
+\frac{3/4}{100} \\
+&=
+\frac{3}{400}
+\end{aligned}
+$$
+
+By the Central Limit Theorem,
+
+$$
+\overline{X}
+\overset{\mathrm{asymp}}{\sim}
+\mathcal{N}\!\left(\frac{3}{2},\frac{3}{400}\right)
+$$
+
+::: {.callout-warning}
+## Threshold Used in the Slides
+
+The question states $P(\overline{X}>1.49)$, but the subsequent derivation uses $1.4$. The reported probability $0.8749$ corresponds to the threshold $1.4$.
+:::
+
+For the threshold $1.4$,
+
+$$
+\begin{aligned}
+P(\overline{X}>1.4)
+&\approx
+P\!\left(
+\frac{\overline{X}-\mu_{\overline{X}}}
+{\sigma_{\overline{X}}}
+>
+\frac{1.4-1.5}{\sqrt{3/400}}
+\right)
+&& \text{apply the normal approximation} \\
+&=
+P(Z>-1.1547) \\
+&=
+1-P(Z\leq -1.1547) \\
+&=
+1-\Phi(-1.1547) \\
+&\approx
+0.8749
+\end{aligned}
+$$
+
+The calculation shown in the slides is obtained in R using
+
+```{r}
+1 - pnorm(-1.15)
+```
+
+For the threshold $1.49$ stated in the question,
+
+$$
+\begin{aligned}
+P(\overline{X}>1.49)
+&\approx
+P\!\left(
+Z>
+\frac{1.49-1.5}{\sqrt{3/400}}
+\right) \\
+&=
+P(Z>-0.1155) \\
+&\approx
+0.5460
+\end{aligned}
+$$
+
+```{r}
+1 - pnorm((1.49 - 1.5) / sqrt(3 / 400))
+```
+:::
+
+::: {.callout-note}
+## Standardizing the Sample Mean
+
+Because
+
+$$
+\mu_{\overline{X}}=\mu
+\qquad
+\sigma_{\overline{X}}=\frac{\sigma}{\sqrt{n}}
+$$
+
+we have
+
+$$
+\frac{
+\overline{X}-\underbrace{\mu_{\overline{X}}}_{\mu}
+}{
+\underbrace{\sigma_{\overline{X}}}_{\sigma/\sqrt{n}}
+}
+=
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+$$
+:::
 
 ## Reflection
 

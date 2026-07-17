@@ -13,7 +13,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 
 ## Variance {#sec-variance}
 
-::: {#def-variance .definition}
+::: {#def-variance}
 ## Variance
 
 Let $X$ be a random variable with mean
@@ -54,7 +54,7 @@ is a valid measure of spread, but squared deviations are generally more convenie
 
 ## Standard Deviation {#sec-standard-deviation}
 
-::: {#def-standard-deviation .definition}
+::: {#def-standard-deviation}
 ## Standard deviation
 
 The standard deviation of $X$ is the nonnegative square root of its variance:
@@ -79,7 +79,7 @@ then $\mu$ is the center of the distribution and $\sigma$ measures its spread. T
 
 ## An Alternative Formula for Variance {#sec-variance-alternative}
 
-::: {#prp-variance-computational .proposition}
+::: {#prp-variance-computational}
 ## Computational formula for variance
 
 For any random variable $X$ with finite second moment,
@@ -109,7 +109,7 @@ $$
 
 ## Scaling a Random Variable {#sec-variance-scaling}
 
-::: {#prp-variance-scaling .proposition}
+::: {#prp-variance-scaling}
 ## Variance under scaling
 
 For any constant $a$,
@@ -161,7 +161,7 @@ The missing term describes how $X$ and $Y$ vary together. This leads to covarian
 
 ## Covariance {#sec-covariance}
 
-::: {#def-covariance .definition}
+::: {#def-covariance}
 ## Covariance
 
 Let $X$ and $Y$ be random variables with means
@@ -197,7 +197,7 @@ $$
 
 is positive when $X$ and $Y$ lie on the same side of their respective means, and negative when they lie on opposite sides.
 
-::: {#exm-positive-covariance .example}
+::: {#exm-positive-covariance}
 ## Positive covariance
 
 A scatterplot with an upward trend has positive covariance. Most observations satisfy either
@@ -216,13 +216,13 @@ In both cases,
 $(X-\mu_X)(Y-\mu_Y)>0$
 :::
 
-::: {#exm-negative-covariance .example}
+::: {#exm-negative-covariance}
 ## Negative covariance
 
 A scatterplot with a downward trend has negative covariance. Large values of $X$ tend to occur with small values of $Y$, and small values of $X$ tend to occur with large values of $Y$. Thus the centered deviations generally have opposite signs.
 :::
 
-::: {#exm-zero-covariance .example}
+::: {#exm-zero-covariance}
 ## Covariance close to zero
 
 When a scatterplot has no clear linear upward or downward tendency, positive and negative products of centered deviations tend to cancel, producing covariance close to zero.
@@ -242,7 +242,7 @@ Consequently, two scatterplots can show essentially the same linear pattern but 
 
 ## Correlation {#sec-correlation}
 
-::: {#def-correlation .definition}
+::: {#def-correlation}
 ## Correlation
 
 For random variables with positive finite variances, their correlation is
@@ -265,7 +265,7 @@ It retains the sign of covariance while removing its dependence on measurement u
 
 ## An Alternative Formula for Covariance {#sec-covariance-alternative}
 
-::: {#prp-covariance-computational .proposition}
+::: {#prp-covariance-computational}
 ## Computational formula for covariance
 
 For random variables $X$ and $Y$ with finite second moments,
@@ -292,7 +292,7 @@ $$
 
 ## Independence and Zero Covariance {#sec-independence-zero-covariance}
 
-::: {#prp-independence-uncorrelated .proposition}
+::: {#prp-independence-uncorrelated}
 ## Independence implies zero covariance
 
 If $X$ and $Y$ are independent and have finite second moments, then
@@ -322,7 +322,7 @@ Random variables with zero covariance are called **uncorrelated**.
 
 ## Example: Uncorrelated but Dependent {#sec-uncorrelated-dependent-example}
 
-::: {#exm-uncorrelated-dependent .example}
+::: {#exm-uncorrelated-dependent}
 ## A nonlinear dependence
 
 Let $X$ have distribution
@@ -391,7 +391,7 @@ $$
 
 ## Variance of a Sum {#sec-variance-of-sum}
 
-::: {#prp-variance-sum .proposition}
+::: {#prp-variance-sum}
 ## Variance of two-variable sum
 
 For random variables $X$ and $Y$ with finite second moments,

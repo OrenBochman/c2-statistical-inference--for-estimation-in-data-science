@@ -27,17 +27,18 @@ subtitle: "Statistical Estimation for Data Science and AI"
 
 ### The Binomial Distribution {#sec-binomial-distribution}
 
-::: {#def-binomial-distribution .definition}
+::: {#def-binomial-distribution}
 ## Binomial distribution
 
 Consider a sequence of $n$ independent trials of an experiment. 
 Each trial has two possible outcomes, called **success** and **failure**, with $p = \mathbb{P}(\text{success on any one trial}).$
 
 Let the random variable (RV) $X$ be the number of successes in the $n$ trials. 
-We denote this as $X \sim \mathcal{Bin}(n,p).$  [Binomial notaion]{.aside}
+We denote this as $X \sim \mathcal{Bin}(n,p).$  
 :::
+[Binomial notaion]{.aside}
 
-::: {#exm-four-binomial-trials .example}
+::: {#exm-four-binomial-trials}
 ## Four trials and three successes
 
 Suppose $n=4$. The event $X=3$ can occur through any of the four mutually exclusive sequences
@@ -137,7 +138,7 @@ $$
 
 #### The Cumulative Distribution Function {#sec-cumulative-distribution-function}
 
-::: {#def-cumulative-distribution-function .definition}
+::: {#def-cumulative-distribution-function}
 ## Cumulative distribution function
 
 For a discrete or continuous random variable $X$, the cumulative distribution function (CDF) is
@@ -169,7 +170,7 @@ F_X(x)
 \int_{-\infty}^{x} f_X(u)\,du.
 $$
 
-::: {#thm-density-from-cdf .theorem}
+::: {#thm-density-from-cdf}
 ## Density as the derivative of the CDF
 
 For a continuous random variable, wherever $F_X$ is differentiable, the Fundamental Theorem of Calculus gives
@@ -183,18 +184,14 @@ $$
 
 ### Invertible Transformations {#sec-invertible-transformations}
 
-Suppose $X$ is continuous with density $f_X(x)$, and let
-
-$$
-Y=g(X),
-$$
-
-where $g$ is continuous, differentiable, and invertible. Such a function is either strictly increasing or strictly decreasing on the support of $X$.
+Suppose $X$ is continuous with density $f_X(x)$, and let $Y=g(X)$ where $g$ is continuous, differentiable, and invertible. Such a function is either strictly increasing or strictly decreasing on the support of $X$.
 
 ::: {#ntn-monotonicity-inverse .callout-note}
 ## Monotonicity of the inverse
 
-The inverse of a strictly increasing function is strictly increasing. The inverse of a strictly decreasing function is strictly decreasing. Geometrically, the graphs of $g$ and $g^{-1}$ are reflections across the line $y=x$.
+- The inverse of a strictly increasing function is strictly increasing. 
+- The inverse of a strictly decreasing function is strictly decreasing.
+- Geometrically, the graphs of $g$ and $g^{-1}$ are reflections across the line $y=x$.
 :::
 
 ### Increasing Transformation {#sec-increasing-transformation}
@@ -205,26 +202,21 @@ $$
 \begin{aligned}
 F_Y(y) &= P(Y\le y) \\
 &= P(g(X)\le y) \\
-&= P\!\left(g^{-1}(g(X))\le g^{-1}(y)\right) \\
-&= P\!\left(X\le g^{-1}(y)\right) \\
-&= F_X\!\left(g^{-1}(y)\right).
+&= P\left(g^{-1}(g(X))\le g^{-1}(y)\right) \\
+&= P\left(X\le g^{-1}(y)\right) \\
+&= F_X \left(g^{-1}(y)\right)
 \end{aligned}
-$$
+$$ {#eq-increasing-transformation-cdf}
 
 Differentiating,
 
 $$
 \begin{aligned}
-f_Y(y)
-&=
-\frac{d}{dy}F_Y(y) \\
-&=
-\frac{d}{dy}F_X\!\left(g^{-1}(y)\right) \\
-&=
-f_X\!\left(g^{-1}(y)\right)
-\frac{d}{dy}g^{-1}(y).
+f_Y(y) &= \frac{d}{dy}F_Y(y) \\
+       &= \frac{d}{dy}F_X\!\left(g^{-1}(y)\right) \\
+       &= f_X\!\left(g^{-1}(y)\right) \frac{d}{dy}g^{-1}(y)
 \end{aligned}
-$$
+$$ {#eq-increasing-transformation-pdf}
 
 ### Decreasing Transformation {#sec-decreasing-transformation}
 
@@ -237,7 +229,7 @@ F_Y(y)  &= P(Y\le y) \\
         &= P\!\left(g^{-1}(g(X))\ge g^{-1}(y)\right) \\
         &= P\!\left(X\ge g^{-1}(y)\right) \\
         &= 1-P\!\left(X<g^{-1}(y)\right) \\
-        &= 1-F_X\!\left(g^{-1}(y)\right).
+        &= 1-F_X\!\left(g^{-1}(y)\right)
 \end{aligned}
 $$
 
@@ -247,38 +239,34 @@ $$
 \begin{aligned}
 f_Y(y)  &= \frac{d}{dy}F_Y(y) \\
         &= \frac{d}{dy} \left[1-F_X\!\left(g^{-1}(y)\right)\right] \\
-        &= -f_X\!\left(g^{-1}(y)\right) \frac{d}{dy}g^{-1}(y).
+        &= -f_X\!\left(g^{-1}(y)\right) \frac{d}{dy}g^{-1}(y)
 \end{aligned}
 $$
 
 Because $g^{-1}$ is decreasing,
 
 $$
-\frac{d}{dy}g^{-1}(y)<0,
+\frac{d}{dy}g^{-1}(y)<0
 $$
 
 so the resulting density is nonnegative.
 
-::: {#thm-change-of-variables-one-dimensional .theorem}
+::: {#thm-change-of-variables-one-dimensional}
 ## One-dimensional change-of-variables formula
 
 Let $Y=g(X)$, where $g$ is differentiable and invertible on the support of $X$. Whether $g$ is increasing or decreasing,
 
 $$
-f_Y(y)
-=
-f_X\!\left(g^{-1}(y)\right)
-\left|
-\frac{d}{dy}g^{-1}(y)
-\right|,
-$$
+f_Y(y) = f_X\!\left(g^{-1}(y)\right)
+\left| \frac{d}{dy}g^{-1}(y) \right|,
+$$ {#eq-change-of-variables-one-dimensional}
 
 for $y$ in the image of the support of $X$ under $g$.
 :::
 
 #### Scaling a Gamma Random Variable {#sec-scaling-gamma-random-variable}
 
-::: {#def-gamma-rate-parameterization .definition}
+::: {#def-gamma-rate-parameterization}
 ## Gamma distribution with rate parameter
 
 Suppose $X$ has a gamma distribution with shape parameter $\alpha>0$ and rate parameter $\beta>0$, also called the inverse scale parameter. Its density is
@@ -296,19 +284,19 @@ X\sim\operatorname{Gamma}(\alpha,\beta).
 $$
 :::
 
-::: {#exm-scaled-gamma-variable .example}
+<!-- note: there is something mssing here 
+we have a general case then the gamma 
+which we need for going from gamma to chi^2
+-->
+
+::: {#exm-scaled-gamma-variable}
 ## Distribution of $Y=cX$
 
 Let $Y=cX, \qquad c>0.$
-
 Here
 
 $$
-g(x)=cx,
-\qquad
-g^{-1}(y)=\frac{y}{c},
-\qquad
-\frac{d}{dy}g^{-1}(y)=\frac{1}{c}.
+g(x)=cx, \qquad g^{-1}(y)=\frac{y}{c}, \qquad \frac{d}{dy}g^{-1}(y)=\frac{1}{c}.
 $$
 
 Applying the change-of-variables formula,

@@ -10,7 +10,578 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-fisher-information-and-the-cramer-rao-lower-bound_module3_lesson1.pdf){width=700 height=980}
 :::
 
-## Slides
+## slides on The Cramér-Rao Lower Bound {#sec-cramer-rao-lower-bound}
+
+Let $X_1,X_2,\ldots,X_n$ be a random sample from a distribution with joint density or probability mass function $f(\mathbf{x};\theta)$.
+
+Suppose that the target is the parameter function $\tau(\theta)$ and that
+
+$$
+T=t(\mathbf{X})
+$$
+
+is an unbiased estimator of $\tau(\theta)$, so that
+
+$$
+\mathbb{E}_\theta[T]=\tau(\theta)
+$$
+
+::: {#thm-cramer-rao-lower-bound}
+## Cramér-Rao Lower Bound
+
+Under the regularity conditions given below, every unbiased estimator $T$ of $\tau(\theta)$ satisfies
+
+$$
+\operatorname{Var}_\theta(T)
+\geq
+\frac{[\tau'(\theta)]^2}{I_n(\theta)}
+$$
+:::
+
+::: {#def-fisher-information}
+## Fisher Information
+
+The Fisher information in the full sample $\mathbf{X}=(X_1,\ldots,X_n)$ is
+
+$$
+I_n(\theta)
+:=
+\mathbb{E}_\theta\!\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right)^2
+\right]
+$$
+:::
+
+::: {.callout-note}
+## Notation
+
+Writing an unbiased estimator as
+
+$$
+\widehat{\tau(\theta)}=T=t(\mathbf{X})
+$$
+
+the Cramér-Rao lower bound can be written as
+
+$$
+\operatorname{Var}_\theta(T)
+\geq
+\frac{[\tau'(\theta)]^2}{I_n(\theta)}
+$$
+:::
+
+## The Cauchy-Schwarz Inequality {#sec-cauchy-schwarz}
+
+The proof of the Cramér-Rao lower bound depends on the Cauchy-Schwarz inequality.
+
+::: {#thm-cauchy-schwarz-integral}
+## Cauchy-Schwarz Inequality
+
+For square-integrable functions $g$ and $h$,
+
+$$
+\left(
+\int g(x)h(x)\,dx
+\right)^2
+\leq
+\left(
+\int g^2(x)\,dx
+\right)
+\left(
+\int h^2(x)\,dx
+\right)
+$$
+:::
+
+::: {.proof}
+Consider the nonnegative integral
+
+$$
+\iint
+\bigl[g(x)h(y)-g(y)h(x)\bigr]^2
+\,dx\,dy
+\geq 0
+$$
+
+Expanding the square gives
+
+$$
+\begin{aligned}
+0
+&\leq
+\iint g^2(x)h^2(y)\,dx\,dy \\
+&\quad
+-2\iint g(x)h(y)g(y)h(x)\,dx\,dy \\
+&\quad
++\iint g^2(y)h^2(x)\,dx\,dy
+\end{aligned}
+$$
+
+The first and third terms are equal, so
+
+$$
+\begin{aligned}
+0
+&\leq
+2\iint g^2(x)h^2(y)\,dx\,dy
+-2\iint g(x)h(y)g(y)h(x)\,dx\,dy \\
+&=
+2\left(
+\int g^2(x)\,dx
+\right)
+\left(
+\int h^2(y)\,dy
+\right)
+-2\left(
+\int g(x)h(x)\,dx
+\right)^2
+\end{aligned}
+$$
+
+Rearranging yields
+
+$$
+\left(
+\int g(x)h(x)\,dx
+\right)^2
+\leq
+\left(
+\int g^2(x)\,dx
+\right)
+\left(
+\int h^2(x)\,dx
+\right)
+$$
+:::
+
+The same inequality holds when the integrals are replaced by sums. It also holds with $dx$ replaced by $f(x)\,dx$, where $f$ is a probability density function:
+
+$$
+\left(
+\mathbb{E}[g(X)h(X)]
+\right)^2
+\leq
+\mathbb{E}[g^2(X)]\,
+\mathbb{E}[h^2(X)]
+$$
+
+## Proof of the Cramér-Rao Lower Bound {#sec-proof-cramer-rao}
+
+To apply the Cauchy-Schwarz inequality, define
+
+$$
+\begin{aligned}
+g(\mathbf{X})
+&=T-\tau(\theta) \\
+h(\mathbf{X})
+&=
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\end{aligned}
+$$
+
+It is enough to establish the identity
+
+$$
+\tau'(\theta)
+=
+\mathbb{E}_\theta\!\left[
+\bigl(T-\tau(\theta)\bigr)
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right]
+$$
+
+Once this identity is established,
+
+$$
+\begin{aligned}
+[\tau'(\theta)]^2
+&=
+\left(
+\mathbb{E}_\theta\!\left[
+\bigl(T-\tau(\theta)\bigr)
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right]
+\right)^2 \\
+&\leq
+\mathbb{E}_\theta\!\left[
+\bigl(T-\tau(\theta)\bigr)^2
+\right]
+\mathbb{E}_\theta\!\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right)^2
+\right]
+&& \text{Cauchy-Schwarz} \\
+&=
+\operatorname{Var}_\theta(T)\,I_n(\theta)
+&& \text{unbiasedness and Fisher information}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\boxed{
+\operatorname{Var}_\theta(T)
+\geq
+\frac{[\tau'(\theta)]^2}{I_n(\theta)}
+}
+$$
+
+### Deriving the key identity {#sec-crlb-key-identity}
+
+Since $T$ is unbiased,
+
+$$
+\tau(\theta)=\mathbb{E}_\theta[T]
+$$
+
+Differentiating gives
+
+$$
+\begin{aligned}
+\tau'(\theta)
+&=
+\frac{\partial}{\partial\theta}
+\mathbb{E}_\theta[T] \\
+&=
+\frac{\partial}{\partial\theta}
+\int t(\mathbf{x})f(\mathbf{x};\theta)\,d\mathbf{x} \\
+&=
+\int t(\mathbf{x})
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x}
+&& \text{differentiate under the integral} \\
+&=
+\int
+\bigl(t(\mathbf{x})-\tau(\theta)\bigr)
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&\quad
++
+\tau(\theta)
+\underbrace{
+\int
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x}
+}_{
+\displaystyle
+\frac{\partial}{\partial\theta}
+\int f(\mathbf{x};\theta)\,d\mathbf{x}
+=
+\frac{\partial}{\partial\theta}1
+=0
+} \\
+&=
+\int
+\bigl(t(\mathbf{x})-\tau(\theta)\bigr)
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x}
+\end{aligned}
+$$
+
+Using
+
+$$
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+=
+f(\mathbf{x};\theta)
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+$$
+
+we obtain
+
+$$
+\begin{aligned}
+\tau'(\theta)
+&=
+\int
+\bigl(t(\mathbf{x})-\tau(\theta)\bigr)
+f(\mathbf{x};\theta)
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&=
+\mathbb{E}_\theta\!\left[
+\bigl(T-\tau(\theta)\bigr)
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right]
+\end{aligned}
+$$
+
+## Regularity Conditions {#sec-crlb-regularity-conditions}
+
+The Cramér-Rao lower bound requires the following conditions:
+
+1. Differentiation can be interchanged with integration:
+
+   $$
+   \frac{\partial}{\partial\theta}
+   \int f(\mathbf{x};\theta)\,d\mathbf{x}
+   =
+   \int
+   \frac{\partial}{\partial\theta}
+   f(\mathbf{x};\theta)
+   \,d\mathbf{x}
+   $$
+
+2. The score exists:
+
+   $$
+   \frac{\partial}{\partial\theta}
+   \ln f(\mathbf{x};\theta)
+   $$
+
+3. The Fisher information is finite and positive:
+
+   $$
+   0
+   <
+   \mathbb{E}_\theta\!\left[
+   \left(
+   \frac{\partial}{\partial\theta}
+   \ln f(\mathbf{X};\theta)
+   \right)^2
+   \right]
+   <
+   \infty
+   $$
+
+::: {.callout-warning}
+## Parameter-Dependent Support
+
+The interchange condition generally fails when the parameter appears in an indicator function or determines the support of the distribution.
+
+For example, the standard Cramér-Rao lower bound does not apply directly to
+
+$$
+X\sim\operatorname{Uniform}(0,\theta)
+$$
+
+because the support $(0,\theta)$ depends on $\theta$.
+:::
+
+## Bernoulli Example {#sec-crlb-bernoulli-example}
+
+::: {#exm-crlb-bernoulli}
+## Estimating a Bernoulli Probability
+
+Let
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\mathcal{Bern}(p)
+$$
+
+Find the Cramér-Rao lower bound for the variance of every unbiased estimator of $p$.
+
+Here,
+
+$$
+\theta=p
+\qquad
+\tau(p)=p
+\qquad
+\tau'(p)=1
+$$
+:::
+
+### Fisher information {#sec-bernoulli-fisher-information}
+
+For one observation, the probability mass function is
+
+$$
+f(x;p)
+=
+p^x(1-p)^{1-x}
+\mathbb{I}_{\{0,1\}}(x)
+$$
+
+The joint probability mass function is
+
+$$
+\begin{aligned}
+f(\mathbf{x};p)
+&=
+\prod_{i=1}^{n}
+\left[
+ p^{x_i}(1-p)^{1-x_i}
+ \mathbb{I}_{\{0,1\}}(x_i)
+\right] \\
+&=
+p^{\sum_{i=1}^{n}x_i}
+(1-p)^{n-\sum_{i=1}^{n}x_i}
+\prod_{i=1}^{n}
+\mathbb{I}_{\{0,1\}}(x_i)
+\end{aligned}
+$$
+
+Taking the logarithm and omitting the parameter-free indicator term gives
+
+$$
+\ln f(\mathbf{x};p)
+=
+\left(
+\sum_{i=1}^{n}x_i
+\right)\ln p
++
+\left(
+ n-\sum_{i=1}^{n}x_i
+\right)\ln(1-p)
+$$
+
+Differentiating with respect to $p$,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial p}
+\ln f(\mathbf{x};p)
+&=
+\frac{\sum_{i=1}^{n}x_i}{p}
+-
+\frac{n-\sum_{i=1}^{n}x_i}{1-p} \\
+&=
+\frac{
+(1-p)\sum_{i=1}^{n}x_i
+-p\left(n-\sum_{i=1}^{n}x_i\right)
+}{p(1-p)} \\
+&=
+\frac{
+\sum_{i=1}^{n}x_i-np
+}{p(1-p)}
+\end{aligned}
+$$
+
+Let
+
+$$
+Y=\sum_{i=1}^{n}X_i
+\sim
+\operatorname{Binomial}(n,p)
+$$
+
+Then
+
+$$
+\begin{aligned}
+I_n(p)
+&=
+\mathbb{E}_p\!\left[
+\left(
+\frac{\partial}{\partial p}
+\ln f(\mathbf{X};p)
+\right)^2
+\right] \\
+&=
+\mathbb{E}_p\!\left[
+\left(
+\frac{Y-np}{p(1-p)}
+\right)^2
+\right] \\
+&=
+\frac{1}{p^2(1-p)^2}
+\underbrace{
+\mathbb{E}_p\!\left[(Y-np)^2\right]
+}_{
+\displaystyle
+\operatorname{Var}_p(Y)
+} \\
+&=
+\frac{np(1-p)}{p^2(1-p)^2} \\
+&=
+\boxed{
+\frac{n}{p(1-p)}
+}
+\end{aligned}
+$$
+
+### The lower bound {#sec-bernoulli-lower-bound}
+
+Since $\tau'(p)=1$,
+
+$$
+\begin{aligned}
+\operatorname{Var}_p(\widehat{p})
+&\geq
+\frac{[\tau'(p)]^2}{I_n(p)} \\
+&=
+\frac{1^2}{n/[p(1-p)]} \\
+&=
+\boxed{
+\frac{p(1-p)}{n}
+}
+\end{aligned}
+$$
+
+### The sample mean attains the bound {#sec-bernoulli-sample-mean}
+
+Consider
+
+$$
+\widehat{p}=\overline{X}
+=
+\frac{1}{n}\sum_{i=1}^{n}X_i
+$$
+
+Its expectation is
+
+$$
+\begin{aligned}
+\mathbb{E}_p[\overline{X}]
+&=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbb{E}_p[X_i] \\
+&=
+\frac{1}{n}(np) \\
+&=p
+\end{aligned}
+$$
+
+Thus $\overline{X}$ is unbiased. Its variance is
+
+$$
+\begin{aligned}
+\operatorname{Var}_p(\overline{X})
+&=
+\frac{1}{n^2}
+\sum_{i=1}^{n}
+\operatorname{Var}_p(X_i) \\
+&=
+\frac{1}{n^2}
+\bigl[np(1-p)\bigr] \\
+&=
+\boxed{
+\frac{p(1-p)}{n}
+}
+\end{aligned}
+$$
+
+The variance of $\overline{X}$ equals the Cramér-Rao lower bound. Therefore, $\overline{X}$ is an unbiased estimator of $p$ with the smallest possible variance.
+
+::: {#def-umvue}
+## Uniformly Minimum Variance Unbiased Estimator
+
+Because $\overline{X}$ attains the lower bound for every $p\in(0,1)$, it is a uniformly minimum variance unbiased estimator of $p$.
+
+Uniformly means that its variance is no greater than the variance of any other unbiased estimator at every value of $p$, rather than only at one particular value.
+:::
+
 
 ## Reflection
 

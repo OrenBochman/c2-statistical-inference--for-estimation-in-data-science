@@ -21,7 +21,7 @@ Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \Gamma(\alpha,\beta)$ where
 
 ## Population and Sample Moments {#sec-population-sample-moments}
 
-::: {#def-population-moments .definition}
+::: {#def-population-moments}
 ## Population moments
 
 The $k$^th^ population moment, or raw moment, of a random variable $X$ is
@@ -55,7 +55,7 @@ $$
 \frac{1}{n} \sum_{i=1}^n X_i^2
 $$
 
-::: {#def-sample-moments .definition}
+::: {#def-sample-moments}
 ## Sample moments
 
 The $k$th sample moment is
@@ -67,7 +67,7 @@ $$
 
 ## Method of Moments Estimation {#sec-method-of-moments-estimation}
 
-::: {#def-method-of-moments .definition}
+::: {#def-method-of-moments}
 ## Method of moments estimators
 
 The method of moments equates population moments to their corresponding sample moments and solves the resulting equations for the unknown parameters:
@@ -81,7 +81,7 @@ For a model with several unknown parameters, use enough moment equations to solv
 
 ## Example: Exponential Rate {#sec-mme-exponential}
 
-::: {#exm-exponential-mme .example}
+::: {#exm-exponential-mme}
 ## Exponential distribution
 
 Suppose
@@ -246,7 +246,7 @@ Method of moments estimators are not necessarily unbiased.
 
 ## Example: Gamma Shape and Rate {#sec-mme-gamma}
 
-::: {#exm-gamma-mme .example}
+::: {#exm-gamma-mme}
 ## Gamma distribution
 
 Let $X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \Gamma(\alpha,\beta),$ where $\beta$ is the rate parameter. There are two unknown parameters, so use the first two moments.

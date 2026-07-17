@@ -35,8 +35,8 @@ $$
 
 For a discrete random variable $X$,
 
-$$\mathbb{E}[X]
-= \sum_x x\,P(X=x).
+$$
+\mathbb{E}[X] = \sum_x x\,P(X=x).
 $$
 :::
 
@@ -64,67 +64,98 @@ $$
 or, when several random variables are present,
 
 $$
-\mu_X = \mathbb{E}[X],
-\qquad
-\mu_Y = \mathbb{E}[Y].
+\mu_X = \mathbb{E}[X], \qquad \mu_Y = \mathbb{E}[Y].
 $$
 :::
 
+Next I asked @OpenAI2026 to fill in the missing lines of the derivation in the video. I then cleaned up the derivation, added the underbraces to explain the simplification and the box to highlight the final result. 
 
-::: {#exm-normal-expectation}
-### Expectation for a Normal RV
+::: {.callout-note collapse="true"}
+## Prompt disclosure
 
-Let $X \sim N(\mu,\sigma^2)$ then
-
-$$
+prompt please complete this
+$$ 
 \begin{aligned}
-\mathbb{E}[X]
 &= \int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
-&= \int_{-\infty}^{\infty}
-x\,
-\frac{1}{\sqrt{2\pi\sigma^2}}
-\exp\!\left\{
--\frac{(x-\mu)^2}{2\sigma^2}
-\right\}
-\,dx \\
+&= \int_{-\infty}^{\infty}  x \frac{1}{\sqrt{2\pi\sigma^2}}
+                            \exp \left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx\\
 &= \cdots \\
-&= \mu
+&= \boxed{\mu}
 \end{aligned}
 $$
 :::
 
+::: {#exm-normal-expectation}
+### Expectation for a Normal RV 
+<br>
+
+Let $X \sim \mathcal{N}(\mu,\sigma^2)$,
+
+$$
+\begin{aligned}
+\mathbb{E}[X] 
+&= \int_{-\infty}^{\infty} x f_X(x) dx \\
+&= \int_{-\infty}^{\infty} x \frac{1}{\sqrt{2\pi\sigma^2}} 
+   \exp\left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx \\
+&= \int_{-\infty}^{\infty} \bigl[(x-\mu)+\mu\bigr] \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx &&\text{using} (+\mu-\mu=0)\\
+&= \underbrace{\int_{-\infty}^{\infty} (x-\mu) \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left\{
+-\frac{(x-\mu)^2}{2\sigma^2} \right\}dx}_{\displaystyle =0 \text{ by antisymmetry about }x=\mu} \\
+&\qquad + \mu \underbrace{\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx}_{\displaystyle \int \mathcal{N}(\mu,\sigma^2)\,dx=1}  \\
+&= 0+\mu(1) \\
+&= \boxed{\mu}
+\end{aligned}
+$$
+:::
+
+Next I asked @OpenAI2026 to complete the following derivation in the video. 
+
 ::: {#exm-exponential-expectation}
 ### Exponential Distribution
+<br>
 
-Let $X \sim \operatorname{Exp}(\lambda), \qquad \lambda > 0$ where $\lambda$ is the rate parameter. Then
+Let $X \sim \mathcal{Exp}(\lambda), \qquad \lambda > 0$ where $\lambda$ is the rate parameter. Then
 
-$$\begin{aligned}
-\mathbb{E}[X] 
-    &= \int_{-\infty}^{\infty} x\,f_X(x)\,dx \\
-    &= \int_{-\infty}^{0} x\cdot 0\,dx + \int_{0}^{\infty} x\,\lambda e^{-\lambda x}\,dx \\
-    &= \frac{1}{\lambda}
+$$
+\begin{aligned}
+\mathbb{E}[X]
+&= \int_{-\infty}^{\infty} x f_X(x) dx \\
+&= \int_{-\infty}^{0} x \cdot 0 \, dx
+   + \int_{0}^{\infty} x \lambda e^{-\lambda x} dx \\
+&= \int_{0}^{\infty} x \lambda e^{-\lambda x} dx \\
+&= \left[-x e^{-\lambda x}\right]_{0}^{\infty}
+   + \int_{0}^{\infty} e^{-\lambda x} dx
+   && \text{integration by parts} \\
+&= \left[-x e^{-\lambda x}\right]_{0}^{\infty}
+   + \left[-\frac{1}{\lambda}e^{-\lambda x}\right]_{0}^{\infty} \\
+&= 0 + \left(0-\left(-\frac{1}{\lambda}\right)\right)
+   && \text{since } \lim_{x\to\infty} x e^{-\lambda x}=0 \\
+&= \boxed{\frac{1}{\lambda}}.
 \end{aligned}
 $$
 :::
 
 ::: {#exm-exponential-expectation-2}
 ### Train interarrival times
+<br>
 
-If $X$ is the train interarrival time and the arrival rate is $2$ per hour, then $\lambda=2$, so the average time between arrivals is
+Let $X \sim \mathcal{Exp}(\lambda), \qquad \lambda > 0$ where $\lambda$ is the rate parameter. Where $X$ is the train interarrival time and the train arrival rate is $2$ trains per hour, then $\lambda=2$, so the expected time between arrivals is
 
 $$
-\mathbb{E}[X]  = \frac12 \text{ hour}.
+\mathbb{E}[X]  = \frac{1}{\lambda} =   \frac12 \text{ hour}.
 $$
 :::
 
 ### Rate Versus Mean Parameterization of the Exponential Distribution {#sec-exponential-parameterization}
 
-The notation $X \sim \operatorname{Exp}(\lambda)$ is ambiguous unless the parameterization is specified.
+The notation $X \sim \mathcal{Exp}(\lambda)$ is ambiguous unless the parameterization is specified.
 
 ::: {#def-exponential-rate}
 ### Exponential distribution: rate parameterization
+<br>
 
-If $X \sim \operatorname{Exp}(\lambda)$ means that $\lambda$ is a rate parameter, then
+If $X \sim \mathcal{Exp}(\lambda)$ means that $\lambda$ is a rate parameter, then
 
 $$
 f_X(x) = \lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x),
@@ -136,13 +167,13 @@ $$
 \mathbb{E}[X] = \frac{1}{\lambda}
 $$
 
-Equivalently, one may write $X \sim \operatorname{Exp}(\operatorname{rate}=\lambda).$
+Equivalently, one may write $X \sim \mathcal{Exp}(\text{rate}=\lambda).$
 :::
 
 ::: {#def-exponential-mean}
 ### Exponential distribution: mean parameterization
 
-If $X \sim \operatorname{Exp}(\lambda)$ means that $\lambda$ is a mean parameter, then
+If $X \sim \mathcal{Exp}(\lambda)$ means that $\lambda$ is a mean parameter, then
 
 $$
 f_X(x) = \frac{1}{\lambda}e^{-x/\lambda}\mathbf{1}_{(0,\infty)}(x),
@@ -156,7 +187,7 @@ $$
 Equivalently, one may write
 
 $$
-X \sim \operatorname{Exp}(\operatorname{mean}=\lambda).
+X \sim \mathcal{Exp}(\text{mean}=\lambda).
 $$
 :::
 
@@ -181,51 +212,42 @@ $$
 \mathbb{E}[g(X)] =  \mathbb{E}[Y] = \int_{-\infty}^{\infty} y\,f_Y(y)\,dy.
 $$
 
-### Law of the Unconscious Statistician {#sec-lotus}
+### Law of the Unconscious Statistician (LOTUS) {#sec-lotus}
 
-Continuing with $Y=g(X)$,
+Continuing with $Y=g(X)$, we use [@thm-change-of-variables-one-dimensional]
 
 $$
 \begin{aligned}
 \mathbb{E}[g(X)]
-&=
-\mathbb{E}[Y] \\
-&=
-\int_{-\infty}^{\infty} y\,f_Y(y)\,dy \\
-&=
-\int_{-\infty}^{\infty}
-y\,
-f_X\!\left(g^{-1}(y)\right)
-\left|
-\frac{d}{dy}g^{-1}(y)
-\right|
-\,dy
+&= \mathbb{E}[Y] \\
+&= \int_{-\infty}^{\infty} y f_Y(y) dy \\
+&= \int_{-\infty}^{\infty} y f_X\!\left(g^{-1}(y)\right)
+\left| \frac{d}{dy}g^{-1}(y) \right| dy && (\text{change-of-variables formula}) \\
 \end{aligned}
 $$
 
-Let $x = g^{-1}(y)$ then
+Regarding the absolute value, we have should consider two cases - where $g$ is increasing and where $g$ is decreasing. In the first case we can just drop the absolute value, and in the second case we can drop the absolute value and add a negative sign. In either case, we can write:
 
-$$
-dx = \frac{d}{dy}g^{-1}(y)\,dy.
-$$
-
+Let $x = g^{-1}(y)$ then $dx = \frac{d}{dy}g^{-1}(y) dy$
 Substituting back gives
 
 $$
-\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x)\,dx.
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x) dx
 $$
 
 ::: {#thm-lotus}
 ### Law of the Unconscious Statistician
 
-For a continuous random variable $X$ with density $f_X(x)$,
+For a continuous random variable $X$ with density $f_X(x)$
 
 $$
-\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x)\,dx.
-$$
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f_X(x) dx
+$$ {#eq-lotus}
 
 Thus, to compute $\mathbb{E}[g(X)]$, one does not need to first derive the distribution of $Y=g(X)$.
 :::
+
+c.f. [@casella2002statistical p. 45] were not amused by the name "law of the unconscious statistician". 
 
 ### Law of the Unconscious Statistician: Summary
 
@@ -267,9 +289,11 @@ Then
 
 $$
 \begin{aligned}
-\mathbb{E}[X]
-&= (1)\left(\frac14\right) + (2)\left(\frac14\right) + (3)\left(\frac12\right) \\
-&= \frac94 = 2.25.
+\mathbb{E}[X^2]
+&= (1)^2\left(\frac14\right) + (2)^2\left(\frac14\right) + (3)^2\left(\frac12\right) \\
+&= \frac14 + 1 + \frac{9}{2} \\
+&= \frac{1+4+18}{4} \\
+&= \frac{23}{4} = 5.75
 \end{aligned}
 $$ 
 :::
@@ -282,16 +306,10 @@ $$
 \mathbb{E}[X] = \int_{-\infty}^{\infty} x\,f_X(x)\,dx.
 $$ {#eq-expectation-continuous}
 
-If
+Let $X \sim \mathcal{Exp}(\text{rate}=\lambda)$, then
 
 $$
-X \sim \operatorname{Exp}(\lambda)
-$$
-
-under the rate parameterization, then
-
-$$
-f_X(x) = \lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x).
+f_X(x) = \lambda e^{-\lambda x}\mathbf{1}_{(0,\infty)}(x)
 $$
 
 Hence
@@ -330,11 +348,9 @@ $$ {#eq-linearity-expectation}
 $$
 \begin{aligned}
 \mathbb{E}[X+Y]
-&=
-\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x+y)f_{X,Y}(x,y)\,dx\,dy \\
-&=
-\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f_{X,Y}(x,y)\,dx\,dy
-+ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{X,Y}(x,y)\,dx\,dy
+&=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x+y)f_{X,Y}(x,y)\,dx\,dy \\
+&=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f_{X,Y}(x,y)\,dx\,dy + \\
+&\quad  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} y f_{X,Y}(x,y)\,dx\,dy
 \end{aligned}
 $$
 
@@ -348,29 +364,24 @@ so
 
 $$
 \begin{aligned}
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}
-x f_{X,Y}(x,y)\,dy\,dx
-&=
-\int_{-\infty}^{\infty}
-x f_X(x)\,dx \\
-&=
-\mathbb{E}[X].
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f_{X,Y}(x,y)\,dy\,dx
+&= \int_{-\infty}^{\infty} x f_X(x)\,dx \\
+&= \mathbb{E}[X]
 \end{aligned}
 $$
 
 Similarly, the second term is $\mathbb{E}[Y]$. Therefore,
 
 $$
-\begin{aligned}
-\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y] \blacksquare
-\end{aligned}
+\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]
 $$
 :::
 
+Some properties of expectation are:
+
 ### Expectation and Independence
 
-::: {#thm-product-expectation-independent .theorem}
+::: {#thm-product-expectation-independent}
 ## Product expectation under independence
 
 If $X$ and $Y$ are independent, then
@@ -390,7 +401,6 @@ $$
 \qquad \text{(by independence)} \\
 &= \left( \int_{-\infty}^{\infty} x f_X(x)\,dx \right) \left( \int_{-\infty}^{\infty} y f_Y(y)\,dy \right) \\
 &= \mathbb{E}[X]\mathbb{E}[Y] \\
-\blacksquare
 \end{aligned}
 $$
 :::
@@ -406,9 +416,7 @@ $$
 However,
 
 $$
-\mathbb{E}[XY]
-=
-\mathbb{E}[X]\mathbb{E}[Y]
+\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]
 $$
 
 does **not** imply that $X$ and $Y$ are independent.
@@ -464,8 +472,9 @@ even though $X$ and $Y$ are not independent.
 3. The expectation of a product of independent random variables is the product of their expectations. (However, the converse is not true: if the expectation of a product equals the product of expectations, it is not sufficient to show independence.)
 4. Independence and the ability to factor the joint density into a product of marginal densities is a powerful property that arises from the structure of the measurable space and the definition of independence. 
 5. The notation $X \sim Y$ is ambiguous in most cases unless the **parameterization** is specified:
-    - We saw that the $\text{Exponential}$ distribution can be parameterized by either the rate or the mean, and that the expectation depends on which parameterization is used.
-    - The $\mathcal{\Gamma}{\alpha, \beta}$ distribution is another example of a distribution that can be parameterized in multiple ways, and the expectation depends on the parameterization.
-    - It is very likely that different parameterizations are due to different generative stories and these allow a deeper understanding of the underlying process that generates the data.
+    - We saw that the $\text{Exponential}$ distribution can be parameterized by either the *rate* or the *mean*, and that the expectation depends on which parameterization is used.
+    - The $\mathcal{\Gamma}(\alpha, \beta)$ distribution is another example of a distribution that can be parameterized in multiple ways, and the expectation depends on the parameterization.
+    - Many parameterizations are due to inverting a parameter but in reality some distributions have 5 or more parameterization in use which suggest that not only some authors very comfortable with these special form but that they realu belong to a different generative stories. Knowing these stories can foster  a deeper understanding of the underlying process that generates the data as well as the problem in which the parameterization is preferred.
     - In my experience parameterization is often a real source of confusion for practitioners as well as student. I've wasted time trying get the poissone and exponential distributions to match up due to bad parameterization.
+    - c.f. @swat2016probonto for a discussion of the importance of parameterization in the context of probabilistic ontologies.
 6. In the section on the law of the unconscious statistician, we saw that without the theorem, the correct way to compute the expectation of a function of a random variable is to first derive the distribution of the new random variable and then compute its expectation. However, we showed that the  [law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician) allows us to use the same form of expectation as we used  i.e. @eq-expectation-continuous bur replacing X with g(X). This seems like a tautology, but it is actually a very powerful result that allows us to compute the expectation of a function of a random variable without having to derive the distribution of that function. This is especially useful when the function is complicated or when the distribution of the function is not known.

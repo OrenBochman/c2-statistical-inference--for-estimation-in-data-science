@@ -1,5 +1,27 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+These are my notes on statistical estimation for Data Science and AI
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## AI disclosure {.unnumbered}
+
+In many cases I converted the PDF lecture notes into an editable format. 
+I orginaly did this manually. 
+However I did in some places use the @OpenAI2026 ChatGPT to help with the conversions.
+
+I used a prompt like:
+
+::: {.callout-note}
+## Prompt Disclosure
+
+>> Lets convert this handout on joint distributions
+:::
+
+this was used alongside project level instructional materials, a one shot sample of quarto and latex that I had created to indicate how I liked the output to be formatted. This needed to be changed as the openAI model underwent changes e.g. to act more like an agent and to used skill various skills to interact with pdfs.
+
+---
+
+Another useage I made of AI tools was using NotebookLM to 
+
+1. Create glossaries
+2. Locate references in Berger & Casella (1990) of certain incomplete results in the lecture videos and handouts.
+

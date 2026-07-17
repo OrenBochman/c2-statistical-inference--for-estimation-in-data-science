@@ -3,6 +3,8 @@ project:
   preview:
     port: 4302 # increment port number for each course
 
+#prefer-html: true
+
 google-analytics: 
   tracking-id: "G-GYZ17VPVEJ"
   anonymize-ip: true
@@ -100,13 +102,13 @@ format:
     toc: true
     toc-location: left
 
-  pdf:
-    documentclass: scrreprt
-    lof: true
-    lot: true
-    include-in-header:
-      - text: |
-          \usepackage{cancel}
+  # pdf:
+  #   documentclass: scrreprt
+  #   lof: true
+  #   lot: true
+  #   include-in-header:
+  #     - text: |
+  #         \usepackage{cancel}
   epub:
     cover-image: cover.png
 

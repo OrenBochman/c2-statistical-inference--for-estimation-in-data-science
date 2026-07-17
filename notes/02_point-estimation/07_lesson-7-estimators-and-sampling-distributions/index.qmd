@@ -12,7 +12,7 @@ subtitle: "Statistical Estimation for Data Science and AI"
 
 ## Random Samples {#sec-random-samples}
 
-::: {#def-random-sample .definition}
+::: {#def-random-sample}
 ## Random sample
 
 A **random sample** consists of random variables $X_1,X_2,\ldots,X_n$
@@ -50,7 +50,7 @@ $$
 $$
 :::
 
-::: {#def-estimator .definition}
+::: {#def-estimator}
 ## Estimator
 
 An **estimator** $\widehat{\theta}$ is a random variable computed from the random sample:
@@ -75,7 +75,7 @@ $$
 may be used to estimate a population mean.
 :::
 
-::: {#def-estimate .definition}
+::: {#def-estimate}
 ## Estimate
 
 An **estimate** is the observed numerical value of an estimator after the sample has been observed. For example,
@@ -93,7 +93,7 @@ $$
 
 Because an estimator is a function of random variables, it is itself a random variable. Different random samples generally produce different values of $\widehat{\theta}$.
 
-::: {#def-sampling-distribution .definition}
+::: {#def-sampling-distribution}
 ## Sampling distribution
 
 The **sampling distribution** of an estimator $\widehat{\theta}$ is the probability distribution of the estimator over repeated random samples of the same size from the population.
@@ -105,7 +105,7 @@ The sampling distribution has its own expected value and variance. These describ
 
 We would like an estimator to be correct **on average**.
 
-::: {#def-unbiased-estimator .definition}
+::: {#def-unbiased-estimator}
 ## Unbiased estimator
 
 An estimator $\widehat{\theta}$ is an unbiased estimator of $\theta$ when
@@ -129,7 +129,7 @@ $$
 
 ## The Sample Mean Is Unbiased {#sec-sample-mean-unbiased}
 
-::: {#thm-sample-mean-unbiased .theorem}
+::: {#thm-sample-mean-unbiased}
 ## Unbiasedness of the sample mean
 
 Let $X_1,X_2,\ldots,X_n$ be a random sample from any distribution with finite mean $\mu$. Then
@@ -173,7 +173,7 @@ Thus, regardless of the underlying distribution, the sample mean is unbiased for
 
 ## Example: Exponential Random Sample {#sec-exponential-sample-mean}
 
-::: {#exm-exponential-sample-mean .example}
+::: {#exm-exponential-sample-mean}
 ## Exponential distribution
 
 Suppose
@@ -258,7 +258,7 @@ $$
 \end{aligned}
 $$
 
-::: {#thm-sample-mean-properties .theorem}
+::: {#thm-sample-mean-properties}
 ## Sampling properties of the sample mean
 
 For an iid sample with finite mean $\mu$ and variance $\sigma^2$,

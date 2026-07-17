@@ -8,7 +8,7 @@ A biased estimator can have very small variance while remaining systematically d
 
 ## Mean Squared Error {#sec-mean-squared-error}
 
-::: {#def-mean-squared-error .definition}
+::: {#def-mean-squared-error}
 ## Mean squared error
 
 Let $\hat{\theta}$ be an estimator of the parameter $\theta$. The **mean squared error** of $\hat{\theta}$ is
@@ -34,7 +34,7 @@ $$
 
 ## Bias {#sec-estimator-bias}
 
-::: {#def-estimator-bias .definition}
+::: {#def-estimator-bias}
 ## Bias
 
 The **bias** of an estimator $\hat{\theta}$ is
@@ -137,7 +137,7 @@ $$
 \end{aligned}
 $$
 
-::: {#thm-bias-variance-decomposition .theorem}
+::: {#thm-bias-variance-decomposition}
 ## Bias-variance decomposition
 
 For any estimator $\hat{\theta}$,
@@ -166,7 +166,7 @@ When comparing estimators and at least one is biased, compare their mean squared
 
 Suppose $\hat{\theta}_1$ and $\hat{\theta}_2$ are two unbiased estimators of $\theta$.
 
-::: {#def-estimator-efficiency .definition}
+::: {#def-estimator-efficiency}
 ## Efficiency
 
 The estimator $\hat{\theta}_1$ is more efficient than $\hat{\theta}_2$ when
@@ -178,7 +178,7 @@ $$
 $$
 :::
 
-::: {#def-relative-efficiency .definition}
+::: {#def-relative-efficiency}
 ## Relative efficiency
 
 The relative efficiency of $\hat{\theta}_1$ relative to $\hat{\theta}_2$ is

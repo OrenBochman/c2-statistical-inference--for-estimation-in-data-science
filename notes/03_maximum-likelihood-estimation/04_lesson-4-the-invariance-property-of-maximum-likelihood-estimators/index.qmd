@@ -155,7 +155,7 @@ This agreement is an instance of the invariance property.
 
 ## Invariance Theorem {#sec-invariance-theorem}
 
-::: {#thm-mle-invariance .theorem}
+::: {#thm-mle-invariance}
 ## Invariance property of maximum likelihood estimators
 
 Let $\hat{\theta}$ be a maximum likelihood estimator of $\theta$, and let

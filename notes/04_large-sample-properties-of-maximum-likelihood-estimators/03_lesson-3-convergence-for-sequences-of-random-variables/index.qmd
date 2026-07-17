@@ -10,7 +10,472 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-the-weak-law-of-large-numbers_module3_lesson3.pdf){width=700 height=980}
 :::
 
-## Slides
+## Slides on Limits of Deterministic Sequences {#sec-limits-deterministic-sequences}
+
+For an ordinary sequence of numbers, the usual notion of a limit applies. For example,
+
+$$
+\begin{aligned}
+\lim_{n\to\infty}\frac{1}{n} &= 0 \\
+\lim_{n\to\infty}\left(\frac12\right)^n &= 0 \\
+\lim_{n\to\infty}\frac{2n^2+3}{3n^3-7} &= 0 \\
+\lim_{n\to\infty}\frac{2n^2+3}{3n^2-7} &= \frac23
+\end{aligned}
+$$
+
+Similarly, if
+
+$$
+a_n=\frac{n-1}{n}=1-\frac1n
+$$
+
+then
+
+$$
+\lim_{n\to\infty}a_n=1
+$$
+
+## Limits of Random Variables {#sec-limits-random-variables}
+
+Consider a sequence of RVs
+$X_1,X_2,X_3,\ldots$
+[The expression $\lim_{n\to\infty}X_n$ is not meaningful until a particular notion of convergence for random variables has been specified]{.mark}.
+
+::: {#def-convergence-in-probability}
+## Convergence in Probability
+
+The sequence of random variables $X_1,X_2,X_3,\ldots$ converges in probability to a random variable $X$ if, for every $\varepsilon>0$,
+
+$$
+\lim_{n\to\infty}
+\mathbb{P}\!\left(\lvert X_n-X\rvert>\varepsilon\right)
+=0
+$$
+
+We write
+
+$$
+X_n\xrightarrow{P}X
+$$
+:::
+
+::: {#exm-convergence-to-a-constant}
+## Convergence to a Constant
+
+The limiting random variable may be constant. For example, $X=3$ with probability one can be written as
+
+$$
+\mathbb{P}(X=x)
+=
+\begin{cases}
+1, & x=3 \\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+Thus, convergence in probability to the constant $3$ is written as
+
+$$
+X_n\xrightarrow{P}3
+$$
+:::
+
+## Integrating over an Event {#sec-integrating-over-event}
+
+Let
+
+$$
+A=\{x:0\leq x\leq 2\}
+$$
+
+Then the same integral can be written as
+
+$$
+\int_0^2 f(x)\,dx
+=
+\int_A f(x)\,dx
+$$
+
+More generally, if $X$ has probability density function $f_X$, then
+
+$$
+\mathbb{P}(X\in A)
+=
+\int_A f_X(x)\,dx
+$$
+
+::: {#exm-sine-of-an-exponential-random-variable}
+## Probability Involving a Transformation
+
+Suppose that
+
+$$
+X\sim\operatorname{Exp}(\lambda)
+$$
+
+We want to find
+
+$$
+\mathbb{P}\!\left(\lvert\sin(X)\rvert>\frac12\right)
+$$
+
+### Method 1: Find the Distribution of the Transformation {#sec-transformation-method}
+
+Define
+
+$$
+Y=\lvert\sin(X)\rvert
+$$
+
+Then
+
+$$
+\begin{aligned}
+\mathbb{P}\!\left(\lvert\sin(X)\rvert>\frac12\right)
+&=\mathbb{P}\!\left(Y>\frac12\right) \\
+&=\int_{1/2}^{\infty}f_Y(y)\,dy
+\end{aligned}
+$$
+
+### Method 2: Integrate over the Relevant Region {#sec-direct-region-method}
+
+The region in which $\lvert\sin(x)\rvert>1/2$ consists of repeated intervals. Since $X$ is non-negative,
+
+$$
+\begin{aligned}
+A
+&=\left\{x\geq 0:\lvert\sin(x)\rvert>\frac12\right\} \\
+&=\bigcup_{m=0}^{\infty}
+\left(
+ m\pi+\sin^{-1}\!\left(\frac12\right),
+ m\pi+\pi-\sin^{-1}\!\left(\frac12\right)
+\right)
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\mathbb{P}\!\left(\lvert\sin(X)\rvert>\frac12\right)
+&=
+\int_{\sin^{-1}(1/2)}^{\pi-\sin^{-1}(1/2)}
+ f_X(x)\,dx \\
+&\quad+
+\int_{\pi+\sin^{-1}(1/2)}^{2\pi-\sin^{-1}(1/2)}
+ f_X(x)\,dx
++\cdots \\
+&=
+\int_{\{x:\lvert\sin(x)\rvert>1/2\}}
+ f_X(x)\,dx
+\end{aligned}
+$$
+:::
+
+## A General Probability Inequality {#sec-general-probability-inequality}
+
+::: {#thm-generalized-markov-inequality}
+## Generalized Markov Inequality
+
+Let $X$ be a random variable, let $g$ be a non-negative function, and let $c>0$. Then
+
+$$
+\mathbb{P}\!\left(g(X)\geq c\right)
+\leq
+\frac{\mathbb{E}[g(X)]}{c}
+$$
+
+When $g(x)=\lvert x\rvert$, this gives Markov's inequality
+
+$$
+\mathbb{P}\!\left(\lvert X\rvert\geq c\right)
+\leq
+\frac{\mathbb{E}[\lvert X\rvert]}{c}
+$$
+:::
+
+::: {#prf-generalized-markov-inequality}
+## Proof
+
+Let
+
+$$
+A=\{x:g(x)\geq c\}
+$$
+
+Because $g$ is non-negative,
+
+$$
+\begin{aligned}
+\mathbb{E}[g(X)]
+&=\int_{-\infty}^{\infty}g(x)f_X(x)\,dx \\
+&=\int_A g(x)f_X(x)\,dx
++
+\underbrace{\int_{A^c}g(x)f_X(x)\,dx}_{\displaystyle \geq 0} \\
+&\geq\int_A g(x)f_X(x)\,dx \\
+&\geq\int_A c f_X(x)\,dx
+&& \text{because }g(x)\geq c\text{ on }A \\
+&=c\int_A f_X(x)\,dx \\
+&=c\,\mathbb{P}\!\left(g(X)\geq c\right)
+\end{aligned}
+$$
+
+Dividing by $c>0$ gives
+
+$$
+\mathbb{P}\!\left(g(X)\geq c\right)
+\leq
+\frac{\mathbb{E}[g(X)]}{c}
+$$
+:::
+
+## Chebyshev's Inequality {#sec-chebyshev-inequality}
+
+::: {#thm-chebyshev-inequality}
+## Chebyshev's Inequality
+
+Let $X$ be a random variable with
+
+$$
+\mathbb{E}[X]=\mu
+\qquad\text{and}\qquad
+\operatorname{Var}(X)=\sigma^2<\infty
+$$
+
+For any $k>0$,
+
+$$
+\mathbb{P}\!\left(\lvert X-\mu\rvert\geq k\sigma\right)
+\leq
+\frac{1}{k^2}
+$$
+
+Equivalently,
+
+$$
+\mathbb{P}\!\left(\lvert X-\mu\rvert<k\sigma\right)
+\geq
+1-\frac{1}{k^2}
+$$
+
+The second form bounds the probability that $X$ lies within $k$ standard deviations of its mean.
+:::
+
+::: {#prf-chebyshev-inequality}
+## Proof
+
+Apply the generalized Markov inequality with
+
+$$
+g(X)=\color{red}{(X-\mu)^2}
+\qquad\text{and}\qquad
+c=\color{red}{k^2\sigma^2}
+$$
+
+Then
+
+$$
+\begin{aligned}
+\mathbb{P}\!\left(\lvert X-\mu\rvert\geq k\sigma\right)
+&=
+\mathbb{P}\!\left(
+\underbrace{\color{red}{(X-\mu)^2}}_{\color{red}{g(X)}}
+\geq
+\underbrace{\color{red}{k^2\sigma^2}}_{\color{red}{c}}
+\right) \\
+&\leq
+\frac{\mathbb{E}[(X-\mu)^2]}{k^2\sigma^2} \\
+&=
+\frac{\sigma^2}{k^2\sigma^2} \\
+&=
+\frac{1}{k^2}
+\end{aligned}
+$$
+:::
+
+## The Weak Law of Large Numbers {#sec-weak-law-large-numbers}
+
+::: {#thm-weak-law-large-numbers}
+## Weak Law of Large Numbers
+
+Suppose that $X_1,X_2,X_3,\ldots$ are independent and identically distributed random variables from any distribution satisfying
+
+$$
+\mathbb{E}[X_i]=\mu
+\qquad\text{and}\qquad
+\operatorname{Var}(X_i)=\sigma^2<\infty
+$$
+
+Define the sample mean by
+
+$$
+\overline{X}_n
+=
+\frac1n\sum_{i=1}^n X_i
+$$
+
+Then
+
+$$
+\overline{X}_n\xrightarrow{P}\mu
+$$
+:::
+
+The mean and variance of the sample mean are
+
+$$
+\begin{aligned}
+\mathbb{E}[\overline{X}_n]
+&=\mathbb{E}\!\left[\frac1n\sum_{i=1}^n X_i\right] \\
+&=\frac1n\sum_{i=1}^n\mathbb{E}[X_i] \\
+&=\mu
+\end{aligned}
+$$
+
+and, using independence,
+
+$$
+\begin{aligned}
+\operatorname{Var}(\overline{X}_n)
+&=\operatorname{Var}\!\left(\frac1n\sum_{i=1}^n X_i\right) \\
+&=\frac{1}{n^2}\sum_{i=1}^n\operatorname{Var}(X_i) \\
+&=\frac{\sigma^2}{n}
+\end{aligned}
+$$
+
+Thus the standard deviation of the sample mean is
+
+$$
+\sigma_{\overline{X}_n}
+=
+\frac{\sigma}{\sqrt{n}}
+$$
+
+::: {#prf-weak-law-large-numbers}
+## Proof
+
+Let $\varepsilon>0$. Chebyshev's inequality gives
+
+$$
+\mathbb{P}\!\left(
+\lvert\overline{X}_n-\mu\rvert
+\geq
+k\sigma_{\overline{X}_n}
+\right)
+\leq
+\frac{1}{k^2}
+$$
+
+Since $\sigma_{\overline{X}_n}=\sigma/\sqrt{n}$,
+
+$$
+\mathbb{P}\!\left(
+\lvert\overline{X}_n-\mu\rvert
+\geq
+\frac{k\sigma}{\sqrt{n}}
+\right)
+\leq
+\frac{1}{k^2}
+$$
+
+Choose
+
+$$
+k=\frac{\varepsilon\sqrt{n}}{\sigma}
+$$
+
+so that $k\sigma/\sqrt{n}=\varepsilon$. Therefore,
+
+$$
+\begin{aligned}
+\mathbb{P}\!\left(
+\lvert\overline{X}_n-\mu\rvert\geq\varepsilon
+\right)
+&\leq
+\frac{1}{\left(\varepsilon\sqrt{n}/\sigma\right)^2} \\
+&=
+\frac{\sigma^2}{\varepsilon^2n}
+\end{aligned}
+$$
+
+Taking limits,
+
+$$
+\begin{aligned}
+0
+&\leq
+\lim_{n\to\infty}
+\mathbb{P}\!\left(
+\lvert\overline{X}_n-\mu\rvert\geq\varepsilon
+\right) \\
+&\leq
+\lim_{n\to\infty}
+\frac{\sigma^2}{\varepsilon^2n} \\
+&=0
+\end{aligned}
+$$
+
+Hence,
+
+$$
+\lim_{n\to\infty}
+\mathbb{P}\!\left(
+\lvert\overline{X}_n-\mu\rvert\geq\varepsilon
+\right)
+=0
+$$
+
+which means
+
+$$
+\overline{X}_n\xrightarrow{P}\mu
+$$
+:::
+
+## Examples {#sec-weak-law-examples}
+
+::: {#exm-weak-law-exponential}
+## Exponential Random Variables
+
+If
+
+$$
+X_1,X_2,X_3,\ldots
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\lambda)
+$$
+
+then $\mathbb{E}[X_i]=1/\lambda$, so the Weak Law of Large Numbers gives
+
+$$
+\overline{X}_n\xrightarrow{P}\frac1\lambda
+$$
+:::
+
+::: {#exm-weak-law-gamma}
+## Gamma Random Variables
+
+If
+
+$$
+X_1,X_2,X_3,\ldots
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Gamma}(\alpha,\beta)
+$$
+
+where $\alpha$ is the shape parameter and $\beta$ is the rate parameter, then
+
+$$
+\mathbb{E}[X_i]=\frac{\alpha}{\beta}
+$$
+
+Therefore,
+
+$$
+\overline{X}_n\xrightarrow{P}\frac{\alpha}{\beta}
+$$
+:::
+
 
 ## Reflection
 

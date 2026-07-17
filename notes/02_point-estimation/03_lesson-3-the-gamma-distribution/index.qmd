@@ -103,7 +103,7 @@ $$ {#eq-gamma-function}
 
 ## The Gamma Distribution {#sec-gamma-distribution}
 
-::: {#def-gamma-distribution .definition}
+::: {#def-gamma-distribution}
 ## Gamma distribution
 
 A continuous random variable $X$ has a gamma distribution with shape parameter $\alpha>0$ and rate parameter $\beta>0$ if its probability density function is
@@ -169,7 +169,7 @@ The qualitative form changes with $\alpha$:
 
 ## The Gamma Function {#sec-gamma-function}
 
-::: {#def-gamma-function .definition}
+::: {#def-gamma-function}
 ## Gamma function
 
 For $\alpha>0$, the gamma function is defined by
@@ -216,7 +216,7 @@ $$
 \end{aligned}
 $$
 
-::: {#thm-gamma-recurrence .theorem}
+::: {#thm-gamma-recurrence}
 ## Gamma recurrence
 
 For $\alpha>1$,
@@ -302,7 +302,7 @@ Thus, the gamma function extends the factorial from positive integers to positiv
 
 ## Scaling a Gamma Random Variable {#sec-gamma-scaling}
 
-::: {#thm-gamma-scaling .theorem}
+::: {#thm-gamma-scaling}
 ## Positive scaling
 
 Suppose
@@ -326,7 +326,7 @@ $$
 
 ## The Chi-Squared Distribution {#sec-chi-squared-distribution}
 
-::: {#def-chi-squared .definition}
+::: {#def-chi-squared}
 ## Chi-squared distribution
 
 Suppose

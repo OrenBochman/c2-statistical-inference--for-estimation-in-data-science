@@ -10,8 +10,569 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-computational-simplifications-for-the-crlb_module3_lesson2.pdf){width=700 height=980}
 :::
 
+## Slides on Computational Simplifications for CRLB {#sec-crlb-computational-simplifications}
 
-## Slides
+Let $\mathbf{X}=(X_1,\ldots,X_n)$ have joint density or probability mass function $f(\mathbf{x};\theta)$.
+
+::: {#def-fisher-information-computational}
+## Fisher Information
+
+The Fisher information in the sample $\mathbf{X}$ is
+
+$$
+I_n(\theta)
+:=
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right)^2
+\right]
+$$
+:::
+
+::: {.callout-note}
+## Regularity Conditions
+
+The following simplifications assume that the support of $f(\mathbf{x};\theta)$ does not depend on $\theta$ and that differentiation may be passed through the integral or sum
+:::
+
+### The Score Has Mean Zero {#sec-score-mean-zero}
+
+::: {#prp-score-mean-zero}
+## Mean of the Score
+
+Under the regularity conditions,
+
+$$
+\mathbb{E}_{\theta}
+\left[
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right]
+=0
+$$
+:::
+
+The result follows from
+
+$$
+\begin{aligned}
+\mathbb{E}_{\theta}
+\left[
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right]
+&=
+\int
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\right)
+ f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&=
+\int
+\underbrace{
+\frac{
+\frac{\partial}{\partial\theta}f(\mathbf{x};\theta)
+}{f(\mathbf{x};\theta)}
+}_{\displaystyle
+\frac{\partial}{\partial\theta}\ln f(\mathbf{x};\theta)
+}
+ f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&=
+\int
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&=
+\frac{\partial}{\partial\theta}
+\int f(\mathbf{x};\theta)\,d\mathbf{x}
+&& \text{differentiate under the integral} \\
+&=
+\frac{\partial}{\partial\theta}1 \\
+&=0
+\end{aligned}
+$$
+
+### Fisher Information from the Second Derivative {#sec-fisher-information-second-derivative}
+
+::: {#prp-fisher-information-second-derivative}
+## Alternative Fisher Information Formula
+
+Under the regularity conditions,
+
+$$
+I_n(\theta)
+=
+-\mathbb{E}_{\theta}
+\left[
+\frac{\partial^2}{\partial\theta^2}
+\ln f(\mathbf{X};\theta)
+\right]
+$$
+:::
+
+From @prp-score-mean-zero,
+
+$$
+\int
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\right)
+ f(\mathbf{x};\theta)
+\,d\mathbf{x}
+=0
+$$
+
+Differentiate both sides with respect to $\theta$:
+
+$$
+\begin{aligned}
+0
+&=
+\frac{\partial}{\partial\theta}
+\int
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\right)
+ f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&=
+\int
+\left(
+\frac{\partial^2}{\partial\theta^2}
+\ln f(\mathbf{x};\theta)
+\right)
+ f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&\qquad+
+\int
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\right)
+\frac{\partial}{\partial\theta}
+f(\mathbf{x};\theta)
+\,d\mathbf{x}
+&& \text{product rule} \\
+&=
+\int
+\left(
+\frac{\partial^2}{\partial\theta^2}
+\ln f(\mathbf{x};\theta)
+\right)
+ f(\mathbf{x};\theta)
+\,d\mathbf{x} \\
+&\qquad+
+\int
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{x};\theta)
+\right)^2
+ f(\mathbf{x};\theta)
+\,d\mathbf{x}
+&& \text{since }\frac{\partial f}{\partial\theta}=f\frac{\partial\ln f}{\partial\theta} \\
+&=
+\mathbb{E}_{\theta}
+\left[
+\frac{\partial^2}{\partial\theta^2}
+\ln f(\mathbf{X};\theta)
+\right]
++
+\underbrace{
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right)^2
+\right]
+}_{\displaystyle I_n(\theta)}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+I_n(\theta)
+=
+-\mathbb{E}_{\theta}
+\left[
+\frac{\partial^2}{\partial\theta^2}
+\ln f(\mathbf{X};\theta)
+\right]
+$$
+
+### Fisher Information in an IID Sample {#sec-fisher-information-iid-sample}
+
+::: {#prp-fisher-information-iid}
+## Additivity of Fisher Information
+
+If $X_1,X_2,\ldots,X_n$ are independent and identically distributed, then
+
+$$
+I_n(\theta)=nI_1(\theta)
+$$
+:::
+
+For an independent and identically distributed sample,
+
+$$
+f(\mathbf{X};\theta)
+=
+\prod_{i=1}^{n}f(X_i;\theta)
+$$
+
+Hence,
+
+$$
+\begin{aligned}
+I_n(\theta)
+&=
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(\mathbf{X};\theta)
+\right)^2
+\right] \\
+&=
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln \prod_{i=1}^{n}f(X_i;\theta)
+\right)^2
+\right] \\
+&=
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\sum_{i=1}^{n}\ln f(X_i;\theta)
+\right)^2
+\right] \\
+&=
+\mathbb{E}_{\theta}
+\left[
+\left(
+\sum_{i=1}^{n}
+\frac{\partial}{\partial\theta}
+\ln f(X_i;\theta)
+\right)
+\left(
+\sum_{j=1}^{n}
+\frac{\partial}{\partial\theta}
+\ln f(X_j;\theta)
+\right)
+\right] \\
+&=
+\sum_{i=1}^{n}\sum_{j=1}^{n}
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(X_i;\theta)
+\right)
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(X_j;\theta)
+\right)
+\right] \\
+&=
+\sum_{i=1}^{n}
+\mathbb{E}_{\theta}
+\left[
+\left(
+\frac{\partial}{\partial\theta}
+\ln f(X_i;\theta)
+\right)^2
+\right] \\
+&\qquad+
+\underbrace{
+\sum_{i\ne j}
+\mathbb{E}_{\theta}
+\left[
+\frac{\partial}{\partial\theta}
+\ln f(X_i;\theta)
+\right]
+\mathbb{E}_{\theta}
+\left[
+\frac{\partial}{\partial\theta}
+\ln f(X_j;\theta)
+\right]
+}_{\displaystyle 0\text{ by independence and the mean-zero score property}} \\
+&=
+\sum_{i=1}^{n}I_1(\theta) \\
+&=
+nI_1(\theta)
+\end{aligned}
+$$
+
+## Exponential Rate Example {#sec-crlb-exponential-rate}
+
+::: {#exm-crlb-exponential-rate}
+## Estimating the Exponential Rate
+
+Let
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda)
+$$
+
+Find the Cramér--Rao lower bound for the variance of every unbiased estimator $T$ of $\lambda$
+:::
+
+For
+
+$$
+\tau(\lambda)=\lambda
+$$
+
+we have
+
+$$
+\mathrm{Var}_{\lambda}(T)
+\ge
+\frac{[\tau'(\lambda)]^2}{I_n(\lambda)}
+$$
+
+The density of one observation is
+
+$$
+f(x;\lambda)
+=
+\lambda e^{-\lambda x}
+\mathbb{I}_{(0,\infty)}(x)
+$$
+
+The joint density is
+
+$$
+\begin{aligned}
+f(\mathbf{x};\lambda)
+&=
+\prod_{i=1}^{n}
+\lambda e^{-\lambda x_i}
+\mathbb{I}_{(0,\infty)}(x_i) \\
+&=
+\lambda^n
+\exp\!\left\{-\lambda\sum_{i=1}^{n}x_i\right\}
+\prod_{i=1}^{n}\mathbb{I}_{(0,\infty)}(x_i)
+\end{aligned}
+$$
+
+Because the support is independent of $\lambda$, the log-likelihood on the support is
+
+$$
+\begin{aligned}
+\ell(\lambda;\mathbf{x})
+&=
+\ln f(\mathbf{x};\lambda) \\
+&=
+n\ln\lambda
+-
+\lambda\sum_{i=1}^{n}x_i
+\end{aligned}
+$$
+
+### Using the Score {#sec-exponential-fisher-information-score}
+
+Differentiate the log-likelihood:
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\lambda}
+\ell(\lambda;\mathbf{x})
+&=
+\frac{n}{\lambda}
+-
+\sum_{i=1}^{n}x_i
+\end{aligned}
+$$
+
+Let
+
+$$
+Y=\sum_{i=1}^{n}X_i
+$$
+
+Then
+
+$$
+Y\sim\operatorname{Gamma}(\text{shape}=n,\text{rate}=\lambda)
+$$
+
+and
+
+$$
+\mathbb{E}_{\lambda}[Y]=\frac{n}{\lambda}
+\qquad
+\mathrm{Var}_{\lambda}(Y)=\frac{n}{\lambda^2}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+I_n(\lambda)
+&=
+\mathbb{E}_{\lambda}
+\left[
+\left(
+\frac{\partial}{\partial\lambda}
+\ell(\lambda;\mathbf{X})
+\right)^2
+\right] \\
+&=
+\mathbb{E}_{\lambda}
+\left[
+\left(
+\frac{n}{\lambda}-Y
+\right)^2
+\right] \\
+&=
+\mathbb{E}_{\lambda}
+\left[
+\left(
+Y-\mathbb{E}_{\lambda}[Y]
+\right)^2
+\right] \\
+&=
+\mathrm{Var}_{\lambda}(Y) \\
+&=
+\frac{n}{\lambda^2}
+\end{aligned}
+$$
+
+The Cramér--Rao lower bound is
+
+$$
+\begin{aligned}
+\mathrm{Var}_{\lambda}(T)
+&\ge
+\frac{[\tau'(\lambda)]^2}{I_n(\lambda)} \\
+&=
+\frac{1^2}{n/\lambda^2} \\
+&=
+\boxed{\frac{\lambda^2}{n}}
+\end{aligned}
+$$
+
+### Using the Second Derivative {#sec-exponential-fisher-information-second-derivative}
+
+Alternatively,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\lambda}
+\ell(\lambda;\mathbf{x})
+&=
+\frac{n}{\lambda}
+-
+\sum_{i=1}^{n}x_i \\
+\frac{\partial^2}{\partial\lambda^2}
+\ell(\lambda;\mathbf{x})
+&=
+-\frac{n}{\lambda^2}
+\end{aligned}
+$$
+
+Hence,
+
+$$
+\begin{aligned}
+I_n(\lambda)
+&=
+-\mathbb{E}_{\lambda}
+\left[
+\frac{\partial^2}{\partial\lambda^2}
+\ell(\lambda;\mathbf{X})
+\right] \\
+&=
+-\mathbb{E}_{\lambda}
+\left[
+-\frac{n}{\lambda^2}
+\right] \\
+&=
+\frac{n}{\lambda^2}
+\end{aligned}
+$$
+
+The same calculation could instead be performed for a single observation:
+
+$$
+I_1(\lambda)=\frac{1}{\lambda^2}
+$$
+
+Then @prp-fisher-information-iid gives
+
+$$
+I_n(\lambda)=nI_1(\lambda)=\frac{n}{\lambda^2}
+$$
+
+## Exponential Transformation Example {#sec-crlb-exponential-transformation}
+
+::: {#exm-crlb-exponential-transformation}
+## Estimating $e^{-\lambda}$
+
+Let
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\text{rate}=\lambda)
+$$
+
+Find the Cramér--Rao lower bound for the variance of every unbiased estimator $T$ of $e^{-\lambda}$
+:::
+
+The Fisher information has already been calculated:
+
+$$
+I_n(\lambda)=\frac{n}{\lambda^2}
+$$
+
+For
+
+$$
+\tau(\lambda)=e^{-\lambda}
+$$
+
+we have
+
+$$
+\tau'(\lambda)=-e^{-\lambda}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\mathrm{Var}_{\lambda}(T)
+&\ge
+\frac{[\tau'(\lambda)]^2}{I_n(\lambda)} \\
+&=
+\frac{[-e^{-\lambda}]^2}{n/\lambda^2} \\
+&=
+\boxed{\frac{\lambda^2e^{-2\lambda}}{n}}
+\end{aligned}
+$$
+
+::: {.callout-warning}
+## Correction to the Final Slide
+
+The final slide includes an extra factor of $\lambda$ in $\tau'(\lambda)$. Since $\frac{d}{d\lambda}e^{-\lambda}=-e^{-\lambda}$, the corrected bound is $\lambda^2e^{-2\lambda}/n$
+:::
+
 
 ## Reflection
 

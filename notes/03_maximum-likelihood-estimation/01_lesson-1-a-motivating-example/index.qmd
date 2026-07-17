@@ -21,8 +21,7 @@ The [maximum likelihood principle](https://en.wikipedia.org/wiki/Maximum_likelih
 For observed data $\mathbf{x}$ and parameter space $\Theta$, the maximum likelihood estimate is
 
 $$
-\hat{\theta} = \underset{\theta\in\Theta}{\operatorname{arg\,max}}
-\;L(\theta;\mathbf{x}),
+\hat{\theta} = \underset{\theta\in\Theta}{\operatorname{arg\,max}} L(\theta;\mathbf{x}),
 $$
 
 where $L(\theta;\mathbf{x})$ is the likelihood of $\theta$ given the observed data.
@@ -73,7 +72,7 @@ The model is
 $$
 X_1,X_2
 \overset{\mathrm{iid}}{\sim}
-\operatorname{Bernoulli}(p),
+\mathcal{Bern}(p),
 \qquad
 p\in\{0.2,0.3,0.8\}.
 $$
@@ -169,13 +168,7 @@ $$
 ::: {#exm-two-heads}
 ## Two heads
 
-When the observed data are
-
-$$
-(x_1,x_2)=(1,1),
-$$
-
-the likelihood values are
+When the observed data are $(x_1,x_2)=(1,1)$ the likelihood values are
 
 $$
 L(0.2;1,1)=0.04,
@@ -199,33 +192,24 @@ $$
 The maximum likelihood estimator is the function of the random sample that selects the likelihood-maximizing candidate:
 
 $$
-\hat{p}
-=
-\underset{p\in\{0.2,0.3,0.8\}}{\operatorname{arg\,max}}
-\;
-L(p;X_1,X_2).
+\hat{p} = \underset{p\in\{0.2,0.3,0.8\}}{\operatorname{arg\,max}} L(p;X_1,X_2).
 $$
 
 Equivalently,
 
 $$
-\hat{p}
-=
+\hat{p} =
 \begin{cases}
-0.2,
-& \text{if }(X_1,X_2)=(0,0), \\[4pt]
-0.3,
-& \text{if }(X_1,X_2)=(0,1)\text{ or }(1,0), \\[4pt]
-0.8,
-& \text{if }(X_1,X_2)=(1,1).
+0.2, & \text{if }(X_1,X_2)=(0,0), \\[4pt]
+0.3, & \text{if }(X_1,X_2)=(0,1)\text{ or }(1,0), \\[4pt]
+0.8, & \text{if }(X_1,X_2)=(1,1).
 \end{cases}
 $$
 
 Since $X_1+X_2$ is the number of heads, the same estimator can be written as
 
 $$
-\hat{p}
-=
+\hat{p} =
 \begin{cases}
 0.2, & \text{if }X_1+X_2=0, \\
 0.3, & \text{if }X_1+X_2=1, \\

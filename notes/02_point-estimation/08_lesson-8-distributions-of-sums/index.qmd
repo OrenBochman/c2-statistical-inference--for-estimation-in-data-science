@@ -186,7 +186,7 @@ $$
 
 ## Example: Sum of Bernoulli Random Variables {#sec-sum-bernoulli}
 
-::: {#exm-sum-bernoulli .example}
+::: {#exm-sum-bernoulli}
 ## Bernoulli sum
 
 Suppose
