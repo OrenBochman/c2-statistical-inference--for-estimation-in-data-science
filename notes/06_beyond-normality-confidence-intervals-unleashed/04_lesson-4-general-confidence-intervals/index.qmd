@@ -1,5 +1,5 @@
 ---
-title: "Lesson 4: General Confidence Intervals"
+title: "Lesson 4: Who Needs Normality?"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
@@ -11,7 +11,182 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-who-needs-normality_module5_lesson4.pdf){width=700 height=980}
 :::
 
-## Slides
+## Who Needs Normality? {#sec-who-needs-normality}
+
+Suppose
+
+$$
+X_1,X_2,\ldots,X_n
+\overset{\mathrm{iid}}{\sim}
+\operatorname{Exp}(\lambda)
+\qquad
+\lambda>0
+$$
+
+Construct a 95% confidence interval for the rate parameter $\lambda$.
+
+::: {.callout-note}
+## Gamma Parameterization
+
+The gamma distribution is parameterized by shape $\alpha$ and rate $\beta$:
+
+$$
+X\sim\Gamma(\alpha,\beta)
+$$
+
+Under this parameterization,
+
+$$
+cX
+\sim
+\Gamma\!\left(\alpha,\frac{\beta}{c}\right)
+\qquad
+c>0
+$$
+:::
+
+### Step One: Choose a Statistic {#sec-exponential-ci-step-one}
+
+Use the sample mean
+
+$$
+\overline{X}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}X_i
+$$
+
+Because a sum of independent exponential random variables with common rate $\lambda$ is gamma,
+
+$$
+\sum_{i=1}^{n}X_i
+\sim
+\Gamma(n,\lambda)
+$$
+
+Therefore,
+
+$$
+\overline{X}
+=
+\frac{1}{n}
+\sum_{i=1}^{n}X_i
+\sim
+\Gamma(n,n\lambda)
+$$
+
+### Step Two: Construct a Parameter-Free Pivot {#sec-exponential-ci-step-two}
+
+Scaling by $\lambda$ gives
+
+$$
+\lambda\overline{X}
+\sim
+\Gamma(n,n)
+$$
+
+Critical values for this gamma distribution can be obtained directly in R:
+
+```r
+qgamma(c(0.025, 0.975), shape = n, rate = n)
+```
+
+Historically, tables were more commonly available for the chi-squared distribution. Use the identity
+
+$$
+\chi^2_{2n}
+=
+\Gamma\!\left(n,\frac12\right)
+$$
+
+Since
+
+$$
+\lambda\overline{X}
+\sim
+\Gamma(n,n)
+$$
+
+we obtain
+
+$$
+\begin{aligned}
+2n\lambda\overline{X}
+&\sim
+\Gamma\!\left(n,\frac12\right) \\
+&=
+\chi^2_{2n}
+\end{aligned}
+$$
+
+Thus,
+
+$$
+\boxed{
+2n\lambda\overline{X}
+\sim
+\chi^2_{2n}
+}
+$$
+
+### Step Three: Choose Critical Values {#sec-exponential-ci-step-three}
+
+Let $\chi^2_{\gamma,\nu}$ denote the upper-tail critical value satisfying
+
+$$
+P\!\left(
+\chi^2_\nu>\chi^2_{\gamma,\nu}
+\right)
+=
+\gamma
+$$
+
+For a central 95% interval,
+
+$$
+P\!\left(
+\chi^2_{0.975,2n}
+<
+2n\lambda\overline{X}
+<
+\chi^2_{0.025,2n}
+\right)
+=
+0.95
+$$
+
+### Step Four: Solve for the Rate {#sec-exponential-ci-step-four}
+
+Because $2n\overline{X}>0$, divide through by this quantity:
+
+$$
+\frac{\chi^2_{0.975,2n}}
+{2n\overline{X}}
+<
+\lambda
+<
+\frac{\chi^2_{0.025,2n}}
+{2n\overline{X}}
+$$
+
+::: {#def-ci-exponential-rate}
+## Exact Confidence Interval for an Exponential Rate
+
+A $100(1-\alpha)\%$ confidence interval for $\lambda$ is
+
+$$
+\boxed{
+\left(
+\frac{\chi^2_{1-\alpha/2,2n}}
+{2n\overline{X}},
+\frac{\chi^2_{\alpha/2,2n}}
+{2n\overline{X}}
+\right)
+}
+$$
+:::
+
+This interval is exact under the exponential model and does not require a normal approximation.
 
 ## Reflection
 

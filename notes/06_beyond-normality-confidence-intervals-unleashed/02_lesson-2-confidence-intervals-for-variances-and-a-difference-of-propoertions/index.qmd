@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2: Introduction to Confidence Intervals"
+title: "Lesson 2: Confidence Intervals for Variances and a Difference of Proportions"
 subtitle: "Statistical Estimation for Data Science and AI"
 ---
 
@@ -10,7 +10,379 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-confidence-intervals-for-variances_module5_lesson2.pdf){width=700 height=980}
 :::
 
-## Slides
+##  CI for Two Proportions and for a Variance {#sec-ci-two-proportions-variance}
+
+::: {.callout-note}
+## Critical-value notation
+
+The notation $z_\gamma$ and $\chi^2_{\gamma,\nu}$ refers to upper-tail critical values:
+
+$$
+P(Z>z_\gamma)=\gamma
+\qquad
+P\!\left(\chi^2_\nu>\chi^2_{\gamma,\nu}\right)=\gamma
+$$
+:::
+
+### Difference Between Two Population Proportions {#sec-ci-difference-proportions}
+
+::: {#exm-two-region-poll}
+## Two-Region Election Poll
+
+A random sample of 500 people in the first region of a country found that 320 preferred Candidate A.
+
+An independent random sample of 420 people in a second region found that 302 preferred Candidate A.
+
+Construct an approximate 90% confidence interval for the difference between the true proportions in the two regions.
+:::
+
+Let $p_1$ and $p_2$ be the true proportions in the first and second regions. The sample proportions are
+
+$$
+\widehat{p}_1
+=
+\frac{320}{500}
+=
+\frac{16}{25}
+=
+0.64
+$$
+
+and
+
+$$
+\widehat{p}_2
+=
+\frac{302}{420}
+=
+\frac{151}{210}
+\approx
+0.71905
+$$
+
+with
+
+$$
+n_1=500
+\qquad
+n_2=420
+$$
+
+Both samples satisfy the three-standard-error normality check
+
+$$
+\left(
+\widehat{p}_i
+-
+3\sqrt{\frac{\widehat{p}_i(1-\widehat{p}_i)}{n_i}},
+\widehat{p}_i
++
+3\sqrt{\frac{\widehat{p}_i(1-\widehat{p}_i)}{n_i}}
+\right)
+\subseteq [0,1]
+$$
+
+An estimator of $p_1-p_2$ is
+
+$$
+\widehat{p}_1-\widehat{p}_2
+$$
+
+By the Central Limit Theorem,
+
+$$
+\widehat{p}_1
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}\!\left(
+ p_1,
+ \frac{p_1(1-p_1)}{n_1}
+\right)
+$$
+
+and
+
+$$
+\widehat{p}_2
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}\!\left(
+ p_2,
+ \frac{p_2(1-p_2)}{n_2}
+\right)
+$$
+
+Because the samples are independent,
+
+$$
+\widehat{p}_1-\widehat{p}_2
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}\!\left(
+ p_1-p_2,
+ \frac{p_1(1-p_1)}{n_1}
+ +
+ \frac{p_2(1-p_2)}{n_2}
+\right)
+$$
+
+For large samples, replace each unknown variance component by its plug-in estimate:
+
+$$
+\widehat{\operatorname{Var}}(\widehat{p}_i)
+=
+\frac{\widehat{p}_i(1-\widehat{p}_i)}{n_i}
+$$
+
+The standardized statistic is therefore approximately standard normal:
+
+$$
+\frac{
+(\widehat{p}_1-\widehat{p}_2)-(p_1-p_2)
+}{
+\sqrt{
+\dfrac{\widehat{p}_1(1-\widehat{p}_1)}{n_1}
++
+\dfrac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}
+}
+}
+\overset{\mathrm{approx}}{\sim}
+\mathcal{N}(0,1)
+$$
+
+::: {#def-ci-difference-proportions}
+## Approximate Confidence Interval for a Difference of Proportions
+
+An approximate $100(1-\alpha)\%$ confidence interval for $p_1-p_2$ is
+
+$$
+\boxed{
+(\widehat{p}_1-\widehat{p}_2)
+\pm
+z_{\alpha/2}
+\sqrt{
+\frac{\widehat{p}_1(1-\widehat{p}_1)}{n_1}
++
+\frac{\widehat{p}_2(1-\widehat{p}_2)}{n_2}
+}
+}
+$$
+:::
+
+For a 90% confidence interval,
+
+$$
+z_{\alpha/2}
+=
+z_{0.10/2}
+=
+z_{0.05}
+=
+1.645
+$$
+
+Hence
+
+$$
+\begin{aligned}
+\widehat{p}_1-\widehat{p}_2
+&=
+0.64-0.71905 \\
+&=
+-0.07905
+\end{aligned}
+$$
+
+and
+
+$$
+\begin{aligned}
+\operatorname{SE}
+&=
+\sqrt{
+\frac{0.64(0.36)}{500}
++
+\frac{0.71905(1-0.71905)}{420}
+} \\
+&\approx
+0.03069
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+(\widehat{p}_1-\widehat{p}_2)
+\pm
+1.645\operatorname{SE}
+&=
+-0.07905
+\pm
+1.645(0.03069) \\
+&=
+\boxed{(-0.12953,-0.02857)}
+\end{aligned}
+$$
+
+The interval is entirely negative. The data therefore suggest that the proportion preferring Candidate A is larger in region 2 than in region 1.
+
+### Confidence Interval for a Population Variance {#sec-ci-population-variance}
+
+::: {#exm-potato-chip-variance}
+## Potato-Chip Fill Weights
+
+A potato-chip manufacturer sells 10-ounce bags and slightly overfills them. The manufacturer also wants the variability in bag weights to be small so that bags near the low end still contain at least the advertised amount.
+
+For a random sample of 20 bags, the quality-control manager obtains a sample variance of $0.51$ square ounces. Assuming the fill weights are normally distributed, find a 95% confidence interval for $\sigma$, the population standard deviation.
+:::
+
+Use the sample standard deviation
+
+$$
+S=\sqrt{S^2}
+$$
+
+For a random sample from a normal population,
+
+$$
+\frac{(n-1)S^2}{\sigma^2}
+\sim
+\chi^2_{n-1}
+$$
+
+A two-sided $100(1-\alpha)\%$ probability statement is
+
+$$
+\chi^2_{1-\alpha/2,n-1}
+<
+\frac{(n-1)S^2}{\sigma^2}
+<
+\chi^2_{\alpha/2,n-1}
+$$
+
+Solving for $\sigma^2$ gives
+
+$$
+\frac{(n-1)S^2}{\chi^2_{\alpha/2,n-1}}
+<
+\sigma^2
+<
+\frac{(n-1)S^2}{\chi^2_{1-\alpha/2,n-1}}
+$$
+
+Thus, a confidence interval for $\sigma$ is
+
+$$
+\boxed{
+\left(
+\sqrt{\frac{(n-1)S^2}{\chi^2_{\alpha/2,n-1}}},
+\sqrt{\frac{(n-1)S^2}{\chi^2_{1-\alpha/2,n-1}}}
+\right)
+}
+$$
+
+For the example,
+
+$$
+n=20
+\qquad
+S^2=0.51
+\qquad
+n-1=19
+$$
+
+The required critical values are
+
+$$
+\chi^2_{0.975,19}=8.90652
+\qquad
+\chi^2_{0.025,19}=32.85233
+$$
+
+The interval is obtained as follows:
+
+$$
+\begin{aligned}
+8.90652
+&<
+\frac{(20-1)(0.51)}{\sigma^2}
+<
+32.85233 \\
+0.91915
+&<
+\frac{1}{\sigma^2}
+<
+3.39033 \\
+0.29496
+&<
+\sigma^2
+<
+1.08797 \\
+0.54310
+&<
+\sigma
+<
+1.04306
+\end{aligned}
+$$
+
+Hence the two-sided 95% confidence interval is
+
+$$
+\boxed{(0.54310,1.04306)}
+$$
+
+### One-Sided Confidence Intervals {#sec-one-sided-ci-variance}
+
+A 95% lower confidence bound for $\sigma$ follows from
+
+$$
+0
+<
+\frac{(n-1)S^2}{\sigma^2}
+<
+\chi^2_{0.05,n-1}
+$$
+
+For this sample,
+
+$$
+0
+<
+\frac{(20-1)(0.51)}{\sigma^2}
+<
+30.14353
+$$
+
+which gives
+
+$$
+\boxed{0.56698<\sigma<\infty}
+$$
+
+A 95% upper confidence bound follows from
+
+$$
+\chi^2_{0.95,n-1}
+<
+\frac{(n-1)S^2}{\sigma^2}
+<
+\infty
+$$
+
+For this sample,
+
+$$
+10.11701
+<
+\frac{(20-1)(0.51)}{\sigma^2}
+<
+\infty
+$$
+
+which gives
+
+$$
+\boxed{0<\sigma<0.97867}
+$$
 
 ## Reflection
 

@@ -11,7 +11,380 @@ subtitle: "Statistical Estimation for Data Science and AI"
 [Handout](02_video-slides-for-a-confidence-interval-for-a-ratio-of-variances_module5_lesson3.pdf){width=700 height=980}
 :::
 
-## Slides
+## A CI for a Ratio of Variances {#sec-ci-ratio-variances}
+
+### The F Distribution {#sec-f-distribution}
+
+::: {#def-f-distribution}
+## F Distribution
+
+Suppose $X_1$ and $X_2$ are independent random variables with
+
+$$
+X_1\sim\chi^2_{n_1}
+\qquad
+X_2\sim\chi^2_{n_2}
+$$
+
+Define
+
+$$
+F
+=
+\frac{X_1/n_1}{X_2/n_2}
+$$
+
+Then
+
+$$
+F\sim F(n_1,n_2)
+$$
+:::
+
+The $F$ distribution is positive and generally right-skewed. With small denominator degrees of freedom, it has a particularly heavy right tail. As both degrees of freedom increase, it becomes increasingly concentrated around 1.
+
+The four shapes shown in the slides can be reproduced with
+
+```{r}
+#| fig-width: 8
+#| fig-height: 7
+
+parameters <- list(
+  c(df1 = 1,  df2 = 1,  xmax = 20),
+  c(df1 = 5,  df2 = 5,  xmax = 20),
+  c(df1 = 50, df2 = 50, xmax = 5),
+  c(df1 = 10, df2 = 2,  xmax = 5)
+)
+
+old_par <- par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+
+for (pars in parameters) {
+  curve(
+    df(x, df1 = pars["df1"], df2 = pars["df2"]),
+    from = 0,
+    to = pars["xmax"],
+    n = 1000,
+    xlab = "f",
+    ylab = "Density",
+    main = sprintf("df1 = %g, df2 = %g", pars["df1"], pars["df2"])
+  )
+}
+
+par(old_par)
+```
+
+For $x>0$, its probability density function is
+
+$$
+f(x;n_1,n_2)
+=
+\frac{1}{B(n_1/2,n_2/2)}
+\left(\frac{n_1}{n_2}\right)^{n_1/2}
+ x^{n_1/2-1}
+\left(1+\frac{n_1}{n_2}x\right)^{-(n_1+n_2)/2}
+$$
+
+Its mean is
+
+$$
+\mathbb{E}[F]
+=
+\frac{n_2}{n_2-2}
+\qquad
+n_2>2
+$$
+
+and its variance is
+
+$$
+\operatorname{Var}(F)
+=
+\frac{2n_2^2(n_1+n_2-2)}
+{n_1(n_2-2)^2(n_2-4)}
+\qquad
+n_2>4
+$$
+
+In R, the 95th percentile and the corresponding cumulative probability for an $F(5,1)$ random variable are
+
+```{r}
+qf(0.95, df1 = 5, df2 = 1)
+pf(6.608, df1 = 5, df2 = 1)
+```
+
+which give approximately
+
+$$
+q_F(0.95)=6.608
+\qquad
+P(F\leq 6.608)=0.9499824
+$$
+
+### Deriving the Mean of the F Distribution {#sec-mean-f-distribution}
+
+Because $X_1$ and $X_2$ are independent,
+
+$$
+\begin{aligned}
+\mathbb{E}[F]
+&=
+\mathbb{E}\!\left[
+\frac{X_1/n_1}{X_2/n_2}
+\right] \\
+&=
+\frac{n_2}{n_1}
+\mathbb{E}\!\left[
+\frac{X_1}{X_2}
+\right] \\
+&=
+\frac{n_2}{n_1}
+\mathbb{E}[X_1]
+\mathbb{E}\!\left[\frac{1}{X_2}\right]
+&& \text{independence} \\
+&=
+n_2
+\mathbb{E}\!\left[\frac{1}{X_2}\right]
+&& \mathbb{E}[X_1]=n_1
+\end{aligned}
+$$
+
+Since $X_2\sim\chi^2_{n_2}$,
+
+$$
+\begin{aligned}
+\mathbb{E}\!\left[\frac{1}{X_2}\right]
+&=
+\int_0^\infty
+\frac{1}{x}
+\frac{1}{2^{n_2/2}\Gamma(n_2/2)}
+ x^{n_2/2-1}e^{-x/2}
+\,dx \\
+&=
+\frac{1}{2^{n_2/2}\Gamma(n_2/2)}
+\int_0^\infty
+x^{n_2/2-2}e^{-x/2}
+\,dx \\
+&=
+\frac{2^{n_2/2-1}\Gamma(n_2/2-1)}
+{2^{n_2/2}\Gamma(n_2/2)} \\
+&=
+\frac{\Gamma(n_2/2-1)}
+{2\Gamma(n_2/2)} \\
+&=
+\frac{1}{n_2-2}
+&& \Gamma(a)=(a-1)\Gamma(a-1)
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\boxed{
+\mathbb{E}[F]
+=
+\frac{n_2}{n_2-2}
+}
+$$
+
+### Ratio of Two Population Variances {#sec-ratio-population-variances}
+
+Suppose
+
+$$
+X_{11},X_{12},\ldots,X_{1n_1}
+\overset{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu_1,\sigma_1^2)
+$$
+
+and independently
+
+$$
+X_{21},X_{22},\ldots,X_{2n_2}
+\overset{\mathrm{iid}}{\sim}
+\mathcal{N}(\mu_2,\sigma_2^2)
+$$
+
+Let $S_1^2$ and $S_2^2$ be the two sample variances. Then
+
+$$
+\frac{(n_1-1)S_1^2}{\sigma_1^2}
+\sim
+\chi^2_{n_1-1}
+$$
+
+and
+
+$$
+\frac{(n_2-1)S_2^2}{\sigma_2^2}
+\sim
+\chi^2_{n_2-1}
+$$
+
+These two random variables are independent. Hence
+
+$$
+\begin{aligned}
+F
+&:=
+\frac{
+\left[(n_1-1)S_1^2/\sigma_1^2\right]/(n_1-1)
+}{
+\left[(n_2-1)S_2^2/\sigma_2^2\right]/(n_2-1)
+} \\
+&=
+\frac{\sigma_2^2}{\sigma_1^2}
+\frac{S_1^2}{S_2^2}
+\end{aligned}
+$$
+
+with
+
+$$
+F\sim F(n_1-1,n_2-1)
+$$
+
+::: {.callout-note}
+## F Critical-Value Notation
+
+Here, $F_{\gamma,\nu_1,\nu_2}$ denotes an upper-tail critical value satisfying
+
+$$
+P\!\left(
+F_{\nu_1,\nu_2}>F_{\gamma,\nu_1,\nu_2}
+\right)
+=
+\gamma
+$$
+:::
+
+A central $100(1-\alpha)\%$ probability statement is
+
+$$
+F_{1-\alpha/2,n_1-1,n_2-1}
+<
+\frac{\sigma_2^2}{\sigma_1^2}
+\frac{S_1^2}{S_2^2}
+<
+F_{\alpha/2,n_1-1,n_2-1}
+$$
+
+Solving for $\sigma_1^2/\sigma_2^2$ gives
+
+::: {#def-ci-ratio-variances}
+## Confidence Interval for a Ratio of Variances
+
+A $100(1-\alpha)\%$ confidence interval for $\sigma_1^2/\sigma_2^2$ is
+
+$$
+\boxed{
+\left(
+\frac{S_1^2/S_2^2}
+{F_{\alpha/2,n_1-1,n_2-1}},
+\frac{S_1^2/S_2^2}
+{F_{1-\alpha/2,n_1-1,n_2-1}}
+\right)
+}
+$$
+:::
+
+::: {#exm-county-score-variances}
+## County Placement Scores
+
+Fifth-grade students from two neighboring counties took a placement exam.
+
+Group 1, from County A, contained 18 students and had a sample mean score of 77.2. Group 2, from County B, contained 15 students and had a sample mean score of 75.3.
+
+The reported variance estimates are
+
+$$
+s_1^2=15.3
+\qquad
+s_2^2=19.7
+$$
+
+A pooled-variance two-sample $t$ procedure would require $\sigma_1^2=\sigma_2^2$. Construct a 99% confidence interval for $\sigma_1^2/\sigma_2^2$ and assess whether equality is plausible.
+:::
+
+The sample information is
+
+$$
+n_1=18
+\qquad
+n_2=15
+\qquad
+\nu_1=17
+\qquad
+\nu_2=14
+$$
+
+The ratio of sample variances is
+
+$$
+\frac{s_1^2}{s_2^2}
+=
+\frac{15.3}{19.7}
+\approx
+0.77665
+$$
+
+::: {.callout-warning}
+## Numerical inconsistency in the slides
+
+The slides print
+
+$$
+F_{0.005,17,14}=3.98267
+\qquad
+F_{0.995,17,14}=1.00217
+$$
+
+and consequently report
+
+$$
+\boxed{(0.19501,0.77497)}
+$$
+
+These are not the two-sided 99% critical values for an $F(17,14)$ distribution.
+:::
+
+Using the stated degrees of freedom, the correct upper-tail critical values are
+
+$$
+F_{0.005,17,14}=4.15916
+\qquad
+F_{0.995,17,14}=0.26011
+$$
+
+They can be obtained in R by
+
+```{r}
+qf(c(0.995, 0.005), df1 = 17, df2 = 14)
+```
+
+The corrected interval is
+
+$$
+\begin{aligned}
+\frac{15.3/19.7}{4.15916}
+&<
+\frac{\sigma_1^2}{\sigma_2^2}
+<
+\frac{15.3/19.7}{0.26011} \\
+0.18673
+&<
+\frac{\sigma_1^2}{\sigma_2^2}
+<
+2.98582
+\end{aligned}
+$$
+
+Thus,
+
+$$
+\boxed{(0.18673,2.98582)}
+$$
+
+Because this corrected interval contains 1, equality of the population variances remains plausible at the 99% confidence level.
 
 ## Reflection
 
