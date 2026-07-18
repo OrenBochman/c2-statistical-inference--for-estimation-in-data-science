@@ -108,8 +108,8 @@ format:
   #   include-in-header:
   #     - text: |
   #         \usepackage{cancel}
-  epub:
-    cover-image: cover.png
+  # epub:
+  #   cover-image: cover.png
 
 execute: 
   freeze: auto
