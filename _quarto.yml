@@ -101,15 +101,15 @@ format:
     toc: true
     toc-location: left
 
-  # pdf:
-  #   documentclass: scrreprt
-  #   lof: true
-  #   lot: true
-  #   include-in-header:
-  #     - text: |
-  #         \usepackage{cancel}
-  # epub:
-  #   cover-image: cover.png
+  pdf:
+    documentclass: scrreprt
+    lof: true
+    lot: true
+    include-in-header:
+      - text: |
+          \usepackage{cancel}
+  epub:
+    cover-image: cover.png
 
 execute: 
   freeze: auto

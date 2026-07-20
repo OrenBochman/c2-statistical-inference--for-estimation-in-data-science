@@ -13,38 +13,19 @@ subtitle: "Statistical Estimation for Data Science and AI"
 
 ## General Confidence Intervals: Using the Sample Minimum {#sec-general-ci-sample-minimum}
 
-Suppose
-
-$$
-X_1,X_2,\ldots,X_n
-\overset{\mathrm{iid}}{\sim}
-\mathcal{Exp}(\lambda)
-\qquad
-\lambda>0
-$$
-
+Suppose 
+$X_1,X_2,\ldots,X_n \overset{\mathrm{iid}}{\sim} \mathcal{Exp}(\lambda) \qquad \lambda>0$
 Construct a 95% confidence interval for $\lambda$ based on the minimum observation in the sample.
 
 ### Distribution of the Sample Minimum {#sec-distribution-sample-minimum}
 
 Define
-
-$$
-Y_n
-=
-\min(X_1,X_2,\ldots,X_n)
-$$
+$Y_n=\min(X_1,X_2,\ldots,X_n)$
 
 For each $X_i$, the cumulative distribution function is
 
 $$
-F_X(x)
-=
-P(X_i\leq x)
-=
-1-e^{-\lambda x}
-\qquad
-x\geq 0
+F_X(x) = P(X_i\leq x) = 1-e^{-\lambda x} \qquad x\geq 0
 $$
 
 The cumulative distribution function of $Y_n$ is
@@ -52,49 +33,22 @@ The cumulative distribution function of $Y_n$ is
 $$
 \begin{aligned}
 F_{Y_n}(y)
-&=
-P(Y_n\leq y) \\
-&=
-P\!\left(
-\min(X_1,X_2,\ldots,X_n)\leq y
-\right) \\
-&=
-1-
-P\!\left(
-\min(X_1,X_2,\ldots,X_n)>y
-\right) \\
-&=
-1-
-P(X_1>y,X_2>y,\ldots,X_n>y) \\
-&=
-1-
-\prod_{i=1}^{n}P(X_i>y)
-&& \text{independence} \\
-&=
-1-
-\left[P(X_1>y)\right]^n
-&& \text{identical distributions} \\
-&=
-1-
-\left[1-F_X(y)\right]^n \\
-&=
-1-
-\left[e^{-\lambda y}\right]^n \\
-&=
-1-e^{-n\lambda y}
+&=P(Y_n\leq y) \\
+&= P\!\left(\min(X_1,X_2,\ldots,X_n)\leq y\right) \\
+&= 1-P\left(\min(X_1,X_2,\ldots,X_n)>y\right) \\
+&= 1-P(X_1>y,X_2>y,\ldots,X_n>y) \\
+&= 1-\prod_{i=1}^{n}P(X_i>y)&& \text{independence} \\
+&= 1-\left[P(X_1>y)\right]^n && \text{identical distributions} \\
+&= 1-\left[1-F_X(y)\right]^n \\
+&= 1-\left[e^{-\lambda y}\right]^n \\
+&= 1-e^{-n\lambda y}
 \end{aligned}
 $$
 
 Differentiating gives the density
 
 $$
-f_{Y_n}(y)
-=
-\frac{d}{dy}F_{Y_n}(y)
-=
-n\lambda e^{-n\lambda y}
-\qquad
- y\geq 0
+f_{Y_n}(y) = \frac{d}{dy}F_{Y_n}(y) = n\lambda e^{-n\lambda y} \qquad y\geq 0
 $$
 
 ::: {#thm-minimum-exponentials}
@@ -103,23 +57,14 @@ $$
 The minimum of $n$ independent and identically distributed exponential random variables with rate $\lambda$ is exponential with rate $n\lambda$:
 
 $$
-\boxed{
-Y_n
-\sim
-\mathcal{Exp}(n\lambda)
-}
+\boxed{ Y_n \sim \mathcal{Exp}(n\lambda) }
 $$
 :::
 
 ### Step One: Choose a Statistic {#sec-minimum-ci-step-one}
 
 Use
-
-$$
-Y_n
-=
-\min(X_1,X_2,\ldots,X_n)
-$$
+$Y_n=\min(X_1,X_2,\ldots,X_n)$
 
 ### Step Two: Construct a Parameter-Free Pivot {#sec-minimum-ci-step-two}
 
