@@ -176,7 +176,7 @@ $$
 or equivalently, we can integrate over the triangular support in the other order:
 
 $$  
-\int_0^1 \int_x^1 8xy \, dy \, dx = 1.
+\int_0^1 \int_{x}^{1} 8xy \, dy \, dx = 1.
 $$
 
 
@@ -190,11 +190,12 @@ note: that a flat triangular surface would require a joint PDF of the form $f(x,
 let's integrate out $Y$ to get the marginal PDF of $X$ and integrate out $X$ to get the marginal PDF of $Y$.
 $$
 \begin{aligned}
-f_y(y) &= \int_0^1 8xy \mathbb{I}_{(0,1)}(x)\mathbb{I}_{(x,1)}(y) \, dx \\
-       &= \mathbb{I}_{(0,1)}(y) 8y \int_0^y y \, dx\\
-        &= \mathbb{I}_{(0,1)}(y) 8y \left[ xy \right]_0^y  \\
-        &= \mathbb{I}_{(0,1)}(y) 8y \cdot \frac12y^2 \\
-        &= \mathbb{I}_{(0,1)}(y) 4y^3
+f_y(y) 
+&= \int_{0}^{1} 8xy \mathbb{I}_{(0,1)}(x)\mathbb{I}_{(x,1)}(y) \, dx\\
+&= \mathbb{I}_{(0,1)}(y) 8y \int_0^y y \, dx\\
+&= \mathbb{I}_{(0,1)}(y) 8y \left[ xy \right]_0^y\\
+&= \mathbb{I}_{(0,1)}(y) 8y \cdot \frac12y^2 \\
+&= \mathbb{I}_{(0,1)}(y) 4y^3
 \end{aligned}
 $$
 
@@ -202,10 +203,10 @@ now let's integrate out $X$ to get the marginal PDF of $Y$ and integrate out $Y$
 
 $$
 \begin{aligned}
-f_x(x) &= \int_0^1 8xy \mathbb{I}_{(0,1)}(x)\mathbb{I}_{(x,1)}(y) \, dy \\
+f_x(x) &= \int_0^1 8xy \mathbb{I}_{(0,1)}(x)\mathbb{I}_{(x,1)}(y) \, dy\\
        &= \mathbb{I}_{(0,1)}(x) 8x \int_0^y y \, dy\\
-       &= \mathbb{I}_{(0,1)}(x) \cancel8x \frac12[(1-y^2) ]^1_x  \\
-       &= \mathbb{I}_{(0,1)}(x) 4x [(1-x^2) - \cancel{(1-1^2)} ] \\
+       &= \mathbb{I}_{(0,1)}(x) \cancel8x \frac12[(1-y^2) ]^1_x\\
+       &= \mathbb{I}_{(0,1)}(x) 4x [(1-x^2) - \cancel{(1-1^2)} ]\\
        &= \boxed{ \mathbb{I}_{(0,1)}(x) 4x (1-x^2) }
 \end{aligned}
 $$
@@ -233,8 +234,8 @@ The marginal density of $X$ is
 $$
 \begin{aligned}
 f_X(x)
-&= \int_{-\infty}^{\infty} f_{X,Y}(x,y),dy \\
-&= x\mathbb{I}_{(0,1)}(x) \int_0^2 y,dy \\
+&= \int_{-\infty}^{\infty} f_{X,Y}(x,y)\,dy \\
+&= x\mathbb{I}_{(0,1)}(x) \int_0^2 y\,dy \\
 &= x\mathbb{I}_{(0,1)}(x) \left[\frac{y^2}{2}\right]_0^2 \\
 &= 2x\mathbb{I}_{(0,1)}(x)
 \end{aligned}
@@ -456,10 +457,7 @@ $$
 and
 
 $$
-\int_{-\infty}^{\infty}
-\int_{-\infty}^{\infty}`
-f(x,y)\,dy\,dx
-= 1.
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y)\,dy\,dx = 1.
 $$
 :::
 
@@ -471,11 +469,7 @@ Probabilities involving $X$ and $Y$ are obtained by integrating the joint densit
 For the event $X\leq 1$ and $2<Y<6$,
 
 $$
-P(X\leq 1,2<Y<6)
-=
-\int_{-\infty}^{1}
-  \int_{2}^{6}
-    f(x,y)\,dy\,dx.
+P(X\leq 1,2<Y<6) = \int_{-\infty}^{1} \int_{2}^{6} f(x,y)\,dy\,dx.
 $$
 :::
 

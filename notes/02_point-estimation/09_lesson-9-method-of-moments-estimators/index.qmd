@@ -169,7 +169,8 @@ because
 
 $$
 \begin{aligned}
-\mathbb{E}\!\left[\frac{1}{X}\right] &= \int_{-\infty}^{\infty} \frac{1}{x}f_X(x)\,dx \\
+\mathbb{E}\!\left[\frac{1}{X}\right] 
+&= \int_{-\infty}^{\infty} \frac{1}{x}f_X(x)\,dx \\
 &\ne \frac{1}{ \int_{-\infty}^{\infty}xf_X(x)\,dx}
 \end{aligned}
 $$

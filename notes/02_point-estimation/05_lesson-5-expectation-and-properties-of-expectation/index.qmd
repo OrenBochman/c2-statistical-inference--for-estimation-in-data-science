@@ -101,7 +101,7 @@ $$
 \exp\left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx &&\text{using} (+\mu-\mu=0)\\
 &= \underbrace{\int_{-\infty}^{\infty} (x-\mu) \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left\{
 -\frac{(x-\mu)^2}{2\sigma^2} \right\}dx}_{\displaystyle =0 \text{ by antisymmetry about }x=\mu} \\
-&\qquad + \mu \underbrace{\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}}
+&\qquad + \mu \underbrace{ \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}}
 \exp\left\{ -\frac{(x-\mu)^2}{2\sigma^2} \right\} dx}_{\displaystyle \int \mathcal{N}(\mu,\sigma^2)\,dx=1}  \\
 &= 0+\mu(1) \\
 &= \boxed{\mu}
@@ -327,8 +327,7 @@ $$
 Let $(X,Y)$ have joint density $f_{X,Y}(x,y)$. Then
 
 $$
-\mathbb{E}[g(X,Y)]
-= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f_{X,Y}(x,y)\,dx\,dy
+\mathbb{E}[g(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f_{X,Y}(x,y) dx dy
 $$
 
 ### Expectation is a Linear Operator
@@ -397,9 +396,10 @@ $$
 \begin{aligned}
 \mathbb{E}[XY]
 &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\,f_{X,Y}(x,y)\,dx\,dy \\
-&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\,f_X(x)f_Y(y)\,dx\,dy
-\qquad \text{(by independence)} \\
-&= \left( \int_{-\infty}^{\infty} x f_X(x)\,dx \right) \left( \int_{-\infty}^{\infty} y f_Y(y)\,dy \right) \\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy\,f_X(x)f_Y(y)\,dx\,dy && 
+     \text{(by independence)} \\
+&= \left( \int_{-\infty}^{\infty} x f_X(x)\,dx \right) 
+   \left( \int_{-\infty}^{\infty} y f_Y(y)\,dy \right) \\
 &= \mathbb{E}[X]\mathbb{E}[Y] \\
 \end{aligned}
 $$

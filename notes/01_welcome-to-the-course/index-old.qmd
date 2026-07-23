@@ -1,0 +1,45 @@
+---
+title: "Module 1: Start Here"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+## Discrete RVs & PMFs 
+
+
+::: {.panel-tabset}
+### Video
+
+{{< video 01_welcome-to-statistical-inference.mp4 >}}
+
+### Transcript
+
+{{< include 01_welcome-to-statistical-inference.en.txt >}}
+
+### Handout
+
+![Handout](02_welcome-to-statistical-inference_Welcome.pdf){width=700 height=980}
+
+### Reflection
+
+Reducing the sample size from 1000 to 100 in the video didn't change the mean or variance very much but it did make the fit look rather ragged. 
+
+The data is simulated and I think that the empirical distribution takes longer to converge to the true distribution when we have fewer samples.
+
+Is this the CLT or LLN at work or both ?
+
+The main point though is to talk about parameters like mean $\mu$ and standard deviation $\sigma$. 
+
+These are the parameters of the population distribution that we are trying to estimate.
+
+Since the poll is a random sample we can use it to draw inferences about the population distribution. 
+
+In this case we assume a normal distribution and we infer the mean and standard deviation of the population distribution from the sample data.
+
+Once we have point estimates we might want to quantify the uncertainty around these estimates. I.e. height is 73 inches.
+
+We talk about having an ideal situation.
+Then we look at smaller sample sizes. 
+Now we have a sampling distribution and we want to consider how the sample mean for any 100 samples might relate to the true population mean. So we are interested in the shape of the sampling distribution of (the sample mean so) 
+This allows us to make claims about accuracy for a single  sample wrt to the true population mean.
+
+:::

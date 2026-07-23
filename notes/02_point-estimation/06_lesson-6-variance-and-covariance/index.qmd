@@ -89,9 +89,7 @@ $$
 $$
 :::
 
-::: {#prf-variance-computational .proof}
-## Derivation
-
+::: {.proof}
 Let $\mu_X=\mathbb{E}[X]$. Then
 
 $$
@@ -119,9 +117,7 @@ $$
 $$
 :::
 
-::: {#prf-variance-scaling .proof}
-## Derivation
-
+::: {.proof}
 Let $Y=aX$ its mean is
 
 $$
@@ -275,7 +271,7 @@ $$
 $$
 :::
 
-::: {#prf-covariance-computational .proof}
+::: {.proof}
 ## Derivation
 
 $$
@@ -401,9 +397,7 @@ $$
 $$
 :::
 
-::: {#prf-variance-sum .proof}
-## Derivation
-
+::: {.proof}
 Let
 $Z=X+Y$
 Then

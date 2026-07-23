@@ -83,16 +83,10 @@ The proof of the Cramér-Rao lower bound depends on the Cauchy-Schwarz inequalit
 For square-integrable functions $g$ and $h$,
 
 $$
-\left(
-\int g(x)h(x)\,dx
-\right)^2
+\left(\int g(x)h(x)\,dx\right)^2
 \leq
-\left(
-\int g^2(x)\,dx
-\right)
-\left(
-\int h^2(x)\,dx
-\right)
+\left(\int g^2(x)\,dx\right)
+\left(\int h^2(x)\,dx\right)
 $$
 :::
 
@@ -160,12 +154,7 @@ $$
 The same inequality holds when the integrals are replaced by sums. It also holds with $dx$ replaced by $f(x)\,dx$, where $f$ is a probability density function:
 
 $$
-\left(
-\mathbb{E}[g(X)h(X)]
-\right)^2
-\leq
-\mathbb{E}[g^2(X)]\,
-\mathbb{E}[h^2(X)]
+\left(\mathbb{E}[g(X)h(X)]\right)^2 \leq \mathbb{E}[g^2(X)]\,\mathbb{E}[h^2(X)]
 $$
 
 ## Proof of the Cramér-Rao Lower Bound {#sec-proof-cramer-rao}
@@ -174,12 +163,8 @@ To apply the Cauchy-Schwarz inequality, define
 
 $$
 \begin{aligned}
-g(\mathbf{X})
-&=T-\tau(\theta) \\
-h(\mathbf{X})
-&=
-\frac{\partial}{\partial\theta}
-\ln f(\mathbf{X};\theta)
+g(\mathbf{X}) &=T-\tau(\theta) \\
+h(\mathbf{X}) &= \frac{\partial}{\partial\theta} \ln f(\mathbf{X};\theta)
 \end{aligned}
 $$
 

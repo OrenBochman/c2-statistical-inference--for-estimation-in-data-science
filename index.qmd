@@ -25,3 +25,11 @@ Another useage I made of AI tools was using NotebookLM to
 1. Create glossaries
 2. Locate references in Berger & Casella (1990) of certain incomplete results in the lecture videos and handouts.
 
+---
+
+<!--
+some todos:
+1. fix
+[WARNING] Duplicate identifier 'sec-maximum-likelihood-estimation' at line 6111 column 1
+[WARNING] Duplicate identifier 'sec-chi-squared-distribution' at line 11924 column 1
+-->

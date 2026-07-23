@@ -133,7 +133,8 @@ $$
 Similarly, 
 $$
 \begin{aligned}
-P(X = 3) &= P(\text{F on 1st trial AND F on 2nd trial AND S on 3rd trial}) \\
+P(X = 3) 
+&= P(\text{F on 1st trial AND F on 2nd trial AND S on 3rd trial}) \\
 &\stackrel{indep}{=} P(\text{F on 1st trial}) \cdot P(\text{F on 2nd trial}) \cdot P(\text{S on 3rd trial}) \\
 &= (1 − p) \cdot (1 − p) \cdot p = (1 − p)^2 \cdot p 
 \end{aligned}
@@ -146,19 +147,20 @@ $$
 P(X = x) = (1 − p)^{x−1} \cdot p \quad \text{for } x = 1, 2, 3, \ldots
 $$
 
-Since $P(X = x) = 0$ for $x$ not in $\{1, 2, 3, ...\}$, we conclude that the PMF is 
+Since $P(X = x) = 0$ for $x$ not in $\{1, 2, 3, \ldots\}$, we conclude that the PMF is 
 
 $$
-f(x) = \begin{cases} 
-(1 − p)^{x−1} \cdot p , & x = 1, 2, 3, ... \\ 
-0 ,                       & \text{otherwise} 
+f(x) = 
+\begin{cases} 
+   (1 − p)^{x−1} \cdot p  & x = 1, 2, 3, \ldots \\ 
+   0                      & \text{otherwise} 
 \end{cases}
 $$ 
 
 This can be written in indicator notation as 
 
 $$
-f(x) = (1 − p)^{x−1} \cdot p \cdot I_{\{1,2,3,...\}}(x)
+f(x) = (1 − p)^{x−1} \cdot p \cdot \mathbb{I}_{\{1,2,3,\ldots \}}(x)
 $$
 
 $X$ is said to have a geometric distribution with parameter $p$. We write $X \sim \mathcal{geom}(p)$. 
@@ -166,9 +168,9 @@ $X$ is said to have a geometric distribution with parameter $p$. We write $X \si
 Note: The geometric random variable can also be defined as $X = \# \text{failures before the first success}$. 
 
 In this case, $X$ can take on the value 0 and it is easy to verify that the PMF changes slightly
-to $f(x) = \begin{cases} (1 − p)^x \cdot p , & x = 0, 1, 2, ... \\ 0 , & \text{otherwise} \end{cases}$.
+to $f(x) = \begin{cases} (1 − p)^x \cdot p , & x = 0, 1, 2, \ldots \\ 0 , & \text{otherwise} \end{cases}$.
 
-Which may also be written as $f(x) = (1 − p)^x \cdot p \cdot I_{\{0,1,2,...\}}(x)$.
+Which may also be written as $f(x) = (1 − p)^x \cdot p \cdot I_{\{0,1,2,\ldots\}}(x)$.
 
 #### The Binomial Distribution
 
@@ -201,12 +203,12 @@ where each listed configuration of outcomes includes exactly $x$ S’s and exact
 Since the outcomes are disjoint, we get
 
 $$
-f (x) = P (X = x) = P (SSF SF ... F ) + P (SF SF S ... S) + ··· \quad (0.1)
+f (x) = P (X = x) = P (SSF SF \ldots F ) + P (SF SF S \ldots S) + ··· \quad (0.1)
 $$
 
 Since the trials are independent,
 $$
-P (SSF SF ... F ) = p \cdot p \cdot (1 − p) \cdot s \cdot (1 − p) \cdot \cdot \cdot (1 − p) = p^x (1 − p)^{n−x}
+P (SSF SF \ldots F ) = p \cdot p \cdot (1 − p) \cdot s \cdot (1 − p) \cdot \cdot \cdot (1 − p) = p^x (1 − p)^{n−x}
 $$
 
 In fact, every term in (0.1) gives that same probability since every term has the same number of S’s and F ’s! So,
@@ -233,7 +235,7 @@ $$
 So, we have seen that X ∼ bin(n, p) means that X has pmf
 
 $$
-f(x) = P (X = x) = \binom{n}{x} p^x (1 − p)^{n−x} I_{\{0,1,...,n\}}(x) \quad (0.2)
+f(x) = P (X = x) = \binom{n}{x} p^x (1 − p)^{n−x} I_{\{0,1,\ldots,n\}}(x) \quad (0.2)
 $$
 
 #### The Poisson Distribution
@@ -253,7 +255,7 @@ $$
 
 which may also be written as 
 $$
-f(x) = e^{-\lambda} \frac{\lambda^x}{x!} I_{\{0,1,2,...\}}(x)
+f(x) = e^{-\lambda} \frac{\lambda^x}{x!} I_{\{0,1,2,\ldots\}}(x)
 $$ 
 Here, $\lambda > 0$ is a parameter for the distribution.
 

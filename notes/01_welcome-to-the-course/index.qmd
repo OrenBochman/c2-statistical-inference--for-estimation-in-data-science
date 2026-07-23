@@ -6,40 +6,43 @@ subtitle: "Statistical Estimation for Data Science and AI"
 ## Discrete RVs & PMFs 
 
 
-::: {.panel-tabset}
+::: {.column-margin}
 ### Video
 
 {{< video 01_welcome-to-statistical-inference.mp4 >}}
 
-### Transcript
+[Transcript](01_welcome-to-statistical-inference.en.txt)
+[Handout](02_welcome-to-statistical-inference_Welcome.pdf){width=700 height=980}
+:::
 
-{{< include 01_welcome-to-statistical-inference.en.txt >}}
+## Handout
 
-### Handout
+What is Inference?
 
-![Handout](02_welcome-to-statistical-inference_Welcome.pdf){width=700 height=980}
+Statistical inference is the process of learning about characteristics of a population based on
+what is observed in a relatively small sample from that population. For example, suppose
+that we want to know about the true average weight of all adult Sockeye salmon in a
+particular region in the Pacific Northwest of the United States. We can take a “random
+sample” of these salmon and report the average weight from the sample. Assuming that
+we have somehow truly randomly sampled from the entire population do you think this
+sample average will be close to the true population average? There are many factors that go
+into answering this question including the size of our sample and how variable weights are
+in the overall population. While estimating a true population average using an average from
+a sample makes sense intuitively, there are many other types of “parameters” that control
+population characteristics that are not so easily interpreted and do not have obvious sample
+counterparts. In this course we will learn about what makes an estimator “good” and how
+to derive them in non-obvious scenarios!
 
 ### Reflection
 
-Reducing the sample size from 1000 to 100 in the video didn't change the mean or variance very much but it did make the fit look rather ragged. 
-
-The data is simulated and I think that the empirical distribution takes longer to converge to the true distribution when we have fewer samples.
-
-Is this the CLT or LLN at work or both ?
-
-The main point though is to talk about parameters like mean $\mu$ and standard deviation $\sigma$. 
-
-These are the parameters of the population distribution that we are trying to estimate.
-
-Since the poll is a random sample we can use it to draw inferences about the population distribution. 
-
-In this case we assume a normal distribution and we infer the mean and standard deviation of the population distribution from the sample data.
-
-Once we have point estimates we might want to quantify the uncertainty around these estimates. I.e. height is 73 inches.
-
-We talk about having an ideal situation.
-Then we look at smaller sample sizes. 
-Now we have a sampling distribution and we want to consider how the sample mean for any 100 samples might relate to the true population mean. So we are interested in the shape of the sampling distribution of (the sample mean so) 
-This allows us to make claims about accuracy for a single  sample wrt to the true population mean.
-
-:::
+- Reducing the sample size from 1000 to 100 in the video didn't change the mean or variance very much but it did make the fit look rather ragged. 
+- The data is simulated and I think that the empirical distribution takes longer to converge to the true distribution when we have fewer samples.
+- Is this the CLT or LLN at work or both ?
+- The main point though is to talk about parameters like mean $\mu$ and standard deviation $\sigma$. 
+- These are the parameters of the population distribution that we are trying to estimate.
+- Since the poll is a random sample we can use it to draw inferences about the population distribution. 
+- In this case we assume a normal distribution and we infer the mean and standard deviation of the population distribution from the sample data.
+- Once we have point estimates we might want to quantify the uncertainty around these estimates. I.e. height is 73 inches.
+- We talk about having an ideal situation. Then we look at smaller sample sizes. 
+- Now we have a sampling distribution and we want to consider how the sample mean for any 100 samples might relate to the true population mean. So we are interested in the shape of the sampling distribution of (the sample mean so) 
+- This allows us to make claims about accuracy for a single  sample wrt to the true population mean.

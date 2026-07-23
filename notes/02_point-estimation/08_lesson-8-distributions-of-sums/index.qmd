@@ -143,9 +143,7 @@ $$
 for values of $t$ at which the MGFs exist.
 :::
 
-::: {#prf-mgf-independent-sum .proof}
-## Proof
-
+::: {.proof}
 $$
 \begin{aligned}
 M_Y(t)

@@ -219,7 +219,7 @@ g(\overline{X}) \\
 &\xrightarrow{P}
 \frac{1}{1/\lambda} \\
 &=
-\color{#C62828}{\lambda}
+\color{red}{\lambda}
 \end{aligned}
 $$
 
@@ -444,7 +444,7 @@ $$
 \begin{aligned}
 \mathbb{E}[Y_n]
 &=
-\int_{-\infty}^{\infty}y f_{Y_n}(y)\,dy \\
+\int_{-\infty}^{\infty} y f_{Y_n}(y)\,dy \\
 &=
 \int_{0}^{\theta}
 y\frac{n}{\theta^n}y^{n-1}\,dy \\
@@ -513,9 +513,7 @@ Since $Y_n$ is asymptotically unbiased and its variance converges to zero,
 
 $$
 \boxed{
-\color{#C62828}{
-Y_n\xrightarrow{P}\theta
-}
+\color{red}{Y_n \xrightarrow{P}\theta}
 }
 $$
 
