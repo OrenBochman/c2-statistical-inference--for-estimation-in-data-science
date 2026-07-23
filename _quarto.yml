@@ -34,19 +34,25 @@ book:
     - notes/intro.qmd
     - notes/summary.qmd
     - notes/01_welcome-to-the-course/index.qmd
+
     - part: "Module 2 Point Estimation"
       chapters:
       - notes/02_point-estimation/01_lesson-1-review-of-discrete-and-continuous-random-variables/index.qmd
+      - notes/02_point-estimation/recognizing-discrete-distributions.qmd
+      - notes/02_point-estimation/calculations-with-continuous-distributions.qmd
       - notes/02_point-estimation/02_lesson-2-joint-distributions/index.qmd
       - notes/02_point-estimation/03_lesson-3-the-gamma-distribution/index.qmd
       - notes/02_point-estimation/04_lesson-4-transformations-of-distributions/index.qmd
       - notes/02_point-estimation/05_lesson-5-expectation-and-properties-of-expectation/index.qmd
-      - notes/02_point-estimation/_probability-expectation-and-variance.qmd
+      - notes/02_point-estimation/probability-expectation-and-variance.qmd
       - notes/02_point-estimation/06_lesson-6-variance-and-covariance/index.qmd
       - notes/02_point-estimation/07_lesson-7-estimators-and-sampling-distributions/index.qmd
       - notes/02_point-estimation/08_lesson-8-distributions-of-sums/index.qmd
       - notes/02_point-estimation/09_lesson-9-method-of-moments-estimators/index.qmd
-      - notes/02_point-estimation/_the-shape-of-data.qmd
+      - notes/02_point-estimation/method-of-moments-estimation.qmd
+      - notes/02_point-estimation/the-shape-of-data.qmd
+      - notes/02_point-estimation/point-estimation-lab.qmd 
+
     - part: "Module 3 Maximum Likelihood Estimation"
       chapters:
       - notes/03_maximum-likelihood-estimation/01_lesson-1-a-motivating-example/index.qmd      
@@ -58,6 +64,7 @@ book:
       - notes/03_maximum-likelihood-estimation/05_lesson-5-mean-squared-error-bias-and-relative-efficiency/index.qmd
       - notes/03_maximum-likelihood-estimation/_invariance-mean-squared-error-and-efficiency.qmd
       - notes/03_maximum-likelihood-estimation/SamplingDistributions.ipynb
+
     - part: "Module 4 Large Sample Properties of Maximum Likelihood Estimators"
       chapters: 
       - notes/04_large-sample-properties-of-maximum-likelihood-estimators/01_lesson-1-fisher-information-and-the-cramer-rao-lower-bound/index.qmd
@@ -65,7 +72,9 @@ book:
       - notes/04_large-sample-properties-of-maximum-likelihood-estimators/03_lesson-3-convergence-for-sequences-of-random-variables/index.qmd
       - notes/04_large-sample-properties-of-maximum-likelihood-estimators/04_lesson-4-the-central-limit-theorem/index.qmd
       - notes/04_large-sample-properties-of-maximum-likelihood-estimators/05_lesson-5-properties-of-maximum-likelihood-estimators/index.qmd
-
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/the-cramer-rao-lower-bound.qmd
+      - notes/04_large-sample-properties-of-maximum-likelihood-estimators/further-computations-with-mles.qmd
+    
     - part: "Module 5 Large Sample Properties of Maximum Likelihood Estimators"
       chapters: 
       - notes/05_confidence-intervals-involving-the-normal-distribution/01_lesson-1-a-normal-introduction-to-confidence-intervals/index.qmd

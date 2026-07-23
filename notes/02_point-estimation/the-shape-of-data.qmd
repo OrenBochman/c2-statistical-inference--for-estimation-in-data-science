@@ -1,0 +1,134 @@
+---
+title: "Lab: The Shape of Data & Rough Curve Fitting"
+subtitle: "Statistical Estimation for Data Science and AI"
+
+---
+
+## Read in some data
+
+> We've left you some data in a file called "data1". Let's check it out!  
+> We are going to read in some data using the command "read.table".   
+> Because this command reads in data as a "list" structure, we will "unlist it" and turn it into a vector. The letter "c" is used in R to define a vector.  
+
+> In the cell below, type  
+`mydata<-read.table("data1")`  
+`mydata<-c(unlist(mydata))`
+
+Hold down "Shift" and press "Enter" to run the commands in this jupyter notebook.
+
+```{r}
+mydata<-read.table("data1")
+mydata<-c(unlist(mydata))
+```
+
+> Let's get some quick and basic measurements from the data.  
+In the cell below, type  
+`length(mydata)`  
+`mean(mydata)`  
+`var(mydata)`
+
+>Run the commands.
+
+```{r}
+length(mydata)
+mean(mydata)
+var(mydata)
+```
+
+## Making a histogram  
+
+> In the cell below, type `hist(mydata)`  
+
+> (From this point forward, go ahead and run the commands when you are ready.)
+
+```{r}
+hist(mydata,probability = T)
+```
+
+> Great! Now, let's take a little more control in the appearance of the histogram. For example, the default bin width you are seeing is probably 0.5. Lets change it to 0.1. In order to do this, we will have to define the breakpoints as a sequence of numbers.
+
+> In the next cell, type 
+
+`min(mydata)`  
+`max(mydata)`
+
+```{r}
+my_min<-min(mydata)
+my_max<-max(mydata)
+```
+
+> Suppose that your minimum and maximum are 0.0220296 and 3.406938. In what follows, use <b>your</b> actual numbers.
+
+> Make a sequence (vector) of bin breaks, each which length 0.1,that will include your minimum and maximum. We will call it "br". In the next cell, type `br<-seq(0,3.5,0.1)`
+
+> Notice how, in this example, we have used the closest numbers to one decimal place that will fully cover the entire dataset.
+
+> We will now remake the histogram. In real life you would go back up to the cell where you made the previous histogram, edit your code and run it there. In order to keep these instructions flowing in a linear way, we will make an entirely new histogram below.
+
+> Add this to the cell under your line defining the sequence of breaks.  `hist(mydata,prob=T,breaks=br')`
+
+> The "prob=T" part will put density on the y-axis as opposed to counts. This will make the histogram bars scale so that the <u>total area in the bar</u> between 0.2 and 0.3 (for example) <u>will be equal to the proportion</u> of values in the data set that are between 0.2 and 0.3. This is important because we are going to try to superimpose a true pdf on the histogram and area under a pdf gives probability.
+
+```{r}
+br<-seq(my_min-0.1,my_max+0.1,0.1)
+hist(mydata,prob=T,breaks=br)
+```
+
+## Superimposing a curve
+
+> Is it just us or does this look like an exponential distribution?  
+> Recall that $\lambda$, the rate parameter for the exponential distribution is 1 divided by the true mean of the distribution.
+> Since $\lambda$ is unknown, we will try to estimate it by using 1 divided by the sample mean.  That is, we will estimate $\lambda$ with  $\widehat{\lambda} = 1/\overline{X}$.  
+> In the next cell, define a variable named "lambdahat" and set it to be 1 over the sample mean.
+
+```{r}
+lambdahat=1/mean(mydata)
+lambdahat
+```
+
+> Let's superimpose the exponential density on our histogram using our estimated $\lambda$. The easiest way to do this is not to make a function but rather a sequence of points where we connect the dots.
+
+> Create a sequence of x-values. We'll make them really close together so that out "dot connecting" looks smooth.
+
+> In the next cell, type. `x<-seq(0,3,0.001)`
+
+> Now let's get the pdf values. Add this to the cell. `fx<-lambdahat*exp(-lambdahat*x)`
+
+> Go back to the previous cell where you made your last histogram and add the line by typing `lines(x,fx)`.
+
+```{r}
+x<-seq(0,3,0.001)
+fx<-lambdahat*exp(-lambdahat*x)
+
+br<-seq(my_min-0.1,my_max+0.1,0.1)
+hist(mydata,prob=T,breaks=br)
+lines(x,fx,col = 4)
+```
+
+## A Mystery Data Set
+
+> Following the commands at the beginning of this lab. Read in the data set called "data2".
+
+> Take a look at the shape of the data by making a histogram. Be sure to use "density" on the $y$-axis and adjust the breaks to make the histogram look nice to you. 
+
+- Too few bins and the histogram will look "chunky" and will miss a lot of the shape detail. 
+- Too many bins can result in some bins being empty while a neighboring bin is very "spiky".
+
+```{r}
+mydata1<-read.table("data2")
+mydata1<-c(unlist(mydata))
+my_min1=min(mydata1)-0.1
+my_max1=max(mydata1)+0.1
+lambdahat=1/mean(mydata1)
+x<-seq(0,3,0.01)
+fx<-lambdahat*exp(-lambdahat*x)
+br<-seq(my_min1,my_max1,0.1)
+hist(mydata1,prob=T,breaks=br)
+lines(x,fx,col = 4)
+```
+
+> Decide whether this data set looks like an exponential distribution, a normal distribution, or a Pareto distribution. (See your table of distributions for the pdfs.)
+
+> Once you have decided on a distribution, superimpose the pdf on the histogram using estimates for the parameter(s) that seem intuitive to you. (Don't worry too much about getting a good fit. We will be able to get a better result later in the course after we learn formal methods for estimating parameters!)
+
+

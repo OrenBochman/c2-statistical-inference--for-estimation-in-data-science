@@ -1,0 +1,115 @@
+---
+title: "Quizz: Recognizing Discrete Distributions"
+subtitle: "Statistical Estimation for Data Science and AI"
+---
+
+[Cesium photon emissions]{.column-margin}
+
+::: {#exr-01-cesium-photons }
+## Cesium photon emissions
+
+Radiation from a Cesium-137 source is measured using a scintillation detector. The detector absorbs the radiation and re-admits  the energy as visible photons at a certain rate commensurate with the half-life of Cesium-137. 
+
+Which of the following distributions may be used to best describe the number of photons emitted during a one hour period of time?
+
+- [ ] Bernoulli
+- [ ] Geometric
+- [ ] Poisson
+- [ ] Binomial
+
+:::
+
+::: {.callout-tip}
+## Solution
+
+I think that question is trickier than is immediately apparent because it is not at all clear how to characterize the radioactive decay of Cesium-137. I'll get into this in a moment.
+
+Bernoulli, Binomial and Geometric are all based on discrete Bernoulli trials with fixed probabilities of success. They are intimately related to each other. However Poisson is a little different - because it is a limit of the Binomial distribution as the number of trials goes to infinity and the probability of success goes to zero in such a way that the expected number of successes remains fixed.
+
+The main characteristic of the Poisson distribution is that it models the number of events occurring in a fixed interval of time (or space) when these events occur with a known constant mean rate and independently of the time since the last event.
+
+Say we have a N atoms of Cesium-137 after each time t there is going to be about N * (1/2)^(t/T) where T is the half life. The decay of each atom is independent of the others. However as the number of atoms decreases the rate of decay also decreases. So the rate is not constant over time. If the half life is very long compared to the measurement interval (1 hour we are ok with using the Poisson distribution to model the number of photons emitted during that interval.) On the other hand if the half life is short compared to the measurement interval then the rate is not constant and we cannot use the Poisson distribution.
+
+One more point is how much cesium do we have - just a few atoms or a large amount. If we only have a few atoms then the number of photons emitted is going to be small we would be better of using the Binomial distribution to model the number of photons emitted. If we have a large amount of cesium then the number of photons emitted is going to be large and we can use the Poisson distribution.
+
+Another issue is that for each atom there is a fixed probability of decay during the measurement interval but the number is hard to get from the half life - which is the time it takes for half the atoms to decay. 
+
+Looking it up - the half life of Cesium-137 is about 30 years. So for a one hour measurement interval the probability of decay for each atom is very small. So we can use the Poisson distribution to model the number of photons emitted during that interval.
+
+Therefore the answer is **Poisson**.
+:::
+
+[Pedestrian slips]{.column-margin}
+
+::: {#exr-02-geometric-slip }
+## Pedestrian slips
+
+Suppose George is eating at his favorite restaurant one cold winter afternoon. He sits at his usual table, right by the window so he can entertain himself watching pedestrians stroll down the sidewalk of the moderately busy city street. In between sips of his bitter coffee, he notices that the occasional passerby slips on a small patch of ice right outside the restaurant. Now, as opposed to being a more caring sort and warning the waiter that a patch of ice needed salting, George continues to watch. He begins to think over time that there is a more or less constant probability of any one person slipping. He wants to know how many people might walk safely by before one slips. You can assume that each pedestrian is either well spaced enough to avoid seeing the person ahead of them fall or too engrossed in a cell phone to notice. Which below distribution could be used?
+
+- [ ] Binomial
+- [x] Geometric
+- [ ] Poisson
+- [ ] Negative Binomial
+:::
+
+::: {.callout-tip}
+## Solution
+
+This is a classic "number of trials until first success" scenario.
+so I would use the **Geometric distribution**.
+:::
+
+[Arcade game wins]{.column-margin}
+
+::: {#exr-03-arcade-wins }
+## Arcade game wins
+
+Jerry is a high school student who works at the local arcade as his summer job. This summer he's been assigned to the prize booth, doling out stuffed animals, keychains, and multi-colored bouncy balls to kids with wads of tickets in their hands. Having been there for several summers, Jerry's boss has let him in on some of the secrets of the business. For example, one of the games consists of a ring that can light up. A single dot of light speeds around the ring once tokens are put in the machine. If the player clicks a button at just the right time to stop the light at the marked point, they win. However, Jerry knows that even if the player pushes the button at just the right point, the machine is setup to only stop the light at the marked spot with a fixed probability. Jerry, standing there at the prize booth, wonders how many times out of ten tries a player might win the game assuming they pressed the button perfectly each and every time. Which distribution is this?
+:::
+
+- [ ] Binomial
+- [ ] Geometric
+- [ ] Poisson
+- [ ] Negative Binomial
+
+::: {.callout-tip}
+## Solution
+This is a classic "number of successes in a fixed number of trials" scenario so I would use the **Binomial distribution**.
+:::
+
+[traffic distribution]{.column-margin}
+
+::: {#exr-04-bridge-traffic }
+## Bridge traffic
+
+Jennifer is a construction worker at the site of a new skyscraper. The building-in-progress sits next to the bridge that spans the river flowing through the heart of downtown. After a hectic morning listening to the commands of her boss and the complaints of her coworkers, she likes to take her lunch up to a partially finished upper floor and watch cars pass on the bridge beneath her as she eats. After several days watching the traffic go by, and with an interest in all things statistics, she begins  to wonder if she could model how many cars go by during her one hour lunch break. Which distribution might be used for this?
+
+- [ ] Binomial
+- [ ] Geometric
+- [ ] Poisson
+- [ ] Bernoulli
+:::
+
+::: {.callout-tip}
+## Solution
+This is a classic "number of events in a fixed interval of time" scenario so I would use the **Poisson distribution**.
+:::
+
+[candy bar toss]{.column-margin}
+
+::: {#exr-05-candy-bar-toss }
+## Candy bar toss
+
+Candice works as a lifeguard at the local pool. In between shifts of scanning the water for trouble and whistling at kids to remind them of the no running rule, she and three fellow lifeguards relax in the break room. Most days they spend their fifteen minute breaks playing cards, specifically a game called euchre. However, one afternoon while Candice is on break a fellow lifeguard instead wants to play Texas hold'em poker. Candice searches in her pocket for a quarter to toss to settle the dispute, but can't seem to find one. Instead she tosses him the unopened candy bar she was about to eat and tells him to throw it in the air and call out which of the two sides will be face up when it lands. He argues that it's not a fair flip since the candy bar isn't symmetrically shaped. Candice, who has always been carefree, shrugs and points out he is the one making the call so he has the advantage. What distribution might describe this toss?   
+
+- [ ] Bernoulli
+- [ ] Poisson
+- [ ] Geometric
+- [x] Binomial
+
+:::
+
+::: {.callout-tip}
+## Solution
+This is a classic "two possible outcomes" scenario so I would use the **Bernoulli distribution**.
+:::

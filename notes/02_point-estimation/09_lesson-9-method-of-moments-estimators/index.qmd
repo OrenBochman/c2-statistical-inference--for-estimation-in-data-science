@@ -332,9 +332,7 @@ $$
 
 which is the sample variance computed with divisor $n$.
 
-### Graded Quiz
 
-{{< include ../_method-of-moments-estimation.qmd >}}
 
 ### Historical Note:
 
@@ -402,4 +400,3 @@ MoM is also mentioned the use in terms of Processes and Time series analysis.
 - [The Method of Moments](https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/07%3A_Point_Estimation/7.02%3A_The_Method_of_Moments) article by Kyle Siegrist
 
 
-{{< include ../_point-estimation-lab.qmd >}}

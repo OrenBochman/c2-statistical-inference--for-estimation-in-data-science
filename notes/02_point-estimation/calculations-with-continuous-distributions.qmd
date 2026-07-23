@@ -1,0 +1,166 @@
+---
+title: "Quizz: Calculations with Continuous Distributions"
+---
+
+[Gamma RV]{.column-margin}
+
+::: {#exr-01-calculations-with-continuous-distributions }
+## Gamma distribution identification
+
+Let $X$ be a random variable with pdf $f(x)=4 x^{2} e^{-2x} \, I_{(0,\infty)}(x)$ What is the distribution of $X$?
+
+- [ ] $\Gamma(4/3)$
+- [ ] $\Gamma(2,2)$
+- [ ] $\Gamma(4/3,2)$
+- [ ] $\Gamma(3,2)$
+:::
+
+::: {.callout-tip}
+## Solution
+
+We saw in the lecture that the key to identifying a Gamma distribution is to rewrite it it using the PDF we saw in the table of distributions for this course.
+
+As this is not the easiest pdf to recognize, here is how to solve it.
+
+1. Write down the correct parametrization of the pdf of the Gamma distribution. The Lecturer actually warned us about this several times.
+2. One you do you will quickly see that parameter $beta$ can be read off from the power of the exponential term.
+3. To get the parameter $\alpha$ we would need to rewrite the exponent of $x$  as it appears in the Gamma pdf, i.e. as $\alpha -1$.
+4. **We can check we got them right** as they appear twice more in the PDF. However we need to rewrite this as in this problem we get the remaining multiplicative constant 4 needs to be rewritten as well. 
+    - $2^3 / \Gamma(3) = 4$ which checks out as 
+    - $\Gamma(3) = 3-1! = 2$ where we need to recall that $\Gamma(𝑛) = ( 𝑛 − 1 ) !$
+
+
+
+$$
+\begin{aligned}
+f(x) &= 4 x^{2} e^{-2x} \, I_{(0,\infty)}(x) \\     
+     &= \frac{1}{\Gamma(3)} 2^{3} x^{3-1} e^{-2x} \, I_{(0,\infty)}(x) \\
+      &= \frac{1}{\Gamma(\alpha)} \beta^\alpha x^{\alpha-1} e^{-(\beta x)} \, I_{(0,\infty)}(x) \quad \text{ where } \alpha = 3 \text{ and } \beta = 2\\
+\end{aligned}
+$$
+
+- [x] $\Gamma(3,2)$ since the pdf can be rewritten as 
+:::
+
+[Waiting time]{.column-margin}
+
+::: {#exr-02-calculations-with-continuous-distributions }
+## Total waiting time
+
+In commuting to work, George must get on a bus near his house and then transfer to a second bus. 
+If the waiting time (in minutes) at each stop has a uniform distribution on the interval from 0 to 5, it can be shown that George's total waiting time $X$ has the pdf:
+
+$$
+f(x) = \begin{cases}  
+            \frac{1}{25} x  & 0< x <5 \\ 
+            \frac{2}{5}-\frac{1}{25} x & 5 \leq x \leq 10 
+        \end{cases}
+$$
+
+What is the probability that Fred's total waiting time is at most 6 minutes?
+:::
+
+::: {.callout-tip}
+## Solution 
+The probability that Fred's total waiting time is [at most 6 minutes]{.marked} is given by integrating the pdf from 0 to 6 which requires breaking the integral into two parts as follows:
+
+$$
+\begin{aligned}
+P(X \leq 6) &= \int_{0}^{6} f(x) \, dx && \text{(breaking it up)}\\
+&=\int_{0}^{5} \frac{1}{25} x \, dx + \int_{5}^{6} \left( \frac{2}{5} - \frac{1}{25} x \right) \,dx  && \text{(integrating)}\\
+&= \left[ \frac{1}{25}\frac{1}{2} x^2  \right]_{0}^{5} + \left[ \frac{2}{5} x - \frac{1}{25}\frac{1}{2} x^{2} \right]_{5}^{6} && \text{(subst limits)}\\
+&= \frac{25}{50} + \left( \frac{2 \times 6}{5} - \frac{6 \times 6}{50} - \frac{2 \times 5}{5} + \frac{5\times 5}{50} \right) && \text{(common din.)}\\
+&= \frac{25 + 2 \times 6 \times 10 -  6\times 6 - 2 \times 5 \times 10 +25}{50} && \text{(multiplying out)}\\
+&= \frac{25 + 120 -  36 - 100 + 25}{50} && \text{(sum up)}\\
+&= \frac{34}{50} && \text{(reduce fraction)}\\
+&= \boxed{\frac{17}{25}} && \text{(finally)}\\
+\end{aligned}
+$$
+:::
+
+[Probability of and Exp RV]{.column-margin}
+
+::: {#exr-03-calculations-with-continuous-distributions }
+## Exponential distribution probability
+
+Suppose that $X$ is a random variable with the exponential rate $\lambda$  distribution for some $λ>0$.  
+What is the probability that $X$ is [greater than 1}{.marked}
+?
+
+- [ ] $e^{-\lambda/2}$
+- [ ] $1- e^{-\lambda}$
+- [ ] $1-e^{-1}$
+- [ ] $e^{-\lambda}$
+:::
+
+::: {.callout-tip}
+## Solution
+
+The only tricky part of this problem is to remember that when we evaluate the pdf at zero and at 1 to get the p(X <= 1) so we need to subtract from 1.
+
+that we use a cumulative distribution function (CDF) to calculate probabilities for continuous random variables.
+
+The probability that $X$ is greater than 1 is given by
+$$
+P(X>1) = 1 - P(X \leq 1) = 1 - F(1) = 1 - (1 - e^{-\lambda \cdot 1}) = e^{-\lambda}
+$$
+:::
+
+
+[Normal RV]{.column-margin}
+
+::: {#exr-04-calculations-with-continuous-distributions }
+## Normal distribution probability
+
+Let $X$ be a Normal random variable with mean 0 and variance 1.
+That is, $X \sim \mathcal{N}(0,1)$.
+
+Given that $P(|X|<2) \approx 0.9545$ , what is the probability that $X>2$?
+:::
+
+:::: {.callout-tip}
+## Solution
+The probability that $X>2$ is given by
+
+$$
+\begin{aligned}
+P(X>2) &= 1 - P(X \leq 2) \\
+&= 1 - P(|X|<2)/2 \\
+&= 1 - 0.9545/2 \\
+&\approx \boxed{0.02275}
+\end{aligned}
+$$
+:::
+
+[Normalizing constant]{.column-margin}
+
+::: {#exr-05-calculations-with-continuous-distributions }
+## Property of a PDF
+
+Let
+
+$$
+f(x) = c e^{x} \, I_{[0,1]}(x)+c e^{-x+2} \, I_{(1,\infty)}(x).
+$$
+
+Find the constant $c$ that will make $f$ a probability density function.
+:::
+
+::: {.callout-tip}
+## Solution
+
+Strategy:
+
+Since we know that the mass of a PDF must be one we can integrate it over its entire support and set the result equal to one. Then we need to rearrange so that $c$ is on the lef hand side.
+
+$$
+\begin{aligned}
+1 &= \int_{0}^{\infty}  c e^{x} \, I_{[0,1]}(x)+c e^{-x+2} \, I_{(1,\infty)}(x)\, dx \\
+&= \int_{0}^{1} c e^{x} \, dx + \int_{1}^{\infty} c e^{-x+2} \, dx \\
+&= c \left[ e^{x} \right]_{0}^{1} + c \left[ -e^{-x+2} \right]_{1}^{\infty} \\
+&= c (e - 1) + c (0 + e^{1}) \\
+&= c (2e - 1) \\
+\Rightarrow c &=\boxed{  \frac{1}{2e - 1} }
+\end{aligned}
+$$
+:::

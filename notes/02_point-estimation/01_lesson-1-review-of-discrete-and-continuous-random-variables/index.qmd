@@ -7,16 +7,10 @@ subtitle: "Statistical Estimation for Data Science and AI"
 {{< video 01_discrete-random-variables-and-probability-mass-functions.mp4 >}}
 
 [Transcript](01_discrete-random-variables-and-probability-mass-functions.en.txt){target="_blank"}
+[Handout](02_important-discrete-distributions_Important_Discrete_Distributions.pdf)
 :::
 
-### Handout
-
-- The original is [Handout](02_important-discrete-distributions_Important_Discrete_Distributions.pdf)
-- I've cleaned it up here.
-- I might expand it a bit to make things more visual and interactive. 
-- However, this is very basic stuff and already covered in greater depth in my bayesian probability specialization's notes. 
-- It might be better to spend the time on a interactive quiz sequence that I can use to drill this on a regular basis till I can do it all in my sleep. 
-
+## Handout
 
 #### The Bernoulli Distribution {#sec-bernoulli-distribution}
 
@@ -275,10 +269,6 @@ of the binomial distribution when $n$ gets really large and $p$ gets really smal
 
 In general, the Poisson distribution is often used to describe the distribution of rare events in a large population.
 
-### Ungraded Quiz
-
-{{< include ../_recognizing-discrete-distributions.qmd >}}
-
 ### Reflection {.active}
 
 1. This segment covers some of the distributions that arise out of a binary trial. (e.g. we don't consider the negative binomial distribution here.) If you think about it bernoulli, geometric and binomial distributions and the poisson distribution are all based on the notion of one or a sequence binary trials. The simplest experiment we can generally run have binary outcomes so these distributions are not just commonly encountered, but also rather useful for modeling a wide range of phenomena. 
@@ -295,23 +285,15 @@ However I think that this is not the main result for this lesson - as it focuses
 {{< video 03_continuous-random-variables-and-probability-density-functions.mp4 >}}
 
 [Transcript](03_continuous-random-variables-and-probability-density-functions.en.txt){target="_blank"}
+[Handout](04_important-continuous-distributions_Important_Continuous_Distributions.pdf){width=700 height=980}
 :::
 
-### Handout
- 
-[Handout](04_important-continuous-distributions_Important_Continuous_Distributions.pdf){width=700 height=980}
-
-### Quiz
-
-{{< include ../_calculations-with-continuous-distributions.qmd >}}
+## Handouts
 
 ### Distribution Table
 
 [Distribution_Table](05_table-summarizing-important-distributions_Distribution_Table.pdf)
 
-#### Introduction
-
-This document provides a clean, well-structured reference for standard parametric families of both discrete and continuous probability distributions, derived from the reference tables.
 
 #### Parametric Families of Discrete Distributions {#sec-parametric-families-of-discrete-distributions}
 
